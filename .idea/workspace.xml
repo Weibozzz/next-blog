@@ -2,46 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="315648cc-e644-48d9-b3dc-a5419e572764" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/ListTitle/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/ListTitle/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/TopTips/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/TopTips/index.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.next/0.91e9152f845ab5cc0ded.hot-update.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.next/0.91e9152f845ab5cc0ded.hot-update.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.next/4.71ba070badc78fb771db.hot-update.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.next/4.71ba070badc78fb771db.hot-update.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.next/71ba070badc78fb771db.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.next/91e9152f845ab5cc0ded.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/components/Header.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/index.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/build-manifest.json" afterPath="$PROJECT_DIR$/.next/build-manifest.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/bundles/pages/_app.js" afterPath="$PROJECT_DIR$/.next/bundles/pages/_app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/bundles/pages/_app.js.map" afterPath="$PROJECT_DIR$/.next/bundles/pages/_app.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/bundles/pages/_error.js" afterPath="$PROJECT_DIR$/.next/bundles/pages/_error.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/bundles/pages/_error.js.map" afterPath="$PROJECT_DIR$/.next/bundles/pages/_error.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/bundles/pages/index.js" afterPath="$PROJECT_DIR$/.next/bundles/pages/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/bundles/pages/index.js.map" afterPath="$PROJECT_DIR$/.next/bundles/pages/index.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_app.js" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_app.js.map" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_app.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js.map" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_document.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_error.js" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_error.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/bundles/pages/_error.js.map" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/_error.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/bundles/pages/index.js" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/bundles/pages/index.js.map" afterPath="$PROJECT_DIR$/.next/server/bundles/pages/index.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/server/pages-manifest.json" afterPath="$PROJECT_DIR$/.next/server/pages-manifest.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/static/commons/main.js" afterPath="$PROJECT_DIR$/.next/static/commons/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/static/commons/main.js.map" afterPath="$PROJECT_DIR$/.next/static/commons/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/static/commons/manifest.js" afterPath="$PROJECT_DIR$/.next/static/commons/manifest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/static/commons/manifest.js.map" afterPath="$PROJECT_DIR$/.next/static/commons/manifest.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.next/static/style.css" afterPath="$PROJECT_DIR$/.next/static/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/actions.js" afterPath="$PROJECT_DIR$/store/actions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/pages/about.js" afterPath="$PROJECT_DIR$/no/about.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/pages/post.js" afterPath="$PROJECT_DIR$/pages/post/index.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/reducers.js" afterPath="$PROJECT_DIR$/store/reducers.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -68,17 +29,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+            <state relative-caret-position="575">
+              <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="368">
@@ -275,12 +236,12 @@
       <updated>1530423423637</updated>
       <workItem from="1530423424915" duration="9687000" />
       <workItem from="1530434073056" duration="1022000" />
-      <workItem from="1530435812880" duration="12674000" />
+      <workItem from="1530435812880" duration="12714000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23383000" />
+    <option name="totallyTimeSpent" value="23423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -756,18 +717,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
           <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
           <folding />
         </state>
       </provider>
