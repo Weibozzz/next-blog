@@ -23,9 +23,9 @@ app.prepare()
       return handle(req, res)
     })
 
-    server.listen(80, (err) => {
+    server.listen(4322, (err) => {
       if (err) throw err
-      console.log('> Ready on http://localhost')
+      console.log('> Ready on http://localhost 4322')
     })
   })
   .catch((ex) => {
