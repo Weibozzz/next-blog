@@ -14,7 +14,6 @@ app.prepare()
       server.use(compression()) //gzip
     }
     server.get('/p/:id', (req, res) => {
-      console.log(req.params)
       const actualPage = '/post'
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)

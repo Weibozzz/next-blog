@@ -1,30 +1,14 @@
-/*reducer 是纯方法
-* 传入旧状态和action
-* 返回新状态
-*/
+
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 import {combineReducers} from 'redux'
-import {
-  TEST_ASYNC,
-  GET_TOTAL,
-  GET_DETAIL,
-  GET_ADMIN_BLOG,
-  POST_ADMIN_DETAIL,
-  POST_ARTICLE,
-  GET_LIFE,
-  GET_COMMENTS,
-  GET_LAST_ID,
-  GET_NEXT_ID,
-  GET_ADMIN_COMMENTS,
-  POST_COMMENT
-} from './actions'
+import * as ActionTypes from './action-types';
 
 // 异步
 const testAsync = (state = [], action) => {
   switch (action.type) {
-    case TEST_ASYNC:
+    case ActionTypes.TEST_ASYNC:
       return action.data
     default:
       return state
@@ -32,7 +16,7 @@ const testAsync = (state = [], action) => {
 }
 const total = (state = [], action) => {
   switch (action.type) {
-    case GET_TOTAL:
+    case ActionTypes.GET_TOTAL:
       return action.data
     default:
       return state
@@ -40,7 +24,7 @@ const total = (state = [], action) => {
 }
 const detail = (state = [], action) => {
   switch (action.type) {
-    case GET_DETAIL:
+    case ActionTypes.GET_DETAIL:
       return action.data
     default:
       return state
@@ -48,7 +32,7 @@ const detail = (state = [], action) => {
 }
 const lastId = (state = [], action) => {
   switch (action.type) {
-    case GET_LAST_ID:
+    case ActionTypes.GET_LAST_ID:
       return action.data
     default:
       return state
@@ -56,7 +40,7 @@ const lastId = (state = [], action) => {
 }
 const nextId = (state = [], action) => {
   switch (action.type) {
-    case GET_NEXT_ID:
+    case ActionTypes.GET_NEXT_ID:
       return action.data
     default:
       return state
@@ -64,7 +48,7 @@ const nextId = (state = [], action) => {
 }
 const comments = (state = [], action) => {
   switch (action.type) {
-    case GET_COMMENTS:
+    case ActionTypes.GET_COMMENTS:
       return action.data
     default:
       return state
@@ -72,7 +56,7 @@ const comments = (state = [], action) => {
 }
 const adminComments = (state = [], action) => {
   switch (action.type) {
-    case GET_ADMIN_COMMENTS:
+    case ActionTypes.GET_ADMIN_COMMENTS:
       return action.data
     default:
       return state
@@ -80,7 +64,7 @@ const adminComments = (state = [], action) => {
 }
 const life = (state = [], action) => {
   switch (action.type) {
-    case GET_LIFE:
+    case ActionTypes.GET_LIFE:
       return action.data
     default:
       return state
@@ -88,7 +72,7 @@ const life = (state = [], action) => {
 }
 const adminBlog = (state = [], action) => {
   switch (action.type) {
-    case GET_ADMIN_BLOG:
+    case ActionTypes.GET_ADMIN_BLOG:
       return action.data
     default:
       return state
@@ -96,7 +80,7 @@ const adminBlog = (state = [], action) => {
 }
 const adminDetail = (state = [], action) => {
   switch (action.type) {
-    case POST_ADMIN_DETAIL:
+    case ActionTypes.POST_ADMIN_DETAIL:
       return action.data
     default:
       return state
@@ -105,7 +89,7 @@ const adminDetail = (state = [], action) => {
 //发表文章
 const article = (state = [], action) => {
   switch (action.type) {
-    case POST_ARTICLE:
+    case ActionTypes.POST_ARTICLE:
       return action.data
     default:
       return state
@@ -114,7 +98,7 @@ const article = (state = [], action) => {
 //发布评论
 const comment = (state = [], action) => {
   switch (action.type) {
-    case POST_COMMENT:
+    case ActionTypes.POST_COMMENT:
       return action.data
     default:
       return state

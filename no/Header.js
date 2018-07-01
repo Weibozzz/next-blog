@@ -5,7 +5,7 @@ const linkStyle = {
 }
 
 const Header = () => (
-  <div>
+  <div className="nav-bar">
     <Link href="/">
       <a style={linkStyle}>Home</a>
     </Link>
@@ -15,6 +15,12 @@ const Header = () => (
     <Link href="/markdown">
       <a style={linkStyle}>markdown</a>
     </Link>
+    <style jsx >{`
+     .nav-bar{
+      font-size:24px;
+      background-color:red;
+     }
+  `}</style>
   </div>
 )
 

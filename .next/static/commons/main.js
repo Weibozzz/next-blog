@@ -26,7 +26,7 @@ webpackJsonp([0],{
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
-            injectCss(link, link.href.split("?")[0] + "?unix=1530278055537");
+            injectCss(link, link.href.split("?")[0] + "?unix=1530450466706");
           });
       }
     }
@@ -5705,7 +5705,7 @@ module.exports = XmlEntities;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/client/dev-error-overlay.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/client/dev-error-overlay.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5734,9 +5734,9 @@ var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__("./node
 
 var _react = _interopRequireDefault(__webpack_require__("./node_modules/_react@16.4.1@react/index.js"));
 
-var _sourceMapSupport = __webpack_require__("./node_modules/_next@6.1.0@next/dist/client/source-map-support.js");
+var _sourceMapSupport = __webpack_require__("./node_modules/_next@6.1.1@next/dist/client/source-map-support.js");
 
-var _errorDebug = _interopRequireWildcard(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/error-debug.js"));
+var _errorDebug = _interopRequireWildcard(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/error-debug.js"));
 
 // This component is only used in development, sourcemaps are applied on the fly because componentDidCatch is not async
 var DevErrorOverlay =
@@ -5810,7 +5810,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/client/error-boundary.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/client/error-boundary.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5920,7 +5920,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/client/head-manager.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/client/head-manager.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6054,7 +6054,7 @@ function reactElementToDOM(_ref) {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/client/index.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/client/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6085,21 +6085,21 @@ var _react = _interopRequireDefault(__webpack_require__("./node_modules/_react@1
 
 var _reactDom = _interopRequireDefault(__webpack_require__("./node_modules/_react-dom@16.4.1@react-dom/index.js"));
 
-var _headManager = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/client/head-manager.js"));
+var _headManager = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/client/head-manager.js"));
 
-var _router2 = __webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/router/index.js");
+var _router2 = __webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/router/index.js");
 
-var _EventEmitter = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/EventEmitter.js"));
+var _EventEmitter = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/EventEmitter.js"));
 
-var _utils = __webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/utils.js");
+var _utils = __webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/utils.js");
 
-var _pageLoader = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/page-loader.js"));
+var _pageLoader = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/page-loader.js"));
 
-var asset = _interopRequireWildcard(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/asset.js"));
+var asset = _interopRequireWildcard(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/asset.js"));
 
-var envConfig = _interopRequireWildcard(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/runtime-config.js"));
+var envConfig = _interopRequireWildcard(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/runtime-config.js"));
 
-var _errorBoundary = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/client/error-boundary.js"));
+var _errorBoundary = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/client/error-boundary.js"));
 
 // Polyfill Promise globally
 // This is needed because Webpack2's dynamic loading(common chunks) code
@@ -6599,7 +6599,7 @@ function renderReactElement(reactEl, domEl) {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/client/next-dev.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/client/next-dev.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6611,15 +6611,15 @@ var _interopRequireDefault = __webpack_require__("./node_modules/_@babel_runtime
 
 var _stripAnsi = _interopRequireDefault(__webpack_require__("./node_modules/_strip-ansi@3.0.1@strip-ansi/index.js"));
 
-var next = _interopRequireWildcard(__webpack_require__("./node_modules/_next@6.1.0@next/dist/client/index.js"));
+var next = _interopRequireWildcard(__webpack_require__("./node_modules/_next@6.1.1@next/dist/client/index.js"));
 
-var _devErrorOverlay = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/client/dev-error-overlay.js"));
+var _devErrorOverlay = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/client/dev-error-overlay.js"));
 
-var _onDemandEntriesClient = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/client/on-demand-entries-client.js"));
+var _onDemandEntriesClient = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/client/on-demand-entries-client.js"));
 
-var _webpackHotMiddlewareClient = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/client/webpack-hot-middleware-client.js"));
+var _webpackHotMiddlewareClient = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/client/webpack-hot-middleware-client.js"));
 
-var _sourceMapSupport = __webpack_require__("./node_modules/_next@6.1.0@next/dist/client/source-map-support.js");
+var _sourceMapSupport = __webpack_require__("./node_modules/_next@6.1.1@next/dist/client/source-map-support.js");
 
 window.next = next;
 (0, next.default)({
@@ -6664,7 +6664,7 @@ window.next = next;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/client/on-demand-entries-client.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/client/on-demand-entries-client.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6683,7 +6683,7 @@ var _regenerator = _interopRequireDefault(__webpack_require__("./node_modules/_@
 
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__("./node_modules/_@babel_runtime@7.0.0-beta.42@@babel/runtime/helpers/asyncToGenerator.js"));
 
-var _router = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/router/index.js"));
+var _router = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/router/index.js"));
 
 var _unfetch = _interopRequireDefault(__webpack_require__("./node_modules/_unfetch@3.0.0@unfetch/dist/unfetch.es.js"));
 
@@ -6820,7 +6820,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/client/source-map-support.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/client/source-map-support.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6971,7 +6971,7 @@ function _rewriteTraceLine() {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/client/webpack-hot-middleware-client.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/client/webpack-hot-middleware-client.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6992,7 +6992,7 @@ __webpack_require__("./node_modules/_event-source-polyfill@0.0.12@event-source-p
 
 var _clientAutoConnectFalseOverlayFalseReloadTrue = _interopRequireDefault(__webpack_require__("./node_modules/_webpack-hot-middleware@2.19.1@webpack-hot-middleware/client.js?autoConnect=false&overlay=false&reload=true"));
 
-var _router = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/router/index.js"));
+var _router = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/router/index.js"));
 
 var _window = window,
     assetPrefix = _window.__NEXT_DATA__.assetPrefix;
@@ -7090,7 +7090,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/EventEmitter.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/EventEmitter.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7160,7 +7160,7 @@ exports.default = EventEmitter;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/asset.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/asset.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7189,7 +7189,7 @@ function setAssetPrefix(url) {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/error-debug.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/error-debug.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7207,7 +7207,7 @@ var _react = _interopRequireDefault(__webpack_require__("./node_modules/_react@1
 
 var _ansiHtml = _interopRequireDefault(__webpack_require__("./node_modules/_ansi-html@0.0.7@ansi-html/index.js"));
 
-var _head = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/head.js"));
+var _head = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/head.js"));
 
 // This component is rendered through dev-error-overlay on the client side.
 // On the server side it's rendered directly
@@ -7305,7 +7305,7 @@ _ansiHtml.default.setColors({
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/head.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/head.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7337,7 +7337,7 @@ var _react = _interopRequireDefault(__webpack_require__("./node_modules/_react@1
 
 var _propTypes = _interopRequireDefault(__webpack_require__("./node_modules/_prop-types@15.6.0@prop-types/index.js"));
 
-var _sideEffect = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/side-effect.js"));
+var _sideEffect = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/side-effect.js"));
 
 var Head =
 /*#__PURE__*/
@@ -7465,7 +7465,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/p-queue.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/p-queue.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7606,7 +7606,7 @@ exports.default = PQueue;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/page-loader.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/page-loader.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7625,7 +7625,7 @@ var _classCallCheck2 = _interopRequireDefault(__webpack_require__("./node_module
 
 var _createClass2 = _interopRequireDefault(__webpack_require__("./node_modules/_@babel_runtime@7.0.0-beta.42@@babel/runtime/helpers/createClass.js"));
 
-var _EventEmitter = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/EventEmitter.js"));
+var _EventEmitter = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/EventEmitter.js"));
 
 /* global window, document */
 var webpackModule = module;
@@ -7825,7 +7825,7 @@ exports.default = PageLoader;
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/router/index.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/router/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7854,11 +7854,11 @@ var _slicedToArray2 = _interopRequireDefault(__webpack_require__("./node_modules
 
 var _defineProperty = _interopRequireDefault(__webpack_require__("./node_modules/_@babel_runtime@7.0.0-beta.42@@babel/runtime/core-js/object/define-property.js"));
 
-var _router = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/router/router.js"));
+var _router = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/router/router.js"));
 
-var _utils = __webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/utils.js");
+var _utils = __webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/utils.js");
 
-var _withRouter = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/router/with-router.js"));
+var _withRouter = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/router/with-router.js"));
 
 /* global window */
 var SingletonRouter = {
@@ -8030,7 +8030,7 @@ function makePublicRouterInstance(router) {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/router/router.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/router/router.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8061,15 +8061,15 @@ var _createClass2 = _interopRequireDefault(__webpack_require__("./node_modules/_
 
 var _url2 = __webpack_require__("./node_modules/_url@0.11.0@url/url.js");
 
-var _EventEmitter = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/EventEmitter.js"));
+var _EventEmitter = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/EventEmitter.js"));
 
-var _shallowEquals = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/shallow-equals.js"));
+var _shallowEquals = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/shallow-equals.js"));
 
-var _pQueue = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/p-queue.js"));
+var _pQueue = _interopRequireDefault(__webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/p-queue.js"));
 
-var _utils = __webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/utils.js");
+var _utils = __webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/utils.js");
 
-var _ = __webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/router/index.js");
+var _ = __webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/router/index.js");
 
 /* global __NEXT_DATA__ */
 var historyUnavailableWarning = (0, _utils.execOnce)(function () {
@@ -8569,7 +8569,12 @@ function () {
       var _as$split = as.split('#'),
           _as$split2 = (0, _slicedToArray2.default)(_as$split, 2),
           newUrlNoHash = _as$split2[0],
-          newHash = _as$split2[1]; // If the urls are change, there's more than a hash change
+          newHash = _as$split2[1]; // Makes sure we scroll to the provided hash if the url/hash are the same
+
+
+      if (newHash && oldUrlNoHash === newUrlNoHash && oldHash === newHash) {
+        return true;
+      } // If the urls are change, there's more than a hash change
 
 
       if (oldUrlNoHash !== newUrlNoHash) {
@@ -8587,7 +8592,13 @@ function () {
     value: function scrollToHash(as) {
       var _as$split3 = as.split('#'),
           _as$split4 = (0, _slicedToArray2.default)(_as$split3, 2),
-          hash = _as$split4[1];
+          hash = _as$split4[1]; // Scroll to top if the hash is just `#` with no value
+
+
+      if (hash === '') {
+        window.scrollTo(0, 0);
+        return;
+      }
 
       var el = document.getElementById(hash);
 
@@ -8821,7 +8832,7 @@ function toRoute(path) {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/router/with-router.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/router/with-router.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8854,7 +8865,7 @@ var _propTypes = _interopRequireDefault(__webpack_require__("./node_modules/_pro
 
 var _hoistNonReactStatics = _interopRequireDefault(__webpack_require__("./node_modules/_hoist-non-react-statics@2.5.0@hoist-non-react-statics/index.js"));
 
-var _utils = __webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/utils.js");
+var _utils = __webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/utils.js");
 
 function withRouter(ComposedComponent) {
   var displayName = (0, _utils.getDisplayName)(ComposedComponent);
@@ -8900,7 +8911,7 @@ function withRouter(ComposedComponent) {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/runtime-config.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/runtime-config.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8925,7 +8936,7 @@ function setConfig(configValue) {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/shallow-equals.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/shallow-equals.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8950,7 +8961,7 @@ function shallowEquals(a, b) {
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/side-effect.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/side-effect.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8981,7 +8992,7 @@ var _set = _interopRequireDefault(__webpack_require__("./node_modules/_@babel_ru
 
 var _react = _interopRequireWildcard(__webpack_require__("./node_modules/_react@16.4.1@react/index.js"));
 
-var _utils = __webpack_require__("./node_modules/_next@6.1.0@next/dist/lib/utils.js");
+var _utils = __webpack_require__("./node_modules/_next@6.1.1@next/dist/lib/utils.js");
 
 function withSideEffect(reduceComponentsToState, handleStateChangeOnClient, mapStateOnServer) {
   if (typeof reduceComponentsToState !== 'function') {
@@ -9093,7 +9104,7 @@ function withSideEffect(reduceComponentsToState, handleStateChangeOnClient, mapS
 
 /***/ }),
 
-/***/ "./node_modules/_next@6.1.0@next/dist/lib/utils.js":
+/***/ "./node_modules/_next@6.1.1@next/dist/lib/utils.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35345,9 +35356,9 @@ module.exports = function(module) {
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./node_modules/_next@6.1.0@next/dist/client/webpack-hot-middleware-client.js");
-__webpack_require__("./node_modules/_next@6.1.0@next/dist/client/on-demand-entries-client.js");
-module.exports = __webpack_require__("./node_modules/_next@6.1.0@next/dist/client/next-dev.js");
+__webpack_require__("./node_modules/_next@6.1.1@next/dist/client/webpack-hot-middleware-client.js");
+__webpack_require__("./node_modules/_next@6.1.1@next/dist/client/on-demand-entries-client.js");
+module.exports = __webpack_require__("./node_modules/_next@6.1.1@next/dist/client/next-dev.js");
 
 
 /***/ })
