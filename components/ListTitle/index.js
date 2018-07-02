@@ -35,7 +35,7 @@ const ListTitle = ({listData}) => (
         <List.Item.Meta
           avatar={<Avatar src={item.avatar}/>}
           title={
-            <Link as={`/p/${item.id}`} href={`/post?id=${item.id}`}>
+            <Link as={`/p/${item.id}`} href={`/detail?id=${item.id}`}>
               <a>{item.title}</a>
             </Link>
           }
@@ -43,7 +43,7 @@ const ListTitle = ({listData}) => (
         />
         {
           pathname === '' ? '' :
-            <Link as={`/p/${item.id}`} href={`/post?id=${item.id}`}>
+            <Link as={`/p/${item.id}`} href={`/detail?id=${item.id}`}>
               <a> 阅读全文......</a>
             </Link>
         }

@@ -67,24 +67,25 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 52:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "/Users/liuweibo/ali/next-blog/node_modules/_next@6.1.1@next/dist/pages/_document.js":
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(53);
-
+module.exports = require("/Users/liuweibo/ali/next-blog/node_modules/_next@6.1.1@next/dist/pages/_document.js");
 
 /***/ }),
 
-/***/ 53:
-/***/ (function(module, exports) {
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("F:\\myself\\ctrl\\next-blog\\node_modules\\_next@6.1.1@next\\dist\\pages\\_document.js");
+module.exports = __webpack_require__("/Users/liuweibo/ali/next-blog/node_modules/_next@6.1.1@next/dist/pages/_document.js");
+
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=_document.js.map

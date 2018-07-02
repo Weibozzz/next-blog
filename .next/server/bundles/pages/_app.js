@@ -67,282 +67,29 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 27);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ "./asserts/styles.less":
 /***/ (function(module, exports) {
 
-module.exports = require("react");
+
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports) {
 
-module.exports = require("react-redux");
-
-/***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
+/***/ "./lib/with-redux-store.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export actionTypes */
-/* unused harmony export reducer */
-/* unused harmony export testAsync */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return serverRenderClock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return serverRenderIncrementCount; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getBlogItemList; });
-/* unused harmony export asyncTest */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return startClock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return incrementCount; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return decrementCount; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return resetCount; });
-/* harmony export (immutable) */ __webpack_exports__["d"] = initializeStore;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_redux_thunk__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_store__ = __webpack_require__("./store/store.js");
 
-
-
-
-var exampleInitialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0,
-  res: []
-};
-var actionTypes = {
-  TICK: 'TICK',
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
-  RESET: 'RESET',
-  TEST_ASYNC: 'TEST_ASYNC',
-  CHANGE_PAGE_BLOG: 'CHANGE_PAGE_BLOG' // REDUCERS
-
-};
-var reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : exampleInitialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case actionTypes.TICK:
-      return Object.assign({}, state, {
-        lastUpdate: action.ts,
-        light: !!action.light
-      });
-
-    case actionTypes.CHANGE_PAGE_BLOG:
-      return Object.assign({}, state, {
-        BlogItemList: action.BlogItemList
-      });
-
-    case actionTypes.INCREMENT:
-      return Object.assign({}, state, {
-        lastUpdate: action.ts,
-        count: state.count + 1,
-        res: action.res,
-        light: !!action.light
-      });
-
-    case actionTypes.DECREMENT:
-      return Object.assign({}, state, {
-        count: state.count - 1
-      });
-
-    case actionTypes.RESET:
-      return Object.assign({}, state, {
-        count: exampleInitialState.count
-      });
-
-    default:
-      return state;
-  }
-};
-var testAsync = function testAsync() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case actionTypes.TEST_ASYNC:
-      return action.data;
-
-    default:
-      return state;
-  }
-}; // ACTIONS
-
-var serverRenderClock = function serverRenderClock(isServer) {
-  return function (dispatch) {
-    return dispatch({
-      type: actionTypes.TICK,
-      light: !isServer,
-      ts: Date.now()
-    });
-  };
-};
-var serverRenderIncrementCount = function serverRenderIncrementCount(isServer, res) {
-  return function (dispatch) {
-    return dispatch({
-      type: actionTypes.INCREMENT,
-      light: !isServer,
-      res: res,
-      ts: Date.now()
-    });
-  };
-};
-var getBlogItemList = function getBlogItemList(dispatch, url) {
-  return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get(url).then(function (res) {
-    dispatch({
-      type: actionTypes.INCREMENT,
-      res: res.data
-    });
-  });
-};
-var asyncTest = function asyncTest(data) {
-  return {
-    type: actionTypes.TEST_ASYNC,
-    data: data
-  };
-};
-var startClock = function startClock(dispatch) {
-  return setInterval(function () {
-    // Dispatch `TICK` every 1 second
-    dispatch({
-      type: actionTypes.TICK,
-      light: true,
-      ts: Date.now()
-    });
-  }, 1000);
-};
-var incrementCount = function incrementCount(dispatch, url) {
-  /* return setTimeout(() => {
-     // Dispatch `TICK` every 1 second
-     dispatch({ type: actionTypes.INCREMENT })
-   }, 1000)*/
-  return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get(url).then(function (res) {
-    exampleInitialState.res = res.data;
-    dispatch({
-      type: actionTypes.INCREMENT,
-      res: res.data,
-      light: true,
-      ts: Date.now()
-    });
-  });
-};
-var decrementCount = function decrementCount() {
-  return function (dispatch) {
-    return dispatch({
-      type: actionTypes.DECREMENT
-    });
-  };
-};
-var resetCount = function resetCount() {
-  return function (dispatch) {
-    return dispatch({
-      type: actionTypes.RESET
-    });
-  };
-};
-function initializeStore() {
-  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : exampleInitialState;
-  return Object(__WEBPACK_IMPORTED_MODULE_0_redux__["createStore"])(reducer, initialState, Object(__WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__["composeWithDevTools"])(Object(__WEBPACK_IMPORTED_MODULE_0_redux__["applyMiddleware"])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a)));
-}
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-module.exports = require("styled-jsx/style");
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports) {
-
-module.exports = require("@babel/runtime/regenerator");
-
-/***/ }),
-/* 15 */,
-/* 16 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux");
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-devtools-extension");
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-thunk");
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
-
-/***/ }),
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(28);
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-
-// EXTERNAL MODULE: external "styled-jsx/style"
-var style_ = __webpack_require__(13);
-var style__default = /*#__PURE__*/__webpack_require__.n(style_);
-
-// EXTERNAL MODULE: external "next/app"
-var app_ = __webpack_require__(29);
-var app__default = /*#__PURE__*/__webpack_require__.n(app_);
-
-// EXTERNAL MODULE: external "react"
-var external__react_ = __webpack_require__(0);
-var external__react__default = /*#__PURE__*/__webpack_require__.n(external__react_);
-
-// EXTERNAL MODULE: external "@babel/runtime/regenerator"
-var regenerator_ = __webpack_require__(14);
-var regenerator__default = /*#__PURE__*/__webpack_require__.n(regenerator_);
-
-// EXTERNAL MODULE: ./store/store.js
-var store = __webpack_require__(12);
-
-// CONCATENATED MODULE: ./lib/with-redux-store.js
-
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/lib/with-redux-store.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -374,18 +121,18 @@ var __NEXT_REDUX_STORE__ = '__NEXT_REDUX_STORE__';
 function getOrCreateStore(initialState) {
   // Always make a new store if server, otherwise state is shared between requests
   if (isServer) {
-    return Object(store["d" /* initializeStore */])(initialState);
+    return Object(__WEBPACK_IMPORTED_MODULE_2__store_store__["a" /* initializeStore */])(initialState);
   } // Create store if unavailable on the client and set it on the window object
 
 
   if (!window[__NEXT_REDUX_STORE__]) {
-    window[__NEXT_REDUX_STORE__] = Object(store["d" /* initializeStore */])(initialState);
+    window[__NEXT_REDUX_STORE__] = Object(__WEBPACK_IMPORTED_MODULE_2__store_store__["a" /* initializeStore */])(initialState);
   }
 
   return window[__NEXT_REDUX_STORE__];
 }
 
-/* harmony default export */ var with_redux_store = (function (App) {
+/* harmony default export */ __webpack_exports__["a"] = (function (App) {
   return (
     /*#__PURE__*/
     function (_React$Component) {
@@ -396,9 +143,9 @@ function getOrCreateStore(initialState) {
         value: function () {
           var _getInitialProps = _asyncToGenerator(
           /*#__PURE__*/
-          regenerator__default.a.mark(function _callee(appContext) {
+          __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(appContext) {
             var reduxStore, appProps;
-            return regenerator__default.a.wrap(function _callee$(_context) {
+            return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
@@ -452,90 +199,250 @@ function getOrCreateStore(initialState) {
       _createClass(AppWithRedux, [{
         key: "render",
         value: function render() {
-          return external__react__default.a.createElement(App, _extends({}, this.props, {
-            reduxStore: this.reduxStore
+          return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(App, _extends({}, this.props, {
+            reduxStore: this.reduxStore,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 47
+            }
           }));
         }
       }]);
 
       return AppWithRedux;
-    }(external__react__default.a.Component)
+    }(__WEBPACK_IMPORTED_MODULE_1_react___default.a.Component)
   );
 });
-// EXTERNAL MODULE: external "react-redux"
-var external__react_redux_ = __webpack_require__(1);
-var external__react_redux__default = /*#__PURE__*/__webpack_require__.n(external__react_redux_);
 
-// EXTERNAL MODULE: ./asserts/styles.less
-var styles = __webpack_require__(30);
-var styles_default = /*#__PURE__*/__webpack_require__.n(styles);
+/***/ }),
 
-// CONCATENATED MODULE: ./pages/_app.js
+/***/ "./pages/_app.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-
-function _app__typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _app__typeof = function _typeof(obj) { return typeof obj; }; } else { _app__typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _app__typeof(obj); }
-
-function _app__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _app__defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _app__createClass(Constructor, protoProps, staticProps) { if (protoProps) _app__defineProperties(Constructor.prototype, protoProps); if (staticProps) _app__defineProperties(Constructor, staticProps); return Constructor; }
-
-function _app__possibleConstructorReturn(self, call) { if (call && (_app__typeof(call) === "object" || typeof call === "function")) { return call; } return _app__assertThisInitialized(self); }
-
-function _app__assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _app__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__ = __webpack_require__("styled-jsx/style");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_app__ = __webpack_require__("next/app");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lib_with_redux_store__ = __webpack_require__("./lib/with-redux-store.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__("react-redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__asserts_styles_less__ = __webpack_require__("./asserts/styles.less");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__asserts_styles_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__asserts_styles_less__);
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/pages/_app.js";
 
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
 
-var _app_MyApp =
+
+
+var MyApp =
 /*#__PURE__*/
 function (_App) {
-  _app__inherits(MyApp, _App);
+  _inherits(MyApp, _App);
 
   function MyApp() {
-    _app__classCallCheck(this, MyApp);
+    _classCallCheck(this, MyApp);
 
-    return _app__possibleConstructorReturn(this, (MyApp.__proto__ || Object.getPrototypeOf(MyApp)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MyApp.__proto__ || Object.getPrototypeOf(MyApp)).apply(this, arguments));
   }
 
-  _app__createClass(MyApp, [{
+  _createClass(MyApp, [{
     key: "render",
     value: function render() {
       var _props = this.props,
           Component = _props.Component,
           pageProps = _props.pageProps,
           reduxStore = _props.reduxStore;
-      return external__react__default.a.createElement(app_["Container"], null, external__react__default.a.createElement(external__react_redux_["Provider"], {
-        store: reduxStore
-      }, external__react__default.a.createElement(Component, pageProps)), external__react__default.a.createElement(style__default.a, {
+      return __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_app__["Container"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11
+        }
+      }, __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_redux__["Provider"], {
+        store: reduxStore,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 12
+        }
+      }, __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(Component, _extends({}, pageProps, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        }
+      }))), __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
         styleId: "1424464926",
-        css: ["pre{background-color:#f5f5f5;border:1px solid #ccc;}", ".fl{float:left;}", ".fr{float:right;}", ".clearfix:after{content:'';clear:both;display:block;}", "ul{margin:0;padding:0;}", "li{list-style:none;}", "#root,.container{height:100%;min-height:100%;}", ".container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;background-color:#f0f2f5;}", ".mid-content{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}"]
+        css: "pre{background-color:#f5f5f5;border:1px solid #ccc;}.fl{float:left;}.fr{float:right;}.clearfix:after{content:'';clear:both;display:block;}ul{margin:0;padding:0;}li{list-style:none;}#root,.container{height:100%;min-height:100%;}.container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;background-color:#f0f2f5;}.mid-content{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL19hcHAuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBZTJCLEFBRzhCLEFBSWQsQUFHQyxBQUdELEFBS0YsQUFJTyxBQUdKLEFBSUMsQUFLRCxTQWZGLEVBWGQsQUFNZSxDQUhmLEFBZW9CLElBSHBCLEdBSEEsR0FMa0IsR0FYUSxHQXVCMUIsUUFYQSxXQVhBLHdCQThCQSxHQUwwQiw4RUFDRyx5QkFDN0IiLCJmaWxlIjoicGFnZXMvX2FwcC5qcyIsInNvdXJjZVJvb3QiOiIvVXNlcnMvbGl1d2VpYm8vYWxpL25leHQtYmxvZyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBBcHAsIHtDb250YWluZXJ9IGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IHdpdGhSZWR1eFN0b3JlIGZyb20gJy4uL2xpYi93aXRoLXJlZHV4LXN0b3JlJ1xuaW1wb3J0IHsgUHJvdmlkZXIgfSBmcm9tICdyZWFjdC1yZWR1eCdcbmltcG9ydCAnLi4vYXNzZXJ0cy9zdHlsZXMubGVzcydcblxuY2xhc3MgTXlBcHAgZXh0ZW5kcyBBcHAge1xuICByZW5kZXIgKCkge1xuICAgIGNvbnN0IHtDb21wb25lbnQsIHBhZ2VQcm9wcywgcmVkdXhTdG9yZX0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxDb250YWluZXI+XG4gICAgICAgIDxQcm92aWRlciBzdG9yZT17cmVkdXhTdG9yZX0+XG4gICAgICAgICAgPENvbXBvbmVudCB7Li4ucGFnZVByb3BzfSAvPlxuICAgICAgICA8L1Byb3ZpZGVyPlxuXG4gICAgICAgIDxzdHlsZSBqc3ggZ2xvYmFsPntgXG5wcmV7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2Y1ZjVmNTtcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xufVxuLmZse1xuICAgIGZsb2F0OiBsZWZ0O1xufVxuLmZye1xuICAgIGZsb2F0OiByaWdodDtcbn1cbi5jbGVhcmZpeDphZnRlcntcbiAgICBjb250ZW50OiAnJztcbiAgICBjbGVhcjogYm90aDtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbnVse1xuICAgIG1hcmdpbjogMDtcbiAgICBwYWRkaW5nOiAwO1xufVxubGl7XG4gICAgbGlzdC1zdHlsZTogbm9uZTtcbn1cbiNyb290LC5jb250YWluZXJ7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XG59XG4uY29udGFpbmVye1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjBmMmY1O1xufVxuLm1pZC1jb250ZW50e1xuICAgIGZsZXgtZ3JvdzogMTtcbn1cbiAgICAgICAgYH08L3N0eWxlPlxuICAgICAgPC9Db250YWluZXI+XG4gICAgKVxuICB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IHdpdGhSZWR1eFN0b3JlKE15QXBwKVxuIl19 */\n/*@ sourceURL=pages/_app.js */"
       }));
     }
   }]);
 
   return MyApp;
-}(app__default.a);
+}(__WEBPACK_IMPORTED_MODULE_1_next_app___default.a);
 
-/* harmony default export */ var _app = __webpack_exports__["default"] = (with_redux_store(_app_MyApp));
+/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_3__lib_with_redux_store__["a" /* default */])(MyApp));
 
 /***/ }),
-/* 29 */
+
+/***/ "./store/action-types.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return actionTypes; });
+var actionTypes = {
+  SEARCH_DATA: 'SEARCH_DATA',
+  GET_SEARCH_TOTAL_DATA: 'GET_SEARCH_TOTAL_DATA',
+  SEARCH_PAGE_DATA: 'SEARCH_PAGE_DATA'
+};
+
+/***/ }),
+
+/***/ "./store/reducers.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return reducer; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__action_types__ = __webpack_require__("./store/action-types.js");
+
+var exampleInitialState = {};
+var reducer = function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : exampleInitialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__action_types__["a" /* actionTypes */].SEARCH_DATA:
+      //第一次搜索到的文章列表
+      return Object.assign({}, state, {
+        searchData: action.searchData
+      });
+
+    case __WEBPACK_IMPORTED_MODULE_0__action_types__["a" /* actionTypes */].SEARCH_PAGE_DATA:
+      //点击搜索分页搜索到的文章列表
+      return Object.assign({}, state, {
+        searchData: action.searchData
+      });
+
+    case __WEBPACK_IMPORTED_MODULE_0__action_types__["a" /* actionTypes */].GET_SEARCH_TOTAL_DATA:
+      //搜索的所有页数
+      return Object.assign({}, state, {
+        searchTotalData: action.searchTotalData
+      });
+
+    default:
+      return state;
+  }
+};
+
+/***/ }),
+
+/***/ "./store/store.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initializeStore;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__("redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__ = __webpack_require__("redux-devtools-extension");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk__ = __webpack_require__("redux-thunk");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_redux_thunk__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reducers__ = __webpack_require__("./store/reducers.js");
+
+
+
+
+var exampleInitialState = {};
+function initializeStore() {
+  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : exampleInitialState;
+  return Object(__WEBPACK_IMPORTED_MODULE_0_redux__["createStore"])(__WEBPACK_IMPORTED_MODULE_3__reducers__["a" /* reducer */], initialState, Object(__WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__["composeWithDevTools"])(Object(__WEBPACK_IMPORTED_MODULE_0_redux__["applyMiddleware"])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a)));
+}
+
+/***/ }),
+
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./pages/_app.js");
+
+
+/***/ }),
+
+/***/ "@babel/runtime/regenerator":
+/***/ (function(module, exports) {
+
+module.exports = require("@babel/runtime/regenerator");
+
+/***/ }),
+
+/***/ "next/app":
 /***/ (function(module, exports) {
 
 module.exports = require("next/app");
 
 /***/ }),
-/* 30 */
+
+/***/ "react":
 /***/ (function(module, exports) {
 
+module.exports = require("react");
 
+/***/ }),
+
+/***/ "react-redux":
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "redux":
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
+
+/***/ }),
+
+/***/ "redux-devtools-extension":
+/***/ (function(module, exports) {
+
+module.exports = require("redux-devtools-extension");
+
+/***/ }),
+
+/***/ "redux-thunk":
+/***/ (function(module, exports) {
+
+module.exports = require("redux-thunk");
+
+/***/ }),
+
+/***/ "styled-jsx/style":
+/***/ (function(module, exports) {
+
+module.exports = require("styled-jsx/style");
 
 /***/ })
-/******/ ]);
+
+/******/ });
+//# sourceMappingURL=_app.js.map

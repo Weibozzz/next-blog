@@ -1,76 +1,23 @@
-import * as ActionTypes from './action-types';
+import {actionTypes} from "./action-types";
+import fetch from 'isomorphic-unfetch'
 
-// 异步请求
+export const getSearchPageList = async (dispatch, url) => {
+  //点击搜索分页搜索到的文章列表
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.SEARCH_PAGE_DATA, searchData: jsonData})
+}
+export const getSearchList = async (dispatch, url) => {
+  //第一次搜索到的文章列表
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.SEARCH_DATA, searchData: jsonData})
 
-export const asyncTest = data =>{
-    return {
-        type:ActionTypes.TEST_ASYNC,
-        data
-    }
-};
-export const getTotal = data =>{
-    return {
-        type:ActionTypes.GET_TOTAL,
-        data
-    }
-};
-export const getDetail = data =>{
-  return {
-    type:ActionTypes.GET_DETAIL,
-    data
-  }
-};
-export const getLastId = data =>{
-  return {
-    type:ActionTypes.GET_LAST_ID,
-    data
-  }
-};
-export const getNextId = data =>{
-  return {
-    type:ActionTypes.GET_NEXT_ID,
-    data
-  }
-};
-export const getComments = data =>{
-  return {
-    type:ActionTypes.GET_COMMENTS,
-    data
-  }
-};
-export const getAdminComments = data =>{
-  return {
-    type:ActionTypes.GET_ADMIN_COMMENTS,
-    data
-  }
-};
-export const getLife = data =>{
-    return {
-        type:ActionTypes.GET_LIFE,
-        data
-    }
-};
-export const getAdminBlog = data =>{
-    return {
-        type:ActionTypes.GET_ADMIN_BLOG,
-        data
-    }
-};
-export const postAdminDetail = data =>{
-    return {
-        type:ActionTypes.POST_ADMIN_DETAIL,
-        data
-    }
-};
-export const postArticle = data =>{
-  return {
-    type:ActionTypes.POST_ARTICLE,
-    data
-  }
-};
-export const postComment = data =>{
-  return {
-    type:ActionTypes.POST_COMMENT,
-    data
-  }
-};
+}
+export const getSearchTotal = async (dispatch, url) => {
+  //搜索的所有页数
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_SEARCH_TOTAL_DATA, searchTotalData: jsonData})
+
+}
