@@ -6,7 +6,7 @@ import {
   Input, Button, Radio, Tooltip, Spin
 } from 'antd'
 
-import fetch from 'isomorphic-unfetch'
+import 'whatwg-fetch'
 import Link from 'next/link';
 import Head from 'next/head'
 
@@ -15,7 +15,7 @@ import Header from '../../components/Header';
 import ListTitle from '../../components/ListTitle';
 import Footer from '../../components/Footer';
 import {getBlogUrl, getTotalUrl} from '../../config';
-import {pageNum, TITLE, ALL} from '../../config/constantsData';
+import {pageNum, TITLE, ALL,COMMON_TITLE,INDEX_TITLE} from '../../config/constantsData';
 
 const {Content} = Layout;
 const Search = Input.Search;
@@ -95,7 +95,6 @@ class Blog extends Component {
   }
 
   render() {
-    console.log(this.props)
     let total;
     let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = []} = this.props;
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
@@ -110,7 +109,7 @@ class Blog extends Component {
     return (
       <div className="Blog">
         <Head>
-          <title>blog</title>
+          <title>{INDEX_TITLE}{COMMON_TITLE}</title>
         </Head>
         <Header/>
         <Layout>

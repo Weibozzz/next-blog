@@ -19,6 +19,13 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         searchTotalData: action.searchTotalData
       })
+
+
+    case actionTypes.POST_COMMENTS:
+      //发布评论,然后获得更新后的评论
+      return Object.assign({}, state, {
+        getCommentsData: action.getCommentsData
+      })
     default:
       return state
   }

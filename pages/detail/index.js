@@ -5,25 +5,36 @@ import {
   Input, Tooltip, Cascader, Select, Checkbox, Button,
   AutoComplete, List, Avatar, Icon, Divider
 } from 'antd';
-import fetch from 'isomorphic-unfetch'
+import 'whatwg-fetch'
 import Head from 'next/head';
 
-import {formatTime, getArticleInfo, getHtml, OldTime} from '../../until';
+import {formatTime, getHtml, OldTime} from '../../until';
 import Header from '../../components/Header';
 import ArticleTitle from '../../components/ArticleTitle';
-import {getDetailUrl, getCommentsUrl} from '../../config';
+import {getDetailUrl, getCommentsUrl,postCommentUrl} from '../../config';
+import {postComments} from '../../store/actions';
+import {COMMON_TITLE} from '../../config/constantsData';
 
 const {Content} = Layout;
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
 const AutoCompleteOption = AutoComplete.Option;
+
 class Detail extends Component {
   constructor(props) {
     super(props);
     this.state={
-      autoCompleteResult:[1,2]
+      autoCompleteResult:[1,2],
+      articleID:''
     }
+  }
+  componentWillMount(){
+    const {blogData = []} = this.props;
+    let {id:articleID} = blogData[0] || {};
+    this.setState({
+      articleID
+    })
   }
   handleWebsiteChange = (value) => {
     let autoCompleteResult;
@@ -36,8 +47,8 @@ class Detail extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    const {blogData = [], commentsData = []} = this.props;
-    let {id} = blogData[0] || {};
+    const {dispatch} = this.props;
+    let {articleID:id} = this.state;
     if(!id){
       return;
     }
@@ -47,13 +58,32 @@ class Detail extends Component {
         console.log('Received values of form: ', values);
 
         console.log({id,comment,email,nickname,website})
+
+        let {articleID} = this.state;
+        const queryStringComment = {
+          id:articleID,
+          comment,
+          email,
+          nickname,
+          website
+        }
+        postComments(dispatch,postCommentUrl(),queryStringComment)
       }
     });
   }
   render() {
-    const {blogData = [], commentsData = []} = this.props;
-    const {content = '', createTime = ''} = blogData[0] || {};
+    //接口
+    console.log(this.props)
+    let {blogData = [], commentsData = [],getCommentsData=[]} = this.props;
+    let {articleID} = this.state;
+    const {content = '', createTime = '',title=''} = blogData[0] || {};
 
+    commentsData=[...commentsData,...getCommentsData]
+      .filter(v=>v.a_id===articleID)
+      .sort((a,b)=>b.createTime-a.createTime)
+
+    
+    //表单
     const {getFieldDecorator} = this.props.form;
     const {autoCompleteResult} = this.state;
 
@@ -86,7 +116,7 @@ class Detail extends Component {
     return (
       <div className="detail">
         <Head>
-          <title>blog</title>
+          <title>{title}{COMMON_TITLE}</title>
         </Head>
         <Header/>
         <Layout>
@@ -208,5 +238,10 @@ Detail.getInitialProps = async function (context) {
 
   return {blogData, commentsData}
 }
+const mapStateToProps = state => {
+  console.log(state)
+  const {getCommentsData} = state
+  return {getCommentsData};
+}
 const WrappedRegistrationForm = Form.create()(Detail);
-export default WrappedRegistrationForm;
+export default connect(mapStateToProps)(WrappedRegistrationForm);

@@ -13,7 +13,7 @@ __NEXT_REGISTER_PAGE('/_app', function() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_store__ = __webpack_require__("./store/store.js");
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog\\lib\\with-redux-store.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/lib/with-redux-store.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -45,12 +45,12 @@ var __NEXT_REDUX_STORE__ = '__NEXT_REDUX_STORE__';
 function getOrCreateStore(initialState) {
   // Always make a new store if server, otherwise state is shared between requests
   if (isServer) {
-    return Object(__WEBPACK_IMPORTED_MODULE_2__store_store__["c" /* initializeStore */])(initialState);
+    return Object(__WEBPACK_IMPORTED_MODULE_2__store_store__["a" /* initializeStore */])(initialState);
   } // Create store if unavailable on the client and set it on the window object
 
 
   if (!window[__NEXT_REDUX_STORE__]) {
-    window[__NEXT_REDUX_STORE__] = Object(__WEBPACK_IMPORTED_MODULE_2__store_store__["c" /* initializeStore */])(initialState);
+    window[__NEXT_REDUX_STORE__] = Object(__WEBPACK_IMPORTED_MODULE_2__store_store__["a" /* initializeStore */])(initialState);
   }
 
   return window[__NEXT_REDUX_STORE__];
@@ -3673,7 +3673,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__("./node_modules/_react-redux@5.0.7@react-redux/es/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__asserts_styles_less__ = __webpack_require__("./asserts/styles.less");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__asserts_styles_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__asserts_styles_less__);
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog\\pages\\_app.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/pages/_app.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -3734,7 +3734,7 @@ function (_App) {
         }
       }))), __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
         styleId: "1424464926",
-        css: "pre{background-color:#f5f5f5;border:1px solid #ccc;}.fl{float:left;}.fr{float:right;}.clearfix:after{content:'';clear:both;display:block;}ul{margin:0;padding:0;}li{list-style:none;}#root,.container{height:100%;min-height:100%;}.container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;background-color:#f0f2f5;}.mid-content{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzXFxfYXBwLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWUyQixBQUc4QixBQUlkLEFBR0MsQUFHRCxBQUtGLEFBSU8sQUFHSixBQUlDLEFBS0QsU0FmRixFQVhkLEFBTWUsQ0FIZixBQWVvQixJQUhwQixHQUhBLEdBTGtCLEdBWFEsR0F1QjFCLFFBWEEsV0FYQSx3QkE4QkEsR0FMMEIsOEVBQ0cseUJBQzdCIiwiZmlsZSI6InBhZ2VzXFxfYXBwLmpzIiwic291cmNlUm9vdCI6IkY6XFxteXNlbGZcXGN0cmxcXG5leHQtYmxvZyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBBcHAsIHtDb250YWluZXJ9IGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IHdpdGhSZWR1eFN0b3JlIGZyb20gJy4uL2xpYi93aXRoLXJlZHV4LXN0b3JlJ1xuaW1wb3J0IHsgUHJvdmlkZXIgfSBmcm9tICdyZWFjdC1yZWR1eCdcbmltcG9ydCAnLi4vYXNzZXJ0cy9zdHlsZXMubGVzcydcblxuY2xhc3MgTXlBcHAgZXh0ZW5kcyBBcHAge1xuICByZW5kZXIgKCkge1xuICAgIGNvbnN0IHtDb21wb25lbnQsIHBhZ2VQcm9wcywgcmVkdXhTdG9yZX0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxDb250YWluZXI+XG4gICAgICAgIDxQcm92aWRlciBzdG9yZT17cmVkdXhTdG9yZX0+XG4gICAgICAgICAgPENvbXBvbmVudCB7Li4ucGFnZVByb3BzfSAvPlxuICAgICAgICA8L1Byb3ZpZGVyPlxuXG4gICAgICAgIDxzdHlsZSBqc3ggZ2xvYmFsPntgXG5wcmV7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2Y1ZjVmNTtcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xufVxuLmZse1xuICAgIGZsb2F0OiBsZWZ0O1xufVxuLmZye1xuICAgIGZsb2F0OiByaWdodDtcbn1cbi5jbGVhcmZpeDphZnRlcntcbiAgICBjb250ZW50OiAnJztcbiAgICBjbGVhcjogYm90aDtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbnVse1xuICAgIG1hcmdpbjogMDtcbiAgICBwYWRkaW5nOiAwO1xufVxubGl7XG4gICAgbGlzdC1zdHlsZTogbm9uZTtcbn1cbiNyb290LC5jb250YWluZXJ7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XG59XG4uY29udGFpbmVye1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjBmMmY1O1xufVxuLm1pZC1jb250ZW50e1xuICAgIGZsZXgtZ3JvdzogMTtcbn1cbiAgICAgICAgYH08L3N0eWxlPlxuICAgICAgPC9Db250YWluZXI+XG4gICAgKVxuICB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IHdpdGhSZWR1eFN0b3JlKE15QXBwKVxuIl19 */\n/*@ sourceURL=pages\\_app.js */"
+        css: "pre{background-color:#f5f5f5;border:1px solid #ccc;}.fl{float:left;}.fr{float:right;}.clearfix:after{content:'';clear:both;display:block;}ul{margin:0;padding:0;}li{list-style:none;}#root,.container{height:100%;min-height:100%;}.container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;background-color:#f0f2f5;}.mid-content{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL19hcHAuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBZTJCLEFBRzhCLEFBSWQsQUFHQyxBQUdELEFBS0YsQUFJTyxBQUdKLEFBSUMsQUFLRCxTQWZGLEVBWGQsQUFNZSxDQUhmLEFBZW9CLElBSHBCLEdBSEEsR0FMa0IsR0FYUSxHQXVCMUIsUUFYQSxXQVhBLHdCQThCQSxHQUwwQiw4RUFDRyx5QkFDN0IiLCJmaWxlIjoicGFnZXMvX2FwcC5qcyIsInNvdXJjZVJvb3QiOiIvVXNlcnMvbGl1d2VpYm8vYWxpL25leHQtYmxvZyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBBcHAsIHtDb250YWluZXJ9IGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IHdpdGhSZWR1eFN0b3JlIGZyb20gJy4uL2xpYi93aXRoLXJlZHV4LXN0b3JlJ1xuaW1wb3J0IHsgUHJvdmlkZXIgfSBmcm9tICdyZWFjdC1yZWR1eCdcbmltcG9ydCAnLi4vYXNzZXJ0cy9zdHlsZXMubGVzcydcblxuY2xhc3MgTXlBcHAgZXh0ZW5kcyBBcHAge1xuICByZW5kZXIgKCkge1xuICAgIGNvbnN0IHtDb21wb25lbnQsIHBhZ2VQcm9wcywgcmVkdXhTdG9yZX0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxDb250YWluZXI+XG4gICAgICAgIDxQcm92aWRlciBzdG9yZT17cmVkdXhTdG9yZX0+XG4gICAgICAgICAgPENvbXBvbmVudCB7Li4ucGFnZVByb3BzfSAvPlxuICAgICAgICA8L1Byb3ZpZGVyPlxuXG4gICAgICAgIDxzdHlsZSBqc3ggZ2xvYmFsPntgXG5wcmV7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2Y1ZjVmNTtcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xufVxuLmZse1xuICAgIGZsb2F0OiBsZWZ0O1xufVxuLmZye1xuICAgIGZsb2F0OiByaWdodDtcbn1cbi5jbGVhcmZpeDphZnRlcntcbiAgICBjb250ZW50OiAnJztcbiAgICBjbGVhcjogYm90aDtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbnVse1xuICAgIG1hcmdpbjogMDtcbiAgICBwYWRkaW5nOiAwO1xufVxubGl7XG4gICAgbGlzdC1zdHlsZTogbm9uZTtcbn1cbiNyb290LC5jb250YWluZXJ7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XG59XG4uY29udGFpbmVye1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjBmMmY1O1xufVxuLm1pZC1jb250ZW50e1xuICAgIGZsZXgtZ3JvdzogMTtcbn1cbiAgICAgICAgYH08L3N0eWxlPlxuICAgICAgPC9Db250YWluZXI+XG4gICAgKVxuICB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IHdpdGhSZWR1eFN0b3JlKE15QXBwKVxuIl19 */\n/*@ sourceURL=pages/_app.js */"
       }));
     }
   }]);
@@ -3773,7 +3773,8 @@ function (_App) {
 var actionTypes = {
   SEARCH_DATA: 'SEARCH_DATA',
   GET_SEARCH_TOTAL_DATA: 'GET_SEARCH_TOTAL_DATA',
-  SEARCH_PAGE_DATA: 'SEARCH_PAGE_DATA'
+  SEARCH_PAGE_DATA: 'SEARCH_PAGE_DATA',
+  POST_COMMENTS: 'POST_COMMENTS'
 };
 
 /***/ }),
@@ -3809,6 +3810,12 @@ var reducer = function reducer() {
         searchTotalData: action.searchTotalData
       });
 
+    case __WEBPACK_IMPORTED_MODULE_0__action_types__["a" /* actionTypes */].POST_COMMENTS:
+      //发布评论,然后获得更新后的评论
+      return Object.assign({}, state, {
+        getCommentsData: action.getCommentsData
+      });
+
     default:
       return state;
   }
@@ -3820,7 +3827,7 @@ var reducer = function reducer() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["c"] = initializeStore;
+/* harmony export (immutable) */ __webpack_exports__["a"] = initializeStore;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__("./node_modules/_redux@4.0.0@redux/es/redux.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__ = __webpack_require__("./node_modules/_redux-devtools-extension@2.13.5@redux-devtools-extension/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_devtools_extension__);

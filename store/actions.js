@@ -21,3 +21,15 @@ export const getSearchTotal = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_SEARCH_TOTAL_DATA, searchTotalData: jsonData})
 
 }
+
+
+export const postComments = async (dispatch, url,body) => {
+  //发布评论,然后获得更新后的评论
+  const res = await fetch(url,{
+    method: 'POST',
+    body:JSON.stringify(body)
+  })
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.POST_COMMENTS, getCommentsData: jsonData})
+
+}

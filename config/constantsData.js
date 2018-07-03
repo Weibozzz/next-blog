@@ -18,3 +18,7 @@ export const TEST = '/Test'
 export const TEST_TXT = '测试'
 export const POST_ARTICLE = '/PostArticle'
 export const POST_ARTICLE_TXT = '发布文章'
+
+//seo
+export const COMMON_TITLE = '>>刘伟波-天天向上'
+export const INDEX_TITLE = '刘伟波的个人主页'
