@@ -1,6 +1,7 @@
 import {getDomain} from "./env";
 import {toQueryStr} from '../until';
 
+//前台
 export const getBlogUrl = (obj) => {
   return getDomain() + 'api/getBlog' + toQueryStr(obj);
 }
@@ -19,6 +20,11 @@ export const postCommentUrl = () => {
   return getDomain() + 'api/postComment';
 }
 
+//后台
+export const getAdminBlogUrl = (obj) => {
+  return getDomain() + 'api/getAdminBlog'+ toQueryStr(obj);;
+}
+
 // export const getBlogUrl = domain+'/api/getBlog'
 // export const getTotalUrl = domain+'/api/total'
 // export const getLifeUrl = domain+'/api/life'
@@ -28,4 +34,9 @@ export const postCommentUrl = () => {
 // export const getCommentsUrl = domain+'/api/comments'
 // export const postArticleUrl = domain+'/api/postArticle'
 // export const postCommentUrl = domain+'/api/postComment'
+
+
+// export const getAdminBlogUrl = domain + '/api/getAdminBlog'
+// export const getAdminCommentsUrl = domain + '/api/getAdminComments'
+// export const postAdminDetailUrl = domain + '/api/postAdminDetail'
 

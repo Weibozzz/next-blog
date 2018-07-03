@@ -1,13 +1,13 @@
 module.exports =
 __NEXT_REGISTER_PAGE('/detail', function() {
           var comp =
-      webpackJsonp([5],{
+      webpackJsonp([6],{
 
 /***/ "./components/ArticleTitle/index.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_divider__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/divider/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_divider__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/divider/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_divider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_divider__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_styled_jsx_style__ = __webpack_require__("./node_modules/_styled-jsx@2.2.6@styled-jsx/style.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_styled_jsx_style___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_styled_jsx_style__);
@@ -15,7 +15,7 @@ __NEXT_REGISTER_PAGE('/detail', function() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__until__ = __webpack_require__("./until/index.js");
 
-var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/ArticleTitle/index.js";
+var _jsxFileName = "F:\\myself\\ctrl\\next-blog-1\\next-blog\\components\\ArticleTitle\\index.js";
 
 
 
@@ -84,7 +84,7 @@ var ArticleTitle = function ArticleTitle(_ref) {
     }
   }), __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_styled_jsx_style___default.a, {
     styleId: "3877631247",
-    css: ".detail-info.jsx-3877631247 li.jsx-3877631247{margin-right:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvQXJ0aWNsZVRpdGxlL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCa0IsQUFHNkIsa0JBQ3BCIiwiZmlsZSI6ImNvbXBvbmVudHMvQXJ0aWNsZVRpdGxlL2luZGV4LmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9saXV3ZWliby9hbGkvbmV4dC1ibG9nIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LHtDb21wb25lbnR9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IExpc3QsIEF2YXRhciwgSWNvbiAsRGl2aWRlcn0gZnJvbSAnYW50ZCc7XG5pbXBvcnQge2Zvcm1hdFRpbWUsZ2V0QXJ0aWNsZUluZm99IGZyb20gJy4uLy4uL3VudGlsJztcblxuY29uc3QgQXJ0aWNsZVRpdGxlID0gKHtkZXRhaWxBcnRpY2xlPXt9fSk9PntcbiAgY29uc3Qge3RpdGxlLGNyZWF0ZVRpbWUsdXNlcix2aXNpdG9yLGxhc3RNb2RpZnksbW9kaWZ5Q291bnR9ID0gZGV0YWlsQXJ0aWNsZVxuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8aDI+e3RpdGxlfTwvaDI+XG4gICAgICA8dWwgY2xhc3NOYW1lPVwiY2xlYXJmaXggZGV0YWlsLWluZm9cIiA+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuWPkeW4g+aXtumXtO+8mntmb3JtYXRUaW1lKGNyZWF0ZVRpbWUpfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuS9nOiAhe+8mnt1c2VyfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPua1j+iniOasoeaVsO+8mnt2aXNpdG9yfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuacgOWQjuS/ruaUue+8mntmb3JtYXRUaW1lKGxhc3RNb2RpZnkpfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuS/ruaUueasoeaVsO+8mnttb2RpZnlDb3VudH08L2xpPlxuICAgICAgPC91bD5cbiAgICAgIDxEaXZpZGVyLz5cblxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAuZGV0YWlsLWluZm8gbGl7XG4gICAgICAgICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xuICAgICAgICB9XG4gICAgICAgIGB9XG5cbiAgICAgIDwvc3R5bGU+XG4gICAgPC9kaXY+XG4gIClcbn1cbmV4cG9ydCBkZWZhdWx0IEFydGljbGVUaXRsZSJdfQ== */\n/*@ sourceURL=components/ArticleTitle/index.js */"
+    css: ".detail-info.jsx-3877631247 li.jsx-3877631247{margin-right:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHNcXEFydGljbGVUaXRsZVxcaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBa0JrQixBQUc2QixrQkFDcEIiLCJmaWxlIjoiY29tcG9uZW50c1xcQXJ0aWNsZVRpdGxlXFxpbmRleC5qcyIsInNvdXJjZVJvb3QiOiJGOlxcbXlzZWxmXFxjdHJsXFxuZXh0LWJsb2ctMVxcbmV4dC1ibG9nIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LHtDb21wb25lbnR9IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHsgTGlzdCwgQXZhdGFyLCBJY29uICxEaXZpZGVyfSBmcm9tICdhbnRkJztcclxuaW1wb3J0IHtmb3JtYXRUaW1lLGdldEFydGljbGVJbmZvfSBmcm9tICcuLi8uLi91bnRpbCc7XHJcblxyXG5jb25zdCBBcnRpY2xlVGl0bGUgPSAoe2RldGFpbEFydGljbGU9e319KT0+e1xyXG4gIGNvbnN0IHt0aXRsZSxjcmVhdGVUaW1lLHVzZXIsdmlzaXRvcixsYXN0TW9kaWZ5LG1vZGlmeUNvdW50fSA9IGRldGFpbEFydGljbGVcclxuICByZXR1cm4gKFxyXG4gICAgPGRpdj5cclxuICAgICAgPGgyPnt0aXRsZX08L2gyPlxyXG4gICAgICA8dWwgY2xhc3NOYW1lPVwiY2xlYXJmaXggZGV0YWlsLWluZm9cIiA+XHJcbiAgICAgICAgPGxpIGNsYXNzTmFtZT1cImZsXCI+5Y+R5biD5pe26Ze077yae2Zvcm1hdFRpbWUoY3JlYXRlVGltZSl9PC9saT5cclxuICAgICAgICA8bGkgY2xhc3NOYW1lPVwiZmxcIj7kvZzogIXvvJp7dXNlcn08L2xpPlxyXG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPua1j+iniOasoeaVsO+8mnt2aXNpdG9yfTwvbGk+XHJcbiAgICAgICAgPGxpIGNsYXNzTmFtZT1cImZsXCI+5pyA5ZCO5L+u5pS577yae2Zvcm1hdFRpbWUobGFzdE1vZGlmeSl9PC9saT5cclxuICAgICAgICA8bGkgY2xhc3NOYW1lPVwiZmxcIj7kv67mlLnmrKHmlbDvvJp7bW9kaWZ5Q291bnR9PC9saT5cclxuICAgICAgPC91bD5cclxuICAgICAgPERpdmlkZXIvPlxyXG5cclxuICAgICAgPHN0eWxlIGpzeD57YFxyXG4gICAgICAgIC5kZXRhaWwtaW5mbyBsaXtcclxuICAgICAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgYH1cclxuXHJcbiAgICAgIDwvc3R5bGU+XHJcbiAgICA8L2Rpdj5cclxuICApXHJcbn1cclxuZXhwb3J0IGRlZmF1bHQgQXJ0aWNsZVRpdGxlIl19 */\n/*@ sourceURL=components\\ArticleTitle\\index.js */"
   }));
 };
 
@@ -96,13 +96,13 @@ var ArticleTitle = function ArticleTitle(_ref) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_row__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/row/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_row__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/row/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_row___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_row__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_menu__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/menu/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_menu__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/menu/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_menu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_menu__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_col__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/col/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_col__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/col/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_col___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_col__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/layout/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/layout/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__("./node_modules/_react@16.4.1@react/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
@@ -116,7 +116,7 @@ var ArticleTitle = function ArticleTitle(_ref) {
 
 
 
-var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Header/index.js";
+var _jsxFileName = "F:\\myself\\ctrl\\next-blog-1\\next-blog\\components\\Header\\index.js";
 
 
 
@@ -125,23 +125,23 @@ var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Header/index.js";
 var Header = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Header,
     Content = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Content;
 var routes = [{
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* INDEX */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* INDEX_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["g" /* INDEX */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* INDEX_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["d" /* BLOG */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["e" /* BLOG_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["c" /* BLOG */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["d" /* BLOG_TXT */]
 }, {
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["a" /* ADMIN */],
   txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["b" /* ADMIN_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* LIFE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* LIFE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["i" /* LIFE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* LIFE_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["o" /* TEST */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["p" /* TEST_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* TEST */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* TEST_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* POST_ARTICLE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* POST_ARTICLE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* POST_ARTICLE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* POST_ARTICLE_TXT */]
 }];
 
 var TopNav = function TopNav(props) {
@@ -264,18 +264,18 @@ var TopNav = function TopNav(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/breadcrumb/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/breadcrumb/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/button/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/button/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_alert__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/alert/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_alert__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/alert/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_alert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_alert__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react__ = __webpack_require__("./node_modules/_react@16.4.1@react/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react__);
 
 
 
-var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/TopTips/index.js";
+var _jsxFileName = "F:\\myself\\ctrl\\next-blog-1\\next-blog\\components\\TopTips\\index.js";
 
 
 var TopTips = function TopTips(props) {
@@ -340,24 +340,24 @@ var TopTips = function TopTips(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return DEV_DOMAIN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return pageNum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return TITLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ALL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return INDEX_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BLOG; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return BLOG_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return DEV_DOMAIN; });
+/* unused harmony export pageNum */
+/* unused harmony export TITLE */
+/* unused harmony export ALL */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return INDEX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BLOG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BLOG_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ADMIN_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return LIFE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return LIFE_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return TEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return TEST_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return POST_ARTICLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return POST_ARTICLE_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return COMMON_TITLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return INDEX_TITLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return LIFE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LIFE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return TEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return TEST_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return POST_ARTICLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return POST_ARTICLE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return COMMON_TITLE; });
+/* unused harmony export INDEX_TITLE */
 var DEV_DOMAIN = 'http://localhost:7654';
 var pageNum = 10; //分页数
 
@@ -390,7 +390,7 @@ var INDEX_TITLE = '刘伟波的个人主页';
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constantsData__ = __webpack_require__("./config/constantsData.js");
 
 function getDomain() {
-  return __WEBPACK_IMPORTED_MODULE_0__constantsData__["g" /* DEV_DOMAIN */] + '/';
+  return __WEBPACK_IMPORTED_MODULE_0__constantsData__["f" /* DEV_DOMAIN */] + '/';
 }
 
 /***/ }),
@@ -399,14 +399,16 @@ function getDomain() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getBlogUrl; });
+/* unused harmony export getBlogUrl */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getDetailUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getTotalUrl; });
+/* unused harmony export getTotalUrl */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getCommentsUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return postCommentUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return postCommentUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getAdminBlogUrl; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env__ = __webpack_require__("./config/env.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__until__ = __webpack_require__("./until/index.js");
 
+ //前台
 
 var getBlogUrl = function getBlogUrl(obj) {
   return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/getBlog' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
@@ -422,6 +424,11 @@ var getCommentsUrl = function getCommentsUrl(obj) {
 };
 var postCommentUrl = function postCommentUrl() {
   return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/postComment';
+}; //后台
+
+var getAdminBlogUrl = function getAdminBlogUrl(obj) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/getAdminBlog' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  ;
 }; // export const getBlogUrl = domain+'/api/getBlog'
 // export const getTotalUrl = domain+'/api/total'
 // export const getLifeUrl = domain+'/api/life'
@@ -431,6 +438,9 @@ var postCommentUrl = function postCommentUrl() {
 // export const getCommentsUrl = domain+'/api/comments'
 // export const postArticleUrl = domain+'/api/postArticle'
 // export const postCommentUrl = domain+'/api/postComment'
+// export const getAdminBlogUrl = domain + '/api/getAdminBlog'
+// export const getAdminCommentsUrl = domain + '/api/getAdminComments'
+// export const postAdminDetailUrl = domain + '/api/postAdminDetail'
 
 /***/ }),
 
@@ -835,7 +845,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/_util/isFlexSupported.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/_util/isFlexSupported.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -857,7 +867,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/_util/openAnimation.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/_util/openAnimation.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -926,7 +936,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/_util/throttleByAnimationFrame.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/_util/throttleByAnimationFrame.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -997,7 +1007,7 @@ function throttleByAnimationFrameDecorator() {
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/_util/warning.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/_util/warning.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1026,7 +1036,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/alert/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/alert/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1068,7 +1078,7 @@ var _rcAnimate = __webpack_require__("./node_modules/_rc-animate@2.4.4@rc-animat
 
 var _rcAnimate2 = _interopRequireDefault(_rcAnimate);
 
-var _icon = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
+var _icon = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
 
 var _icon2 = _interopRequireDefault(_icon);
 
@@ -1202,7 +1212,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/auto-complete/InputElement.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/auto-complete/InputElement.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1283,7 +1293,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/auto-complete/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/auto-complete/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1331,15 +1341,15 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _select = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/select/index.js");
+var _select = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/select/index.js");
 
 var _select2 = _interopRequireDefault(_select);
 
-var _input = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/input/index.js");
+var _input = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/input/index.js");
 
 var _input2 = _interopRequireDefault(_input);
 
-var _InputElement = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/auto-complete/InputElement.js");
+var _InputElement = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/auto-complete/InputElement.js");
 
 var _InputElement2 = _interopRequireDefault(_InputElement);
 
@@ -1457,7 +1467,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/breadcrumb/Breadcrumb.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/breadcrumb/Breadcrumb.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1491,11 +1501,11 @@ var _propTypes = __webpack_require__("./node_modules/_prop-types@15.6.0@prop-typ
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _warning = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/warning.js");
+var _warning = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/warning.js");
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _BreadcrumbItem = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/breadcrumb/BreadcrumbItem.js");
+var _BreadcrumbItem = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/breadcrumb/BreadcrumbItem.js");
 
 var _BreadcrumbItem2 = _interopRequireDefault(_BreadcrumbItem);
 
@@ -1618,7 +1628,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/breadcrumb/BreadcrumbItem.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/breadcrumb/BreadcrumbItem.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1733,7 +1743,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/breadcrumb/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/breadcrumb/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1743,11 +1753,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Breadcrumb = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/breadcrumb/Breadcrumb.js");
+var _Breadcrumb = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/breadcrumb/Breadcrumb.js");
 
 var _Breadcrumb2 = _interopRequireDefault(_Breadcrumb);
 
-var _BreadcrumbItem = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/breadcrumb/BreadcrumbItem.js");
+var _BreadcrumbItem = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/breadcrumb/BreadcrumbItem.js");
 
 var _BreadcrumbItem2 = _interopRequireDefault(_BreadcrumbItem);
 
@@ -1759,7 +1769,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/button/button-group.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/button/button-group.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1826,7 +1836,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/button/button.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/button/button.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1874,7 +1884,7 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _icon = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
+var _icon = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
 
 var _icon2 = _interopRequireDefault(_icon);
 
@@ -2097,7 +2107,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/button/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/button/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2107,11 +2117,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _button = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/button/button.js");
+var _button = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/button/button.js");
 
 var _button2 = _interopRequireDefault(_button);
 
-var _buttonGroup = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/button/button-group.js");
+var _buttonGroup = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/button/button-group.js");
 
 var _buttonGroup2 = _interopRequireDefault(_buttonGroup);
 
@@ -2123,7 +2133,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/calendar/locale/en_US.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/calendar/locale/en_US.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2133,7 +2143,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _en_US = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/date-picker/locale/en_US.js");
+var _en_US = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/date-picker/locale/en_US.js");
 
 var _en_US2 = _interopRequireDefault(_en_US);
 
@@ -2144,7 +2154,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/card/Grid.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/card/Grid.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2193,7 +2203,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/card/Meta.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/card/Meta.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2271,7 +2281,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/card/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/card/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2325,29 +2335,29 @@ var _omit = __webpack_require__("./node_modules/_omit.js@1.0.0@omit.js/es/index.
 
 var _omit2 = _interopRequireDefault(_omit);
 
-var _Grid = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/card/Grid.js");
+var _Grid = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/card/Grid.js");
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
-var _Meta = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/card/Meta.js");
+var _Meta = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/card/Meta.js");
 
 var _Meta2 = _interopRequireDefault(_Meta);
 
-var _tabs = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/tabs/index.js");
+var _tabs = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/tabs/index.js");
 
 var _tabs2 = _interopRequireDefault(_tabs);
 
-var _row = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/row/index.js");
+var _row = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/row/index.js");
 
 var _row2 = _interopRequireDefault(_row);
 
-var _col = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/col/index.js");
+var _col = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/col/index.js");
 
 var _col2 = _interopRequireDefault(_col);
 
-var _throttleByAnimationFrame = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/throttleByAnimationFrame.js");
+var _throttleByAnimationFrame = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/throttleByAnimationFrame.js");
 
-var _warning = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/warning.js");
+var _warning = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/warning.js");
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -2668,7 +2678,7 @@ module.exports = exports["default"];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/col/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/col/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2678,14 +2688,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _grid = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/index.js");
+var _grid = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/index.js");
 
 exports['default'] = _grid.Col;
 module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/date-picker/locale/en_US.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/date-picker/locale/en_US.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2703,7 +2713,7 @@ var _en_US = __webpack_require__("./node_modules/_rc-calendar@9.6.2@rc-calendar/
 
 var _en_US2 = _interopRequireDefault(_en_US);
 
-var _en_US3 = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/time-picker/locale/en_US.js");
+var _en_US3 = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/time-picker/locale/en_US.js");
 
 var _en_US4 = _interopRequireDefault(_en_US3);
 
@@ -2721,7 +2731,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/divider/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/divider/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2791,7 +2801,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/form/Form.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/form/Form.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2849,15 +2859,15 @@ var _omit = __webpack_require__("./node_modules/_omit.js@1.0.0@omit.js/es/index.
 
 var _omit2 = _interopRequireDefault(_omit);
 
-var _warning = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/warning.js");
+var _warning = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/warning.js");
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _FormItem = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/form/FormItem.js");
+var _FormItem = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/form/FormItem.js");
 
 var _FormItem2 = _interopRequireDefault(_FormItem);
 
-var _constants = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/form/constants.js");
+var _constants = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/form/constants.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
@@ -2935,7 +2945,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/form/FormItem.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/form/FormItem.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2993,19 +3003,19 @@ var _rcAnimate = __webpack_require__("./node_modules/_rc-animate@2.4.4@rc-animat
 
 var _rcAnimate2 = _interopRequireDefault(_rcAnimate);
 
-var _row = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/row.js");
+var _row = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/row.js");
 
 var _row2 = _interopRequireDefault(_row);
 
-var _col = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/col.js");
+var _col = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/col.js");
 
 var _col2 = _interopRequireDefault(_col);
 
-var _warning = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/warning.js");
+var _warning = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/warning.js");
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _constants = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/form/constants.js");
+var _constants = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/form/constants.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
@@ -3330,7 +3340,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/form/constants.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/form/constants.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3344,7 +3354,7 @@ var FIELD_DATA_PROP = exports.FIELD_DATA_PROP = 'data-__field';
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/form/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/form/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3354,7 +3364,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Form = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/form/Form.js");
+var _Form = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/form/Form.js");
 
 var _Form2 = _interopRequireDefault(_Form);
 
@@ -3365,7 +3375,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/grid/col.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/grid/col.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3502,7 +3512,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/grid/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/grid/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3513,11 +3523,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Col = exports.Row = undefined;
 
-var _row = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/row.js");
+var _row = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/row.js");
 
 var _row2 = _interopRequireDefault(_row);
 
-var _col = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/col.js");
+var _col = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/col.js");
 
 var _col2 = _interopRequireDefault(_col);
 
@@ -3528,7 +3538,7 @@ exports.Col = _col2['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/grid/row.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/grid/row.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3743,7 +3753,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/icon/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/icon/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3794,7 +3804,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/input/Group.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/input/Group.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3840,7 +3850,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/input/Input.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/input/Input.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4083,7 +4093,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/input/Search.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/input/Search.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4125,15 +4135,15 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _Input = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/input/Input.js");
+var _Input = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/input/Input.js");
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _icon = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
+var _icon = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
 
 var _icon2 = _interopRequireDefault(_icon);
 
-var _button = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/button/index.js");
+var _button = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/button/index.js");
 
 var _button2 = _interopRequireDefault(_button);
 
@@ -4245,7 +4255,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/input/TextArea.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/input/TextArea.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4291,7 +4301,7 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _calculateNodeHeight = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/input/calculateNodeHeight.js");
+var _calculateNodeHeight = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/input/calculateNodeHeight.js");
 
 var _calculateNodeHeight2 = _interopRequireDefault(_calculateNodeHeight);
 
@@ -4425,7 +4435,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/input/calculateNodeHeight.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/input/calculateNodeHeight.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4540,7 +4550,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/input/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/input/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4550,19 +4560,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Input = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/input/Input.js");
+var _Input = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/input/Input.js");
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Group = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/input/Group.js");
+var _Group = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/input/Group.js");
 
 var _Group2 = _interopRequireDefault(_Group);
 
-var _Search = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/input/Search.js");
+var _Search = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/input/Search.js");
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _TextArea = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/input/TextArea.js");
+var _TextArea = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/input/TextArea.js");
 
 var _TextArea2 = _interopRequireDefault(_TextArea);
 
@@ -4576,7 +4586,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/layout/Sider.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/layout/Sider.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4626,7 +4636,7 @@ var _propTypes = __webpack_require__("./node_modules/_prop-types@15.6.0@prop-typ
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _icon = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
+var _icon = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
 
 var _icon2 = _interopRequireDefault(_icon);
 
@@ -4844,7 +4854,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/layout/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/layout/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4854,11 +4864,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _layout = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/layout/layout.js");
+var _layout = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/layout/layout.js");
 
 var _layout2 = _interopRequireDefault(_layout);
 
-var _Sider = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/layout/Sider.js");
+var _Sider = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/layout/Sider.js");
 
 var _Sider2 = _interopRequireDefault(_Sider);
 
@@ -4870,7 +4880,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/layout/layout.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/layout/layout.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5060,7 +5070,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/locale-provider/LocaleReceiver.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/locale-provider/LocaleReceiver.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5151,7 +5161,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/locale-provider/default.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/locale-provider/default.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5165,15 +5175,15 @@ var _en_US = __webpack_require__("./node_modules/_rc-pagination@1.16.4@rc-pagina
 
 var _en_US2 = _interopRequireDefault(_en_US);
 
-var _en_US3 = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/date-picker/locale/en_US.js");
+var _en_US3 = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/date-picker/locale/en_US.js");
 
 var _en_US4 = _interopRequireDefault(_en_US3);
 
-var _en_US5 = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/time-picker/locale/en_US.js");
+var _en_US5 = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/time-picker/locale/en_US.js");
 
 var _en_US6 = _interopRequireDefault(_en_US5);
 
-var _en_US7 = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/calendar/locale/en_US.js");
+var _en_US7 = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/calendar/locale/en_US.js");
 
 var _en_US8 = _interopRequireDefault(_en_US7);
 
@@ -5223,7 +5233,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/menu/MenuItem.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/menu/MenuItem.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5263,7 +5273,7 @@ var _propTypes = __webpack_require__("./node_modules/_prop-types@15.6.0@prop-typ
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _tooltip = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/tooltip/index.js");
+var _tooltip = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/tooltip/index.js");
 
 var _tooltip2 = _interopRequireDefault(_tooltip);
 
@@ -5313,7 +5323,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/menu/SubMenu.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/menu/SubMenu.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5402,7 +5412,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/menu/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/menu/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5454,19 +5464,19 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _openAnimation = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/openAnimation.js");
+var _openAnimation = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/openAnimation.js");
 
 var _openAnimation2 = _interopRequireDefault(_openAnimation);
 
-var _warning = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/warning.js");
+var _warning = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/warning.js");
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _SubMenu = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/menu/SubMenu.js");
+var _SubMenu = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/menu/SubMenu.js");
 
 var _SubMenu2 = _interopRequireDefault(_SubMenu);
 
-var _MenuItem = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/menu/MenuItem.js");
+var _MenuItem = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/menu/MenuItem.js");
 
 var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
@@ -5679,7 +5689,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/row/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/row/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5689,14 +5699,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _grid = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/index.js");
+var _grid = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/index.js");
 
 exports['default'] = _grid.Row;
 module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/select/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/select/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5746,11 +5756,11 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _LocaleReceiver = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/locale-provider/LocaleReceiver.js");
+var _LocaleReceiver = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/locale-provider/LocaleReceiver.js");
 
 var _LocaleReceiver2 = _interopRequireDefault(_LocaleReceiver);
 
-var _default = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/locale-provider/default.js");
+var _default = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/locale-provider/default.js");
 
 var _default2 = _interopRequireDefault(_default);
 
@@ -5872,7 +5882,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/tabs/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/tabs/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5934,15 +5944,15 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _icon = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
+var _icon = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
 
 var _icon2 = _interopRequireDefault(_icon);
 
-var _warning = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/warning.js");
+var _warning = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/warning.js");
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _isFlexSupported = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/isFlexSupported.js");
+var _isFlexSupported = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/isFlexSupported.js");
 
 var _isFlexSupported2 = _interopRequireDefault(_isFlexSupported);
 
@@ -6093,7 +6103,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/time-picker/locale/en_US.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/time-picker/locale/en_US.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6110,7 +6120,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/tooltip/index.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/tooltip/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6156,7 +6166,7 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _placements = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/tooltip/placements.js");
+var _placements = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/tooltip/placements.js");
 
 var _placements2 = _interopRequireDefault(_placements);
 
@@ -6357,7 +6367,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.4@antd/lib/tooltip/placements.js":
+/***/ "./node_modules/_antd@3.6.5@antd/lib/tooltip/placements.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31837,25 +31847,25 @@ module.exports = function(originalModule) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("./node_modules/_@babel_runtime@7.0.0-beta.42@@babel/runtime/regenerator/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_card__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/card/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_card__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/card/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_card__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_row__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/row/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_row__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/row/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_row___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_row__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_col__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/col/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_col__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/col/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_col___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_col__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_button__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/button/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_button__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/button/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_antd_lib_button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_tooltip__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/tooltip/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_tooltip__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/tooltip/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_tooltip___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_antd_lib_tooltip__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_icon__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_icon__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_icon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_antd_lib_icon__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_auto_complete__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/auto-complete/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_auto_complete__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/auto-complete/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_auto_complete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_antd_lib_auto_complete__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_antd_lib_input__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/input/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_antd_lib_input__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/input/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_antd_lib_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_antd_lib_input__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_antd_lib_form__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/form/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_antd_lib_form__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/form/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_antd_lib_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_antd_lib_form__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_antd_lib_layout__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/layout/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_antd_lib_layout__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/layout/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_antd_lib_layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_antd_lib_layout__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react__ = __webpack_require__("./node_modules/_react@16.4.1@react/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_react__);
@@ -31881,7 +31891,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var _jsxFileName = "/Users/liuweibo/ali/next-blog/pages/detail/index.js";
+var _jsxFileName = "F:\\myself\\ctrl\\next-blog-1\\next-blog\\pages\\detail\\index.js";
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
@@ -31990,7 +32000,7 @@ function (_Component) {
               nickname: nickname,
               website: website
             };
-            Object(__WEBPACK_IMPORTED_MODULE_19__store_actions__["d" /* postComments */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_18__config__["e" /* postCommentUrl */])(), queryStringComment);
+            Object(__WEBPACK_IMPORTED_MODULE_19__store_actions__["b" /* postComments */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_18__config__["d" /* postCommentUrl */])(), queryStringComment);
           }
         });
       }
@@ -32100,7 +32110,7 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 119
         }
-      }, title, __WEBPACK_IMPORTED_MODULE_20__config_constantsData__["f" /* COMMON_TITLE */])), __WEBPACK_IMPORTED_MODULE_11_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_Header__["a" /* default */], {
+      }, title, __WEBPACK_IMPORTED_MODULE_20__config_constantsData__["e" /* COMMON_TITLE */])), __WEBPACK_IMPORTED_MODULE_11_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_Header__["a" /* default */], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 121
@@ -32402,7 +32412,7 @@ var WrappedRegistrationForm = __WEBPACK_IMPORTED_MODULE_9_antd_lib_form___defaul
           next.router.update(r, Component)
         }
       }
-    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/detail")
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/detail\\index")
   
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/_webpack@3.10.0@webpack/buildin/harmony-module.js")(module)))
 
@@ -32414,10 +32424,13 @@ var WrappedRegistrationForm = __WEBPACK_IMPORTED_MODULE_9_antd_lib_form___defaul
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return actionTypes; });
 var actionTypes = {
+  //前台
   SEARCH_DATA: 'SEARCH_DATA',
   GET_SEARCH_TOTAL_DATA: 'GET_SEARCH_TOTAL_DATA',
   SEARCH_PAGE_DATA: 'SEARCH_PAGE_DATA',
-  POST_COMMENTS: 'POST_COMMENTS'
+  POST_COMMENTS: 'POST_COMMENTS',
+  //后台
+  GET_ADMIN_DATA: 'GET_ADMIN_DATA'
 };
 
 /***/ }),
@@ -32426,10 +32439,11 @@ var actionTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getSearchPageList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getSearchList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getSearchTotal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return postComments; });
+/* unused harmony export getSearchPageList */
+/* unused harmony export getSearchList */
+/* unused harmony export getSearchTotal */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getAdminBlogList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return postComments; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("./node_modules/_@babel_runtime@7.0.0-beta.42@@babel/runtime/regenerator/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__action_types__ = __webpack_require__("./store/action-types.js");
@@ -32440,6 +32454,7 @@ var actionTypes = {
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 
+ //前台
 
 var getSearchPageList =
 /*#__PURE__*/
@@ -32554,23 +32569,21 @@ function () {
   return function getSearchTotal(_x5, _x6) {
     return _ref3.apply(this, arguments);
   };
-}();
-var postComments =
+}(); //后台
+
+var getAdminBlogList =
 /*#__PURE__*/
 function () {
   var _ref4 = _asyncToGenerator(
   /*#__PURE__*/
-  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee4(dispatch, url, body) {
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee4(dispatch, url) {
     var res, jsonData;
     return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return __WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch___default()(url, {
-              method: 'POST',
-              body: JSON.stringify(body)
-            });
+            return __WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch___default()(url);
 
           case 2:
             res = _context4.sent;
@@ -32580,8 +32593,8 @@ function () {
           case 5:
             jsonData = _context4.sent;
             return _context4.abrupt("return", dispatch({
-              type: __WEBPACK_IMPORTED_MODULE_1__action_types__["a" /* actionTypes */].POST_COMMENTS,
-              getCommentsData: jsonData
+              type: __WEBPACK_IMPORTED_MODULE_1__action_types__["a" /* actionTypes */].GET_ADMIN_DATA,
+              adminBlogData: jsonData
             }));
 
           case 7:
@@ -32592,8 +32605,49 @@ function () {
     }, _callee4, this);
   }));
 
-  return function postComments(_x7, _x8, _x9) {
+  return function getAdminBlogList(_x7, _x8) {
     return _ref4.apply(this, arguments);
+  };
+}();
+var postComments =
+/*#__PURE__*/
+function () {
+  var _ref5 = _asyncToGenerator(
+  /*#__PURE__*/
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee5(dispatch, url, body) {
+    var res, jsonData;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return __WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch___default()(url, {
+              method: 'POST',
+              body: JSON.stringify(body)
+            });
+
+          case 2:
+            res = _context5.sent;
+            _context5.next = 5;
+            return res.json();
+
+          case 5:
+            jsonData = _context5.sent;
+            return _context5.abrupt("return", dispatch({
+              type: __WEBPACK_IMPORTED_MODULE_1__action_types__["a" /* actionTypes */].POST_COMMENTS,
+              getCommentsData: jsonData
+            }));
+
+          case 7:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5, this);
+  }));
+
+  return function postComments(_x9, _x10, _x11) {
+    return _ref5.apply(this, arguments);
   };
 }();
 
@@ -32696,7 +32750,7 @@ function toQueryStr(obj) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/detail/index.js");
@@ -32704,7 +32758,7 @@ module.exports = __webpack_require__("./pages/detail/index.js");
 
 /***/ })
 
-},[4])
+},[5])
           return { page: comp.default }
         })
       ;

@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -84,7 +84,7 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__until__ = __webpack_require__("./until/index.js");
 
-var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/ArticleTitle/index.js";
+var _jsxFileName = "F:\\myself\\ctrl\\next-blog-1\\next-blog\\components\\ArticleTitle\\index.js";
 
 
 
@@ -153,7 +153,7 @@ var ArticleTitle = function ArticleTitle(_ref) {
     }
   }), __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_styled_jsx_style___default.a, {
     styleId: "3877631247",
-    css: ".detail-info.jsx-3877631247 li.jsx-3877631247{margin-right:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvQXJ0aWNsZVRpdGxlL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCa0IsQUFHNkIsa0JBQ3BCIiwiZmlsZSI6ImNvbXBvbmVudHMvQXJ0aWNsZVRpdGxlL2luZGV4LmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9saXV3ZWliby9hbGkvbmV4dC1ibG9nIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LHtDb21wb25lbnR9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IExpc3QsIEF2YXRhciwgSWNvbiAsRGl2aWRlcn0gZnJvbSAnYW50ZCc7XG5pbXBvcnQge2Zvcm1hdFRpbWUsZ2V0QXJ0aWNsZUluZm99IGZyb20gJy4uLy4uL3VudGlsJztcblxuY29uc3QgQXJ0aWNsZVRpdGxlID0gKHtkZXRhaWxBcnRpY2xlPXt9fSk9PntcbiAgY29uc3Qge3RpdGxlLGNyZWF0ZVRpbWUsdXNlcix2aXNpdG9yLGxhc3RNb2RpZnksbW9kaWZ5Q291bnR9ID0gZGV0YWlsQXJ0aWNsZVxuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8aDI+e3RpdGxlfTwvaDI+XG4gICAgICA8dWwgY2xhc3NOYW1lPVwiY2xlYXJmaXggZGV0YWlsLWluZm9cIiA+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuWPkeW4g+aXtumXtO+8mntmb3JtYXRUaW1lKGNyZWF0ZVRpbWUpfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuS9nOiAhe+8mnt1c2VyfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPua1j+iniOasoeaVsO+8mnt2aXNpdG9yfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuacgOWQjuS/ruaUue+8mntmb3JtYXRUaW1lKGxhc3RNb2RpZnkpfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuS/ruaUueasoeaVsO+8mnttb2RpZnlDb3VudH08L2xpPlxuICAgICAgPC91bD5cbiAgICAgIDxEaXZpZGVyLz5cblxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAuZGV0YWlsLWluZm8gbGl7XG4gICAgICAgICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xuICAgICAgICB9XG4gICAgICAgIGB9XG5cbiAgICAgIDwvc3R5bGU+XG4gICAgPC9kaXY+XG4gIClcbn1cbmV4cG9ydCBkZWZhdWx0IEFydGljbGVUaXRsZSJdfQ== */\n/*@ sourceURL=components/ArticleTitle/index.js */"
+    css: ".detail-info.jsx-3877631247 li.jsx-3877631247{margin-right:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHNcXEFydGljbGVUaXRsZVxcaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBa0JrQixBQUc2QixrQkFDcEIiLCJmaWxlIjoiY29tcG9uZW50c1xcQXJ0aWNsZVRpdGxlXFxpbmRleC5qcyIsInNvdXJjZVJvb3QiOiJGOlxcbXlzZWxmXFxjdHJsXFxuZXh0LWJsb2ctMVxcbmV4dC1ibG9nIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LHtDb21wb25lbnR9IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHsgTGlzdCwgQXZhdGFyLCBJY29uICxEaXZpZGVyfSBmcm9tICdhbnRkJztcclxuaW1wb3J0IHtmb3JtYXRUaW1lLGdldEFydGljbGVJbmZvfSBmcm9tICcuLi8uLi91bnRpbCc7XHJcblxyXG5jb25zdCBBcnRpY2xlVGl0bGUgPSAoe2RldGFpbEFydGljbGU9e319KT0+e1xyXG4gIGNvbnN0IHt0aXRsZSxjcmVhdGVUaW1lLHVzZXIsdmlzaXRvcixsYXN0TW9kaWZ5LG1vZGlmeUNvdW50fSA9IGRldGFpbEFydGljbGVcclxuICByZXR1cm4gKFxyXG4gICAgPGRpdj5cclxuICAgICAgPGgyPnt0aXRsZX08L2gyPlxyXG4gICAgICA8dWwgY2xhc3NOYW1lPVwiY2xlYXJmaXggZGV0YWlsLWluZm9cIiA+XHJcbiAgICAgICAgPGxpIGNsYXNzTmFtZT1cImZsXCI+5Y+R5biD5pe26Ze077yae2Zvcm1hdFRpbWUoY3JlYXRlVGltZSl9PC9saT5cclxuICAgICAgICA8bGkgY2xhc3NOYW1lPVwiZmxcIj7kvZzogIXvvJp7dXNlcn08L2xpPlxyXG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPua1j+iniOasoeaVsO+8mnt2aXNpdG9yfTwvbGk+XHJcbiAgICAgICAgPGxpIGNsYXNzTmFtZT1cImZsXCI+5pyA5ZCO5L+u5pS577yae2Zvcm1hdFRpbWUobGFzdE1vZGlmeSl9PC9saT5cclxuICAgICAgICA8bGkgY2xhc3NOYW1lPVwiZmxcIj7kv67mlLnmrKHmlbDvvJp7bW9kaWZ5Q291bnR9PC9saT5cclxuICAgICAgPC91bD5cclxuICAgICAgPERpdmlkZXIvPlxyXG5cclxuICAgICAgPHN0eWxlIGpzeD57YFxyXG4gICAgICAgIC5kZXRhaWwtaW5mbyBsaXtcclxuICAgICAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgYH1cclxuXHJcbiAgICAgIDwvc3R5bGU+XHJcbiAgICA8L2Rpdj5cclxuICApXHJcbn1cclxuZXhwb3J0IGRlZmF1bHQgQXJ0aWNsZVRpdGxlIl19 */\n/*@ sourceURL=components\\ArticleTitle\\index.js */"
   }));
 };
 
@@ -185,7 +185,7 @@ var ArticleTitle = function ArticleTitle(_ref) {
 
 
 
-var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Header/index.js";
+var _jsxFileName = "F:\\myself\\ctrl\\next-blog-1\\next-blog\\components\\Header\\index.js";
 
 
 
@@ -194,23 +194,23 @@ var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Header/index.js";
 var Header = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Header,
     Content = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Content;
 var routes = [{
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* INDEX */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* INDEX_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["g" /* INDEX */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* INDEX_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["d" /* BLOG */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["e" /* BLOG_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["c" /* BLOG */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["d" /* BLOG_TXT */]
 }, {
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["a" /* ADMIN */],
   txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["b" /* ADMIN_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* LIFE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* LIFE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["i" /* LIFE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* LIFE_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["o" /* TEST */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["p" /* TEST_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* TEST */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* TEST_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* POST_ARTICLE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* POST_ARTICLE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* POST_ARTICLE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* POST_ARTICLE_TXT */]
 }];
 
 var TopNav = function TopNav(props) {
@@ -344,7 +344,7 @@ var TopNav = function TopNav(props) {
 
 
 
-var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/TopTips/index.js";
+var _jsxFileName = "F:\\myself\\ctrl\\next-blog-1\\next-blog\\components\\TopTips\\index.js";
 
 
 var TopTips = function TopTips(props) {
@@ -409,24 +409,24 @@ var TopTips = function TopTips(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return DEV_DOMAIN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return pageNum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return TITLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ALL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return INDEX_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BLOG; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return BLOG_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return DEV_DOMAIN; });
+/* unused harmony export pageNum */
+/* unused harmony export TITLE */
+/* unused harmony export ALL */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return INDEX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BLOG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BLOG_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ADMIN_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return LIFE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return LIFE_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return TEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return TEST_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return POST_ARTICLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return POST_ARTICLE_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return COMMON_TITLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return INDEX_TITLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return LIFE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LIFE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return TEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return TEST_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return POST_ARTICLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return POST_ARTICLE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return COMMON_TITLE; });
+/* unused harmony export INDEX_TITLE */
 var DEV_DOMAIN = 'http://localhost:7654';
 var pageNum = 10; //分页数
 
@@ -459,7 +459,7 @@ var INDEX_TITLE = '刘伟波的个人主页';
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constantsData__ = __webpack_require__("./config/constantsData.js");
 
 function getDomain() {
-  return __WEBPACK_IMPORTED_MODULE_0__constantsData__["g" /* DEV_DOMAIN */] + '/';
+  return __WEBPACK_IMPORTED_MODULE_0__constantsData__["f" /* DEV_DOMAIN */] + '/';
 }
 
 /***/ }),
@@ -468,14 +468,16 @@ function getDomain() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getBlogUrl; });
+/* unused harmony export getBlogUrl */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getDetailUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getTotalUrl; });
+/* unused harmony export getTotalUrl */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getCommentsUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return postCommentUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return postCommentUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getAdminBlogUrl; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env__ = __webpack_require__("./config/env.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__until__ = __webpack_require__("./until/index.js");
 
+ //前台
 
 var getBlogUrl = function getBlogUrl(obj) {
   return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/getBlog' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
@@ -491,6 +493,11 @@ var getCommentsUrl = function getCommentsUrl(obj) {
 };
 var postCommentUrl = function postCommentUrl() {
   return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/postComment';
+}; //后台
+
+var getAdminBlogUrl = function getAdminBlogUrl(obj) {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/getAdminBlog' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  ;
 }; // export const getBlogUrl = domain+'/api/getBlog'
 // export const getTotalUrl = domain+'/api/total'
 // export const getLifeUrl = domain+'/api/life'
@@ -500,6 +507,9 @@ var postCommentUrl = function postCommentUrl() {
 // export const getCommentsUrl = domain+'/api/comments'
 // export const postArticleUrl = domain+'/api/postArticle'
 // export const postCommentUrl = domain+'/api/postComment'
+// export const getAdminBlogUrl = domain + '/api/getAdminBlog'
+// export const getAdminCommentsUrl = domain + '/api/getAdminComments'
+// export const postAdminDetailUrl = domain + '/api/postAdminDetail'
 
 /***/ }),
 
@@ -555,7 +565,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var _jsxFileName = "/Users/liuweibo/ali/next-blog/pages/detail/index.js";
+var _jsxFileName = "F:\\myself\\ctrl\\next-blog-1\\next-blog\\pages\\detail\\index.js";
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
@@ -664,7 +674,7 @@ function (_Component) {
               nickname: nickname,
               website: website
             };
-            Object(__WEBPACK_IMPORTED_MODULE_19__store_actions__["d" /* postComments */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_18__config__["e" /* postCommentUrl */])(), queryStringComment);
+            Object(__WEBPACK_IMPORTED_MODULE_19__store_actions__["b" /* postComments */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_18__config__["d" /* postCommentUrl */])(), queryStringComment);
           }
         });
       }
@@ -774,7 +784,7 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 119
         }
-      }, title, __WEBPACK_IMPORTED_MODULE_20__config_constantsData__["f" /* COMMON_TITLE */])), __WEBPACK_IMPORTED_MODULE_11_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_Header__["a" /* default */], {
+      }, title, __WEBPACK_IMPORTED_MODULE_20__config_constantsData__["e" /* COMMON_TITLE */])), __WEBPACK_IMPORTED_MODULE_11_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_Header__["a" /* default */], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 121
@@ -1069,10 +1079,13 @@ var WrappedRegistrationForm = __WEBPACK_IMPORTED_MODULE_9_antd_lib_form___defaul
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return actionTypes; });
 var actionTypes = {
+  //前台
   SEARCH_DATA: 'SEARCH_DATA',
   GET_SEARCH_TOTAL_DATA: 'GET_SEARCH_TOTAL_DATA',
   SEARCH_PAGE_DATA: 'SEARCH_PAGE_DATA',
-  POST_COMMENTS: 'POST_COMMENTS'
+  POST_COMMENTS: 'POST_COMMENTS',
+  //后台
+  GET_ADMIN_DATA: 'GET_ADMIN_DATA'
 };
 
 /***/ }),
@@ -1081,10 +1094,11 @@ var actionTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getSearchPageList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getSearchList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getSearchTotal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return postComments; });
+/* unused harmony export getSearchPageList */
+/* unused harmony export getSearchList */
+/* unused harmony export getSearchTotal */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getAdminBlogList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return postComments; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__action_types__ = __webpack_require__("./store/action-types.js");
@@ -1095,6 +1109,7 @@ var actionTypes = {
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 
+ //前台
 
 var getSearchPageList =
 /*#__PURE__*/
@@ -1209,23 +1224,21 @@ function () {
   return function getSearchTotal(_x5, _x6) {
     return _ref3.apply(this, arguments);
   };
-}();
-var postComments =
+}(); //后台
+
+var getAdminBlogList =
 /*#__PURE__*/
 function () {
   var _ref4 = _asyncToGenerator(
   /*#__PURE__*/
-  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee4(dispatch, url, body) {
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee4(dispatch, url) {
     var res, jsonData;
     return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return __WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch___default()(url, {
-              method: 'POST',
-              body: JSON.stringify(body)
-            });
+            return __WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch___default()(url);
 
           case 2:
             res = _context4.sent;
@@ -1235,8 +1248,8 @@ function () {
           case 5:
             jsonData = _context4.sent;
             return _context4.abrupt("return", dispatch({
-              type: __WEBPACK_IMPORTED_MODULE_1__action_types__["a" /* actionTypes */].POST_COMMENTS,
-              getCommentsData: jsonData
+              type: __WEBPACK_IMPORTED_MODULE_1__action_types__["a" /* actionTypes */].GET_ADMIN_DATA,
+              adminBlogData: jsonData
             }));
 
           case 7:
@@ -1247,8 +1260,49 @@ function () {
     }, _callee4, this);
   }));
 
-  return function postComments(_x7, _x8, _x9) {
+  return function getAdminBlogList(_x7, _x8) {
     return _ref4.apply(this, arguments);
+  };
+}();
+var postComments =
+/*#__PURE__*/
+function () {
+  var _ref5 = _asyncToGenerator(
+  /*#__PURE__*/
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee5(dispatch, url, body) {
+    var res, jsonData;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return __WEBPACK_IMPORTED_MODULE_2_isomorphic_unfetch___default()(url, {
+              method: 'POST',
+              body: JSON.stringify(body)
+            });
+
+          case 2:
+            res = _context5.sent;
+            _context5.next = 5;
+            return res.json();
+
+          case 5:
+            jsonData = _context5.sent;
+            return _context5.abrupt("return", dispatch({
+              type: __WEBPACK_IMPORTED_MODULE_1__action_types__["a" /* actionTypes */].POST_COMMENTS,
+              getCommentsData: jsonData
+            }));
+
+          case 7:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5, this);
+  }));
+
+  return function postComments(_x9, _x10, _x11) {
+    return _ref5.apply(this, arguments);
   };
 }();
 
@@ -1351,7 +1405,7 @@ function toQueryStr(obj) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/detail/index.js");
