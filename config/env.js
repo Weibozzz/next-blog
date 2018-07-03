@@ -1,5 +1,5 @@
-const DevDomain = 'http://localhost:7654';
+import {DEV_DOMAIN} from './constantsData';
 
 export function getDomain () {
-  return DevDomain+'/';
+  return DEV_DOMAIN+'/';
 }

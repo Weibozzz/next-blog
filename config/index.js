@@ -10,6 +10,9 @@ export const getDetailUrl = (obj) => {
 export const getTotalUrl = (obj) => {
   return getDomain() + 'api/total' + toQueryStr(obj);
 }
+export const getCommentsUrl = (obj) => {
+  return getDomain() + 'api/comments' + toQueryStr(obj);
+}
 
 // export const getBlogUrl = domain+'/api/getBlog'
 // export const getTotalUrl = domain+'/api/total'
@@ -21,5 +24,3 @@ export const getTotalUrl = (obj) => {
 // export const postArticleUrl = domain+'/api/postArticle'
 // export const postCommentUrl = domain+'/api/postComment'
 
-
-export const pageNum = 10;//分页数

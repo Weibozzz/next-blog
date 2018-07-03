@@ -72,18 +72,18 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/Users/liuweibo/ali/next-blog/node_modules/_next@6.1.1@next/dist/pages/_error.js":
-/***/ (function(module, exports) {
-
-module.exports = require("/Users/liuweibo/ali/next-blog/node_modules/_next@6.1.1@next/dist/pages/_error.js");
-
-/***/ }),
-
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("/Users/liuweibo/ali/next-blog/node_modules/_next@6.1.1@next/dist/pages/_error.js");
+module.exports = __webpack_require__("F:\\myself\\ctrl\\next-blog\\node_modules\\_next@6.1.1@next\\dist\\pages\\_error.js");
 
+
+/***/ }),
+
+/***/ "F:\\myself\\ctrl\\next-blog\\node_modules\\_next@6.1.1@next\\dist\\pages\\_error.js":
+/***/ (function(module, exports) {
+
+module.exports = require("F:\\myself\\ctrl\\next-blog\\node_modules\\_next@6.1.1@next\\dist\\pages\\_error.js");
 
 /***/ })
 

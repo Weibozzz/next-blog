@@ -14,7 +14,8 @@ import {getSearchList, getSearchTotal, getSearchPageList} from '../../store/acti
 import Header from '../../components/Header';
 import ListTitle from '../../components/ListTitle';
 import Footer from '../../components/Footer';
-import {getBlogUrl, pageNum, getTotalUrl} from '../../config';
+import {getBlogUrl, getTotalUrl} from '../../config';
+import {pageNum, TITLE, ALL} from '../../config/constantsData';
 
 const {Content} = Layout;
 const Search = Input.Search;
@@ -37,23 +38,23 @@ class Blog extends Component {
     })
     if (val) {
       queryStringObj = {
-        type: 'title',
+        type: TITLE,
         num: 1,
         pageNum,
         wd: val
       }
       queryTotalString = {
-        type: 'title',
+        type: TITLE,
         wd: val
       };
     } else {
       queryStringObj = {
-        type: 'all',
+        type: ALL,
         num: 1,
         pageNum
       }
       queryTotalString = {
-        type: 'all'
+        type: ALL
       };
     }
 
@@ -71,7 +72,7 @@ class Blog extends Component {
     let {searchTotalData = []} = this.props;
     if (searchTotalData.length) {
       let queryStringObj = {
-        type: 'title',
+        type: TITLE,
         num: page,
         pageNum,
         wd
@@ -147,11 +148,11 @@ Blog.getInitialProps = async function (context) {
   const {id = 1} = context.query
   console.log(context.query)
   let queryStringObj = {
-    type: 'all',
+    type: ALL,
     num: id,
     pageNum
   }
-  let queryTotalString = {type: 'all'};
+  let queryTotalString = {type: ALL};
   const pageBlog = await fetch(getBlogUrl(queryStringObj))
   const totalPage = await fetch(getTotalUrl(queryTotalString))
   const pageBlogData = await pageBlog.json()
