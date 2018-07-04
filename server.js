@@ -13,14 +13,21 @@ app.prepare()
     if (!dev) {
       server.use(compression()) //gzip
     }
+    //文章二级页面
     server.get('/p/:id', (req, res) => {
       const actualPage = '/detail'
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)
     })
+    //点击分页二级页面
     server.get('/Blog/:id', (req, res) => {
       const actualPage = '/Blog'
-      console.log(req.params.id)
+      const queryParams = { id: req.params.id }
+      app.render(req, res, actualPage, queryParams)
+    })
+    //后台二级页面
+    server.get('/AdminDetail/:id', (req, res) => {
+      const actualPage = '/AdminDetail'
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)
     })

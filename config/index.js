@@ -11,6 +11,13 @@ export const getDetailUrl = (obj) => {
 export const getTotalUrl = (obj) => {
   return getDomain() + 'api/total' + toQueryStr(obj);
 }
+export const getLastIdUrl = (obj) => {
+  return getDomain() + 'api/lastId' + toQueryStr(obj);
+}
+
+export const getNextIdUrl = (obj) => {
+  return getDomain() + 'api/nextId' + toQueryStr(obj);
+}
 
 
 export const getCommentsUrl = (obj) => {

@@ -7,11 +7,12 @@ import {
 } from 'antd';
 import 'whatwg-fetch'
 import Head from 'next/head';
+import Link from 'next/link';
 
 import {formatTime, getHtml, OldTime} from '../../until';
 import Header from '../../components/Header';
 import ArticleTitle from '../../components/ArticleTitle';
-import {getDetailUrl, getCommentsUrl,postCommentUrl} from '../../config';
+import {getDetailUrl, getCommentsUrl,postCommentUrl,getLastIdUrl,getNextIdUrl} from '../../config';
 import {postComments} from '../../store/actions';
 import {COMMON_TITLE} from '../../config/constantsData';
 
@@ -74,9 +75,9 @@ class Detail extends Component {
   render() {
     //接口
     console.log(this.props)
-    let {blogData = [], commentsData = [],getCommentsData=[]} = this.props;
+    let {blogData = [], commentsData = [],getCommentsData=[],lastIdData=[],nextIdData=[]} = this.props;
     let {articleID} = this.state;
-    const {content = '', createTime = '',title=''} = blogData[0] || {};
+    const {content = '', createTime = '',title='',url=''} = blogData[0] || {};
 
     commentsData=[...commentsData,...getCommentsData]
       .filter(v=>v.a_id===articleID)
@@ -131,6 +132,41 @@ class Detail extends Component {
                       : getHtml(decodeURIComponent(content), createTime)
                 }}
               ></div>
+              <div>
+                {
+                  url&&
+                  <Link  href={url}>
+                    <a>
+                      原文url：
+                      {url}
+                    </a>
+                  </Link>
+                }
+                {
+                  lastIdData && lastIdData.map(v =>
+                    <div key={v.id}>
+                      <Link as={`/p/${v.id}`} href={`/p?id=${v.id}`}>
+                        <a>
+                          上一篇：
+                          {v.title}
+                        </a>
+                      </Link>
+                    </div>
+                  )
+                }
+                {
+                  nextIdData && nextIdData.map(v =>
+                    <div key={v.id}>
+                      <Link as={`/p/${v.id}`} href={`/p?id=${v.id}`}>
+                        <a>
+                          下一篇：
+                          {v.title}
+                        </a>
+                      </Link>
+                    </div>
+                  )
+                }
+              </div>
             </div>
             <div className="comment-wrapper">
               <h2>发表评论：</h2>
@@ -232,11 +268,16 @@ Detail.getInitialProps = async function (context) {
   let queryStrObj = {id};
   const blog = await fetch(getDetailUrl(queryStrObj))
   const comments = await fetch(getCommentsUrl(queryStrObj))
+  const lastId = await fetch(getLastIdUrl(queryStrObj))
+  const nextId = await fetch(getNextIdUrl(queryStrObj))
+
   const blogData = await blog.json()
   const commentsData = await comments.json()
+  const lastIdData = await lastId.json()
+  const nextIdData = await nextId.json()
 
 
-  return {blogData, commentsData}
+  return {blogData, commentsData,lastIdData,nextIdData}
 }
 const mapStateToProps = state => {
   console.log(state)
