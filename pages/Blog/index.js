@@ -114,22 +114,8 @@ class Blog extends Component {
         <Header/>
         <Layout>
           <Content style={{padding: '0 50px'}}>
-            <div style={{padding: 24}}>
-
-              <Row gutter={16}>
-                <Col className="gutter-row" span={22}>
-                  <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
-                          size="large"/>
-                </Col>
-                <Col className="gutter-row" span={2}>
-                  <Link href={`/PostArticle`}>
-                    <a>
-                      <Button size="large" type="primary">发布文章</Button>
-                    </a>
-                  </Link>
-                </Col>
-              </Row>
-            </div>
+            <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
+                    size="large"/>
             <div style={{background: '#fff', padding: 24, minHeight: 380}}>
               <ListTitle listData={pageBlogData}/>
 
@@ -167,17 +153,3 @@ const mapStateToProps = state => {
   return {res, searchData, searchTotalData};
 }
 export default connect(mapStateToProps)(Blog)
-//export default Blog
-/*Blog.getInitialProps = async function ({ reduxStore, req}) {
-  const isServer = !!req
-  const blogData = await fetch('http://www.liuweibo.cn/getBlog?type=all&num=1&pageNum=10')
-  const blogDataJson = await blogData.json()
-  reduxStore.dispatch(serverRenderIncrementCount(isServer,blogDataJson))
-  return {}
-}
-const mapStateToProps = state=>{
-  console.log(state)
-  const {res} = state
-  return {res};
-}
-export default connect(mapStateToProps)(Blog)*/

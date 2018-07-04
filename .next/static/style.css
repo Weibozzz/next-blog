@@ -3972,7 +3972,7 @@ a.ant-btn-sm {
   border: 1px solid #e8e8e8;
 }
 .ant-card-head {
-  background: transparent;
+  background: #fff;
   border-bottom: 1px solid #e8e8e8;
   padding: 0 24px;
   border-radius: 2px 2px 0 0;
@@ -13885,7 +13885,7 @@ span.ant-radio + * {
 }
 .ant-select-search__field__mirror {
   position: absolute;
-  top: -9999px;
+  top: 0;
   left: -9999px;
   white-space: pre;
   pointer-events: none;
@@ -15369,10 +15369,10 @@ span.ant-radio + * {
 }
 .ant-table-column-sorter-up,
 .ant-table-column-sorter-down {
+  line-height: 6px;
   display: block;
   width: 14px;
   height: 6px;
-  line-height: 6px;
   cursor: pointer;
   position: relative;
 }
@@ -16939,7 +16939,6 @@ textarea.ant-time-picker-input {
   z-index: 1060;
   display: block;
   visibility: visible;
-  max-width: 250px;
 }
 .ant-tooltip-hidden {
   display: none;
@@ -16965,6 +16964,7 @@ textarea.ant-time-picker-input {
   padding-right: 8px;
 }
 .ant-tooltip-inner {
+  max-width: 250px;
   padding: 6px 8px;
   color: #fff;
   text-align: left;

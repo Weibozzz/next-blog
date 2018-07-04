@@ -8,8 +8,9 @@ import {Layout, Menu, Breadcrumb, Row, Col, Pagination, Input,Tabs,Table,List, A
 
 import Header from '../../components/Header';
 import {formatTime} from '../../until';
-import {getAdminBlogUrl} from '../../config';
-import {getAdminBlogList} from '../../store/actions';
+import {getAdminBlogUrl, getBlogUrl, getTotalUrl} from '../../config';
+import {getAdminBlogList, getSearchList} from '../../store/actions';
+import {ALL, pageNum, TITLE} from "../../config/constantsData";
 
 
 const TabPane = Tabs.TabPane;
@@ -26,12 +27,11 @@ class Admin extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props)
     const {dispatch} = this.props;
     const queryStringObj = {
-      type:'all',
+      type:ALL,
       num:1,
-      pageNum:10
+      pageNum
     }
     getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
   }
@@ -46,7 +46,14 @@ class Admin extends Component {
   }
 
   onChange(page, pageSize) {
+    const {dispatch} = this.props;
 
+    const queryStringObj = {
+      type:ALL,
+      num:page,
+      pageNum
+    }
+    getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
   }
 
   onSearch(val) {
@@ -54,6 +61,28 @@ class Admin extends Component {
       inputVal: val,
       currentPage: 1
     })
+
+    const {dispatch} = this.props;
+    let queryStringObj;
+    this.setState({
+      keyWard: val
+    })
+    if (val) {
+      queryStringObj = {
+        type: TITLE,
+        num: 1,
+        pageNum,
+        wd: val
+      }
+    } else {
+      queryStringObj = {
+        type: ALL,
+        num: 1,
+        pageNum
+      }
+    }
+
+    getSearchList(dispatch, getBlogUrl(queryStringObj))
   }
   handleDelComment(id){
   }
@@ -73,7 +102,10 @@ class Admin extends Component {
       console.log(key);
     }
 
-    const {adminBlogData=[]} = this.props
+    let {adminBlogData=[],totalPageData=[],searchData=[]} = this.props
+    if (searchData.length) {
+      adminBlogData = searchData
+    }
     const keys = adminBlogData.map(v => ([...Object.keys(v),'操作']));
     const columns = keys && keys[0] ? keys[0].map(v => (
       v === 'title' ?
@@ -91,6 +123,7 @@ class Admin extends Component {
           {title: v, dataIndex: v}
     )) : [];
     const data = adminBlogData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
+    const {total} = totalPageData[0] || {}
     return (
       <div>
         <Head>
@@ -126,7 +159,7 @@ class Admin extends Component {
                   <Pagination
 
                     defaultCurrent={this.state.currentPage}
-                    total={100} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
+                    total={total} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
                 </TabPane>
                 <TabPane tab="留言管理" key="2">
 
@@ -140,9 +173,17 @@ class Admin extends Component {
     )
   }
 }
+Admin.getInitialProps = async function () {
+  let queryTotalString = {type: ALL};
+  const totalPage = await fetch(getTotalUrl(queryTotalString))
+  const totalPageData = await totalPage.json()
+
+
+  return {totalPageData}
+}
 const mapStateToProps = state => {
   console.log(state)
-  const {adminBlogData} = state
-  return {adminBlogData};
+  const {adminBlogData,searchData} = state
+  return {adminBlogData,searchData};
 }
 export default connect(mapStateToProps)(Admin)
