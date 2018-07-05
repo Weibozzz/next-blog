@@ -12,6 +12,9 @@ import Link from 'next/link';
 import {formatTime, getHtml, OldTime} from '../../until';
 import Header from '../../components/Header';
 import ArticleTitle from '../../components/ArticleTitle';
+import PrevNextPage from '../../components/PrevNextPage';
+import Comments from '../../components/Comments';
+
 import {getDetailUrl, getCommentsUrl,postCommentUrl,getLastIdUrl,getNextIdUrl} from '../../config';
 import {postComments} from '../../store/actions';
 import {COMMON_TITLE} from '../../config/constantsData';
@@ -83,7 +86,7 @@ class Detail extends Component {
       .filter(v=>v.a_id===articleID)
       .sort((a,b)=>b.createTime-a.createTime)
 
-    
+
     //表单
     const {getFieldDecorator} = this.props.form;
     const {autoCompleteResult} = this.state;
@@ -132,43 +135,9 @@ class Detail extends Component {
                       : getHtml(decodeURIComponent(content), createTime)
                 }}
               ></div>
-              <div>
-                {
-                  url&&
-                  <Link  href={url}>
-                    <a>
-                      原文url：
-                      {url}
-                    </a>
-                  </Link>
-                }
-                {
-                  lastIdData && lastIdData.map(v =>
-                    <div key={v.id}>
-                      <Link as={`/p/${v.id}`} href={`/p?id=${v.id}`}>
-                        <a>
-                          上一篇：
-                          {v.title}
-                        </a>
-                      </Link>
-                    </div>
-                  )
-                }
-                {
-                  nextIdData && nextIdData.map(v =>
-                    <div key={v.id}>
-                      <Link as={`/p/${v.id}`} href={`/p?id=${v.id}`}>
-                        <a>
-                          下一篇：
-                          {v.title}
-                        </a>
-                      </Link>
-                    </div>
-                  )
-                }
-              </div>
+              <PrevNextPage dataSource={{url,lastIdData,nextIdData}}></PrevNextPage>
             </div>
-            <div className="comment-wrapper">
+            {/*<div className="comment-wrapper">
               <h2>发表评论：</h2>
               <Row>
                 <Col span={8}>
@@ -255,7 +224,8 @@ class Detail extends Component {
                   )
                 )
               }
-            </div>
+            </div>*/}
+            <Comments dataSource={{commentsData,articleID}}></Comments>
           </Content>
         </Layout>
       </div>
@@ -273,8 +243,17 @@ Detail.getInitialProps = async function (context) {
 
   const blogData = await blog.json()
   const commentsData = await comments.json()
-  const lastIdData = await lastId.json()
-  const nextIdData = await nextId.json()
+  let lastIdData ,nextIdData
+  try {
+    lastIdData = await lastId.json()
+  } catch (e) {
+    lastIdData = []
+  }
+  try {
+    nextIdData = await nextId.json()
+  } catch (e) {
+    nextIdData =[]
+  }
 
 
   return {blogData, commentsData,lastIdData,nextIdData}
