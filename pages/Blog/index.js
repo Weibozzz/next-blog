@@ -11,9 +11,7 @@ import Link from 'next/link';
 import Head from 'next/head'
 
 import {getSearchList, getSearchTotal, getSearchPageList} from '../../store/actions'
-import Header from '../../components/Header';
 import ListTitle from '../../components/ListTitle';
-import Footer from '../../components/Footer';
 import {getBlogUrl, getTotalUrl} from '../../config';
 import {pageNum, TITLE, ALL,COMMON_TITLE,INDEX_TITLE} from '../../config/constantsData';
 
@@ -95,12 +93,13 @@ class Blog extends Component {
   }
 
   render() {
-    let total;
+    let total,listData;
     let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = []} = this.props;
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
     if (searchData.length) {
       pageBlogData = searchData
     }
+    listData=pageBlogData
     if (searchTotalData.length) {
       ({total} = searchTotalData[0] || {})
     } else {
@@ -111,19 +110,17 @@ class Blog extends Component {
         <Head>
           <title>{INDEX_TITLE}{COMMON_TITLE}</title>
         </Head>
-        <Header/>
         <Layout>
           <Content style={{padding: '0 50px'}}>
             <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
                     size="large"/>
             <div style={{background: '#fff', padding: 24, minHeight: 380}}>
-              <ListTitle listData={pageBlogData}/>
+              <ListTitle dataSource={{listData}} />
 
               <Pagination total={total} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
             </div>
           </Content>
         </Layout>
-        <Footer/>
       </div>
     )
   }

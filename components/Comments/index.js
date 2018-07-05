@@ -1,31 +1,57 @@
-import Link from 'next/link';
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import Link from 'next/link';
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
   Input, Tooltip, Cascader, Select, Checkbox, Button,
   AutoComplete, List, Avatar, Icon, Divider
 } from 'antd';
+
 import {formatTime} from "../../until";
 import {postComments} from "../../store/actions";
 import {postCommentUrl} from "../../config";
 
 
-
+//表单定义
 const FormItem = Form.Item;
 const { TextArea } = Input;
 const AutoCompleteOption = AutoComplete.Option;
+
+const formItemLayout = {
+  labelCol: {
+    xs: {span: 24},
+    sm: {span: 8},
+  },
+  wrapperCol: {
+    xs: {span: 24},
+    sm: {span: 16},
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
+
+
 class Comments extends Component {
   constructor(props) {
     super(props);
     this.state={
-      autoCompleteResult:[1,2],
+      autoCompleteResult:[],
       articleID:''
     }
   }
   componentWillMount(){
-    console.log(this.props)
     const {blogData = []} = this.props;
+    console.log('components comments',this.props)
     let {id:articleID} = blogData[0] || {};
     this.setState({
       articleID
@@ -36,7 +62,7 @@ class Comments extends Component {
     if (!value) {
       autoCompleteResult = [];
     } else {
-      autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
+      autoCompleteResult = ['.com', '.org', '.net','.cn'].map(domain => `${value}${domain}`);
     }
     this.setState({autoCompleteResult});
   }
@@ -44,7 +70,6 @@ class Comments extends Component {
     e.preventDefault();
     const {dispatch,dataSource={}} = this.props;
     const {articleID:id} = dataSource;
-    console.log(this.props)
     if(!id){
       return;
     }
@@ -53,11 +78,8 @@ class Comments extends Component {
         const {comment,email,nickname,website} = values;
         console.log('Received values of form: ', values);
 
-        console.log({id,comment,email,nickname,website})
-
-        let {articleID} = this.state;
         const queryStringComment = {
-          id:articleID,
+          id,
           comment,
           email,
           nickname,
@@ -73,30 +95,6 @@ class Comments extends Component {
     //表单
     const {getFieldDecorator} = this.props.form;
     const {autoCompleteResult} = this.state;
-
-    const formItemLayout = {
-      labelCol: {
-        xs: {span: 24},
-        sm: {span: 8},
-      },
-      wrapperCol: {
-        xs: {span: 24},
-        sm: {span: 16},
-      },
-    };
-    const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-          offset: 0,
-        },
-        sm: {
-          span: 16,
-          offset: 8,
-        },
-      },
-    };
-
     const websiteOptions = autoCompleteResult.map(website => (
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
     ));
@@ -120,7 +118,8 @@ class Comments extends Component {
                 {getFieldDecorator('nickname', {
                   rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
                 })(
-                  <Input />
+                  <Input
+                    placeholder="用户名" />
                 )}
               </FormItem>
               <FormItem
@@ -134,7 +133,8 @@ class Comments extends Component {
                     required: false, message: 'Please input your E-mail!',
                   }],
                 })(
-                  <Input/>
+                  <Input
+                    placeholder="不会被公开"/>
                 )}
               </FormItem>
               <FormItem
@@ -147,7 +147,7 @@ class Comments extends Component {
                   <AutoComplete
                     dataSource={websiteOptions}
                     onChange={this.handleWebsiteChange}
-                    placeholder="website"
+                    placeholder="利于你的网站SEO"
                   >
                     <Input/>
                   </AutoComplete>
@@ -159,10 +159,11 @@ class Comments extends Component {
               >
                 {getFieldDecorator('comment', {
                   rules: [ {
-                    required: true, message: 'Please input your E-mail!',
+                    required: true, message: 'Please input your comment!',
                   }],
                 })(
-                  <TextArea/>
+                  <TextArea
+                    placeholder="来吐槽"/>
                 )}
               </FormItem>
               <FormItem {...tailFormItemLayout}>
@@ -178,7 +179,14 @@ class Comments extends Component {
                 bodyStyle={{background: "#f8f8f8"}}
                 key={i} title={
                 <span>
-                       <span style={{color: '#34538b', fontWeight: 'bold'}}>{v.user}</span>
+                  {
+                    v.website?
+                      <Link href={v.website} >
+                        <a style={{color: '#34538b', fontWeight: 'bold'}}>{v.user}</a>
+                      </Link>
+                      :
+                      <span style={{color: '#000', fontWeight: 'bold'}}>{v.user}</span>
+                  }
                         说道：
                     </span>
               }

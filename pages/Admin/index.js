@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 import {Layout, Menu, Breadcrumb, Row, Col, Pagination, Input,Tabs,Table,List, Avatar, Icon} from 'antd';
 
-import Header from '../../components/Header';
 import {formatTime} from '../../until';
 import {getAdminBlogUrl, getBlogUrl, getTotalUrl} from '../../config';
 import {getAdminBlogList, getSearchList} from '../../store/actions';
@@ -132,7 +131,6 @@ class Admin extends Component {
           <link rel='stylesheet' href='/_next/static/style.css' />
           <title>admin</title>
         </Head>
-        <Header/>
         <Layout>
           <Content style={{padding: '0 50px'}}>
             <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"

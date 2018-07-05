@@ -2,6 +2,8 @@ import App, {Container} from 'next/app'
 import React from 'react'
 import withReduxStore from '../lib/with-redux-store'
 import { Provider } from 'react-redux'
+import Header from '../components/Header';
+import Footer from '../components/Footer'
 import '../asserts/styles.less'
 
 class MyApp extends App {
@@ -10,7 +12,11 @@ class MyApp extends App {
     return (
       <Container>
         <Provider store={reduxStore}>
-          <Component {...pageProps} />
+          <div>
+            <Header/>
+            <Component {...pageProps} />
+            <Footer/>
+          </div>
         </Provider>
 
         <style jsx global>{`

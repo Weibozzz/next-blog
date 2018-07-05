@@ -22,6 +22,14 @@ export const getSearchTotal = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_SEARCH_TOTAL_DATA, searchTotalData: jsonData})
 
 }
+export const getLifeList = async (dispatch, url) => {
+  //生活板块
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_LIFE, lifeData: jsonData})
+
+}
+
 //后台
 
 export const getAdminBlogList = async (dispatch, url) => {

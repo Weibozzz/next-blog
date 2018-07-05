@@ -27,6 +27,11 @@ export const postCommentUrl = () => {
   return getDomain() + 'api/postComment';
 }
 
+export const getLifeUrl = () => {
+  //生活板块
+  return getDomain() + 'api/life';
+}
+
 //后台
 export const getAdminBlogUrl = (obj) => {
   return getDomain() + 'api/getAdminBlog'+ toQueryStr(obj);;

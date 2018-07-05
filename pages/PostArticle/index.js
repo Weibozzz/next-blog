@@ -1,24 +1,44 @@
 import React, {Component} from 'react'
 import {Layout, Menu, Breadcrumb, Row, Col} from 'antd'
-import {List, Avatar, Icon, Pagination, Alert, Input, Button,Select } from 'antd'
+import {List, Avatar, Icon, Pagination, Alert, Input, Button, Select} from 'antd'
 import {connect} from 'react-redux'
 import Head from 'next/head';
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+import EditArticle  from '../../components/EditArticle';
 
 const {Content} = Layout;
 const {TextArea} = Input;
 const Option = Select.Option;
 
-const PostArticle = props=>(
-  <div>
+class PostArticle extends Component {
+  constructor() {
+    super()
+    this.state = {
 
-    <Head>
-      <title>发布文章</title>
-    </Head>
-      <Header/>
-      发布文章
-      <Footer/>
-  </div>
-)
+    }
+  }
+
+
+  onSubmit() {
+    console.log(this.state)
+  }
+
+  render() {
+    return (
+      <div>
+
+        <Head>
+          <title>发布文章</title>
+        </Head>
+        <div className="post-article">
+          <Layout>
+            <Content style={{padding: '0 50px'}}>
+              <EditArticle/>
+            </Content>
+          </Layout>
+        </div>
+      </div>
+    );
+  }
+}
+
 export default connect()(PostArticle)

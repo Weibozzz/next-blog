@@ -21,6 +21,12 @@ export const reducer = (state = exampleInitialState, action) => {
         searchTotalData: action.searchTotalData
       })
 
+    case actionTypes.GET_LIFE:
+      //生活板块
+      return Object.assign({}, state, {
+        lifeData: action.lifeData
+      })
+
 
     case actionTypes.POST_COMMENTS:
       //发布评论,然后获得更新后的评论
