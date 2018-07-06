@@ -20,6 +20,7 @@
     "axios": "^0.18.0",
     "date-format": "^1.2.0",
     "dns": "^0.2.2",
+    "draft-js": "^0.10.5",
     "express": "^4.16.3",
     "isomorphic-unfetch": "^2.0.0",
     "less": "^3.0.4",
@@ -32,9 +33,11 @@
     "react-dom": "^16.4.1",
     "react-highlight": "^0.12.0",
     "react-markdown": "^3.3.4",
+    "react-mde": "^5.6.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "showdown": "^1.8.6",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
@@ -43,6 +46,12 @@
     "compression": "^1.7.2",
     "cross-env": "^5.2.0",
     "fetch": "^1.1.0",
+    "highlight.js": "^9.12.0",
+    "marked": "^0.4.0",
+    "prismjs": "^1.15.0",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-lowlight": "^2.0.0",
+    "react-syntax-highlighter": "^8.0.1",
     "redux-devtools-extension": "^2.13.5"
   }
 }

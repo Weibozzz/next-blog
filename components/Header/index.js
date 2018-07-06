@@ -31,6 +31,10 @@ const routes = [
     href: ROUTER.POST_ARTICLE,
     txt: ROUTER.POST_ARTICLE_TXT
   },
+  {
+    href: 'Test2',
+    txt: '测试2'
+  },
 ]
 const TopNav = (props) => (
   <div>
