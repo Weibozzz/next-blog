@@ -6,7 +6,7 @@ import {Row, Col} from 'antd';
 import marked from 'marked'
 import hljs from 'highlight.js';
 
-
+// import WangEdit from '../../components/WangEdit';
 import {getHtml, OldTime} from '../../until';
 import './test.less';
 
@@ -44,7 +44,7 @@ class Edit extends Component {
   componentWillMount() {
     const {editCont = '', createTime = ''} = this.props;
     let decodeOrigin = decodeURIComponent(editCont)
-    let markedContent=marked(decodeOrigin);
+    let markedContent = marked(decodeOrigin);
     this.setState({
       previewContent: markedContent,
       originContent: decodeOrigin,
@@ -86,7 +86,8 @@ class Edit extends Component {
     })
     !this.hasContentChanged && (this.hasContentChanged = true)
   }
-  onOldArticleContentChange(e){
+
+  onOldArticleContentChange(e) {
     const {handleChangeMarkEdit} = this.props;
     handleChangeMarkEdit(e.target.innerHTML)
   }
@@ -107,7 +108,7 @@ class Edit extends Component {
              key='main'>
           <Row>
             {
-              createTime > OldTime ?
+              createTime > OldTime || createTime === '' ?
                 <div>
                   <Col span={12}>
                     <div style={{height: aceBoxH}}>
@@ -123,7 +124,8 @@ class Edit extends Component {
                   </Col>
                   <Col span={12}>
                     <div>
-                      <div className="  content-edit" ref={node => this.previewContainer = node}
+                      <div className="  content-edit"
+                           ref={node => this.previewContainer = node}
                            onMouseOver={this.setCurrentIndex.bind(this, 2)} onScroll={this.containerScroll}>
                         <div className=" common-wrapper" ref={node => this.previewWrap = node}
                              dangerouslySetInnerHTML={{__html: previewContent}}></div>
@@ -133,11 +135,11 @@ class Edit extends Component {
                 </div>
                 :
                 <Col span={24}>
-                  <div className="  content-edit" >
+                  <div className="  content-edit">
                     <div className=" common-wrapper"
                          contentEditable="plaintext-only"
                          onInput={this.onOldArticleContentChange.bind(this)}
-                         dangerouslySetInnerHTML={{__html:originContent}}></div>
+                         dangerouslySetInnerHTML={{__html: originContent}}></div>
                   </div>
                 </Col>
             }
@@ -151,6 +153,7 @@ class Edit extends Component {
           overflow-y:scroll;
           border: 1px solid #ddd;
           border-top:none;
+          background-color: #fff;
         }
 .editor-main-a  .common-wrapper {
   padding: 20px;

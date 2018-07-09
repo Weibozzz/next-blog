@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import {Layout, Menu, Breadcrumb, Row, Col} from 'antd'
-import {List, Avatar, Icon, Pagination, Alert, Input, Button, Select} from 'antd'
+import {Layout, Menu, Breadcrumb, Row, Col,List, Avatar, Icon, Pagination, Alert, Input, Button, Select,message} from 'antd'
 import {connect} from 'react-redux'
 
 import Edit from '../../components/Edit';
@@ -27,7 +26,6 @@ class EditArticle extends Component {
   componentWillMount() {
     const {dataSource = {}} = this.props;
     const {title, short, type, url, content,articleID=''} = dataSource;
-    console.log(dataSource)
 
     this.setState({
       selectVal: type,
@@ -72,7 +70,7 @@ class EditArticle extends Component {
 
   onSubmit() {
     const {dispatch} = this.props;
-    return ;
+    const {isEdit} = this.state;
     const {
       selectVal,
       titleVal,
@@ -93,6 +91,10 @@ class EditArticle extends Component {
     if(isEdit!==''){
       //修改文章 isEdit为文章id
       queryParamsObj=Object.assign({},queryParamsObj,{id})
+    }
+    if(titleVal===''||selectVal===''||editCont===''){
+      console.log(123)
+      return ;
     }
 
     postArticle(dispatch, postArticleUrl(), queryParamsObj)
