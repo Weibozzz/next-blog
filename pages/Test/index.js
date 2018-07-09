@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import ReactMarkdown from 'react-markdown';
 import {
   Layout, Menu, Breadcrumb, Row, Col,
   List, Avatar, Icon, Pagination, Alert,
@@ -7,7 +6,6 @@ import {
 } from 'antd'
 import marked from 'marked';
 import hljs from 'highlight.js';
-// import './t.css';
 import  './test.less';
 const {Content} = Layout;
 
@@ -95,6 +93,11 @@ npm run dev
 
 `;
 
+hljs.configure({
+  tabReplace: '  ',
+  classPrefix: 'hljs-',
+  languages: ['CSS', 'HTML, XML', 'JavaScript', 'PHP', 'Python', 'Stylus', 'TypeScript', 'Markdown']
+})
 marked.setOptions({
   highlight: (code,js) => hljs.highlightAuto(code).value,
   gfm: true,

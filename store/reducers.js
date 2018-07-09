@@ -33,12 +33,22 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         getCommentsData: action.getCommentsData
       })
+    case actionTypes.POST_ARTICLE:
+      //发布文章后的返回
+      return Object.assign({}, state, {
+        postArticleData: action.postArticleData
+      })
 
     //后台
     case actionTypes.GET_ADMIN_DATA:
       //获得博客数据
       return Object.assign({}, state, {
         adminBlogData: action.adminBlogData
+      })
+    case actionTypes.POST_ADMIN_DETAIL:
+      //发布文章
+      return Object.assign({}, state, {
+        postAdminDetailData: action.postAdminDetailData
       })
     default:
       return state

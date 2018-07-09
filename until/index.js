@@ -49,7 +49,7 @@ export const getArticleInfo = detailArr=>{
     }*/
     return rest
 }
-export const OldTime = 1526625828;  // 2018-05-18 14:43 星期五
+export const OldTime = 1531094400;  // 2018-07-09 00:00:00 星期一
 export const getHtml=(str,newTime)=>{
     if(OldTime>newTime){ //这是曾经的文章
         return str? str

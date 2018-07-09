@@ -7,6 +7,8 @@ import {
 } from 'antd';
 import 'whatwg-fetch'
 import Head from 'next/head';
+import marked from 'marked'
+import hljs from 'highlight.js';
 //组件
 import ArticleTitle from '../../components/ArticleTitle';
 import PrevNextPage from '../../components/PrevNextPage';
@@ -19,6 +21,21 @@ import {getHtml, OldTime} from '../../until';
 const {Content} = Layout;
 
 
+hljs.configure({
+  tabReplace: '  ',
+  classPrefix: 'hljs-',
+  languages: ['CSS', 'HTML, XML', 'JavaScript', 'PHP', 'Python', 'Stylus', 'TypeScript', 'Markdown']
+})
+marked.setOptions({
+  highlight: (code) => hljs.highlightAuto(code).value,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  smartypants: false
+});
 class Detail extends Component {
   constructor(props) {
     super(props);
@@ -55,10 +72,9 @@ class Detail extends Component {
               <ArticleTitle detailArticle={blogData[0]}/>
               <div
                 dangerouslySetInnerHTML={{
-                  __html:
-                    createTime > OldTime ?
-                      marked(getHtml(decodeURIComponent(content), createTime), {breaks: true})
-                      : getHtml(decodeURIComponent(content), createTime)
+                  __html:createTime > OldTime ?
+                    marked(getHtml(decodeURIComponent(content), createTime))
+                    : getHtml(decodeURIComponent(content), createTime)
                 }}
               ></div>
               <PrevNextPage dataSource={{url,lastIdData,nextIdData}}></PrevNextPage>

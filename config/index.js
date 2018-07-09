@@ -27,6 +27,11 @@ export const postCommentUrl = () => {
   return getDomain() + 'api/postComment';
 }
 
+export const postArticleUrl = () => {
+  //发表文章
+  return getDomain() + 'api/postArticle';
+}
+
 export const getLifeUrl = () => {
   //生活板块
   return getDomain() + 'api/life';
@@ -34,7 +39,10 @@ export const getLifeUrl = () => {
 
 //后台
 export const getAdminBlogUrl = (obj) => {
-  return getDomain() + 'api/getAdminBlog'+ toQueryStr(obj);;
+  return getDomain() + 'api/getAdminBlog'+ toQueryStr(obj);
+}
+export const postAdminDetailUrl = () => {
+  return getDomain() + 'api/postAdminDetail';
 }
 
 // export const getBlogUrl = domain+'/api/getBlog'

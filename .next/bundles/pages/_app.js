@@ -7,15 +7,15 @@ __NEXT_REGISTER_PAGE('/_app', function() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_back_top__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/back-top/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_back_top__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/back-top/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_back_top___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_back_top__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_layout__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/layout/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_layout__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/layout/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_layout__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__("./node_modules/_react@16.4.1@react/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog-2\\next-blog\\components\\Footer\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Footer/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -86,13 +86,13 @@ function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_row__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/row/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_row__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/row/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_row___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_row__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_menu__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/menu/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_menu__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/menu/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_menu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_menu__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_col__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/col/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_col__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/col/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_col___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_col__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/layout/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/layout/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__("./node_modules/_react@16.4.1@react/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
@@ -106,7 +106,7 @@ function (_Component) {
 
 
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog-2\\next-blog\\components\\Header\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Header/index.js";
 
 
 
@@ -115,8 +115,8 @@ var _jsxFileName = "F:\\myself\\ctrl\\next-blog-2\\next-blog\\components\\Header
 var Header = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Header,
     Content = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Content;
 var routes = [{
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["e" /* INDEX */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["f" /* INDEX_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["g" /* INDEX */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* INDEX_TXT */]
 }, {
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["c" /* BLOG */],
   txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["d" /* BLOG_TXT */]
@@ -124,14 +124,14 @@ var routes = [{
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["a" /* ADMIN */],
   txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["b" /* ADMIN_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["g" /* LIFE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* LIFE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["i" /* LIFE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* LIFE_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* TEST */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* TEST_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* TEST */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* TEST_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["i" /* POST_ARTICLE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* POST_ARTICLE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* POST_ARTICLE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* POST_ARTICLE_TXT */]
 }, {
   href: 'Test2',
   txt: '测试2'
@@ -257,18 +257,18 @@ var TopNav = function TopNav(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/breadcrumb/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/breadcrumb/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/button/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/button/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_alert__ = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/alert/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_alert__ = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/alert/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_alert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_alert__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react__ = __webpack_require__("./node_modules/_react@16.4.1@react/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react__);
 
 
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog-2\\next-blog\\components\\TopTips\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/TopTips/index.js";
 
 
 var TopTips = function TopTips(props) {
@@ -333,23 +333,23 @@ var TopTips = function TopTips(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export DEV_DOMAIN */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return DEV_DOMAIN; });
 /* unused harmony export pageNum */
 /* unused harmony export TITLE */
 /* unused harmony export ALL */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return INDEX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return INDEX_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return INDEX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BLOG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BLOG_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ADMIN_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return LIFE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return LIFE_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return TEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return TEST_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return POST_ARTICLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return POST_ARTICLE_TXT; });
-/* unused harmony export COMMON_TITLE */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return LIFE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LIFE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return TEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return TEST_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return POST_ARTICLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return POST_ARTICLE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return COMMON_TITLE; });
 /* unused harmony export INDEX_TITLE */
 var DEV_DOMAIN = 'http://localhost:7654';
 var pageNum = 10; //分页数
@@ -385,7 +385,7 @@ var INDEX_TITLE = '刘伟波的个人主页';
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_store__ = __webpack_require__("./store/store.js");
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog-2\\next-blog\\lib\\with-redux-store.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/lib/with-redux-store.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -940,7 +940,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/_util/getScroll.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/_util/getScroll.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -968,7 +968,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/_util/openAnimation.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/_util/openAnimation.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1037,7 +1037,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/_util/warning.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/_util/warning.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1066,7 +1066,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/alert/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/alert/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1108,7 +1108,7 @@ var _rcAnimate = __webpack_require__("./node_modules/_rc-animate@2.4.4@rc-animat
 
 var _rcAnimate2 = _interopRequireDefault(_rcAnimate);
 
-var _icon = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
+var _icon = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
 
 var _icon2 = _interopRequireDefault(_icon);
 
@@ -1242,7 +1242,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/back-top/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/back-top/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1292,7 +1292,7 @@ var _omit = __webpack_require__("./node_modules/_omit.js@1.0.0@omit.js/es/index.
 
 var _omit2 = _interopRequireDefault(_omit);
 
-var _getScroll = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/getScroll.js");
+var _getScroll = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/getScroll.js");
 
 var _getScroll2 = _interopRequireDefault(_getScroll);
 
@@ -1433,7 +1433,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/breadcrumb/Breadcrumb.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/breadcrumb/Breadcrumb.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1467,11 +1467,11 @@ var _propTypes = __webpack_require__("./node_modules/_prop-types@15.6.0@prop-typ
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _warning = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/warning.js");
+var _warning = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/warning.js");
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _BreadcrumbItem = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/breadcrumb/BreadcrumbItem.js");
+var _BreadcrumbItem = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/breadcrumb/BreadcrumbItem.js");
 
 var _BreadcrumbItem2 = _interopRequireDefault(_BreadcrumbItem);
 
@@ -1594,7 +1594,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/breadcrumb/BreadcrumbItem.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/breadcrumb/BreadcrumbItem.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1709,7 +1709,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/breadcrumb/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/breadcrumb/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1719,11 +1719,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Breadcrumb = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/breadcrumb/Breadcrumb.js");
+var _Breadcrumb = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/breadcrumb/Breadcrumb.js");
 
 var _Breadcrumb2 = _interopRequireDefault(_Breadcrumb);
 
-var _BreadcrumbItem = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/breadcrumb/BreadcrumbItem.js");
+var _BreadcrumbItem = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/breadcrumb/BreadcrumbItem.js");
 
 var _BreadcrumbItem2 = _interopRequireDefault(_BreadcrumbItem);
 
@@ -1735,7 +1735,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/button/button-group.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/button/button-group.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1802,7 +1802,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/button/button.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/button/button.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1850,7 +1850,7 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _icon = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
+var _icon = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
 
 var _icon2 = _interopRequireDefault(_icon);
 
@@ -2073,7 +2073,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/button/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/button/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2083,11 +2083,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _button = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/button/button.js");
+var _button = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/button/button.js");
 
 var _button2 = _interopRequireDefault(_button);
 
-var _buttonGroup = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/button/button-group.js");
+var _buttonGroup = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/button/button-group.js");
 
 var _buttonGroup2 = _interopRequireDefault(_buttonGroup);
 
@@ -2099,7 +2099,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/col/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/col/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2109,14 +2109,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _grid = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/index.js");
+var _grid = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/index.js");
 
 exports['default'] = _grid.Col;
 module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/grid/col.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/grid/col.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2253,7 +2253,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/grid/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/grid/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2264,11 +2264,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Col = exports.Row = undefined;
 
-var _row = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/row.js");
+var _row = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/row.js");
 
 var _row2 = _interopRequireDefault(_row);
 
-var _col = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/col.js");
+var _col = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/col.js");
 
 var _col2 = _interopRequireDefault(_col);
 
@@ -2279,7 +2279,7 @@ exports.Col = _col2['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/grid/row.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/grid/row.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2494,7 +2494,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/icon/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/icon/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2545,7 +2545,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/layout/Sider.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/layout/Sider.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2595,7 +2595,7 @@ var _propTypes = __webpack_require__("./node_modules/_prop-types@15.6.0@prop-typ
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _icon = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/icon/index.js");
+var _icon = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/icon/index.js");
 
 var _icon2 = _interopRequireDefault(_icon);
 
@@ -2813,7 +2813,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/layout/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/layout/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2823,11 +2823,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _layout = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/layout/layout.js");
+var _layout = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/layout/layout.js");
 
 var _layout2 = _interopRequireDefault(_layout);
 
-var _Sider = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/layout/Sider.js");
+var _Sider = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/layout/Sider.js");
 
 var _Sider2 = _interopRequireDefault(_Sider);
 
@@ -2839,7 +2839,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/layout/layout.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/layout/layout.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3029,7 +3029,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/menu/MenuItem.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/menu/MenuItem.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3069,7 +3069,7 @@ var _propTypes = __webpack_require__("./node_modules/_prop-types@15.6.0@prop-typ
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _tooltip = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/tooltip/index.js");
+var _tooltip = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/tooltip/index.js");
 
 var _tooltip2 = _interopRequireDefault(_tooltip);
 
@@ -3119,7 +3119,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/menu/SubMenu.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/menu/SubMenu.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3208,7 +3208,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/menu/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/menu/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3260,19 +3260,19 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _openAnimation = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/openAnimation.js");
+var _openAnimation = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/openAnimation.js");
 
 var _openAnimation2 = _interopRequireDefault(_openAnimation);
 
-var _warning = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/_util/warning.js");
+var _warning = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/_util/warning.js");
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _SubMenu = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/menu/SubMenu.js");
+var _SubMenu = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/menu/SubMenu.js");
 
 var _SubMenu2 = _interopRequireDefault(_SubMenu);
 
-var _MenuItem = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/menu/MenuItem.js");
+var _MenuItem = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/menu/MenuItem.js");
 
 var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
@@ -3485,7 +3485,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/row/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/row/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3495,14 +3495,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _grid = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/grid/index.js");
+var _grid = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/grid/index.js");
 
 exports['default'] = _grid.Row;
 module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/tooltip/index.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/tooltip/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3548,7 +3548,7 @@ var _classnames = __webpack_require__("./node_modules/_classnames@2.2.6@classnam
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _placements = __webpack_require__("./node_modules/_antd@3.6.5@antd/lib/tooltip/placements.js");
+var _placements = __webpack_require__("./node_modules/_antd@3.6.4@antd/lib/tooltip/placements.js");
 
 var _placements2 = _interopRequireDefault(_placements);
 
@@ -3749,7 +3749,7 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ "./node_modules/_antd@3.6.5@antd/lib/tooltip/placements.js":
+/***/ "./node_modules/_antd@3.6.4@antd/lib/tooltip/placements.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17125,7 +17125,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Footer__ = __webpack_require__("./components/Footer/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__asserts_styles_less__ = __webpack_require__("./asserts/styles.less");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__asserts_styles_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__asserts_styles_less__);
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog-2\\next-blog\\pages\\_app.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/pages/_app.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -17204,7 +17204,7 @@ function (_App) {
         }
       }))), __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
         styleId: "2560419279",
-        css: ".fl{float:left;}.fr{float:right;}.clearfix:after{content:'';clear:both;display:block;}ul{margin:0;padding:0;}li{list-style:none;}#root,.container{height:100%;min-height:100%;}.container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;background-color:#f0f2f5;}.mid-content{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzXFxfYXBwLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXFCMkIsQUFJZ0IsQUFHQyxBQUdELEFBS0YsQUFJTyxBQUdKLEFBSUMsQUFLRCxTQWZGLEVBWGQsQUFNZSxDQUhmLEFBZW9CLElBSHBCLEdBSEEsR0FMa0IsTUFZbEIsUUFYQSxtQ0FtQkEsR0FMMEIsOEVBQ0cseUJBQzdCIiwiZmlsZSI6InBhZ2VzXFxfYXBwLmpzIiwic291cmNlUm9vdCI6IkY6XFxteXNlbGZcXGN0cmxcXG5leHQtYmxvZy0yXFxuZXh0LWJsb2ciLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgQXBwLCB7Q29udGFpbmVyfSBmcm9tICduZXh0L2FwcCdcclxuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xyXG5pbXBvcnQgd2l0aFJlZHV4U3RvcmUgZnJvbSAnLi4vbGliL3dpdGgtcmVkdXgtc3RvcmUnXHJcbmltcG9ydCB7IFByb3ZpZGVyIH0gZnJvbSAncmVhY3QtcmVkdXgnXHJcbmltcG9ydCBIZWFkZXIgZnJvbSAnLi4vY29tcG9uZW50cy9IZWFkZXInO1xyXG5pbXBvcnQgRm9vdGVyIGZyb20gJy4uL2NvbXBvbmVudHMvRm9vdGVyJ1xyXG5pbXBvcnQgJy4uL2Fzc2VydHMvc3R5bGVzLmxlc3MnXHJcblxyXG5jbGFzcyBNeUFwcCBleHRlbmRzIEFwcCB7XHJcbiAgcmVuZGVyICgpIHtcclxuICAgIGNvbnN0IHtDb21wb25lbnQsIHBhZ2VQcm9wcywgcmVkdXhTdG9yZX0gPSB0aGlzLnByb3BzXHJcbiAgICByZXR1cm4gKFxyXG4gICAgICA8Q29udGFpbmVyPlxyXG4gICAgICAgIDxQcm92aWRlciBzdG9yZT17cmVkdXhTdG9yZX0+XHJcbiAgICAgICAgICA8ZGl2PlxyXG4gICAgICAgICAgICA8SGVhZGVyLz5cclxuICAgICAgICAgICAgPENvbXBvbmVudCB7Li4ucGFnZVByb3BzfSAvPlxyXG4gICAgICAgICAgICA8Rm9vdGVyLz5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvUHJvdmlkZXI+XHJcblxyXG4gICAgICAgIDxzdHlsZSBqc3ggZ2xvYmFsPntgXHJcblxyXG4uZmx7XHJcbiAgICBmbG9hdDogbGVmdDtcclxufVxyXG4uZnJ7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcbn1cclxuLmNsZWFyZml4OmFmdGVye1xyXG4gICAgY29udGVudDogJyc7XHJcbiAgICBjbGVhcjogYm90aDtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcbnVse1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgcGFkZGluZzogMDtcclxufVxyXG5saXtcclxuICAgIGxpc3Qtc3R5bGU6IG5vbmU7XHJcbn1cclxuI3Jvb3QsLmNvbnRhaW5lcntcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XHJcbn1cclxuLmNvbnRhaW5lcntcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2YwZjJmNTtcclxufVxyXG4ubWlkLWNvbnRlbnR7XHJcbiAgICBmbGV4LWdyb3c6IDE7XHJcbn1cclxuXHJcblxyXG5cclxuICAgICAgICBgfTwvc3R5bGU+XHJcbiAgICAgIDwvQ29udGFpbmVyPlxyXG4gICAgKVxyXG4gIH1cclxufVxyXG5cclxuZXhwb3J0IGRlZmF1bHQgd2l0aFJlZHV4U3RvcmUoTXlBcHApXHJcbiJdfQ== */\n/*@ sourceURL=pages\\_app.js */"
+        css: ".fl{float:left;}.fr{float:right;}.clearfix:after{content:'';clear:both;display:block;}ul{margin:0;padding:0;}li{list-style:none;}#root,.container{height:100%;min-height:100%;}.container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;background-color:#f0f2f5;}.mid-content{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL19hcHAuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBcUIyQixBQUlnQixBQUdDLEFBR0QsQUFLRixBQUlPLEFBR0osQUFJQyxBQUtELFNBZkYsRUFYZCxBQU1lLENBSGYsQUFlb0IsSUFIcEIsR0FIQSxHQUxrQixNQVlsQixRQVhBLG1DQW1CQSxHQUwwQiw4RUFDRyx5QkFDN0IiLCJmaWxlIjoicGFnZXMvX2FwcC5qcyIsInNvdXJjZVJvb3QiOiIvVXNlcnMvbGl1d2VpYm8vYWxpL25leHQtYmxvZyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBBcHAsIHtDb250YWluZXJ9IGZyb20gJ25leHQvYXBwJ1xuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IHdpdGhSZWR1eFN0b3JlIGZyb20gJy4uL2xpYi93aXRoLXJlZHV4LXN0b3JlJ1xuaW1wb3J0IHsgUHJvdmlkZXIgfSBmcm9tICdyZWFjdC1yZWR1eCdcbmltcG9ydCBIZWFkZXIgZnJvbSAnLi4vY29tcG9uZW50cy9IZWFkZXInO1xuaW1wb3J0IEZvb3RlciBmcm9tICcuLi9jb21wb25lbnRzL0Zvb3RlcidcbmltcG9ydCAnLi4vYXNzZXJ0cy9zdHlsZXMubGVzcydcblxuY2xhc3MgTXlBcHAgZXh0ZW5kcyBBcHAge1xuICByZW5kZXIgKCkge1xuICAgIGNvbnN0IHtDb21wb25lbnQsIHBhZ2VQcm9wcywgcmVkdXhTdG9yZX0gPSB0aGlzLnByb3BzXG4gICAgcmV0dXJuIChcbiAgICAgIDxDb250YWluZXI+XG4gICAgICAgIDxQcm92aWRlciBzdG9yZT17cmVkdXhTdG9yZX0+XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxIZWFkZXIvPlxuICAgICAgICAgICAgPENvbXBvbmVudCB7Li4ucGFnZVByb3BzfSAvPlxuICAgICAgICAgICAgPEZvb3Rlci8+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvUHJvdmlkZXI+XG5cbiAgICAgICAgPHN0eWxlIGpzeCBnbG9iYWw+e2BcblxuLmZse1xuICAgIGZsb2F0OiBsZWZ0O1xufVxuLmZye1xuICAgIGZsb2F0OiByaWdodDtcbn1cbi5jbGVhcmZpeDphZnRlcntcbiAgICBjb250ZW50OiAnJztcbiAgICBjbGVhcjogYm90aDtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbnVse1xuICAgIG1hcmdpbjogMDtcbiAgICBwYWRkaW5nOiAwO1xufVxubGl7XG4gICAgbGlzdC1zdHlsZTogbm9uZTtcbn1cbiNyb290LC5jb250YWluZXJ7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XG59XG4uY29udGFpbmVye1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjBmMmY1O1xufVxuLm1pZC1jb250ZW50e1xuICAgIGZsZXgtZ3JvdzogMTtcbn1cblxuXG5cbiAgICAgICAgYH08L3N0eWxlPlxuICAgICAgPC9Db250YWluZXI+XG4gICAgKVxuICB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IHdpdGhSZWR1eFN0b3JlKE15QXBwKVxuIl19 */\n/*@ sourceURL=pages/_app.js */"
       }));
     }
   }]);
@@ -17247,8 +17247,10 @@ var actionTypes = {
   SEARCH_PAGE_DATA: 'SEARCH_PAGE_DATA',
   GET_LIFE: 'GET_LIFE',
   POST_COMMENTS: 'POST_COMMENTS',
+  POST_ARTICLE: 'POST_ARTICLE',
   //后台
-  GET_ADMIN_DATA: 'GET_ADMIN_DATA'
+  GET_ADMIN_DATA: 'GET_ADMIN_DATA',
+  POST_ADMIN_DETAIL: 'POST_ADMIN_DETAIL'
 };
 
 /***/ }),
@@ -17296,12 +17298,24 @@ var reducer = function reducer() {
       return Object.assign({}, state, {
         getCommentsData: action.getCommentsData
       });
+
+    case __WEBPACK_IMPORTED_MODULE_0__action_types__["a" /* actionTypes */].POST_ARTICLE:
+      //发布文章后的返回
+      return Object.assign({}, state, {
+        postArticleData: action.postArticleData
+      });
     //后台
 
     case __WEBPACK_IMPORTED_MODULE_0__action_types__["a" /* actionTypes */].GET_ADMIN_DATA:
       //获得博客数据
       return Object.assign({}, state, {
         adminBlogData: action.adminBlogData
+      });
+
+    case __WEBPACK_IMPORTED_MODULE_0__action_types__["a" /* actionTypes */].POST_ADMIN_DETAIL:
+      //发布文章
+      return Object.assign({}, state, {
+        postAdminDetailData: action.postAdminDetailData
       });
 
     default:

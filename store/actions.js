@@ -30,16 +30,6 @@ export const getLifeList = async (dispatch, url) => {
 
 }
 
-//后台
-
-export const getAdminBlogList = async (dispatch, url) => {
-  //点击搜索分页搜索到的文章列表
-  const res = await fetch(url)
-  const jsonData = await res.json()
-  return dispatch({type: actionTypes.GET_ADMIN_DATA, adminBlogData: jsonData})
-}
-
-
 export const postComments = async (dispatch, url,body) => {
   //发布评论,然后获得更新后的评论
   const res = await fetch(url,{
@@ -50,3 +40,31 @@ export const postComments = async (dispatch, url,body) => {
   return dispatch({type: actionTypes.POST_COMMENTS, getCommentsData: jsonData})
 
 }
+export const postArticle = async (dispatch, url,body) => {
+  //发布文章
+  const res = await fetch(url,{
+    method: 'POST',
+    body:JSON.stringify(body)
+  })
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.POST_ARTICLE, postArticleData: jsonData})
+
+}
+
+//后台
+
+export const getAdminBlogList = async (dispatch, url) => {
+  //点击搜索分页搜索到的文章列表
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_ADMIN_DATA, adminBlogData: jsonData})
+}
+
+export const postAdminDetail = async (dispatch, url) => {
+  //修改文章
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.POST_ADMIN_DETAIL, postAdminDetailData: jsonData})
+}
+
+

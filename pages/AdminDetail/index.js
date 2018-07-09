@@ -9,6 +9,7 @@ import 'whatwg-fetch'
 import Head from 'next/head';
 
 import ArticleTitle from '../../components/ArticleTitle';
+import EditArticle from '../../components/EditArticle';
 import {COMMON_TITLE} from '../../config/constantsData';
 import {getDetailUrl} from '../../config';
 import {getArticleInfo} from '../../until';
@@ -63,39 +64,12 @@ class AdminDetail extends Component {
     //接口
     console.log(this.props)
     let {adminBlogDetailData=[]} = this.props;
+    let {articleID=''} = this.state;
     const objArticleInfo = getArticleInfo(adminBlogDetailData)
+    const {title='',url='',short='',type=''} = objArticleInfo
     adminBlogDetailData=adminBlogDetailData[0] || {}
 
-    //表单
-    const {getFieldDecorator} = this.props.form;
-    const {autoCompleteResult} = this.state;
 
-    const formItemLayout = {
-      labelCol: {
-        xs: {span: 24},
-        sm: {span: 8},
-      },
-      wrapperCol: {
-        xs: {span: 24},
-        sm: {span: 16},
-      },
-    };
-    const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-          offset: 0,
-        },
-        sm: {
-          span: 16,
-          offset: 8,
-        },
-      },
-    };
-
-    const websiteOptions = autoCompleteResult.map(website => (
-      <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-    ));
     return (
       <div className="detail">
         <Head>
@@ -104,76 +78,10 @@ class AdminDetail extends Component {
         <Layout>
           <Content style={{padding: '0 50px'}}>
             <div style={{background: '#fff', padding: 24, minHeight: 380}}>
-              <Form onSubmit={this.handleSubmit}>
-                <FormItem
-                  {...formItemLayout}
-                  label={(
-                    <span>
-              Nickname&nbsp;
-                      <Tooltip title="What do you want others to call you?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-                  )}
-                >
-                  {getFieldDecorator('文章标题', {
-                    rules: [{ required: true, message: 'Please input 文章标题!', whitespace: true }],
-                    initialValue:objArticleInfo.title
-                  })(
-                    <Input />
-                  )}
-                </FormItem>
-                <FormItem
-                  {...formItemLayout}
-                  label="原文url地址"
-                >
-                  {getFieldDecorator('url', {
-                    rules: [{
-                      type: 'email', message: 'The input is not valid url!',
-                    }, {
-                      required: false, message: 'Please input your url!',
-                    }],
-                    initialValue:objArticleInfo.url
-                  })(
-                    <Input/>
-                  )}
-                </FormItem>
-                <FormItem
-                  {...formItemLayout}
-                  label="Website"
-                >
-                  {getFieldDecorator('website', {
-                    rules: [{required: false, message: 'Please input website!'}],
-                  })(
-                    <AutoComplete
-                      dataSource={websiteOptions}
-                      onChange={this.handleWebsiteChange}
-                      placeholder="website"
-                    >
-                      <Input/>
-                    </AutoComplete>
-                  )}
-                </FormItem>
-                <FormItem
-                  {...formItemLayout}
-                  label="简短介绍"
-                >
-                  {getFieldDecorator('short', {
-                    rules: [ {
-                      required: false, message: 'Please input your E-mail!',
-                    }],
-                    initialValue:objArticleInfo.short
-                  })(
-                    <TextArea/>
-                  )}
-                </FormItem>
-                <FormItem {...tailFormItemLayout}>
-                  <Button type="primary" htmlType="submit">提交评论</Button>
-                </FormItem>
-              </Form>
               <ArticleTitle detailArticle={adminBlogDetailData}/>
-              <div>admindetail</div>
+              <EditArticle dataSource={Object.assign({},adminBlogDetailData,{articleID})}/>
             </div>
+
           </Content>
         </Layout>
       </div>
@@ -182,7 +90,6 @@ class AdminDetail extends Component {
 }
 AdminDetail.getInitialProps = async function (context) {
   const {id} = context.query
-  console.log('admin id',id)
   let queryStrObj = {id};
   const adminBlogDetail = await fetch(getDetailUrl(queryStrObj))
   const adminBlogDetailData = await adminBlogDetail.json()
