@@ -50,6 +50,11 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         postAdminDetailData: action.postAdminDetailData
       })
+    case actionTypes.POST_ADMIN_PASSWORD:
+      //检查密码是否正确为管理员
+      return Object.assign({}, state, {
+        postAdminPasswordData: action.postAdminPasswordData
+      })
     default:
       return state
   }

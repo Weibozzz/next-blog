@@ -41,7 +41,7 @@ export const postComments = async (dispatch, url,body) => {
 
 }
 export const postArticle = async (dispatch, url,body) => {
-  //发布文章
+  //发布文章 修改文章
   const res = await fetch(url,{
     method: 'POST',
     body:JSON.stringify(body)
@@ -60,11 +60,20 @@ export const getAdminBlogList = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_ADMIN_DATA, adminBlogData: jsonData})
 }
 
-export const postAdminDetail = async (dispatch, url) => {
-  //修改文章
-  const res = await fetch(url)
+// export const postAdminDetail = async (dispatch, url) => {
+//   //修改文章
+//   const res = await fetch(url)
+//   const jsonData = await res.json()
+//   return dispatch({type: actionTypes.POST_ADMIN_DETAIL, postAdminDetailData: jsonData})
+// }
+export const postAdminPassword = async (dispatch, url,body) => {
+  //检查密码是否正确为管理员
+  const res = await fetch(url,{
+    method: 'POST',
+    body:JSON.stringify(body)
+  })
   const jsonData = await res.json()
-  return dispatch({type: actionTypes.POST_ADMIN_DETAIL, postAdminDetailData: jsonData})
+  return dispatch({type: actionTypes.POST_ADMIN_PASSWORD,postAdminPasswordData: jsonData})
 }
 
 

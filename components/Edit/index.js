@@ -155,7 +155,7 @@ class Edit extends Component {
         .content-edit{
           max-height:600px;
           height:600px;
-          overflow-y:scroll;
+          overflow-y:auto;
           border: 1px solid #ddd;
           border-top:none;
           background-color: #fff;

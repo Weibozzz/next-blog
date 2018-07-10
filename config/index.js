@@ -44,6 +44,9 @@ export const getAdminBlogUrl = (obj) => {
 export const postAdminDetailUrl = () => {
   return getDomain() + 'api/postAdminDetail';
 }
+export const postAdminPasswordUrl = () => {
+  return getDomain() + 'api/postAdminPassword';
+}
 
 // export const getBlogUrl = domain+'/api/getBlog'
 // export const getTotalUrl = domain+'/api/total'
