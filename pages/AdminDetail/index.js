@@ -16,9 +16,6 @@ import {getArticleInfo} from '../../until';
 
 const {Content} = Layout;
 
-const FormItem = Form.Item;
-const { TextArea } = Input;
-const AutoCompleteOption = AutoComplete.Option;
 class AdminDetail extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +59,6 @@ class AdminDetail extends Component {
   }
   render() {
     //接口
-    console.log(this.props)
     let {adminBlogDetailData=[]} = this.props;
     let {articleID=''} = this.state;
     const objArticleInfo = getArticleInfo(adminBlogDetailData)

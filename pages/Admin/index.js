@@ -4,14 +4,14 @@ import Head from 'next/head'
 import Link from 'next/link';
 
 
-import {Layout, Menu, Breadcrumb, Row, Col, Pagination, Input,Tabs,Table,List, Avatar, Icon} from 'antd';
+import {Layout, Menu, Breadcrumb, Row, Col, Pagination, Input,Tabs,Table,List, Avatar, Icon,message,Modal} from 'antd';
 
 import {formatTime} from '../../until';
 import {getAdminBlogUrl, getBlogUrl, getTotalUrl} from '../../config';
 import {getAdminBlogList, getSearchList} from '../../store/actions';
 import {ALL, pageNum, TITLE} from "../../config/constantsData";
 
-
+const confirm = Modal.confirm;
 const TabPane = Tabs.TabPane;
 const {Content} = Layout;
 const Search = Input.Search;
@@ -55,6 +55,7 @@ class Admin extends Component {
     getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
   }
 
+
   onSearch(val) {
     this.setState({
       inputVal: val,
@@ -86,6 +87,31 @@ class Admin extends Component {
   handleDelComment(id){
   }
   handleDelArticle(id){
+    const {dispatch} = this.props;
+    const queryStringObj = {
+      type:'del',
+      num:id
+    };
+    confirm({
+      title: 'Are you sure delete this article?',
+      content: 'Some descriptions',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk() {
+        console.log('OK');
+        getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj)).then(res=>{
+          if(res){
+            message.success(`id为${id}的文章删除成功`)
+          }else {
+            message.error('删除失败')
+          }
+        })
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
 
   }
   render () {

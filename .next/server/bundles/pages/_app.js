@@ -191,8 +191,8 @@ var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\components\\Header\
 var Header = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Header,
     Content = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Content;
 var routes = [{
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["g" /* INDEX */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* INDEX_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* INDEX */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["i" /* INDEX_TXT */]
 }, {
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["d" /* BLOG */],
   txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["e" /* BLOG_TXT */]
@@ -200,14 +200,14 @@ var routes = [{
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["a" /* ADMIN */],
   txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["b" /* ADMIN_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["i" /* LIFE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* LIFE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* LIFE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* LIFE_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* TEST */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* TEST_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* TEST */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["o" /* TEST_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* POST_ARTICLE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* POST_ARTICLE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* POST_ARTICLE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* POST_ARTICLE_TXT */]
 }, {
   href: 'Test2',
   txt: '测试2'
@@ -409,23 +409,23 @@ var TopTips = function TopTips(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return DEV_DOMAIN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return pageNum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return TITLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return DEV_DOMAIN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return pageNum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return TITLE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ALL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return INDEX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return INDEX_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BLOG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return BLOG_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ADMIN_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return LIFE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LIFE_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return TEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return TEST_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return POST_ARTICLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return POST_ARTICLE_TXT; });
-/* unused harmony export COMMON_TITLE */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LIFE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return LIFE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return TEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return TEST_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return POST_ARTICLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return POST_ARTICLE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return COMMON_TITLE; });
 /* unused harmony export INDEX_TITLE */
 var DEV_DOMAIN = 'http://localhost:7654';
 var pageNum = 10; //分页数

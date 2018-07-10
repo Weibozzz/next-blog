@@ -72,11 +72,11 @@ class EditArticle extends Component {
     const {dispatch} = this.props;
     const {isEdit} = this.state;
     const {
-      selectVal,
-      titleVal,
-      shortVal,
-      urlVal,
-      editCont,
+      selectVal='',
+      titleVal='',
+      shortVal='',
+      urlVal='',
+      editCont='',
       isEdit:id
     } = this.state;
     let queryParamsObj={
@@ -88,16 +88,21 @@ class EditArticle extends Component {
       short: shortVal,
       img: 'js.png'
     };
-    if(isEdit!==''){
+    const bool = isEdit!=='';
+    if(bool){
       //修改文章 isEdit为文章id
       queryParamsObj=Object.assign({},queryParamsObj,{id})
     }
     if(titleVal===''||selectVal===''||editCont===''){
-      console.log(123)
+      message.error('必填项不能为空');
       return ;
     }
 
-    postArticle(dispatch, postArticleUrl(), queryParamsObj)
+    postArticle(dispatch, postArticleUrl(), queryParamsObj).then(res=>{
+      if(res){
+        message.success(`${bool?'修改':'发布'}文章成功`);
+      }
+    })
   }
 
   render() {

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
   Input, Tooltip, Cascader, Select, Checkbox, Button,
-  AutoComplete, List, Avatar, Icon, Divider
+  AutoComplete, List, Avatar, Icon, Divider,message
 } from 'antd';
 
 import {formatTime} from "../../until";
@@ -85,7 +85,11 @@ class Comments extends Component {
           nickname,
           website
         }
-        postComments(dispatch,postCommentUrl(),queryStringComment)
+        postComments(dispatch,postCommentUrl(),queryStringComment).then(res=>{
+          if(res){
+            message.success(`评论发表成功`);
+          }
+        })
       }
     });
   }
