@@ -8,25 +8,9 @@ class WangEdit extends Component {
       editorContent: ''
     }
   }
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
 
-        {/* 将生成编辑器 */}
-        <div ref="editorElem" style={{textAlign: 'left'}}>
-        </div>
-
-        <button onClick={this.clickHandle.bind(this)}>获取内容</button>
-      </div>
-    );
-  }
   componentDidMount() {
+    const {originContent=''} = this.props;
     const elem = this.refs.editorElem
     const editor = new E(elem)
     // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
@@ -36,9 +20,20 @@ class WangEdit extends Component {
       })
     }
     editor.create()
+    editor.txt.html(originContent)
   }
   clickHandle() {
     alert(this.state.editorContent)
+  }
+  render() {
+    return (
+      <div className="wang-edit">
+        <div ref="editorElem" style={{textAlign: 'left'}}>
+        </div>
+
+        <button onClick={this.clickHandle.bind(this)}>获取内容</button>
+      </div>
+    );
   }
 }
 

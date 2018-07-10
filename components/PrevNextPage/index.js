@@ -6,7 +6,7 @@ const PrevNextPage = ({dataSource={}})=>{
       url&&
       <Link  href={url}>
         <a>
-          原文url：
+          参考url：
           {url}
         </a>
       </Link>

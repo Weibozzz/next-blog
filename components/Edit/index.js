@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {Row, Col} from 'antd';
+import {Row, Col,Input} from 'antd';
 
 import marked from 'marked'
 import hljs from 'highlight.js';
 
-// import WangEdit from '../../components/WangEdit';
 import {getHtml, OldTime} from '../../until';
 import './test.less';
+
+const { TextArea } = Input;
 
 hljs.configure({
   tabReplace: '  ',
@@ -32,7 +33,8 @@ class Edit extends Component {
     this.state = {
       previewContent: '',
       aceBoxH: null,
-      originContent: ''
+      originContent: '',
+      inputValue:''
 
     }
 
@@ -78,6 +80,7 @@ class Edit extends Component {
 
   onContentChange(e) {
     let innerText = e.target.innerText
+    // let innerText = e.target.value
     let markCont = marked(innerText)
     const {handleChangeMarkEdit} = this.props;
     handleChangeMarkEdit(innerText)
@@ -134,7 +137,8 @@ class Edit extends Component {
                   </Col>
                 </div>
                 :
-                <Col span={24}>
+                <div>
+                  <Col span={24}>
                   <div className="  content-edit">
                     <div className=" common-wrapper"
                          contentEditable="plaintext-only"
@@ -142,6 +146,7 @@ class Edit extends Component {
                          dangerouslySetInnerHTML={{__html: originContent}}></div>
                   </div>
                 </Col>
+                </div>
             }
           </Row>
 
@@ -160,8 +165,6 @@ class Edit extends Component {
   min-height: 100%;
   outline: none;
 }
-
-
         `}</style>
       </div>
 

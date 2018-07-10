@@ -1,25 +1,71 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Breadcrumb, Row, Col } from 'antd'
-import { List, Avatar, Icon,Pagination,Alert,Input,Button,Radio,Tooltip   } from 'antd'
+import Link from 'next/link';
+import { Layout, Menu, Breadcrumb, Row, Col ,List, Avatar, Icon,Pagination,Alert,Input,Button,Radio,Tooltip   } from 'antd'
 
 
+const TopTips = props=>{
+  // console.log(props,this,window)
+  /*onst pathnameArr = location.pathname.split('/').slice(1);
+  const pathBreancrumbList = [
+    {
+      key:'',
+      value:['网站首页']
+    },
+    {
+      key:'Blog',
+      value:['文章列表']
+    },
+    {
+      key:'Admin',
+      value:['后台管理']
+    },
+    {
+      key:'Life',
+      value:['生活记录']
+    },
+    {
+      key:'PostArticle',
+      value:['发布文章']
+    },
+  ]
+  const fn = (arr,pathBreancrumbList)=>{
+    if(arr.length===1){
+      let valueIndex = pathBreancrumbList.findIndex(s=>s.key===arr.join(' '));
+      return pathBreancrumbList[valueIndex].value;
+    }
+    return ['文章列表',arr[1]]
+  }*/
+  const BreadcrumbItemList = ['']
+  // const BreadcrumbItemList = fn(pathnameArr,pathBreancrumbList)
+  // console.log(BreadcrumbItemList)
+  return (
+    <div className="Blog">
+      <Alert
+        message="博客正在重构和开发中......"
+        type="warning"
+        closable
+        banner={true}
+      />
+      <div>
+        <Button href="https://github.com/Weibozzz/react-blog" icon="github">Github</Button>
+      </div>
+      <Breadcrumb style={{margin: '16px 0'}}>
+        {
+          BreadcrumbItemList.map((v,index)=>{
+            return (
 
-const TopTips = props=>(
-  <div className="Blog">
-    <Alert
-      message="博客正在重构和开发中......"
-      type="warning"
-      closable
-      banner={true}
-    />
-    <div>
-      <Button href="https://github.com/Weibozzz/react-blog" icon="github">Github</Button>
+              <Breadcrumb.Item key={index}>
+                {/*<Link  href='javascript:;'>
+                  <a>{v}</a>
+                </Link>*/}
+                网站首页
+              </Breadcrumb.Item>
+            );
+          })
+        }
+
+      </Breadcrumb>
     </div>
-    <Breadcrumb style={{margin: '16px 0'}}>
-      <Breadcrumb.Item>网站首页</Breadcrumb.Item>
-      <Breadcrumb.Item>前端技术</Breadcrumb.Item>
-      <Breadcrumb.Item>171</Breadcrumb.Item>
-    </Breadcrumb>
-  </div>
-)
+  );
+}
 export default TopTips

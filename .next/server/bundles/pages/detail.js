@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -84,7 +84,7 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__until__ = __webpack_require__("./until/index.js");
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\components\\ArticleTitle\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/ArticleTitle/index.js";
 
 
 
@@ -153,7 +153,7 @@ var ArticleTitle = function ArticleTitle(_ref) {
     }
   }), __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_styled_jsx_style___default.a, {
     styleId: "3877631247",
-    css: ".detail-info.jsx-3877631247 li.jsx-3877631247{margin-right:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHNcXEFydGljbGVUaXRsZVxcaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBa0JrQixBQUc2QixrQkFDcEIiLCJmaWxlIjoiY29tcG9uZW50c1xcQXJ0aWNsZVRpdGxlXFxpbmRleC5qcyIsInNvdXJjZVJvb3QiOiJGOlxcbXlzZWxmXFxjdHJsXFxuZXh0LWJsb2czXFxuZXh0LWJsb2ciLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3Qse0NvbXBvbmVudH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgeyBMaXN0LCBBdmF0YXIsIEljb24gLERpdmlkZXJ9IGZyb20gJ2FudGQnO1xyXG5pbXBvcnQge2Zvcm1hdFRpbWUsZ2V0QXJ0aWNsZUluZm99IGZyb20gJy4uLy4uL3VudGlsJztcclxuXHJcbmNvbnN0IEFydGljbGVUaXRsZSA9ICh7ZGV0YWlsQXJ0aWNsZT17fX0pPT57XHJcbiAgY29uc3Qge3RpdGxlLGNyZWF0ZVRpbWUsdXNlcix2aXNpdG9yLGxhc3RNb2RpZnksbW9kaWZ5Q291bnR9ID0gZGV0YWlsQXJ0aWNsZVxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2PlxyXG4gICAgICA8aDI+e3RpdGxlfTwvaDI+XHJcbiAgICAgIDx1bCBjbGFzc05hbWU9XCJjbGVhcmZpeCBkZXRhaWwtaW5mb1wiID5cclxuICAgICAgICA8bGkgY2xhc3NOYW1lPVwiZmxcIj7lj5HluIPml7bpl7TvvJp7Zm9ybWF0VGltZShjcmVhdGVUaW1lKX08L2xpPlxyXG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuS9nOiAhe+8mnt1c2VyfTwvbGk+XHJcbiAgICAgICAgPGxpIGNsYXNzTmFtZT1cImZsXCI+5rWP6KeI5qyh5pWw77yae3Zpc2l0b3J9PC9saT5cclxuICAgICAgICA8bGkgY2xhc3NOYW1lPVwiZmxcIj7mnIDlkI7kv67mlLnvvJp7Zm9ybWF0VGltZShsYXN0TW9kaWZ5KX08L2xpPlxyXG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuS/ruaUueasoeaVsO+8mnttb2RpZnlDb3VudH08L2xpPlxyXG4gICAgICA8L3VsPlxyXG4gICAgICA8RGl2aWRlci8+XHJcblxyXG4gICAgICA8c3R5bGUganN4PntgXHJcbiAgICAgICAgLmRldGFpbC1pbmZvIGxpe1xyXG4gICAgICAgICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICBgfVxyXG5cclxuICAgICAgPC9zdHlsZT5cclxuICAgIDwvZGl2PlxyXG4gIClcclxufVxyXG5leHBvcnQgZGVmYXVsdCBBcnRpY2xlVGl0bGUiXX0= */\n/*@ sourceURL=components\\ArticleTitle\\index.js */"
+    css: ".detail-info.jsx-3877631247 li.jsx-3877631247{margin-right:20px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvQXJ0aWNsZVRpdGxlL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCa0IsQUFHNkIsa0JBQ3BCIiwiZmlsZSI6ImNvbXBvbmVudHMvQXJ0aWNsZVRpdGxlL2luZGV4LmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9saXV3ZWliby9hbGkvbmV4dC1ibG9nIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LHtDb21wb25lbnR9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IExpc3QsIEF2YXRhciwgSWNvbiAsRGl2aWRlcn0gZnJvbSAnYW50ZCc7XG5pbXBvcnQge2Zvcm1hdFRpbWUsZ2V0QXJ0aWNsZUluZm99IGZyb20gJy4uLy4uL3VudGlsJztcblxuY29uc3QgQXJ0aWNsZVRpdGxlID0gKHtkZXRhaWxBcnRpY2xlPXt9fSk9PntcbiAgY29uc3Qge3RpdGxlLGNyZWF0ZVRpbWUsdXNlcix2aXNpdG9yLGxhc3RNb2RpZnksbW9kaWZ5Q291bnR9ID0gZGV0YWlsQXJ0aWNsZVxuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8aDI+e3RpdGxlfTwvaDI+XG4gICAgICA8dWwgY2xhc3NOYW1lPVwiY2xlYXJmaXggZGV0YWlsLWluZm9cIiA+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuWPkeW4g+aXtumXtO+8mntmb3JtYXRUaW1lKGNyZWF0ZVRpbWUpfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuS9nOiAhe+8mnt1c2VyfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPua1j+iniOasoeaVsO+8mnt2aXNpdG9yfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuacgOWQjuS/ruaUue+8mntmb3JtYXRUaW1lKGxhc3RNb2RpZnkpfTwvbGk+XG4gICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbFwiPuS/ruaUueasoeaVsO+8mnttb2RpZnlDb3VudH08L2xpPlxuICAgICAgPC91bD5cbiAgICAgIDxEaXZpZGVyLz5cblxuICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAuZGV0YWlsLWluZm8gbGl7XG4gICAgICAgICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xuICAgICAgICB9XG4gICAgICAgIGB9XG5cbiAgICAgIDwvc3R5bGU+XG4gICAgPC9kaXY+XG4gIClcbn1cbmV4cG9ydCBkZWZhdWx0IEFydGljbGVUaXRsZSJdfQ== */\n/*@ sourceURL=components/ArticleTitle/index.js */"
   }));
 };
 
@@ -204,7 +204,7 @@ var ArticleTitle = function ArticleTitle(_ref) {
 
 
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\components\\Comments\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Comments/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -284,7 +284,7 @@ function (_Component) {
         if (!_value) {
           autoCompleteResult = [];
         } else {
-          autoCompleteResult = ['.com', '.org', '.net', '.cn'].map(function (domain) {
+          autoCompleteResult = ['.com', '.cn', '.org', '.net'].map(function (domain) {
             return "".concat(_value).concat(domain);
           });
         }
@@ -316,7 +316,13 @@ function (_Component) {
                 email = values.email,
                 nickname = values.nickname,
                 website = values.website;
-            console.log('Received values of form: ', values);
+
+            if (website !== '' && !__WEBPACK_IMPORTED_MODULE_13__until__["d" /* regUrl */].test(website)) {
+              __WEBPACK_IMPORTED_MODULE_6_antd_lib_message___default.a.warning('url不正确,示例："http://www.xxx.com"');
+
+              return;
+            }
+
             var queryStringComment = {
               id: id,
               comment: comment,
@@ -324,7 +330,7 @@ function (_Component) {
               nickname: nickname,
               website: website
             };
-            Object(__WEBPACK_IMPORTED_MODULE_14__store_actions__["c" /* postComments */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_15__config__["h" /* postCommentUrl */])(), queryStringComment).then(function (res) {
+            Object(__WEBPACK_IMPORTED_MODULE_14__store_actions__["d" /* postComments */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_15__config__["g" /* postCommentUrl */])(), queryStringComment).then(function (res) {
               if (res) {
                 __WEBPACK_IMPORTED_MODULE_6_antd_lib_message___default.a.success("\u8BC4\u8BBA\u53D1\u8868\u6210\u529F");
               }
@@ -369,7 +375,7 @@ function (_Component) {
           key: website,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 103
+            lineNumber: 105
           }
         }, website);
       });
@@ -377,52 +383,52 @@ function (_Component) {
         className: "comment-wrapper",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 106
+          lineNumber: 108
         }
       }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement("h2", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 109
         }
       }, "\u53D1\u8868\u8BC4\u8BBA\uFF1A"), __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_row___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 110
         }
       }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_antd_lib_col___default.a, {
         span: 8,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 109
+          lineNumber: 111
         }
       }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_antd_lib_form___default.a, {
         onSubmit: this.handleSubmit,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110
+          lineNumber: 112
         }
       }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(FormItem, _extends({}, formItemLayout, {
         label: __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement("span", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 114
+            lineNumber: 116
           }
         }, "Nickname\xA0", __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_antd_lib_tooltip___default.a, {
           title: "What do you want others to call you?",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 116
+            lineNumber: 118
           }
         }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_icon___default.a, {
           type: "question-circle-o",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 117
+            lineNumber: 119
           }
         }))),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 111
+          lineNumber: 113
         }
       }), getFieldDecorator('nickname', {
         rules: [{
@@ -431,16 +437,17 @@ function (_Component) {
           whitespace: true
         }]
       })(__WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8_antd_lib_input___default.a, {
+        title: "\u7528\u6237\u540D",
         placeholder: "\u7528\u6237\u540D",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125
+          lineNumber: 127
         }
       }))), __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(FormItem, _extends({}, formItemLayout, {
         label: "E-mail",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 129
+          lineNumber: 132
         }
       }), getFieldDecorator('email', {
         rules: [{
@@ -451,16 +458,17 @@ function (_Component) {
           message: 'Please input your E-mail!'
         }]
       })(__WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8_antd_lib_input___default.a, {
+        title: "\u4E0D\u4F1A\u88AB\u516C\u5F00",
         placeholder: "\u4E0D\u4F1A\u88AB\u516C\u5F00",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 144
         }
       }))), __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(FormItem, _extends({}, formItemLayout, {
         label: "Website",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 144
+          lineNumber: 149
         }
       }), getFieldDecorator('website', {
         rules: [{
@@ -470,21 +478,22 @@ function (_Component) {
       })(__WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_antd_lib_auto_complete___default.a, {
         dataSource: websiteOptions,
         onChange: this.handleWebsiteChange,
-        placeholder: "\u5229\u4E8E\u4F60\u7684\u7F51\u7AD9SEO",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 151
-        }
-      }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8_antd_lib_input___default.a, {
+        placeholder: "SEO\u63A8\u5E7F \u793A\u4F8B\uFF1A\"http://xxx.com\"",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 156
+        }
+      }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8_antd_lib_input___default.a, {
+        title: "SEO\u63A8\u5E7F \u793A\u4F8B\uFF1A\"http://xxx.com\"",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 161
         }
       })))), __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(FormItem, _extends({}, formItemLayout, {
         label: "comment",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 160
+          lineNumber: 166
         }
       }), getFieldDecorator('comment', {
         rules: [{
@@ -492,22 +501,23 @@ function (_Component) {
           message: 'Please input your comment!'
         }]
       })(__WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(TextArea, {
+        title: "\u6765\u5410\u69FD",
         placeholder: "\u6765\u5410\u69FD",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 169
+          lineNumber: 175
         }
       }))), __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(FormItem, _extends({}, tailFormItemLayout, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 173
+          lineNumber: 180
         }
       }), __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a, {
         type: "primary",
         htmlType: "submit",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 174
+          lineNumber: 181
         }
       }, "\u63D0\u4EA4\u8BC4\u8BBA"))))), commentsData.map(function (v, i) {
         return __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_card___default.a, {
@@ -518,13 +528,13 @@ function (_Component) {
           title: __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement("span", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 185
+              lineNumber: 192
             }
           }, v.website ? __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_next_link___default.a, {
             href: v.website,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 188
+              lineNumber: 195
             }
           }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement("a", {
             style: {
@@ -533,7 +543,7 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 189
+              lineNumber: 196
             }
           }, v.user)) : __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement("span", {
             style: {
@@ -542,24 +552,24 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 192
+              lineNumber: 199
             }
           }, v.user), "\u8BF4\u9053\uFF1A"),
           extra: __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement("a", {
             href: "javascript:;",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 197
+              lineNumber: 204
             }
           }, Object(__WEBPACK_IMPORTED_MODULE_13__until__["b" /* formatTime */])(v.createTime)),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 182
+            lineNumber: 189
           }
         }, __WEBPACK_IMPORTED_MODULE_10_react___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 198
+            lineNumber: 205
           }
         }, v.msg));
       }));
@@ -583,7 +593,7 @@ var WrappedRegistrationForm = __WEBPACK_IMPORTED_MODULE_9_antd_lib_form___defaul
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\components\\PrevNextPage\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/PrevNextPage/index.js";
 
 
 
@@ -612,7 +622,7 @@ var PrevNextPage = function PrevNextPage(_ref) {
       fileName: _jsxFileName,
       lineNumber: 8
     }
-  }, "\u539F\u6587url\uFF1A", url)), lastIdData.map(function (v) {
+  }, "\u53C2\u8003url\uFF1A", url)), lastIdData.map(function (v) {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
       key: v.id,
       __source: {
@@ -664,23 +674,23 @@ var PrevNextPage = function PrevNextPage(_ref) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return DEV_DOMAIN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return pageNum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return TITLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return pageNum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return TITLE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ALL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return INDEX_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return INDEX_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BLOG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return BLOG_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ADMIN_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LIFE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return LIFE_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return TEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return TEST_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return POST_ARTICLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return POST_ARTICLE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return LIFE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return LIFE_TXT; });
+/* unused harmony export TEST */
+/* unused harmony export TEST_TXT */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return POST_ARTICLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return POST_ARTICLE_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return COMMON_TITLE; });
-/* unused harmony export INDEX_TITLE */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return INDEX_TITLE; });
 var DEV_DOMAIN = 'http://localhost:7654';
 var pageNum = 10; //分页数
 
@@ -722,16 +732,16 @@ function getDomain() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getBlogUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getDetailUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getTotalUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getLastIdUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getNextIdUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getCommentsUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return postCommentUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getBlogUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getDetailUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getTotalUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getLastIdUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getNextIdUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getCommentsUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return postCommentUrl; });
 /* unused harmony export postArticleUrl */
 /* unused harmony export getLifeUrl */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getAdminBlogUrl; });
+/* unused harmony export getAdminBlogUrl */
 /* unused harmony export postAdminDetailUrl */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env__ = __webpack_require__("./config/env.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__until__ = __webpack_require__("./until/index.js");
@@ -739,22 +749,22 @@ function getDomain() {
  //前台
 
 var getBlogUrl = function getBlogUrl(obj) {
-  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/getBlog' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/getBlog' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["e" /* toQueryStr */])(obj);
 };
 var getDetailUrl = function getDetailUrl(obj) {
-  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/detail' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/detail' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["e" /* toQueryStr */])(obj);
 };
 var getTotalUrl = function getTotalUrl(obj) {
-  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/total' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/total' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["e" /* toQueryStr */])(obj);
 };
 var getLastIdUrl = function getLastIdUrl(obj) {
-  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/lastId' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/lastId' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["e" /* toQueryStr */])(obj);
 };
 var getNextIdUrl = function getNextIdUrl(obj) {
-  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/nextId' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/nextId' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["e" /* toQueryStr */])(obj);
 };
 var getCommentsUrl = function getCommentsUrl(obj) {
-  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/comments' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/comments' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["e" /* toQueryStr */])(obj);
 };
 var postCommentUrl = function postCommentUrl() {
   return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/postComment';
@@ -769,7 +779,7 @@ var getLifeUrl = function getLifeUrl() {
 }; //后台
 
 var getAdminBlogUrl = function getAdminBlogUrl(obj) {
-  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/getAdminBlog' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["d" /* toQueryStr */])(obj);
+  return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/getAdminBlog' + Object(__WEBPACK_IMPORTED_MODULE_1__until__["e" /* toQueryStr */])(obj);
 };
 var postAdminDetailUrl = function postAdminDetailUrl() {
   return Object(__WEBPACK_IMPORTED_MODULE_0__env__["a" /* getDomain */])() + 'api/postAdminDetail';
@@ -820,7 +830,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\pages\\detail\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/pages/detail/index.js";
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
@@ -1037,22 +1047,22 @@ function () {
               id: id
             };
             _context.next = 4;
-            return fetch(Object(__WEBPACK_IMPORTED_MODULE_12__config__["d" /* getDetailUrl */])(queryStrObj));
+            return fetch(Object(__WEBPACK_IMPORTED_MODULE_12__config__["c" /* getDetailUrl */])(queryStrObj));
 
           case 4:
             blog = _context.sent;
             _context.next = 7;
-            return fetch(Object(__WEBPACK_IMPORTED_MODULE_12__config__["c" /* getCommentsUrl */])(queryStrObj));
+            return fetch(Object(__WEBPACK_IMPORTED_MODULE_12__config__["b" /* getCommentsUrl */])(queryStrObj));
 
           case 7:
             comments = _context.sent;
             _context.next = 10;
-            return fetch(Object(__WEBPACK_IMPORTED_MODULE_12__config__["e" /* getLastIdUrl */])(queryStrObj));
+            return fetch(Object(__WEBPACK_IMPORTED_MODULE_12__config__["d" /* getLastIdUrl */])(queryStrObj));
 
           case 10:
             lastId = _context.sent;
             _context.next = 13;
-            return fetch(Object(__WEBPACK_IMPORTED_MODULE_12__config__["f" /* getNextIdUrl */])(queryStrObj));
+            return fetch(Object(__WEBPACK_IMPORTED_MODULE_12__config__["e" /* getNextIdUrl */])(queryStrObj));
 
           case 13:
             nextId = _context.sent;
@@ -1153,13 +1163,13 @@ var actionTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export getSearchPageList */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getSearchList; });
-/* unused harmony export getSearchTotal */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getSearchPageList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getSearchList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getSearchTotal; });
 /* unused harmony export getLifeList */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return postComments; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return postComments; });
 /* unused harmony export postArticle */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getAdminBlogList; });
+/* unused harmony export getAdminBlogList */
 /* unused harmony export postAdminDetail */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
@@ -1499,7 +1509,8 @@ function () {
 /* unused harmony export getArticleInfo */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OldTime; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getHtml; });
-/* harmony export (immutable) */ __webpack_exports__["d"] = toQueryStr;
+/* harmony export (immutable) */ __webpack_exports__["e"] = toQueryStr;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return regUrl; });
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var format = __webpack_require__("date-format");
@@ -1581,10 +1592,11 @@ var getHtml = function getHtml(str, newTime) {
 function toQueryStr(obj) {
   return "?" + JSON.stringify(obj).replace(/{|}|\"|\'/g, "").replace(/,/g, "&").replace(/:/g, "=");
 }
+var regUrl = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
 
 /***/ }),
 
-/***/ 8:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/detail/index.js");

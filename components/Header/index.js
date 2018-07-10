@@ -24,16 +24,8 @@ const routes = [
     txt: ROUTER.LIFE_TXT
   },
   {
-    href: ROUTER.TEST,
-    txt: ROUTER.TEST_TXT
-  },
-  {
     href: ROUTER.POST_ARTICLE,
     txt: ROUTER.POST_ARTICLE_TXT
-  },
-  {
-    href: 'Test2',
-    txt: '测试2'
   },
 ]
 const TopNav = (props) => (

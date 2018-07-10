@@ -7,7 +7,7 @@ import {
   AutoComplete, List, Avatar, Icon, Divider,message
 } from 'antd';
 
-import {formatTime} from "../../until";
+import {formatTime,regUrl} from "../../until";
 import {postComments} from "../../store/actions";
 import {postCommentUrl} from "../../config";
 
@@ -62,7 +62,7 @@ class Comments extends Component {
     if (!value) {
       autoCompleteResult = [];
     } else {
-      autoCompleteResult = ['.com', '.org', '.net','.cn'].map(domain => `${value}${domain}`);
+      autoCompleteResult = ['.com','.cn', '.org', '.net'].map(domain => `${value}${domain}`);
     }
     this.setState({autoCompleteResult});
   }
@@ -76,8 +76,10 @@ class Comments extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         const {comment,email,nickname,website} = values;
-        console.log('Received values of form: ', values);
-
+        if(website!==''&&!regUrl.test(website)){
+          message.warning('url不正确,示例："http://www.xxx.com"')
+          return ;
+        }
         const queryStringComment = {
           id,
           comment,
@@ -123,6 +125,7 @@ class Comments extends Component {
                   rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
                 })(
                   <Input
+                    title="用户名"
                     placeholder="用户名" />
                 )}
               </FormItem>
@@ -137,7 +140,9 @@ class Comments extends Component {
                     required: false, message: 'Please input your E-mail!',
                   }],
                 })(
+
                   <Input
+                    title="不会被公开"
                     placeholder="不会被公开"/>
                 )}
               </FormItem>
@@ -151,9 +156,10 @@ class Comments extends Component {
                   <AutoComplete
                     dataSource={websiteOptions}
                     onChange={this.handleWebsiteChange}
-                    placeholder="利于你的网站SEO"
+                    placeholder='SEO推广 示例："http://xxx.com"'
                   >
-                    <Input/>
+                    <Input
+                      title='SEO推广 示例："http://xxx.com"'/>
                   </AutoComplete>
                 )}
               </FormItem>
@@ -167,6 +173,7 @@ class Comments extends Component {
                   }],
                 })(
                   <TextArea
+                    title="来吐槽"
                     placeholder="来吐槽"/>
                 )}
               </FormItem>

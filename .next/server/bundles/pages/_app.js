@@ -91,7 +91,7 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\components\\Footer\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Footer/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -182,7 +182,7 @@ function (_Component) {
 
 
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\components\\Header\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/Header/index.js";
 
 
 
@@ -192,7 +192,7 @@ var Header = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Header,
     Content = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Content;
 var routes = [{
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["h" /* INDEX */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["i" /* INDEX_TXT */]
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* INDEX_TXT */]
 }, {
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["d" /* BLOG */],
   txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["e" /* BLOG_TXT */]
@@ -200,54 +200,48 @@ var routes = [{
   href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["a" /* ADMIN */],
   txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["b" /* ADMIN_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["j" /* LIFE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* LIFE_TXT */]
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["k" /* LIFE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* LIFE_TXT */]
 }, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* TEST */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["o" /* TEST_TXT */]
-}, {
-  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["l" /* POST_ARTICLE */],
-  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* POST_ARTICLE_TXT */]
-}, {
-  href: 'Test2',
-  txt: '测试2'
+  href: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["m" /* POST_ARTICLE */],
+  txt: __WEBPACK_IMPORTED_MODULE_8__config_constantsData__["n" /* POST_ARTICLE_TXT */]
 }];
 
 var TopNav = function TopNav(props) {
   return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 32
     }
   }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_next_head___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 33
     }
   }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("meta", {
     name: "viewport",
     content: "width=device-width, initial-scale=1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 34
     }
   }), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("meta", {
     charSet: "utf-8",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 35
     }
   }), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("link", {
     rel: "stylesheet",
     href: "/_next/static/style.css",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 36
     }
   })), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 38
     }
   }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(Header, {
     style: {
@@ -259,24 +253,24 @@ var TopNav = function TopNav(props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 39
     }
   }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_row___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 40
     }
   }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_antd_lib_col___default.a, {
     span: 2,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 41
     }
   }), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_antd_lib_col___default.a, {
     span: 17,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 42
     }
   }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_menu___default.a, {
     theme: "dark",
@@ -287,25 +281,25 @@ var TopNav = function TopNav(props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 43
     }
   }, routes.map(function (item, index) {
     return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_menu___default.a.Item, {
       key: item.href,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 51
       }
     }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_next_link___default.a, {
       href: item.href,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 60
+        lineNumber: 52
       }
     }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 53
       }
     }, item.txt)));
   }))))), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(Content, {
@@ -315,12 +309,12 @@ var TopNav = function TopNav(props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 62
     }
   }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__components_TopTips__["a" /* default */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 63
     }
   }))));
 };
@@ -341,18 +335,56 @@ var TopNav = function TopNav(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_alert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_alert__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link__ = __webpack_require__("next/link");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_link__);
 
 
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\components\\TopTips\\index.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/components/TopTips/index.js";
+
 
 
 var TopTips = function TopTips(props) {
+  // console.log(props,this,window)
+
+  /*onst pathnameArr = location.pathname.split('/').slice(1);
+  const pathBreancrumbList = [
+    {
+      key:'',
+      value:['网站首页']
+    },
+    {
+      key:'Blog',
+      value:['文章列表']
+    },
+    {
+      key:'Admin',
+      value:['后台管理']
+    },
+    {
+      key:'Life',
+      value:['生活记录']
+    },
+    {
+      key:'PostArticle',
+      value:['发布文章']
+    },
+  ]
+  const fn = (arr,pathBreancrumbList)=>{
+    if(arr.length===1){
+      let valueIndex = pathBreancrumbList.findIndex(s=>s.key===arr.join(' '));
+      return pathBreancrumbList[valueIndex].value;
+    }
+    return ['文章列表',arr[1]]
+  }*/
+  var BreadcrumbItemList = ['']; // const BreadcrumbItemList = fn(pathnameArr,pathBreancrumbList)
+  // console.log(BreadcrumbItemList)
+
   return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", {
     className: "Blog",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 42
     }
   }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_antd_lib_alert___default.a, {
     message: "\u535A\u5BA2\u6B63\u5728\u91CD\u6784\u548C\u5F00\u53D1\u4E2D......",
@@ -361,19 +393,19 @@ var TopTips = function TopTips(props) {
     banner: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 43
     }
   }), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 49
     }
   }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a, {
     href: "https://github.com/Weibozzz/react-blog",
     icon: "github",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 50
     }
   }, "Github")), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb___default.a, {
     style: {
@@ -381,24 +413,17 @@ var TopTips = function TopTips(props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 52
     }
-  }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb___default.a.Item, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19
-    }
-  }, "\u7F51\u7AD9\u9996\u9875"), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb___default.a.Item, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    }
-  }, "\u524D\u7AEF\u6280\u672F"), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb___default.a.Item, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    }
-  }, "171")));
+  }, BreadcrumbItemList.map(function (v, index) {
+    return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_breadcrumb___default.a.Item, {
+      key: index,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 57
+      }
+    }, "\u7F51\u7AD9\u9996\u9875");
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (TopTips);
@@ -410,23 +435,23 @@ var TopTips = function TopTips(props) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return DEV_DOMAIN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return pageNum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return TITLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return pageNum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return TITLE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ALL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return INDEX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return INDEX_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return INDEX_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BLOG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return BLOG_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ADMIN_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LIFE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return LIFE_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return TEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return TEST_TXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return POST_ARTICLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return POST_ARTICLE_TXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return LIFE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return LIFE_TXT; });
+/* unused harmony export TEST */
+/* unused harmony export TEST_TXT */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return POST_ARTICLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return POST_ARTICLE_TXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return COMMON_TITLE; });
-/* unused harmony export INDEX_TITLE */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return INDEX_TITLE; });
 var DEV_DOMAIN = 'http://localhost:7654';
 var pageNum = 10; //分页数
 
@@ -461,7 +486,7 @@ var INDEX_TITLE = '刘伟波的个人主页';
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_store__ = __webpack_require__("./store/store.js");
 
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\lib\\with-redux-store.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/lib/with-redux-store.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -606,7 +631,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Footer__ = __webpack_require__("./components/Footer/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__asserts_styles_less__ = __webpack_require__("./asserts/styles.less");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__asserts_styles_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__asserts_styles_less__);
-var _jsxFileName = "F:\\myself\\ctrl\\next-blog3\\next-blog\\pages\\_app.js";
+var _jsxFileName = "/Users/liuweibo/ali/next-blog/pages/_app.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -667,7 +692,7 @@ function (_App) {
           fileName: _jsxFileName,
           lineNumber: 15
         },
-        className: "jsx-2560419279"
+        className: "jsx-3656560046" + " " + "container"
       }, __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_Header__["a" /* default */], {
         __source: {
           fileName: _jsxFileName,
@@ -684,8 +709,8 @@ function (_App) {
           lineNumber: 18
         }
       }))), __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
-        styleId: "2560419279",
-        css: ".fl{float:left;}.fr{float:right;}.clearfix:after{content:'';clear:both;display:block;}ul{margin:0;padding:0;}li{list-style:none;}#root,.container{height:100%;min-height:100%;}.container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;background-color:#f0f2f5;}.mid-content{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzXFxfYXBwLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXFCMkIsQUFJZ0IsQUFHQyxBQUdELEFBS0YsQUFJTyxBQUdKLEFBSUMsQUFLRCxTQWZGLEVBWGQsQUFNZSxDQUhmLEFBZW9CLElBSHBCLEdBSEEsR0FMa0IsTUFZbEIsUUFYQSxtQ0FtQkEsR0FMMEIsOEVBQ0cseUJBQzdCIiwiZmlsZSI6InBhZ2VzXFxfYXBwLmpzIiwic291cmNlUm9vdCI6IkY6XFxteXNlbGZcXGN0cmxcXG5leHQtYmxvZzNcXG5leHQtYmxvZyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBBcHAsIHtDb250YWluZXJ9IGZyb20gJ25leHQvYXBwJ1xyXG5pbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXHJcbmltcG9ydCB3aXRoUmVkdXhTdG9yZSBmcm9tICcuLi9saWIvd2l0aC1yZWR1eC1zdG9yZSdcclxuaW1wb3J0IHsgUHJvdmlkZXIgfSBmcm9tICdyZWFjdC1yZWR1eCdcclxuaW1wb3J0IEhlYWRlciBmcm9tICcuLi9jb21wb25lbnRzL0hlYWRlcic7XHJcbmltcG9ydCBGb290ZXIgZnJvbSAnLi4vY29tcG9uZW50cy9Gb290ZXInXHJcbmltcG9ydCAnLi4vYXNzZXJ0cy9zdHlsZXMubGVzcydcclxuXHJcbmNsYXNzIE15QXBwIGV4dGVuZHMgQXBwIHtcclxuICByZW5kZXIgKCkge1xyXG4gICAgY29uc3Qge0NvbXBvbmVudCwgcGFnZVByb3BzLCByZWR1eFN0b3JlfSA9IHRoaXMucHJvcHNcclxuICAgIHJldHVybiAoXHJcbiAgICAgIDxDb250YWluZXI+XHJcbiAgICAgICAgPFByb3ZpZGVyIHN0b3JlPXtyZWR1eFN0b3JlfT5cclxuICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgIDxIZWFkZXIvPlxyXG4gICAgICAgICAgICA8Q29tcG9uZW50IHsuLi5wYWdlUHJvcHN9IC8+XHJcbiAgICAgICAgICAgIDxGb290ZXIvPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9Qcm92aWRlcj5cclxuXHJcbiAgICAgICAgPHN0eWxlIGpzeCBnbG9iYWw+e2BcclxuXHJcbi5mbHtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG59XHJcbi5mcntcclxuICAgIGZsb2F0OiByaWdodDtcclxufVxyXG4uY2xlYXJmaXg6YWZ0ZXJ7XHJcbiAgICBjb250ZW50OiAnJztcclxuICAgIGNsZWFyOiBib3RoO1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxudWx7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG59XHJcbmxpe1xyXG4gICAgbGlzdC1zdHlsZTogbm9uZTtcclxufVxyXG4jcm9vdCwuY29udGFpbmVye1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgbWluLWhlaWdodDogMTAwJTtcclxufVxyXG4uY29udGFpbmVye1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjBmMmY1O1xyXG59XHJcbi5taWQtY29udGVudHtcclxuICAgIGZsZXgtZ3JvdzogMTtcclxufVxyXG5cclxuXHJcblxyXG4gICAgICAgIGB9PC9zdHlsZT5cclxuICAgICAgPC9Db250YWluZXI+XHJcbiAgICApXHJcbiAgfVxyXG59XHJcblxyXG5leHBvcnQgZGVmYXVsdCB3aXRoUmVkdXhTdG9yZShNeUFwcClcclxuIl19 */\n/*@ sourceURL=pages\\_app.js */"
+        styleId: "3656560046",
+        css: ".fl{float:left;}.fr{float:right;}.clearfix:after{content:'';clear:both;display:block;}ul{margin:0;padding:0;}li{list-style:none;}#__next,.container{height:100%;}.container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;background-color:#f0f2f5;}.container>div:nth-child(2){-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL19hcHAuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBcUIyQixBQUlnQixBQUdDLEFBR0QsQUFLRixBQUlPLEFBR0osQUFHQyxBQUtELFNBZEYsRUFYZCxBQU1lLENBSGYsQUFlQSxJQUhBLEdBSEEsR0FMa0IsY0FDbEIsbUNBa0JBLEdBTDBCLDhFQUNHLHlCQUM3QiIsImZpbGUiOiJwYWdlcy9fYXBwLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9saXV3ZWliby9hbGkvbmV4dC1ibG9nIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IEFwcCwge0NvbnRhaW5lcn0gZnJvbSAnbmV4dC9hcHAnXG5pbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXG5pbXBvcnQgd2l0aFJlZHV4U3RvcmUgZnJvbSAnLi4vbGliL3dpdGgtcmVkdXgtc3RvcmUnXG5pbXBvcnQgeyBQcm92aWRlciB9IGZyb20gJ3JlYWN0LXJlZHV4J1xuaW1wb3J0IEhlYWRlciBmcm9tICcuLi9jb21wb25lbnRzL0hlYWRlcic7XG5pbXBvcnQgRm9vdGVyIGZyb20gJy4uL2NvbXBvbmVudHMvRm9vdGVyJ1xuaW1wb3J0ICcuLi9hc3NlcnRzL3N0eWxlcy5sZXNzJ1xuXG5jbGFzcyBNeUFwcCBleHRlbmRzIEFwcCB7XG4gIHJlbmRlciAoKSB7XG4gICAgY29uc3Qge0NvbXBvbmVudCwgcGFnZVByb3BzLCByZWR1eFN0b3JlfSA9IHRoaXMucHJvcHNcbiAgICByZXR1cm4gKFxuICAgICAgPENvbnRhaW5lcj5cbiAgICAgICAgPFByb3ZpZGVyIHN0b3JlPXtyZWR1eFN0b3JlfT5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbnRhaW5lclwiPlxuICAgICAgICAgICAgPEhlYWRlci8+XG4gICAgICAgICAgICA8Q29tcG9uZW50IHsuLi5wYWdlUHJvcHN9IC8+XG4gICAgICAgICAgICA8Rm9vdGVyLz5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9Qcm92aWRlcj5cblxuICAgICAgICA8c3R5bGUganN4IGdsb2JhbD57YFxuXG4uZmx7XG4gICAgZmxvYXQ6IGxlZnQ7XG59XG4uZnJ7XG4gICAgZmxvYXQ6IHJpZ2h0O1xufVxuLmNsZWFyZml4OmFmdGVye1xuICAgIGNvbnRlbnQ6ICcnO1xuICAgIGNsZWFyOiBib3RoO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xufVxudWx7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG59XG5saXtcbiAgICBsaXN0LXN0eWxlOiBub25lO1xufVxuI19fbmV4dCwuY29udGFpbmVye1xuICAgIGhlaWdodDogMTAwJTtcbn1cbi5jb250YWluZXJ7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMGYyZjU7XG59XG4uY29udGFpbmVyPmRpdjpudGgtY2hpbGQoMil7XG4gICAgZmxleC1ncm93OiAxO1xufVxuXG5cblxuICAgICAgICBgfTwvc3R5bGU+XG4gICAgICA8L0NvbnRhaW5lcj5cbiAgICApXG4gIH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgd2l0aFJlZHV4U3RvcmUoTXlBcHApXG4iXX0= */\n/*@ sourceURL=pages/_app.js */"
       }));
     }
   }]);

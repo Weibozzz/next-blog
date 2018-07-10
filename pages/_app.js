@@ -12,7 +12,7 @@ class MyApp extends App {
     return (
       <Container>
         <Provider store={reduxStore}>
-          <div>
+          <div className="container">
             <Header/>
             <Component {...pageProps} />
             <Footer/>
@@ -39,16 +39,15 @@ ul{
 li{
     list-style: none;
 }
-#root,.container{
+#__next,.container{
     height: 100%;
-    min-height: 100%;
 }
 .container{
     display: flex;
     flex-direction: column;
     background-color: #f0f2f5;
 }
-.mid-content{
+.container>div:nth-child(2){
     flex-grow: 1;
 }
 

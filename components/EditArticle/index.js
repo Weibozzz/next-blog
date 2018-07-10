@@ -6,9 +6,13 @@ import Edit from '../../components/Edit';
 
 import {postArticleUrl} from '../../config';
 import {postArticle} from '../../store/actions';
+import {regUrl} from '../../until';
 
 const {TextArea} = Input;
 const Option = Select.Option;
+const InputGroup = Input.Group;
+
+
 
 class EditArticle extends Component {
   constructor(props) {
@@ -19,7 +23,8 @@ class EditArticle extends Component {
       shortVal: '',
       urlVal: '',
       editCont: '',
-      isEdit:'' //空值默认不为修改文章
+      isEdit:'', //空值默认不为修改文章
+      notEditArticle:false  //默认不修改文章
     }
   }
 
@@ -64,13 +69,14 @@ class EditArticle extends Component {
   //编辑器内容
   handleChangeMarkEdit(txt) {
     this.setState({
-      editCont: txt
+      editCont: txt,
+      notEditArticle:true //正在修改文章
     })
   }
 
   onSubmit() {
     const {dispatch} = this.props;
-    const {isEdit} = this.state;
+    const {isEdit,notEditArticle} = this.state;
     const {
       selectVal='',
       titleVal='',
@@ -82,12 +88,16 @@ class EditArticle extends Component {
     let queryParamsObj={
       title: titleVal,
       url: urlVal,
-      content: encodeURIComponent(editCont),
+      content:!notEditArticle?decodeURIComponent(editCont): encodeURIComponent(editCont),
       user: '刘伟波',
       type: selectVal,
       short: shortVal,
       img: 'js.png'
     };
+    if(urlVal!==''&&!regUrl.test(urlVal)){
+      message.warning('url不正确')
+      return ;
+    }
     const bool = isEdit!=='';
     if(bool){
       //修改文章 isEdit为文章id
@@ -118,34 +128,40 @@ class EditArticle extends Component {
     return (
       <div>
         <Row>
-          <Col span={20}>
-            <Input
-              defaultValue={titleVal} onChange={this.handleChangeTitle.bind(this)} placeholder="文章标题"/>
-          </Col>
-          <Col span={1}>
-          </Col>
-          <Col span={3}>
-            <Select defaultValue={selectVal===''?'文章类型':selectVal} style={{width: '100%'}} onChange={this.handleChangeSelect.bind(this)}>
-              <Option value="h5">html</Option>
-              <Option value="css">css</Option>
-              <Option value="js">javascript</Option>
-              <Option value="vue">vue</Option>
-              <Option value="react">react</Option>
-              <Option value="angular">angular</Option>
-              <Option value="node">node</Option>
-              <Option value="php">php</Option>
-              <Option value="mysql">mysql</Option>
-              <Option value="server">服务器之类</Option>
-              <Option value="interesting">生活喜好</Option>
-              <Option value="fight">激励向上</Option>
-              <Option value="others">其他</Option>
-            </Select>
+          <Col span={24}>
+            <InputGroup compact>
+              <Input style={{ width: '90%' }}
+                     onChange={this.handleChangeTitle.bind(this)}
+                     placeholder="文章标题"
+                     title='文章标题'
+                     defaultValue={titleVal} />
+              <Select style={{ width: '10%' }}
+                      onChange={this.handleChangeSelect.bind(this)}
+                      defaultValue={selectVal===''?'文章类型':selectVal}>
+                <Option value="h5">html</Option>
+                <Option value="css">css</Option>
+                <Option value="js">javascript</Option>
+                <Option value="vue">vue</Option>
+                <Option value="react">react</Option>
+                <Option value="angular">angular</Option>
+                <Option value="node">node</Option>
+                <Option value="php">php</Option>
+                <Option value="mysql">mysql</Option>
+                <Option value="server">服务器之类</Option>
+                <Option value="interesting">生活喜好</Option>
+                <Option value="fight">激励向上</Option>
+                <Option value="others">其他</Option>
+              </Select>
+            </InputGroup>
           </Col>
         </Row>
         <Row>
           <Col span={24}>
             <Input
-              defaultValue={urlVal} onChange={this.handleChangeUrl.bind(this)} placeholder="原文的URL链接地址"/>
+              defaultValue={urlVal}
+              onChange={this.handleChangeUrl.bind(this)}
+              title="参考的URL链接地址"
+              placeholder="参考的URL链接地址"/>
           </Col>
         </Row>
         <Row>
@@ -153,6 +169,7 @@ class EditArticle extends Component {
                                     <TextArea
                                       onChange={this.handleChangeShort.bind(this)}
                                       placeholder='简短介绍'
+                                      title="简短介绍"
                                       defaultValue={shortVal}
                                       rows={2}/>
           </Col>
