@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Link from 'next/link';
 import { Layout, Menu, Breadcrumb, Row, Col ,List, Avatar, Icon,Pagination,Alert,Input,Button,Radio,Tooltip   } from 'antd'
 
+import {GITHUB_ADDRESS,TOP_TIPS} from '../../config/constantsData';
 
 const TopTips = props=>{
   // console.log(props,this,window)
@@ -41,13 +42,13 @@ const TopTips = props=>{
   return (
     <div className="Blog">
       <Alert
-        message="博客正在重构和开发中......"
+        message={TOP_TIPS}
         type="warning"
         closable
         banner={true}
       />
       <div>
-        <Button href="https://github.com/Weibozzz/react-blog" icon="github">Github</Button>
+        <Button href={GITHUB_ADDRESS} icon="github">Github</Button>
       </div>
       <Breadcrumb style={{margin: '16px 0'}}>
         {

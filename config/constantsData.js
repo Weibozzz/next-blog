@@ -1,8 +1,19 @@
-//請求地址
-export const DEV_DOMAIN = 'http://localhost:7654';
-export const ONLINE_DOMAIN = 'http://www.liuweibo.cn:7654';
+//备案地址
+export const MIIT_BEIAN = 'http://www.miitbeian.gov.cn'
+export const MY_BLOG = 'http://www.liuweibo.cn'
 
-export const pageNum = 10;//分页数
+//請求地址
+export const DEV_DOMAIN = 'http://localhost:7654/';
+export const ONLINE_DOMAIN = MY_BLOG+':7654';
+export const LINK_ABOUT_ME = MY_BLOG+'/p/146';
+
+
+
+//github地址
+export const GITHUB_ADDRESS = 'https://github.com/Weibozzz/next-blog';
+export const TOP_TIPS = 'next服务端渲染博客正在重构和开发中......'
+//分页数
+export const pageNum = 10;
 export const TITLE = 'title'
 export const ALL = 'all'
 

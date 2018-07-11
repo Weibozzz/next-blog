@@ -52,15 +52,18 @@ class TopNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: false
+      isLogin: false,
+      defaultSelectedKeys:'/'
     }
   }
-
-
-
+  
   componentDidMount() {
+    const {pathname='/'} = location;
     const {dispatch} = this.props;
     const {password=''} = localStorage;
+    this.setState({
+      selectedKeys:[pathname]
+    })
     if(!password){
       return ;
     }
@@ -73,11 +76,24 @@ class TopNav extends Component {
       }
     })
   }
+
+  onSelect({keyPath,key}){
+    this.setState({
+      selectedKeys: keyPath
+    })
+  }
   onExit(){
-    console.log(3333)
+    //退出清除localStorage
+    localStorage.removeItem('password')
+    this.setState({
+      isLogin: false
+    })
   }
   render() {
-    const {isLogin} = this.state;
+    let {isLogin,selectedKeys=['/']} = this.state;
+    if(Object.prototype.toString.call(selectedKeys)==='[object String]'){
+      selectedKeys=['/']
+    }
     let newRoutes;
     if(isLogin){
       newRoutes=routes
@@ -99,7 +115,9 @@ class TopNav extends Component {
                 <Menu
                   theme="dark"
                   mode="horizontal"
+                  onClick={this.onSelect.bind(this)}
                   defaultSelectedKeys={['/']}
+                  selectedKeys={selectedKeys}
                   style={{lineHeight: '64px'}}
                 >
                   {
@@ -116,7 +134,7 @@ class TopNav extends Component {
                             <a>{item.txt}</a>
                           </Link>
                         </Menu.Item>
-                      
+
                     })
                   }
                 </Menu>

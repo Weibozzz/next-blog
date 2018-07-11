@@ -1,10 +1,12 @@
 import Link from 'next/link';
-const PrevNextPage = ({dataSource={}})=>{
-  const {url='',lastIdData=[],nextIdData=[]} = dataSource;
+import {regUrl} from "../../until";
+
+const PrevNextPage = ({dataSource = {}}) => {
+  const {url = '', lastIdData = [], nextIdData = []} = dataSource;
   return <div>
     {
-      url&&
-      <Link  href={url}>
+      url && regUrl.test(url) &&
+      <Link href={url}>
         <a>
           参考url：
           {url}

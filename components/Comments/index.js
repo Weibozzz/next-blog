@@ -1,20 +1,20 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Link from 'next/link';
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
   Input, Tooltip, Cascader, Select, Checkbox, Button,
-  AutoComplete, List, Avatar, Icon, Divider,message
+  AutoComplete, List, Avatar, Icon, Divider, message
 } from 'antd';
 
-import {formatTime,regUrl} from "../../until";
+import {formatTime, regUrl} from "../../until";
 import {postComments} from "../../store/actions";
 import {postCommentUrl} from "../../config";
 
 
 //表单定义
 const FormItem = Form.Item;
-const { TextArea } = Input;
+const {TextArea} = Input;
 const AutoCompleteOption = AutoComplete.Option;
 
 const formItemLayout = {
@@ -44,41 +44,43 @@ const tailFormItemLayout = {
 class Comments extends Component {
   constructor(props) {
     super(props);
-    this.state={
-      autoCompleteResult:[],
-      articleID:''
+    this.state = {
+      autoCompleteResult: [],
+      articleID: ''
     }
   }
-  componentWillMount(){
+
+  componentWillMount() {
     const {blogData = []} = this.props;
-    console.log('components comments',this.props)
-    let {id:articleID} = blogData[0] || {};
+    console.log('components comments', this.props)
+    let {id: articleID} = blogData[0] || {};
     this.setState({
       articleID
     })
   }
+
   handleWebsiteChange = (value) => {
     let autoCompleteResult;
     if (!value) {
       autoCompleteResult = [];
     } else {
-      autoCompleteResult = ['.com','.cn', '.org', '.net'].map(domain => `${value}${domain}`);
+      autoCompleteResult = ['.com', '.cn', '.org', '.net'].map(domain => `${value}${domain}`);
     }
     this.setState({autoCompleteResult});
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    const {dispatch,dataSource={}} = this.props;
-    const {articleID:id} = dataSource;
-    if(!id){
+    const {dispatch, dataSource = {}} = this.props;
+    const {articleID: id} = dataSource;
+    if (!id) {
       return;
     }
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        const {comment,email,nickname,website} = values;
-        if(website!==''&&!regUrl.test(website)){
+        const {comment, email, nickname, website} = values;
+        if (website !== '' && !regUrl.test(website)) {
           message.warning('url不正确,示例："http://www.xxx.com"')
-          return ;
+          return;
         }
         const queryStringComment = {
           id,
@@ -87,17 +89,18 @@ class Comments extends Component {
           nickname,
           website
         }
-        postComments(dispatch,postCommentUrl(),queryStringComment).then(res=>{
-          if(res){
+        postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
+          if (res) {
             message.success(`评论发表成功`);
           }
         })
       }
     });
   }
-  render(){
-    const {dataSource={}} = this.props;
-    const {commentsData=[]} = dataSource;
+
+  render() {
+    const {dataSource = {}} = this.props;
+    const {commentsData = []} = dataSource;
     //表单
     const {getFieldDecorator} = this.props.form;
     const {autoCompleteResult} = this.state;
@@ -116,17 +119,17 @@ class Comments extends Component {
                   <span>
               Nickname&nbsp;
                     <Tooltip title="What do you want others to call you?">
-                <Icon type="question-circle-o" />
+                <Icon type="question-circle-o"/>
               </Tooltip>
             </span>
                 )}
               >
                 {getFieldDecorator('nickname', {
-                  rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+                  rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
                 })(
                   <Input
                     title="用户名"
-                    placeholder="用户名" />
+                    placeholder="用户名"/>
                 )}
               </FormItem>
               <FormItem
@@ -140,7 +143,6 @@ class Comments extends Component {
                     required: false, message: 'Please input your E-mail!',
                   }],
                 })(
-
                   <Input
                     title="不会被公开"
                     placeholder="不会被公开"/>
@@ -168,7 +170,7 @@ class Comments extends Component {
                 label="comment"
               >
                 {getFieldDecorator('comment', {
-                  rules: [ {
+                  rules: [{
                     required: true, message: 'Please input your comment!',
                   }],
                 })(
@@ -191,14 +193,14 @@ class Comments extends Component {
                 key={i} title={
                 <span>
                   {
-                    v.website?
-                      <Link href={v.website} >
+                    v.website && regUrl.test(v.website) ?
+                      <Link href={v.website}>
                         <a style={{color: '#34538b', fontWeight: 'bold'}}>{v.user}</a>
                       </Link>
                       :
                       <span style={{color: '#000', fontWeight: 'bold'}}>{v.user}</span>
                   }
-                        说道：
+                  说道：
                     </span>
               }
                 extra={<a href="javascript:;">{formatTime(v.createTime)}</a>}>
@@ -211,5 +213,6 @@ class Comments extends Component {
     )
   }
 }
+
 const WrappedRegistrationForm = Form.create()(Comments);
 export default connect()(WrappedRegistrationForm);
