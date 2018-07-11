@@ -3,7 +3,10 @@ import { List, Avatar, Icon ,Divider} from 'antd';
 import {formatTime,getArticleInfo} from '../../until';
 
 const ArticleTitle = ({detailArticle={}})=>{
-  const {title,createTime,user,visitor,lastModify,modifyCount} = detailArticle
+  let {title,createTime,user,visitor,lastModify,modifyCount} = detailArticle
+  if(lastModify===0){
+    lastModify=createTime
+  }
   return (
     <div>
       <h2>{title}</h2>

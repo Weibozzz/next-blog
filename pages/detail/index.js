@@ -60,6 +60,7 @@ class Detail extends Component {
       .filter(v=>v.a_id===articleID)
       .sort((a,b)=>b.createTime-a.createTime)
 
+    const bool = createTime > OldTime;
 
     return (
       <div className="detail">
@@ -68,11 +69,12 @@ class Detail extends Component {
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>
-            <div style={{background: '#fff', padding: 24, minHeight: 380}}>
+            <div style={{background: '#fff', padding: 24}}>
               <ArticleTitle detailArticle={blogData[0]}/>
               <div
+                className={bool?'':'old-detail'}
                 dangerouslySetInnerHTML={{
-                  __html:createTime > OldTime ?
+                  __html:bool ?
                     marked(getHtml(decodeURIComponent(content), createTime))
                     : getHtml(decodeURIComponent(content), createTime)
                 }}
@@ -82,6 +84,12 @@ class Detail extends Component {
             <Comments dataSource={{commentsData,articleID}}></Comments>
           </Content>
         </Layout>
+        <style>{`
+        .old-detail pre{
+          border:1px solid #ccc;
+          background-color:#f5f5f5;
+        }
+        `}</style>
       </div>
     );
   }

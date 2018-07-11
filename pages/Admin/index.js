@@ -42,18 +42,6 @@ class Admin extends Component {
     getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
   }
 
-  componentDidMount() {
-    const {dispatch} = this.props;
-    const {password=''} = localStorage;
-    postAdminPassword(dispatch, postAdminPasswordUrl(), {password: password}).then(res => {
-      const {postAdminPasswordData = []} = res;
-      if(postAdminPasswordData.length){
-        this.setState({
-          isLogin: true
-        })
-      }
-    })
-  }
 
   itemRender(current, type, originalElement) {
     if (type === 'prev') {
@@ -193,7 +181,7 @@ class Admin extends Component {
     )) : [];
     const data = adminBlogData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     const {total} = totalPageData[0] || {};
-    const {isLogin} = this.state;
+    const {postAdminPasswordData=[]} = this.props;
     const {getFieldDecorator} = this.props.form;
     return (
       <div>
@@ -206,7 +194,7 @@ class Admin extends Component {
         <Layout>
           <Content style={{padding: '0 50px'}}>
             {
-              isLogin ?
+              postAdminPasswordData.length ?
                 <div>
                   <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
                           size="large"/>
@@ -284,8 +272,8 @@ Admin.getInitialProps = async function () {
 }
 const mapStateToProps = state => {
   console.log(state)
-  const {adminBlogData, searchData} = state
-  return {adminBlogData, searchData};
+  const {adminBlogData, searchData,postAdminPasswordData} = state
+  return {adminBlogData, searchData,postAdminPasswordData};
 }
 const WrappedNormalLoginForm = Form.create()(Admin);
 export default connect(mapStateToProps)(WrappedNormalLoginForm)

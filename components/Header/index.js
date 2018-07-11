@@ -40,6 +40,12 @@ const routes = [
     txt: ROUTER.POST_ARTICLE_TXT,
     isSuperAdmin:true
   },
+  {
+    href: 'javascript:;',
+    txt: '退出',
+    isSuperAdmin:true,
+    exit:true
+  },
 ]
 
 class TopNav extends Component {
@@ -51,10 +57,29 @@ class TopNav extends Component {
   }
 
 
+
+  componentDidMount() {
+    const {dispatch} = this.props;
+    const {password=''} = localStorage;
+    if(!password){
+      return ;
+    }
+    postAdminPassword(dispatch, postAdminPasswordUrl(), {password: password}).then(res => {
+      const {postAdminPasswordData = []} = res;
+      if(postAdminPasswordData.length){
+        this.setState({
+          isLogin: true
+        })
+      }
+    })
+  }
+  onExit(){
+    console.log(3333)
+  }
   render() {
-    const {postAdminPasswordData=[]} = this.props;
+    const {isLogin} = this.state;
     let newRoutes;
-    if(postAdminPasswordData.length){
+    if(isLogin){
       newRoutes=routes
     }else {
       newRoutes=routes.filter(v=>!v.isSuperAdmin)
@@ -74,17 +99,25 @@ class TopNav extends Component {
                 <Menu
                   theme="dark"
                   mode="horizontal"
-                  defaultSelectedKeys={['2']}
+                  defaultSelectedKeys={['/']}
                   style={{lineHeight: '64px'}}
                 >
                   {
-                    newRoutes.map((item, index) => (
-                      <Menu.Item key={item.href}>
-                        <Link href={item.href}>
-                          <a>{item.txt}</a>
-                        </Link>
-                      </Menu.Item>
-                    ))
+                    newRoutes.map((item, index) => {
+                      return item.exit?
+                        <Menu.Item key={item.href}>
+                          <Link href={item.href} >
+                            <a onClick={this.onExit.bind(this)}>{item.txt}</a>
+                          </Link>
+                        </Menu.Item>
+                        :
+                        <Menu.Item key={item.href}>
+                          <Link href={item.href}>
+                            <a>{item.txt}</a>
+                          </Link>
+                        </Menu.Item>
+                      
+                    })
                   }
                 </Menu>
               </Col>
