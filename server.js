@@ -5,6 +5,8 @@ const compression = require('compression')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+let port= dev?4322:80
+console.log(port)
 
 app.prepare()
   .then(() => {
@@ -36,9 +38,9 @@ app.prepare()
       return handle(req, res)
     })
 
-    server.listen(4322, (err) => {
+    server.listen(port, (err) => {
       if (err) throw err
-      console.log('> Ready on http://localhost 4322')
+      console.log('> Ready on http://localhost '+port)
     })
   })
   .catch((ex) => {

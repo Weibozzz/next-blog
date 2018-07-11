@@ -1,5 +1,6 @@
+//請求地址
 export const DEV_DOMAIN = 'http://localhost:7654';
-
+export const ONLINE_DOMAIN = 'http://www.liuweibo.cn:7654';
 
 export const pageNum = 10;//分页数
 export const TITLE = 'title'

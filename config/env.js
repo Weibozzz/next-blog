@@ -1,5 +1,6 @@
-import {DEV_DOMAIN} from './constantsData';
+import {DEV_DOMAIN,ONLINE_DOMAIN} from './constantsData';
 
+const dev = process.env.NODE_ENV !== 'production'
 export function getDomain () {
-  return DEV_DOMAIN+'/';
+  return dev?DEV_DOMAIN:ONLINE_DOMAIN+'/';
 }

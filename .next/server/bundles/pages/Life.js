@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 57);
+/******/ 	return __webpack_require__(__webpack_require__.s = 66);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -716,12 +716,7 @@ function () {
 module.exports = require("isomorphic-unfetch");
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/input");
-
-/***/ }),
+/* 13 */,
 /* 14 */,
 /* 15 */,
 /* 16 */,
@@ -747,12 +742,7 @@ module.exports = require("whatwg-fetch");
 /* 26 */,
 /* 27 */,
 /* 28 */,
-/* 29 */
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/pagination");
-
-/***/ }),
+/* 29 */,
 /* 30 */,
 /* 31 */,
 /* 32 */,
@@ -878,46 +868,44 @@ module.exports = require("antd/lib/avatar");
 /* 54 */,
 /* 55 */,
 /* 56 */,
-/* 57 */
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(58);
+module.exports = __webpack_require__(67);
 
 
 /***/ }),
-/* 58 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_pagination__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_pagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_pagination__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_input__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_input__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_whatwg_fetch__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_whatwg_fetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_next_link__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_next_head__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_next_head__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__store_actions__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_ListTitle__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__config__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__config_constantsData__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_layout__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_layout__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_whatwg_fetch__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_whatwg_fetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_head__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_next_head__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_actions__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_ListTitle__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__config__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__config_constantsData__ = __webpack_require__(3);
 
-
-
-
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -942,232 +930,68 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Content = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Content;
-var Search = __WEBPACK_IMPORTED_MODULE_2_antd_lib_input___default.a.Search;
+var Content = __WEBPACK_IMPORTED_MODULE_0_antd_lib_layout___default.a.Content;
 
-var Blog =
+var Life =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Blog, _Component);
+  _inherits(Life, _Component);
 
-  function Blog() {
+  function Life() {
     var _this;
 
-    _classCallCheck(this, Blog);
+    _classCallCheck(this, Life);
 
-    _this = _possibleConstructorReturn(this, (Blog.__proto__ || Object.getPrototypeOf(Blog)).call(this));
-    _this.state = {
-      currentPage: 1,
-      keyWard: ''
-    };
+    _this = _possibleConstructorReturn(this, (Life.__proto__ || Object.getPrototypeOf(Life)).call(this));
+    _this.state = {};
     return _this;
   }
 
-  _createClass(Blog, [{
-    key: "onSearch",
-    value: function onSearch(val) {
+  _createClass(Life, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      console.log('pages life ', this.props);
       var dispatch = this.props.dispatch;
-      var queryStringObj, queryTotalString;
-      this.setState({
-        keyWard: val
-      });
-
-      if (val) {
-        queryStringObj = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["r" /* TITLE */],
-          num: 1,
-          pageNum: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["s" /* pageNum */],
-          wd: val
-        };
-        queryTotalString = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["r" /* TITLE */],
-          wd: val
-        };
-      } else {
-        queryStringObj = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["e" /* ALL */],
-          num: 1,
-          pageNum: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["s" /* pageNum */]
-        };
-        queryTotalString = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["e" /* ALL */]
-        };
-      }
-
-      Object(__WEBPACK_IMPORTED_MODULE_9__store_actions__["c" /* getSearchList */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_11__config__["b" /* getBlogUrl */])(queryStringObj));
-      Object(__WEBPACK_IMPORTED_MODULE_9__store_actions__["e" /* getSearchTotal */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_11__config__["h" /* getTotalUrl */])(queryTotalString));
-    }
-  }, {
-    key: "onChange",
-    value: function onChange(page, pageSize) {
-      var dispatch = this.props.dispatch;
-      var wd = this.state.keyWard;
-      this.setState({
-        currentPage: page
-      });
-      var _props$searchTotalDat = this.props.searchTotalData,
-          searchTotalData = _props$searchTotalDat === void 0 ? [] : _props$searchTotalDat;
-
-      if (searchTotalData.length) {
-        var queryStringObj = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["r" /* TITLE */],
-          num: page,
-          pageNum: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["s" /* pageNum */],
-          wd: wd
-        };
-        Object(__WEBPACK_IMPORTED_MODULE_9__store_actions__["d" /* getSearchPageList */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_11__config__["b" /* getBlogUrl */])(queryStringObj));
-      }
-    }
-  }, {
-    key: "itemRender",
-    value: function itemRender(current, type, originalElement) {
-      if (type === 'prev') {
-        return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("a", null, "Previous");
-      } else if (type === 'next') {
-        return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("a", null, "Next");
-      }
-
-      return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_next_link___default.a, {
-        as: "/Blog/".concat(current),
-        href: "/Blog?id=".concat(current)
-      }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("a", null, current));
+      Object(__WEBPACK_IMPORTED_MODULE_6__store_actions__["b" /* getLifeList */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_8__config__["f" /* getLifeUrl */])());
     }
   }, {
     key: "render",
     value: function render() {
-      var total, listData;
-      var _props = this.props,
-          _props$pageBlogData = _props.pageBlogData,
-          pageBlogData = _props$pageBlogData === void 0 ? [] : _props$pageBlogData,
-          _props$totalPageData = _props.totalPageData,
-          totalPageData = _props$totalPageData === void 0 ? [] : _props$totalPageData,
-          _props$searchData = _props.searchData,
-          searchData = _props$searchData === void 0 ? [] : _props$searchData,
-          _props$searchTotalDat2 = _props.searchTotalData,
-          searchTotalData = _props$searchTotalDat2 === void 0 ? [] : _props$searchTotalDat2; //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
-
-      if (searchData.length) {
-        pageBlogData = searchData;
-      }
-
-      listData = pageBlogData;
-
-      if (searchTotalData.length) {
-        var _ref = searchTotalData[0] || {};
-
-        total = _ref.total;
-      } else {
-        var _ref2 = totalPageData[0] || {};
-
-        total = _ref2.total;
-      }
-
-      return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("div", {
-        className: "Blog"
-      }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8_next_head___default.a, null, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("title", null, __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["k" /* INDEX_TITLE */], __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["h" /* COMMON_TITLE */])), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a, null, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(Content, {
+      var listData = this.props.lifeData;
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
+        className: "life"
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_next_head___default.a, null, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("title", null, __WEBPACK_IMPORTED_MODULE_9__config_constantsData__["k" /* INDEX_TITLE */], __WEBPACK_IMPORTED_MODULE_9__config_constantsData__["h" /* COMMON_TITLE */])), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_layout___default.a, null, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(Content, {
         style: {
           padding: '0 50px'
         }
-      }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(Search, {
-        placeholder: "input search text",
-        onSearch: this.onSearch.bind(this),
-        enterButton: "Search",
-        size: "large"
-      }), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("div", {
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         style: {
           background: '#fff',
           padding: 24,
           minHeight: 380
         }
-      }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__components_ListTitle__["a" /* default */], {
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__components_ListTitle__["a" /* default */], {
         dataSource: {
-          listData: listData
+          listData: listData,
+          pathname: 'Life'
         }
-      }), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_pagination___default.a, {
-        total: total,
-        itemRender: this.itemRender.bind(this),
-        onChange: this.onChange.bind(this)
       })))));
     }
   }]);
 
-  return Blog;
-}(__WEBPACK_IMPORTED_MODULE_4_react__["Component"]);
-
-Blog.getInitialProps =
-/*#__PURE__*/
-function () {
-  var _ref3 = _asyncToGenerator(
-  /*#__PURE__*/
-  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(context) {
-    var _context$query$id, id, queryStringObj, queryTotalString, pageBlog, totalPage, pageBlogData, totalPageData;
-
-    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context$query$id = context.query.id, id = _context$query$id === void 0 ? 1 : _context$query$id;
-            console.log(context.query);
-            queryStringObj = {
-              type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["e" /* ALL */],
-              num: id,
-              pageNum: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["s" /* pageNum */]
-            };
-            queryTotalString = {
-              type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["e" /* ALL */]
-            };
-            _context.next = 6;
-            return fetch(Object(__WEBPACK_IMPORTED_MODULE_11__config__["b" /* getBlogUrl */])(queryStringObj));
-
-          case 6:
-            pageBlog = _context.sent;
-            _context.next = 9;
-            return fetch(Object(__WEBPACK_IMPORTED_MODULE_11__config__["h" /* getTotalUrl */])(queryTotalString));
-
-          case 9:
-            totalPage = _context.sent;
-            _context.next = 12;
-            return pageBlog.json();
-
-          case 12:
-            pageBlogData = _context.sent;
-            _context.next = 15;
-            return totalPage.json();
-
-          case 15:
-            totalPageData = _context.sent;
-            return _context.abrupt("return", {
-              pageBlogData: pageBlogData,
-              totalPageData: totalPageData
-            });
-
-          case 17:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function (_x) {
-    return _ref3.apply(this, arguments);
-  };
-}(); //这里根据需要传入redux
+  return Life;
+}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]); //这里根据需要传入redux
 
 
 var mapStateToProps = function mapStateToProps(state) {
   console.log(state);
-  var res = state.res,
-      searchData = state.searchData,
-      searchTotalData = state.searchTotalData;
+  var lifeData = state.lifeData;
   return {
-    res: res,
-    searchData: searchData,
-    searchTotalData: searchTotalData
+    lifeData: lifeData
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_5_react_redux__["connect"])(mapStateToProps)(Blog));
+/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps)(Life));
 
 /***/ })
 /******/ ]);

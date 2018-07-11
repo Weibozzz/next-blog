@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 57);
+/******/ 	return __webpack_require__(__webpack_require__.s = 68);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -716,208 +716,166 @@ function () {
 module.exports = require("isomorphic-unfetch");
 
 /***/ }),
-/* 13 */
+/* 13 */,
+/* 14 */
 /***/ (function(module, exports) {
 
-module.exports = require("antd/lib/input");
+module.exports = require("antd/lib/row");
 
 /***/ }),
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */
+/* 15 */
 /***/ (function(module, exports) {
 
-module.exports = require("antd/lib/icon");
+module.exports = require("antd/lib/col");
 
 /***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/button");
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-jsx/style");
+
+/***/ }),
+/* 18 */,
 /* 19 */,
-/* 20 */
-/***/ (function(module, exports) {
-
-module.exports = require("whatwg-fetch");
-
-/***/ }),
+/* 20 */,
 /* 21 */,
 /* 22 */,
 /* 23 */,
 /* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/pagination");
-
-/***/ }),
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_list__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_list___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_list__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_avatar__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_avatar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_avatar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_icon__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_icon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_icon__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_link__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__until__ = __webpack_require__(1);
+
+// EXTERNAL MODULE: external "antd/lib/row"
+var row_ = __webpack_require__(14);
+var row__default = /*#__PURE__*/__webpack_require__.n(row_);
+
+// EXTERNAL MODULE: external "antd/lib/menu"
+var menu_ = __webpack_require__(26);
+var menu__default = /*#__PURE__*/__webpack_require__.n(menu_);
+
+// EXTERNAL MODULE: external "antd/lib/col"
+var col_ = __webpack_require__(15);
+var col__default = /*#__PURE__*/__webpack_require__.n(col_);
+
+// EXTERNAL MODULE: external "antd/lib/layout"
+var layout_ = __webpack_require__(5);
+var layout__default = /*#__PURE__*/__webpack_require__.n(layout_);
+
+// EXTERNAL MODULE: external "react"
+var external__react_ = __webpack_require__(0);
+var external__react__default = /*#__PURE__*/__webpack_require__.n(external__react_);
+
+// EXTERNAL MODULE: external "react-redux"
+var external__react_redux_ = __webpack_require__(2);
+var external__react_redux__default = /*#__PURE__*/__webpack_require__.n(external__react_redux_);
+
+// EXTERNAL MODULE: external "next/link"
+var link_ = __webpack_require__(9);
+var link__default = /*#__PURE__*/__webpack_require__.n(link_);
+
+// EXTERNAL MODULE: external "next/head"
+var head_ = __webpack_require__(6);
+var head__default = /*#__PURE__*/__webpack_require__.n(head_);
+
+// EXTERNAL MODULE: external "antd/lib/breadcrumb"
+var breadcrumb_ = __webpack_require__(27);
+var breadcrumb__default = /*#__PURE__*/__webpack_require__.n(breadcrumb_);
+
+// EXTERNAL MODULE: external "antd/lib/button"
+var button_ = __webpack_require__(16);
+var button__default = /*#__PURE__*/__webpack_require__.n(button_);
+
+// EXTERNAL MODULE: external "antd/lib/alert"
+var alert_ = __webpack_require__(28);
+var alert__default = /*#__PURE__*/__webpack_require__.n(alert_);
+
+// CONCATENATED MODULE: ./components/TopTips/index.js
 
 
 
 
 
 
+var TopTips_TopTips = function TopTips(props) {
+  // console.log(props,this,window)
 
+  /*onst pathnameArr = location.pathname.split('/').slice(1);
+  const pathBreancrumbList = [
+    {
+      key:'',
+      value:['网站首页']
+    },
+    {
+      key:'Blog',
+      value:['文章列表']
+    },
+    {
+      key:'Admin',
+      value:['后台管理']
+    },
+    {
+      key:'Life',
+      value:['生活记录']
+    },
+    {
+      key:'PostArticle',
+      value:['发布文章']
+    },
+  ]
+  const fn = (arr,pathBreancrumbList)=>{
+    if(arr.length===1){
+      let valueIndex = pathBreancrumbList.findIndex(s=>s.key===arr.join(' '));
+      return pathBreancrumbList[valueIndex].value;
+    }
+    return ['文章列表',arr[1]]
+  }*/
+  var BreadcrumbItemList = ['']; // const BreadcrumbItemList = fn(pathnameArr,pathBreancrumbList)
+  // console.log(BreadcrumbItemList)
 
-var IconText = function IconText(_ref) {
-  var type = _ref.type,
-      text = _ref.text;
-  return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("span", null, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_antd_lib_icon___default.a, {
-    type: type,
+  return external__react__default.a.createElement("div", {
+    className: "Blog"
+  }, external__react__default.a.createElement(alert__default.a, {
+    message: "\u535A\u5BA2\u6B63\u5728\u91CD\u6784\u548C\u5F00\u53D1\u4E2D......",
+    type: "warning",
+    closable: true,
+    banner: true
+  }), external__react__default.a.createElement("div", null, external__react__default.a.createElement(button__default.a, {
+    href: "https://github.com/Weibozzz/react-blog",
+    icon: "github"
+  }, "Github")), external__react__default.a.createElement(breadcrumb__default.a, {
     style: {
-      marginRight: 8
+      margin: '16px 0'
     }
-  }), text);
+  }, BreadcrumbItemList.map(function (v, index) {
+    return external__react__default.a.createElement(breadcrumb__default.a.Item, {
+      key: index
+    }, "\u7F51\u7AD9\u9996\u9875");
+  })));
 };
 
-var ListTitle = function ListTitle(_ref2) {
-  var _ref2$dataSource = _ref2.dataSource,
-      dataSource = _ref2$dataSource === void 0 ? {} : _ref2$dataSource;
-  var _dataSource$listData = dataSource.listData,
-      listData = _dataSource$listData === void 0 ? [] : _dataSource$listData,
-      _dataSource$pathname = dataSource.pathname,
-      pathname = _dataSource$pathname === void 0 ? '' : _dataSource$pathname;
-  return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_list___default.a, {
-    itemLayout: "vertical",
-    size: "large",
-    dataSource: listData,
-    footer: __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", null, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("b", null, "ant design"), " footer part"),
-    renderItem: function renderItem(item) {
-      return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_list___default.a.Item, {
-        key: item.title,
-        actions: [Object(__WEBPACK_IMPORTED_MODULE_6__until__["b" /* formatTime */])(item.createTime), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(IconText, {
-          type: "star-o",
-          text: "156"
-        }), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(IconText, {
-          type: "like-o",
-          text: item.like
-        }), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(IconText, {
-          type: "message",
-          text: "2"
-        }), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(IconText, {
-          type: "eye-o",
-          text: item.visitor
-        })],
-        extra: pathname === '' ? '' : __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("img", {
-          width: 272,
-          alt: "logo",
-          src: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-        })
-      }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_list___default.a.Item.Meta, {
-        avatar: __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_avatar___default.a, {
-          src: item.avatar
-        }),
-        title: __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_next_link___default.a, {
-          as: "/p/".concat(item.id),
-          href: "/detail?id=".concat(item.id)
-        }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("a", null, item.title)),
-        description: pathname === '' ? '' : item.short
-      }), pathname === '' ? '' : __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_next_link___default.a, {
-        as: "/p/".concat(item.id),
-        href: "/detail?id=".concat(item.id)
-      }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("a", null, " \u9605\u8BFB\u5168\u6587......")));
-    }
-  });
-};
+/* harmony default export */ var components_TopTips = (TopTips_TopTips);
+// EXTERNAL MODULE: ./config/constantsData.js
+var constantsData = __webpack_require__(3);
 
-/* harmony default export */ __webpack_exports__["a"] = (ListTitle);
+// EXTERNAL MODULE: ./config/index.js + 1 modules
+var config = __webpack_require__(7);
 
-/***/ }),
-/* 35 */
-/***/ (function(module, exports) {
+// EXTERNAL MODULE: ./store/actions.js
+var actions = __webpack_require__(11);
 
-module.exports = require("antd/lib/list");
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports) {
-
-module.exports = require("antd/lib/avatar");
-
-/***/ }),
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(58);
-
-
-/***/ }),
-/* 58 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_pagination__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_pagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_pagination__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_input__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_input__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_layout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_whatwg_fetch__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_whatwg_fetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_next_link__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_next_head__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_next_head__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__store_actions__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_ListTitle__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__config__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__config_constantsData__ = __webpack_require__(3);
+// CONCATENATED MODULE: ./components/Header/index.js
 
 
 
 
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -941,233 +899,300 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var Header = layout__default.a.Header,
+    Content = layout__default.a.Content;
+var routes = [{
+  href: constantsData["j" /* INDEX */],
+  txt: constantsData["l" /* INDEX_TXT */],
+  isSuperAdmin: false
+}, {
+  href: constantsData["f" /* BLOG */],
+  txt: constantsData["g" /* BLOG_TXT */],
+  isSuperAdmin: false
+}, {
+  href: constantsData["m" /* LIFE */],
+  txt: constantsData["n" /* LIFE_TXT */],
+  isSuperAdmin: false
+}, {
+  href: constantsData["a" /* ABOUT */],
+  txt: constantsData["b" /* ABOUT_TXT */],
+  isSuperAdmin: false
+}, {
+  href: constantsData["c" /* ADMIN */],
+  txt: constantsData["d" /* ADMIN_TXT */],
+  isSuperAdmin: true
+}, {
+  href: constantsData["p" /* POST_ARTICLE */],
+  txt: constantsData["q" /* POST_ARTICLE_TXT */],
+  isSuperAdmin: true
+}, {
+  href: 'javascript:;',
+  txt: '退出',
+  isSuperAdmin: true,
+  exit: true
+}];
 
-var Content = __WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a.Content;
-var Search = __WEBPACK_IMPORTED_MODULE_2_antd_lib_input___default.a.Search;
-
-var Blog =
+var Header_TopNav =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Blog, _Component);
+  _inherits(TopNav, _Component);
 
-  function Blog() {
+  function TopNav(props) {
     var _this;
 
-    _classCallCheck(this, Blog);
+    _classCallCheck(this, TopNav);
 
-    _this = _possibleConstructorReturn(this, (Blog.__proto__ || Object.getPrototypeOf(Blog)).call(this));
+    _this = _possibleConstructorReturn(this, (TopNav.__proto__ || Object.getPrototypeOf(TopNav)).call(this, props));
     _this.state = {
-      currentPage: 1,
-      keyWard: ''
+      isLogin: false
     };
     return _this;
   }
 
-  _createClass(Blog, [{
-    key: "onSearch",
-    value: function onSearch(val) {
-      var dispatch = this.props.dispatch;
-      var queryStringObj, queryTotalString;
-      this.setState({
-        keyWard: val
-      });
+  _createClass(TopNav, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
 
-      if (val) {
-        queryStringObj = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["r" /* TITLE */],
-          num: 1,
-          pageNum: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["s" /* pageNum */],
-          wd: val
-        };
-        queryTotalString = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["r" /* TITLE */],
-          wd: val
-        };
-      } else {
-        queryStringObj = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["e" /* ALL */],
-          num: 1,
-          pageNum: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["s" /* pageNum */]
-        };
-        queryTotalString = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["e" /* ALL */]
-        };
+      var dispatch = this.props.dispatch;
+      var _localStorage = localStorage,
+          _localStorage$passwor = _localStorage.password,
+          password = _localStorage$passwor === void 0 ? '' : _localStorage$passwor;
+
+      if (!password) {
+        return;
       }
 
-      Object(__WEBPACK_IMPORTED_MODULE_9__store_actions__["c" /* getSearchList */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_11__config__["b" /* getBlogUrl */])(queryStringObj));
-      Object(__WEBPACK_IMPORTED_MODULE_9__store_actions__["e" /* getSearchTotal */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_11__config__["h" /* getTotalUrl */])(queryTotalString));
+      Object(actions["f" /* postAdminPassword */])(dispatch, Object(config["i" /* postAdminPasswordUrl */])(), {
+        password: password
+      }).then(function (res) {
+        var _res$postAdminPasswor = res.postAdminPasswordData,
+            postAdminPasswordData = _res$postAdminPasswor === void 0 ? [] : _res$postAdminPasswor;
+
+        if (postAdminPasswordData.length) {
+          _this2.setState({
+            isLogin: true
+          });
+        }
+      });
     }
   }, {
-    key: "onChange",
-    value: function onChange(page, pageSize) {
-      var dispatch = this.props.dispatch;
-      var wd = this.state.keyWard;
-      this.setState({
-        currentPage: page
-      });
-      var _props$searchTotalDat = this.props.searchTotalData,
-          searchTotalData = _props$searchTotalDat === void 0 ? [] : _props$searchTotalDat;
-
-      if (searchTotalData.length) {
-        var queryStringObj = {
-          type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["r" /* TITLE */],
-          num: page,
-          pageNum: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["s" /* pageNum */],
-          wd: wd
-        };
-        Object(__WEBPACK_IMPORTED_MODULE_9__store_actions__["d" /* getSearchPageList */])(dispatch, Object(__WEBPACK_IMPORTED_MODULE_11__config__["b" /* getBlogUrl */])(queryStringObj));
-      }
-    }
-  }, {
-    key: "itemRender",
-    value: function itemRender(current, type, originalElement) {
-      if (type === 'prev') {
-        return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("a", null, "Previous");
-      } else if (type === 'next') {
-        return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("a", null, "Next");
-      }
-
-      return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_next_link___default.a, {
-        as: "/Blog/".concat(current),
-        href: "/Blog?id=".concat(current)
-      }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("a", null, current));
+    key: "onExit",
+    value: function onExit() {
+      console.log(3333);
     }
   }, {
     key: "render",
     value: function render() {
-      var total, listData;
-      var _props = this.props,
-          _props$pageBlogData = _props.pageBlogData,
-          pageBlogData = _props$pageBlogData === void 0 ? [] : _props$pageBlogData,
-          _props$totalPageData = _props.totalPageData,
-          totalPageData = _props$totalPageData === void 0 ? [] : _props$totalPageData,
-          _props$searchData = _props.searchData,
-          searchData = _props$searchData === void 0 ? [] : _props$searchData,
-          _props$searchTotalDat2 = _props.searchTotalData,
-          searchTotalData = _props$searchTotalDat2 === void 0 ? [] : _props$searchTotalDat2; //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
+      var _this3 = this;
 
-      if (searchData.length) {
-        pageBlogData = searchData;
-      }
+      var isLogin = this.state.isLogin;
+      var newRoutes;
 
-      listData = pageBlogData;
-
-      if (searchTotalData.length) {
-        var _ref = searchTotalData[0] || {};
-
-        total = _ref.total;
+      if (isLogin) {
+        newRoutes = routes;
       } else {
-        var _ref2 = totalPageData[0] || {};
-
-        total = _ref2.total;
+        newRoutes = routes.filter(function (v) {
+          return !v.isSuperAdmin;
+        });
       }
 
-      return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("div", {
-        className: "Blog"
-      }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8_next_head___default.a, null, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("title", null, __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["k" /* INDEX_TITLE */], __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["h" /* COMMON_TITLE */])), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_antd_lib_layout___default.a, null, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(Content, {
+      return external__react__default.a.createElement("div", null, external__react__default.a.createElement(head__default.a, null, external__react__default.a.createElement("meta", {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1"
+      }), external__react__default.a.createElement("meta", {
+        charSet: "utf-8"
+      }), external__react__default.a.createElement("link", {
+        rel: "stylesheet",
+        href: "/_next/static/style.css"
+      })), external__react__default.a.createElement(layout__default.a, null, external__react__default.a.createElement(Header, {
         style: {
-          padding: '0 50px'
+          position: 'fixed',
+          height: '64px',
+          width: '100%',
+          padding: 0,
+          zIndex: 10
         }
-      }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(Search, {
-        placeholder: "input search text",
-        onSearch: this.onSearch.bind(this),
-        enterButton: "Search",
-        size: "large"
-      }), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement("div", {
+      }, external__react__default.a.createElement(row__default.a, null, external__react__default.a.createElement(col__default.a, {
+        span: 2
+      }), external__react__default.a.createElement(col__default.a, {
+        span: 17
+      }, external__react__default.a.createElement(menu__default.a, {
+        theme: "dark",
+        mode: "horizontal",
+        defaultSelectedKeys: ['/'],
         style: {
-          background: '#fff',
-          padding: 24,
-          minHeight: 380
+          lineHeight: '64px'
         }
-      }, __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__components_ListTitle__["a" /* default */], {
-        dataSource: {
-          listData: listData
+      }, newRoutes.map(function (item, index) {
+        return item.exit ? external__react__default.a.createElement(menu__default.a.Item, {
+          key: item.href
+        }, external__react__default.a.createElement(link__default.a, {
+          href: item.href
+        }, external__react__default.a.createElement("a", {
+          onClick: _this3.onExit.bind(_this3)
+        }, item.txt))) : external__react__default.a.createElement(menu__default.a.Item, {
+          key: item.href
+        }, external__react__default.a.createElement(link__default.a, {
+          href: item.href
+        }, external__react__default.a.createElement("a", null, item.txt)));
+      }))))), external__react__default.a.createElement(Content, {
+        style: {
+          padding: '0 50px',
+          marginTop: 64
         }
-      }), __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_pagination___default.a, {
-        total: total,
-        itemRender: this.itemRender.bind(this),
-        onChange: this.onChange.bind(this)
-      })))));
+      }, external__react__default.a.createElement(components_TopTips, null))));
     }
   }]);
 
-  return Blog;
-}(__WEBPACK_IMPORTED_MODULE_4_react__["Component"]);
-
-Blog.getInitialProps =
-/*#__PURE__*/
-function () {
-  var _ref3 = _asyncToGenerator(
-  /*#__PURE__*/
-  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(context) {
-    var _context$query$id, id, queryStringObj, queryTotalString, pageBlog, totalPage, pageBlogData, totalPageData;
-
-    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context$query$id = context.query.id, id = _context$query$id === void 0 ? 1 : _context$query$id;
-            console.log(context.query);
-            queryStringObj = {
-              type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["e" /* ALL */],
-              num: id,
-              pageNum: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["s" /* pageNum */]
-            };
-            queryTotalString = {
-              type: __WEBPACK_IMPORTED_MODULE_12__config_constantsData__["e" /* ALL */]
-            };
-            _context.next = 6;
-            return fetch(Object(__WEBPACK_IMPORTED_MODULE_11__config__["b" /* getBlogUrl */])(queryStringObj));
-
-          case 6:
-            pageBlog = _context.sent;
-            _context.next = 9;
-            return fetch(Object(__WEBPACK_IMPORTED_MODULE_11__config__["h" /* getTotalUrl */])(queryTotalString));
-
-          case 9:
-            totalPage = _context.sent;
-            _context.next = 12;
-            return pageBlog.json();
-
-          case 12:
-            pageBlogData = _context.sent;
-            _context.next = 15;
-            return totalPage.json();
-
-          case 15:
-            totalPageData = _context.sent;
-            return _context.abrupt("return", {
-              pageBlogData: pageBlogData,
-              totalPageData: totalPageData
-            });
-
-          case 17:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function (_x) {
-    return _ref3.apply(this, arguments);
-  };
-}(); //这里根据需要传入redux
-
+  return TopNav;
+}(external__react_["Component"]);
 
 var mapStateToProps = function mapStateToProps(state) {
-  console.log(state);
-  var res = state.res,
-      searchData = state.searchData,
-      searchTotalData = state.searchTotalData;
+  var postAdminPasswordData = state.postAdminPasswordData;
   return {
-    res: res,
-    searchData: searchData,
-    searchTotalData: searchTotalData
+    postAdminPasswordData: postAdminPasswordData
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_5_react_redux__["connect"])(mapStateToProps)(Blog));
+/* harmony default export */ var components_Header = __webpack_exports__["a"] = (Object(external__react_redux_["connect"])(mapStateToProps)(Header_TopNav));
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/menu");
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/breadcrumb");
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/alert");
+
+/***/ }),
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-markdown");
+
+/***/ }),
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(69);
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(17);
+var style__default = /*#__PURE__*/__webpack_require__.n(style_);
+
+// EXTERNAL MODULE: external "react"
+var external__react_ = __webpack_require__(0);
+var external__react__default = /*#__PURE__*/__webpack_require__.n(external__react_);
+
+// EXTERNAL MODULE: ./components/Header/index.js + 1 modules
+var Header = __webpack_require__(25);
+
+// CONCATENATED MODULE: ./components/MyLayout.js
+
+
+var layoutStyle = {
+  margin: 20,
+  padding: 20,
+  border: '1px solid #DDD'
+};
+
+var MyLayout_Layout = function Layout(props) {
+  console.log(props);
+  return external__react__default.a.createElement("div", {
+    style: layoutStyle
+  }, external__react__default.a.createElement(Header["a" /* default */], null), props.children);
+};
+
+/* harmony default export */ var MyLayout = (MyLayout_Layout);
+// EXTERNAL MODULE: external "next/router"
+var router_ = __webpack_require__(70);
+var router__default = /*#__PURE__*/__webpack_require__.n(router_);
+
+// EXTERNAL MODULE: external "react-markdown"
+var external__react_markdown_ = __webpack_require__(37);
+var external__react_markdown__default = /*#__PURE__*/__webpack_require__.n(external__react_markdown_);
+
+// CONCATENATED MODULE: ./pages/markdown.js
+
+
+
+
+
+/* harmony default export */ var markdown = __webpack_exports__["default"] = (Object(router_["withRouter"])(function (props) {
+  return external__react__default.a.createElement(MyLayout, null, external__react__default.a.createElement("h1", {
+    className: "jsx-3267370368"
+  }, props.router.query.title), external__react__default.a.createElement("div", {
+    className: "jsx-3267370368" + " " + "markdown"
+  }, external__react__default.a.createElement(external__react_markdown__default.a, {
+    source: "\nThis is our blog post.\nYes. We can have a [link](/link).\nAnd we can have a title as well.\n\n### This is a title\n\n# git\u547D\u4EE4\n## \u521D\u59CB\u5316\n\u8BBE\u7F6E\u7528\u6237\u540D\uFF0C\u90AE\u7BB1\n```bash\ngit config --global user.name \"Author Name\"\ngit config --global user.email \"Author Email\"\n```\n\u67E5\u770B\u90AE\u7BB1\u7528\u6237\u540D\u7B49\u9009\u9879\n```bash\ngitc onfig --list\n```\n\n\u521D\u59CB\u5316\u4E00\u4E2AGit\u4ED3\u5E93\uFF0C\u4F7F\u7528`git init`\u547D\u4EE4\u3002\n\u7B2C\u4E00\u6B65\uFF0C\u4F7F\u7528\u547D\u4EE4`git add .`,\u6DFB\u52A0\u5168\u90E8 \uFF0C\u6CE8\u610F\uFF0C\u53EF\u53CD\u590D\u591A\u6B21\u4F7F\u7528\uFF0C\u6DFB\u52A0\u591A\u4E2A\u6587\u4EF6\uFF1B\n\u7B2C\u4E8C\u6B65\uFF0C\u4F7F\u7528\u547D\u4EE4`git commit -m \"\u63D0\u4EA4\u7684\u6CE8\u91CA\"`\uFF0C\u5B8C\u6210\u3002\n\n\nAnd here's the content.\n     "
+  })), external__react__default.a.createElement(style__default.a, {
+    styleId: "3267370368",
+    css: [".markdown{font-family:'Arial';}", ".markdown a{-webkit-text-decoration:none;text-decoration:none;color:blue;}", ".markdown a:hover{opacity:0.6;}", ".markdown h3{margin:0;padding:0;text-transform:uppercase;}"]
+  }));
+}));
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
 
 /***/ })
 /******/ ]);
