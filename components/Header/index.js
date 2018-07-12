@@ -26,6 +26,11 @@ const routes = [
     isSuperAdmin:false
   },
   {
+    href: ROUTER.ONLINE_GITBOOK,
+    txt: ROUTER.DOCS_TXT,
+    isSuperAdmin:false
+  },
+  {
     href: ROUTER.ABOUT,
     txt: ROUTER.ABOUT_TXT,
     isSuperAdmin:false

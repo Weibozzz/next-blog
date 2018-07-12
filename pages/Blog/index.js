@@ -95,6 +95,7 @@ class Blog extends Component {
   render() {
     let total,listData;
     let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = []} = this.props;
+    const {currentPage} = this.state;
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
     if (searchData.length) {
       pageBlogData = searchData
@@ -117,7 +118,7 @@ class Blog extends Component {
             <div style={{background: '#fff', padding: 24, minHeight: 380}}>
               <ListTitle dataSource={{listData}} />
 
-              <Pagination total={total} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
+              <Pagination current={currentPage} total={total} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
             </div>
           </Content>
         </Layout>

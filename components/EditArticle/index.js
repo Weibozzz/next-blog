@@ -76,6 +76,7 @@ class EditArticle extends Component {
 
   onSubmit() {
     const {dispatch} = this.props;
+    const {password} = localStorage;
     const {isEdit,notEditArticle} = this.state;
     const {
       selectVal='',
@@ -83,7 +84,7 @@ class EditArticle extends Component {
       shortVal='',
       urlVal='',
       editCont='',
-      isEdit:id
+      isEdit:id,
     } = this.state;
     let queryParamsObj={
       title: titleVal,
@@ -92,7 +93,8 @@ class EditArticle extends Component {
       user: '刘伟波',
       type: selectVal,
       short: shortVal,
-      img: 'js.png'
+      img: 'js.png',
+      token:password
     };
     if(urlVal!==''&&!regUrl.test(urlVal)){
       message.warning('url不正确')
@@ -109,6 +111,12 @@ class EditArticle extends Component {
     }
 
     postArticle(dispatch, postArticleUrl(), queryParamsObj).then(res=>{
+      console.log(res,'99999')
+      const {postArticleData=[]} = res;
+      if(Array.isArray(postArticleData)){
+        message.warning('您可能没权限')
+        return ;
+      }
       if(res){
         message.success(`${bool?'修改':'发布'}文章成功`);
       }

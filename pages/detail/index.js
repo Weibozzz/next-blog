@@ -15,7 +15,7 @@ import PrevNextPage from '../../components/PrevNextPage';
 import Comments from '../../components/Comments';
 //其他
 import {getDetailUrl, getCommentsUrl,getLastIdUrl,getNextIdUrl} from '../../config';
-import {COMMON_TITLE} from '../../config/constantsData';
+import {COMMON_TITLE,MY_BLOG} from '../../config/constantsData';
 import {getHtml, OldTime} from '../../until';
 //定义
 const {Content} = Layout;
