@@ -71,7 +71,8 @@ class Comments extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {dispatch, dataSource = {}} = this.props;
-    const {password} = localStorage;
+    const {commentsData} = this.state;
+    const {commentsData:commentsDataOrigin = []} = dataSource;
     const {articleID: id} = dataSource;
     if (!id) {
       return;
@@ -83,21 +84,24 @@ class Comments extends Component {
           message.warning('url不正确,示例："http://www.xxx.com"')
           return;
         }
+        if(nickname.length<2||comment.length<2){
+          message.warning('用户名或者评论内容过少')
+          return;
+        }
+        const isExist = commentsDataOrigin.findIndex(v=>v.user===nickname)!==-1
+        if(isExist){
+          message.warning('用户名已存在')
+          return;
+        }
         const queryStringComment = {
           id,
           comment,
           email,
           nickname,
-          website,
-          token:password
+          website
         }
         postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
-          console.log(res)
-          const {getCommentsData=[]} = res;
-          if(!getCommentsData.length){
-            message.warning('您可能没权限')
-            return ;
-          }
+
           if (res) {
             message.success(`评论发表成功`);
           }

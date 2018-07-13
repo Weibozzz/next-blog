@@ -111,10 +111,10 @@ class EditArticle extends Component {
     }
 
     postArticle(dispatch, postArticleUrl(), queryParamsObj).then(res=>{
-      console.log(res,'99999')
       const {postArticleData=[]} = res;
-      if(Array.isArray(postArticleData)){
-        message.warning('您可能没权限')
+      console.log(postArticleData)
+      if(Array.isArray(postArticleData)&&!postArticleData.length){
+        message.warning('您可能没权限,或者文章已存在')
         return ;
       }
       if(res){

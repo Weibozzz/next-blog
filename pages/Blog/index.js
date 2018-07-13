@@ -26,7 +26,6 @@ class Blog extends Component {
       currentPage: 1,
       keyWard: ''
     };
-    this.onPageChange = this.onPageChange.bind(this);
   }
 
   onSearch(val) {
