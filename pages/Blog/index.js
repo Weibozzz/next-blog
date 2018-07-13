@@ -25,7 +25,8 @@ class Blog extends Component {
     this.state = {
       currentPage: 1,
       keyWard: ''
-    }
+    };
+    this.onPageChange = this.onPageChange.bind(this);
   }
 
   onSearch(val) {
@@ -59,7 +60,9 @@ class Blog extends Component {
     getSearchList(dispatch, getBlogUrl(queryStringObj))
     getSearchTotal(dispatch, getTotalUrl(queryTotalString))
   }
+  componentDidMount(){
 
+  }
   onChange(page, pageSize) {
     const {dispatch} = this.props
     const {keyWard: wd} = this.state
@@ -77,8 +80,14 @@ class Blog extends Component {
       }
       getSearchPageList(dispatch, getBlogUrl(queryStringObj))
     }
-  }
 
+  }
+  onPageChange(e){
+    e.preventDefault()
+    let url = window.location.href;
+    url = url.replace(/Blog\/(.*)/gi, 4);
+    window.history.pushState('', '', {})
+  }
   itemRender(current, type, originalElement) {
     if (type === 'prev') {
       return <a>Previous</a>;
@@ -87,13 +96,14 @@ class Blog extends Component {
     }
     return (
       <Link as={`/Blog/${current}`} href={`/Blog?id=${current}`}>
-        <a>{current}</a>
+        <a onClick={this.onPageChange}>{current}</a>
       </Link>
     );
   }
 
   render() {
     let total,listData;
+    let { currentPage } = this.state;
     let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = []} = this.props;
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
     if (searchData.length) {
@@ -117,7 +127,7 @@ class Blog extends Component {
             <div style={{background: '#fff', padding: 24, minHeight: 380}}>
               <ListTitle dataSource={{listData}} />
 
-              <Pagination total={total} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
+              <Pagination current={currentPage} total={total} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
             </div>
           </Content>
         </Layout>

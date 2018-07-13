@@ -51,7 +51,7 @@ class Detail extends Component {
     })
   }
   render() {
-    //接口
+//接口
     let {blogData = [], commentsData = [],getCommentsData=[],lastIdData=[],nextIdData=[]} = this.props;
     let {articleID} = this.state;
     const {content = '', createTime = '',title='',url=''} = blogData[0] || {};
@@ -72,7 +72,7 @@ class Detail extends Component {
             <div style={{background: '#fff', padding: 24}}>
               <ArticleTitle detailArticle={blogData[0]}/>
               <div
-                className={bool?'':'old-detail'}
+                className={bool?'new-detail':'old-detail'}
                 dangerouslySetInnerHTML={{
                   __html:bool ?
                     marked(getHtml(decodeURIComponent(content), createTime))
@@ -85,11 +85,35 @@ class Detail extends Component {
           </Content>
         </Layout>
         <style>{`
-        .old-detail pre{
-          border:1px solid #ccc;
-          background-color:#f5f5f5;
-        }
-        `}</style>
+.old-detail pre{
+    border:1px solid #ccc;
+    background-color:#f5f5f5;
+}
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+.new-detail ul{
+    margin: 1.5em 0 1.5em 3em;
+    padding-left: 0;
+}
+
+.new-detail li{
+    display: list-item;
+    margin:.3em 0;
+    list-style: disc;
+}
+.new-detail h1,.new-detail h2{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.ant-divider{
+    background:#3246da
+}
+`}</style>
       </div>
     );
   }
