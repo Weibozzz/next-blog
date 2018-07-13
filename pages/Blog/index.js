@@ -82,12 +82,6 @@ class Blog extends Component {
     }
 
   }
-  onPageChange(e){
-    e.preventDefault()
-    let url = window.location.href;
-    url = url.replace(/Blog\/(.*)/gi, 4);
-    window.history.pushState('', '', {})
-  }
   itemRender(current, type, originalElement) {
     if (type === 'prev') {
       return <a>Previous</a>;
@@ -96,7 +90,7 @@ class Blog extends Component {
     }
     return (
       <Link as={`/Blog/${current}`} href={`/Blog?id=${current}`}>
-        <a onClick={this.onPageChange}>{current}</a>
+        <a >{current}</a>
       </Link>
     );
   }

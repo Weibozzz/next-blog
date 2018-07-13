@@ -71,13 +71,14 @@ class Comments extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {dispatch, dataSource = {}} = this.props;
+    const {password} = localStorage;
     const {articleID: id} = dataSource;
     if (!id) {
       return;
     }
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        const {comment, email, nickname, website} = values;
+        const {comment, email, nickname, website=''} = values;
         if (website !== '' && !regUrl.test(website)) {
           message.warning('url不正确,示例："http://www.xxx.com"')
           return;
@@ -87,9 +88,16 @@ class Comments extends Component {
           comment,
           email,
           nickname,
-          website
+          website,
+          token:password
         }
         postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
+          console.log(res)
+          const {getCommentsData=[]} = res;
+          if(!getCommentsData.length){
+            message.warning('您可能没权限')
+            return ;
+          }
           if (res) {
             message.success(`评论发表成功`);
           }

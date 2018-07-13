@@ -32,12 +32,14 @@ class Admin extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const {dispatch} = this.props;
+    const {password} = localStorage
     const queryStringObj = {
       type: ALL,
       num: 1,
-      pageNum
+      pageNum,
+      token:password
     }
     getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
   }
@@ -98,9 +100,11 @@ class Admin extends Component {
 
   handleDelArticle(id) {
     const {dispatch} = this.props;
+    const {password} = localStorage;
     const queryStringObj = {
       type: 'del',
-      num: id
+      num: id,
+      token:password
     };
     confirm({
       title: 'Are you sure delete this article?',
@@ -111,6 +115,12 @@ class Admin extends Component {
       onOk() {
         console.log('OK');
         getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj)).then(res => {
+          const {adminBlogData=[]} = res;
+          if(!adminBlogData.length){
+            message.warning('您可能没权限')
+            return ;
+          }
+          console.log('未加token删除',res)
           if (res) {
             message.success(`id为${id}的文章删除成功`)
           } else {
@@ -159,7 +169,7 @@ class Admin extends Component {
       console.log(key);
     }
 
-    let {adminBlogData = [], totalPageData = [], searchData = []} = this.props
+    let {adminBlogData = [], totalPageData = [], searchData = []} = this.props;
     if (searchData.length) {
       adminBlogData = searchData
     }
