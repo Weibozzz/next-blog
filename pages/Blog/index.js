@@ -13,7 +13,7 @@ import Head from 'next/head'
 import {getSearchList, getSearchTotal, getSearchPageList} from '../../store/actions'
 import ListTitle from '../../components/ListTitle';
 import {getBlogUrl, getTotalUrl} from '../../config';
-import {pageNum, TITLE, ALL,COMMON_TITLE,INDEX_TITLE} from '../../config/constantsData';
+import {pageNum, TITLE, ALL,COMMON_TITLE,INDEX_TITLE,BLOG_TXT} from '../../config/constantsData';
 
 const {Content} = Layout;
 const Search = Input.Search;
@@ -111,7 +111,7 @@ class Blog extends Component {
     return (
       <div className="Blog">
         <Head>
-          <title>{INDEX_TITLE}{COMMON_TITLE}</title>
+          <title>{BLOG_TXT}{COMMON_TITLE}</title>
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>
@@ -131,7 +131,6 @@ class Blog extends Component {
 
 Blog.getInitialProps = async function (context) {
   const {id = 1} = context.query
-  console.log(context.query)
   let queryStringObj = {
     type: ALL,
     num: id,
@@ -148,7 +147,6 @@ Blog.getInitialProps = async function (context) {
 }
 //这里根据需要传入redux
 const mapStateToProps = state => {
-  console.log(state)
   const {res, searchData, searchTotalData} = state
   return {res, searchData, searchTotalData};
 }

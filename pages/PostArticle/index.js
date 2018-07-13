@@ -4,10 +4,9 @@ import {connect} from 'react-redux'
 import Head from 'next/head';
 
 import EditArticle from '../../components/EditArticle';
+import {POST_ARTICLE_TXT,COMMON_TITLE} from '../../config/constantsData';
 
 const {Content} = Layout;
-const {TextArea} = Input;
-const Option = Select.Option;
 
 
 
@@ -27,7 +26,7 @@ class PostArticle extends Component {
     return (
       <div>
         <Head>
-          <title>发布文章</title>
+          <title>{POST_ARTICLE_TXT}{COMMON_TITLE}</title>
         </Head>
         <div className="post-article">
           <Layout>

@@ -87,12 +87,12 @@ class EditArticle extends Component {
       isEdit:id,
     } = this.state;
     let queryParamsObj={
-      title: titleVal,
-      url: urlVal,
+      title: titleVal.trim(),
+      url: urlVal.trim(),
       content:!notEditArticle?decodeURIComponent(editCont): encodeURIComponent(editCont),
       user: '刘伟波',
       type: selectVal,
-      short: shortVal,
+      short: shortVal.trim(),
       img: 'js.png',
       token:password
     };
@@ -112,7 +112,6 @@ class EditArticle extends Component {
 
     postArticle(dispatch, postArticleUrl(), queryParamsObj).then(res=>{
       const {postArticleData=[]} = res;
-      console.log(postArticleData)
       if(Array.isArray(postArticleData)&&!postArticleData.length){
         message.warning('您可能没权限,或者文章已存在')
         return ;

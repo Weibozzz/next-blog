@@ -52,7 +52,6 @@ class Comments extends Component {
 
   componentWillMount() {
     const {blogData = []} = this.props;
-    console.log('components comments', this.props)
     let {id: articleID} = blogData[0] || {};
     this.setState({
       articleID
@@ -79,7 +78,7 @@ class Comments extends Component {
     }
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        const {comment, email, nickname, website=''} = values;
+        const {comment='', email='', nickname='', website=''} = values;
         if (website !== '' && !regUrl.test(website)) {
           message.warning('url不正确,示例："http://www.xxx.com"')
           return;
@@ -95,10 +94,10 @@ class Comments extends Component {
         }
         const queryStringComment = {
           id,
-          comment,
-          email,
-          nickname,
-          website
+          comment:comment.trim(),
+          email:email.trim(),
+          nickname:nickname.trim(),
+          website:website.trim()
         }
         postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
 

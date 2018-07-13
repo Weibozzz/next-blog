@@ -13,43 +13,43 @@ const routes = [
   {
     href: ROUTER.INDEX,
     txt: ROUTER.INDEX_TXT,
-    isSuperAdmin:false
+    isSuperAdmin: false
   },
   {
     href: ROUTER.BLOG,
     txt: ROUTER.BLOG_TXT,
-    isSuperAdmin:false
+    isSuperAdmin: false
   },
   {
     href: ROUTER.LIFE,
     txt: ROUTER.LIFE_TXT,
-    isSuperAdmin:false
+    isSuperAdmin: false
   },
   {
     href: ROUTER.ONLINE_GITBOOK,
     txt: ROUTER.DOCS_TXT,
-    isSuperAdmin:false
+    isSuperAdmin: false
   },
   {
     href: ROUTER.ABOUT,
     txt: ROUTER.ABOUT_TXT,
-    isSuperAdmin:false
+    isSuperAdmin: false
   },
   {
     href: ROUTER.ADMIN,
     txt: ROUTER.ADMIN_TXT,
-    isSuperAdmin:true
+    isSuperAdmin: true
   },
   {
     href: ROUTER.POST_ARTICLE,
     txt: ROUTER.POST_ARTICLE_TXT,
-    isSuperAdmin:true
+    isSuperAdmin: true
   },
   {
     href: 'javascript:;',
     txt: '退出',
-    isSuperAdmin:true,
-    exit:true
+    isSuperAdmin: true,
+    exit: true
   },
 ]
 
@@ -58,23 +58,23 @@ class TopNav extends Component {
     super(props);
     this.state = {
       isLogin: false,
-      defaultSelectedKeys:'/'
+      defaultSelectedKeys: '/'
     }
   }
-  
+
   componentDidMount() {
-    const {pathname='/'} = location;
+    const {pathname = '/'} = location;
     const {dispatch} = this.props;
-    const {password=''} = localStorage;
+    const {password = ''} = localStorage;
     this.setState({
-      selectedKeys:[pathname]
+      selectedKeys: [pathname]
     })
-    if(!password){
-      return ;
+    if (!password) {
+      return;
     }
     postAdminPassword(dispatch, postAdminPasswordUrl(), {password: password}).then(res => {
       const {postAdminPasswordData = []} = res;
-      if(postAdminPasswordData.length){
+      if (postAdminPasswordData.length) {
         this.setState({
           isLogin: true
         })
@@ -82,35 +82,46 @@ class TopNav extends Component {
     })
   }
 
-  onSelect({keyPath,key}){
+  onSelect({keyPath, key}) {
     this.setState({
       selectedKeys: keyPath
     })
   }
-  onExit(){
+
+  onExit() {
     //退出清除localStorage
     localStorage.removeItem('password')
     this.setState({
       isLogin: false
     })
   }
+
   render() {
-    let {isLogin,selectedKeys=['/']} = this.state;
-    if(Object.prototype.toString.call(selectedKeys)==='[object String]'){
-      selectedKeys=['/']
+    let {isLogin, selectedKeys = ['/']} = this.state;
+    if (Object.prototype.toString.call(selectedKeys) === '[object String]') {
+      selectedKeys = ['/']
     }
     let newRoutes;
-    if(isLogin){
-      newRoutes=routes
-    }else {
-      newRoutes=routes.filter(v=>!v.isSuperAdmin)
+    if (isLogin) {
+      newRoutes = routes
+    } else {
+      newRoutes = routes.filter(v => !v.isSuperAdmin)
     }
     return (
       <div>
         <Head>
-          <meta name='viewport' content='width=device-width, initial-scale=1'/>
-          <meta charSet='utf-8'/>
+
+          <meta charset="utf-8"/>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+          <meta class="meta-ctrl-pc" name="viewport"
+                content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+          <meta name="renderer" content="webkit"/>
+          <meta http-equiv="description" content="刘伟波-天天向上"/>
+          <meta name="Keywords" content="刘伟波, 个人博客, 个人网站, web前端"/>
+          <meta name="Description" content="刘伟波的个人博客，刘伟波的技术作品，刘伟波的生活成长"/>
+          <meta name="author" content="刘伟波,liuweibo"/>
           <link rel='stylesheet' href='/_next/static/style.css'/>
+          <title>刘伟波的个人博客 &raquo; 刘伟波-天天向上</title>
         </Head>
         <Layout>
           <Header style={{position: 'fixed', height: '64px', width: '100%', padding: 0, zIndex: 10}}>
@@ -127,9 +138,9 @@ class TopNav extends Component {
                 >
                   {
                     newRoutes.map((item, index) => {
-                      return item.exit?
+                      return item.exit ?
                         <Menu.Item key={item.href}>
-                          <Link href={item.href} >
+                          <Link href={item.href}>
                             <a onClick={this.onExit.bind(this)}>{item.txt}</a>
                           </Link>
                         </Menu.Item>

@@ -13,7 +13,7 @@ import {
 import {formatTime} from '../../until';
 import {getAdminBlogUrl, getBlogUrl, getTotalUrl, postAdminPasswordUrl} from '../../config';
 import {getAdminBlogList, getSearchList, postAdminPassword} from '../../store/actions';
-import {ALL, pageNum, TITLE} from "../../config/constantsData";
+import {ALL, pageNum, TITLE,ADMIN_TXT,COMMON_TITLE} from "../../config/constantsData";
 
 const FormItem = Form.Item;
 const confirm = Modal.confirm;
@@ -113,14 +113,12 @@ class Admin extends Component {
       okType: 'danger',
       cancelText: 'No',
       onOk() {
-        console.log('OK');
         getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj)).then(res => {
           const {adminBlogData=[]} = res;
           if(!adminBlogData.length){
             message.warning('您可能没权限')
             return ;
           }
-          console.log('未加token删除',res)
           if (res) {
             message.success(`id为${id}的文章删除成功`)
           } else {
@@ -129,7 +127,6 @@ class Admin extends Component {
         })
       },
       onCancel() {
-        console.log('Cancel');
       },
     });
 
@@ -158,15 +155,12 @@ class Admin extends Component {
 
   render() {
     function onChange(pagination, filters, sorter) {
-      console.log('params', pagination, filters, sorter);
     }
 
     function onClick(pagination, filters, sorter) {
-      console.log('onClick', pagination, filters, sorter);
     }
 
     function callback(key) {
-      console.log(key);
     }
 
     let {adminBlogData = [], totalPageData = [], searchData = []} = this.props;
@@ -196,10 +190,7 @@ class Admin extends Component {
     return (
       <div>
         <Head>
-          <meta name='viewport' content='width=device-width, initial-scale=1'/>
-          <meta charSet='utf-8'/>
-          <link rel='stylesheet' href='/_next/static/style.css'/>
-          <title>admin</title>
+          <title>{ADMIN_TXT}{COMMON_TITLE}</title>
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>
@@ -220,7 +211,6 @@ class Admin extends Component {
                           onRow={(record) => {
                             return {
                               onClick: () => {
-                                console.log(record)
                               },       // 点击行
                               onMouseEnter: () => {
                               },  // 鼠标移入行
@@ -281,7 +271,6 @@ Admin.getInitialProps = async function () {
   return {totalPageData}
 }
 const mapStateToProps = state => {
-  console.log(state)
   const {adminBlogData, searchData,postAdminPasswordData} = state
   return {adminBlogData, searchData,postAdminPasswordData};
 }

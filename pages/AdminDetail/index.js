@@ -50,9 +50,6 @@ class AdminDetail extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         const {comment,email,nickname,website} = values;
-        console.log('Received values of form: ', values);
-
-        console.log({id,comment,email,nickname,website})
 
       }
     });
@@ -69,7 +66,7 @@ class AdminDetail extends Component {
     return (
       <div className="detail">
         <Head>
-          <title>{COMMON_TITLE}</title>
+          <title>{title}{COMMON_TITLE}</title>
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>

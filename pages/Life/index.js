@@ -7,13 +7,12 @@ import {
 } from 'antd'
 
 import 'whatwg-fetch'
-import Link from 'next/link';
 import Head from 'next/head'
 
 import {getLifeList} from '../../store/actions'
 import ListTitle from '../../components/ListTitle';
 import {getLifeUrl} from '../../config';
-import {COMMON_TITLE,INDEX_TITLE} from '../../config/constantsData';
+import {COMMON_TITLE,LIFE_TXT} from '../../config/constantsData';
 
 const {Content} = Layout;
 
@@ -25,7 +24,6 @@ class Life extends Component {
     }
   }
   componentWillMount(){
-    console.log('pages life ',this.props)
     const {dispatch} = this.props;
     getLifeList(dispatch, getLifeUrl())
   }
@@ -36,7 +34,7 @@ class Life extends Component {
     return (
       <div className="life">
         <Head>
-          <title>{INDEX_TITLE}{COMMON_TITLE}</title>
+          <title>{LIFE_TXT}{COMMON_TITLE}</title>
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>
@@ -53,7 +51,6 @@ class Life extends Component {
 
 //这里根据需要传入redux
 const mapStateToProps = state => {
-  console.log(state)
   const {lifeData} = state
   return {lifeData};
 }
