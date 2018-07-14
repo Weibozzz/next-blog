@@ -23,7 +23,6 @@ class About extends Component {
            <div style={{background: '#fff', padding: 24, minHeight: 380}}>
 
              关于自己
-
            </div>
          </Content>
        </Layout>

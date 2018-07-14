@@ -111,16 +111,17 @@ class TopNav extends Component {
       <div>
         <Head>
 
-          <meta charset="utf-8"/>
-          <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
-          <meta class="meta-ctrl-pc" name="viewport"
+          <meta charSet="utf-8"/>
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+          <meta name="viewport"
                 content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
           <meta name="renderer" content="webkit"/>
-          <meta http-equiv="description" content="刘伟波-天天向上"/>
+          <meta httpEquiv="description" content="刘伟波-天天向上"/>
           <meta name="Keywords" content="刘伟波, 个人博客, 个人网站, web前端"/>
           <meta name="Description" content="刘伟波的个人博客，刘伟波的技术作品，刘伟波的生活成长"/>
           <meta name="author" content="刘伟波,liuweibo"/>
           <link rel='stylesheet' href='/_next/static/style.css'/>
+          <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
           <title>刘伟波的个人博客 &raquo; 刘伟波-天天向上</title>
         </Head>
         <Layout>

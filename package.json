@@ -42,10 +42,11 @@
     "redux-thunk": "^2.3.0",
     "showdown": "^1.8.6",
     "style-loader": "^0.21.0",
-    "wangeditor": "^3.1.1",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
+    "@zeit/next-css": "^0.2.0",
+    "@zeit/next-sass": "^0.2.0",
     "babel-plugin-import": "^1.8.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "blueimp-md5": "^2.10.0",
@@ -55,6 +56,7 @@
     "highlight.js": "^9.12.0",
     "html2markdown": "^1.1.0",
     "marked": "^0.4.0",
+    "node-sass": "^4.9.2",
     "prismjs": "^1.15.0",
     "react-addons-shallow-compare": "^15.6.2",
     "react-lowlight": "^2.0.0",

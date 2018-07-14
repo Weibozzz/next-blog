@@ -54,13 +54,28 @@ class Detail extends Component {
 //接口
     let {blogData = [], commentsData = [],getCommentsData=[],lastIdData=[],nextIdData=[]} = this.props;
     let {articleID} = this.state;
-    const {content = '', createTime = '',title='',url=''} = blogData[0] || {};
+    let {content = '', createTime = '',title='',url='',id,type=''} = blogData[0] || {};
 
     commentsData=[...commentsData,...getCommentsData]
       .filter(v=>v.a_id===articleID)
       .sort((a,b)=>b.createTime-a.createTime)
 
     const bool = createTime > OldTime;
+
+    let decode_html=decodeURIComponent(content)
+    let _html_content=bool?
+      marked(getHtml(decode_html, createTime))
+      :
+      type==='interesting'||type==='fight'&&id>=146&&id<=178
+        ?
+      getHtml(decode_html
+        .replace(/https:\/\/15691808595\.github\.io/gi,'https://weibozzz.github.io')
+        .replace(/http:\/\/www\.liuweibo\.cn\/(jianli)/gi,'/static/jianli')
+        .replace(/http:\/\/www\.liuweibo\.cn\/(img)/gi,'/static')
+        .replace(/http:\/\/www\.liuweibo\.cn\/(liuweibo_FrontEnd_CV.doc)/gi,'/static/cv/liuweibo_FrontEnd_CV.doc')
+        , createTime)
+        :getHtml(decode_html, createTime)
+
 
     return (
       <div className="detail">
@@ -74,9 +89,7 @@ class Detail extends Component {
               <div
                 className={bool?'new-detail':'old-detail'}
                 dangerouslySetInnerHTML={{
-                  __html:bool ?
-                    marked(getHtml(decodeURIComponent(content), createTime))
-                    : getHtml(decodeURIComponent(content), createTime)
+                  __html:_html_content
                 }}
               ></div>
               <PrevNextPage dataSource={{url,lastIdData,nextIdData}}></PrevNextPage>
@@ -85,6 +98,10 @@ class Detail extends Component {
           </Content>
         </Layout>
         <style>{`
+        .a-img{
+          margin-bottom:20px;
+          text-align:center;
+        }
 .old-detail pre{
     border:1px solid #ccc;
     background-color:#f5f5f5;

@@ -4,6 +4,7 @@ import { Layout, Menu, Breadcrumb, Row, Col ,List, Avatar, Icon,Pagination,Alert
 
 import {GITHUB_ADDRESS,TOP_TIPS} from '../../config/constantsData';
 
+
 const TopTips = props=>{
   // console.log(props,this,window)
   /*onst pathnameArr = location.pathname.split('/').slice(1);
