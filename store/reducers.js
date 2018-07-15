@@ -33,6 +33,11 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         getCommentsData: action.getCommentsData
       })
+    case actionTypes.POST_USER_COMMENTS:
+      //发布留言,然后获得更新后的评论
+      return Object.assign({}, state, {
+        getUserCommentsData: action.getUserCommentsData
+      })
     case actionTypes.POST_ARTICLE:
       //发布文章后的返回
       return Object.assign({}, state, {

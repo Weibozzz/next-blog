@@ -40,6 +40,16 @@ export const postComments = async (dispatch, url,body) => {
   return dispatch({type: actionTypes.POST_COMMENTS, getCommentsData: jsonData})
 
 }
+export const postUserComments = async (dispatch, url,body) => {
+  //发布评论,然后获得更新后的评论
+  const res = await fetch(url,{
+    method: 'POST',
+    body:JSON.stringify(body)
+  })
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.POST_USER_COMMENTS, getUserCommentsData: jsonData})
+
+}
 export const postArticle = async (dispatch, url,body) => {
   //发布文章 修改文章
   const res = await fetch(url,{

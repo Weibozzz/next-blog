@@ -66,7 +66,7 @@ class AdminDetail extends Component {
     return (
       <div className="detail">
         <Head>
-          <title>{title}{COMMON_TITLE}</title>
+          <title>{title}&raquo;{COMMON_TITLE}</title>
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>

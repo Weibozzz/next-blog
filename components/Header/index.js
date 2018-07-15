@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Layout, Menu, Breadcrumb, Row, Col} from 'antd';
 import Link from 'next/link'
-import Head from 'next/head';
-import TopTips from '../../components/TopTips';
+// prefetch预加载
+import dynamic from 'next/dynamic';
 import * as ROUTER from '../../config/constantsData';
 import {postAdminPasswordUrl} from '../../config';
 import {postAdminPassword} from '../../store/actions';
+import MyHead from '../../components/MyHead';
 
+//toptis不需要seo
+const DynasicTopTipsNoSsr = dynamic(import('../../components/TopTips'),{
+  ssr:false
+})
 const {Header, Content} = Layout;
 const routes = [
   {
@@ -109,21 +114,7 @@ class TopNav extends Component {
     }
     return (
       <div>
-        <Head>
-
-          <meta charSet="utf-8"/>
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
-          <meta name="viewport"
-                content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-          <meta name="renderer" content="webkit"/>
-          <meta httpEquiv="description" content="刘伟波-天天向上"/>
-          <meta name="Keywords" content="刘伟波, 个人博客, 个人网站, web前端"/>
-          <meta name="Description" content="刘伟波的个人博客，刘伟波的技术作品，刘伟波的生活成长"/>
-          <meta name="author" content="刘伟波,liuweibo"/>
-          <link rel='stylesheet' href='/_next/static/style.css'/>
-          <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
-          <title>刘伟波的个人博客 &raquo; 刘伟波-天天向上</title>
-        </Head>
+        <MyHead/>
         <Layout>
           <Header style={{position: 'fixed', height: '64px', width: '100%', padding: 0, zIndex: 10}}>
             <Row>
@@ -141,13 +132,13 @@ class TopNav extends Component {
                     newRoutes.map((item, index) => {
                       return item.exit ?
                         <Menu.Item key={item.href}>
-                          <Link href={item.href}>
+                          <Link prefetch href={item.href}>
                             <a onClick={this.onExit.bind(this)}>{item.txt}</a>
                           </Link>
                         </Menu.Item>
                         :
                         <Menu.Item key={item.href}>
-                          <Link href={item.href}>
+                          <Link prefetch href={item.href}>
                             <a>{item.txt}</a>
                           </Link>
                         </Menu.Item>
@@ -159,7 +150,7 @@ class TopNav extends Component {
             </Row>
           </Header>
           <Content style={{padding: '0 50px', marginTop: 64}}>
-            <TopTips/>
+            <DynasicTopTipsNoSsr/>
           </Content>
         </Layout>
       </div>

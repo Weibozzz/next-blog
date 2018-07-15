@@ -81,6 +81,13 @@ class Blog extends Component {
     }
 
   }
+  onClickPageChange(e){
+    e.preventDefault()
+    const {router} = this.props;
+    const {currentPage} = this.state;
+    const {pathname} = router;
+    // router.push(`${pathname}/${currentPage}`)
+  }
   itemRender(current, type, originalElement) {
     if (type === 'prev') {
       return <a>Previous</a>;
@@ -111,7 +118,7 @@ class Blog extends Component {
     return (
       <div className="Blog">
         <Head>
-          <title>{BLOG_TXT}{COMMON_TITLE}</title>
+          <title>{BLOG_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>

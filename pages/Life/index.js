@@ -34,7 +34,7 @@ class Life extends Component {
     return (
       <div className="life">
         <Head>
-          <title>{LIFE_TXT}{COMMON_TITLE}</title>
+          <title>{LIFE_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>

@@ -1,0 +1,100 @@
+.index{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  transition: All 2s ease;
+}
+.index{
+  position: relative;
+  height: 100%;
+  .img{
+    position: absolute;
+    width: 100%;
+  }
+  .layout{
+    padding-top: 20px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 1.5em;
+    color: #fefefe;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40%;
+    max-height: 80%;
+    transform: translate(-50%, -50%);
+    transition: height 1s ease;
+    transition: top 1s ease;
+    a{
+      color: #fefefe;
+      text-shadow: 0 1px 1px #333;
+    }
+
+    .header{
+      padding-bottom: 1em;
+      margin: 0 20px;
+      text-align: center;
+      border-bottom: 1px solid #d3d3d3;
+      height: 5em;
+      h1{
+        font-size: 1.4rem;
+        line-height: 90%;
+        color: #fefefe;
+        margin: auto;
+        padding-top: 0.4rem;
+        text-shadow: 0 1px 1px #333;
+      }
+      h2{
+        height: 0;
+        overflow: hidden;
+      }
+      p{
+        line-height: 38px;
+        color: #fefefe;
+        text-shadow: 0 1px 1px #333;
+      }
+    }
+
+    .header:hover h1{
+      color: #fefefe;
+      text-shadow: 0 1px 1px #333;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .mid{
+      margin: 1.5em 1em 1em 1em;
+      li{
+        width: 90%;
+        margin:  1em auto 1em auto;
+        line-height: 180%;
+        background-color: rgba(0,0,0,0.5);
+        padding: 0.25rem;
+        border-radius: 0.5em;
+        text-shadow: 0 1px 1px #333;
+      }
+      li:hover{
+        background-color: #fefefe;
+        a{
+          color: #222;
+          text-decoration: underline;
+        }
+      }
+    }
+    .footer{
+      margin: 0 2em;
+      line-height: 45px;
+      border-top: 1px solid #d3d3d3;
+      text-align: right;
+      span{
+        padding: 0 5px;
+      }
+      a:hover{
+        background-color: #fefefe;
+        color: #222;
+        text-decoration: underline;
+        padding: 0.25rem;
+        border-radius: 0.5em;
+      }
+    }
+  }
+}

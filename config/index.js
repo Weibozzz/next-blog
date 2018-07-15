@@ -20,11 +20,20 @@ export const getNextIdUrl = (obj) => {
 }
 
 
+//评论
 export const getCommentsUrl = (obj) => {
   return getDomain() + 'api/comments' + toQueryStr(obj);
 }
 export const postCommentUrl = () => {
   return getDomain() + 'api/postComment';
+}
+//留言
+export const postUserCommentUrl = () => {
+  return getDomain() + 'api/postUserComment';
+}
+
+export const getUserComment = () => {
+  return getDomain() + 'api/getUserComment';
 }
 
 export const postArticleUrl = () => {

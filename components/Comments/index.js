@@ -8,8 +8,8 @@ import {
 } from 'antd';
 
 import {formatTime, regUrl} from "../../until";
-import {postComments} from "../../store/actions";
-import {postCommentUrl} from "../../config";
+import {postComments,postUserComments} from "../../store/actions";
+import {postCommentUrl,postUserCommentUrl} from "../../config";
 
 
 //表单定义
@@ -50,6 +50,7 @@ class Comments extends Component {
     }
   }
 
+
   componentWillMount() {
     const {blogData = []} = this.props;
     let {id: articleID} = blogData[0] || {};
@@ -70,10 +71,8 @@ class Comments extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {dispatch, dataSource = {}} = this.props;
-    const {commentsData} = this.state;
-    const {commentsData:commentsDataOrigin = []} = dataSource;
-    const {articleID: id} = dataSource;
-    if (!id) {
+    const {commentsData:commentsDataOrigin = [],articleID: id,isUserSubmit=false} = dataSource;
+    if (!id&&!isUserSubmit) {
       return;
     }
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -87,7 +86,7 @@ class Comments extends Component {
           message.warning('用户名或者评论内容过少')
           return;
         }
-        const isExist = commentsDataOrigin.findIndex(v=>v.user===nickname)!==-1
+        const isExist = commentsDataOrigin.findIndex(v=>v.user===nickname||v.name===nickname)!==-1
         if(isExist){
           message.warning('用户名已存在')
           return;
@@ -97,10 +96,19 @@ class Comments extends Component {
           comment:comment.trim(),
           email:email.trim(),
           nickname:nickname.trim(),
-          website:website.trim()
+          website:website.trim(),
+          name:nickname.trim()
         }
+        //如果是详情页提交它，如果是关于我，则不用关心id
+        isUserSubmit?
+          postUserComments(dispatch, postUserCommentUrl(), queryStringComment).then(res => {
+            const {getUserCommentsData} = res;
+            if (getUserCommentsData.length) {
+              message.success(`留言发表成功`);
+            }
+          })
+          :
         postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
-
           if (res) {
             message.success(`评论发表成功`);
           }
@@ -111,7 +119,7 @@ class Comments extends Component {
 
   render() {
     const {dataSource = {}} = this.props;
-    const {commentsData = []} = dataSource;
+    const {commentsData = [],commentTitle='发表评论',commentPlaceHolder='来吐槽',commentBtnMsg='提交评论',commentRow=8} = dataSource;
     //表单
     const {getFieldDecorator} = this.props.form;
     const {autoCompleteResult} = this.state;
@@ -120,9 +128,9 @@ class Comments extends Component {
     ));
     return (
       <div className="comment-wrapper">
-        <h2>发表评论：</h2>
+        <h2>{commentTitle}：</h2>
         <Row>
-          <Col span={8}>
+          <Col span={commentRow}>
             <Form onSubmit={this.handleSubmit}>
               <FormItem
                 {...formItemLayout}
@@ -186,12 +194,13 @@ class Comments extends Component {
                   }],
                 })(
                   <TextArea
-                    title="来吐槽"
-                    placeholder="来吐槽"/>
+                    rows={6}
+                    title={commentPlaceHolder}
+                    placeholder={commentPlaceHolder}/>
                 )}
               </FormItem>
               <FormItem {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit">提交评论</Button>
+                <Button type="primary" htmlType="submit">{commentBtnMsg}</Button>
               </FormItem>
             </Form>
           </Col>
@@ -206,10 +215,10 @@ class Comments extends Component {
                   {
                     v.website && regUrl.test(v.website) ?
                       <Link href={v.website}>
-                        <a style={{color: '#34538b', fontWeight: 'bold'}}>{v.user}</a>
+                        <a style={{color: '#34538b', fontWeight: 'bold'}}>{v.user||v.name}</a>
                       </Link>
                       :
-                      <span style={{color: '#000', fontWeight: 'bold'}}>{v.user}</span>
+                      <span style={{color: '#000', fontWeight: 'bold'}}>{v.user||v.name}</span>
                   }
                   说道：
                     </span>

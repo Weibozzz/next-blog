@@ -26,7 +26,7 @@ class PostArticle extends Component {
     return (
       <div>
         <Head>
-          <title>{POST_ARTICLE_TXT}{COMMON_TITLE}</title>
+          <title>{POST_ARTICLE_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
         <div className="post-article">
           <Layout>

@@ -1,21 +1,36 @@
 import App, {Container} from 'next/app'
 import React from 'react'
+import { withRouter } from 'next/router'
 import withReduxStore from '../lib/with-redux-store'
 import { Provider } from 'react-redux'
 import Header from '../components/Header';
 import Footer from '../components/Footer'
 import '../asserts/styles.less'
 
+
+
 class MyApp extends App {
   render () {
-    const {Component, pageProps, reduxStore} = this.props
+    
+    const {Component, pageProps, reduxStore,router:{pathname}} = this.props;
     return (
       <Container>
         <Provider store={reduxStore}>
           <div className="container">
-            <Header/>
+            {
+              pathname==='/'
+              ?
+                ''
+                : <Header/>
+            }
             <Component {...pageProps} />
-            <Footer/>
+            {
+              pathname==='/'
+                ?
+                ''
+                :
+                <Footer/>
+            }
           </div>
         </Provider>
 
@@ -59,4 +74,4 @@ li{
   }
 }
 
-export default withReduxStore(MyApp)
+export default withReduxStore(withRouter(MyApp))

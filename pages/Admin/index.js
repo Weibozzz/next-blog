@@ -190,7 +190,7 @@ class Admin extends Component {
     return (
       <div>
         <Head>
-          <title>{ADMIN_TXT}{COMMON_TITLE}</title>
+          <title>{ADMIN_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
         <Layout>
           <Content style={{padding: '0 50px'}}>
@@ -225,7 +225,7 @@ class Admin extends Component {
                       <TabPane tab="留言管理" key="2">
 
                       </TabPane>
-                      <TabPane tab="浏览记录" key="3">Content of Tab Pane 3</TabPane>
+                      <TabPane tab="评论管理" key="3">Content of Tab Pane 3</TabPane>
                     </Tabs>
                   </div>
                 </div>

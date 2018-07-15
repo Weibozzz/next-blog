@@ -7,6 +7,7 @@
     "dev": "node server.js",
     "dev:next": "next",
     "build": "next build",
+    "export": "next export",
     "start": "cross-env NODE_ENV=production node server.js",
     "prd": "cross-env NODE_ENV=production pm2 start server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
