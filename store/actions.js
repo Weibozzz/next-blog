@@ -70,6 +70,13 @@ export const getAdminBlogList = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_ADMIN_DATA, adminBlogData: jsonData})
 }
 
+/*export const getCommentsList = async (dispatch, url) => {
+  //得到所有用户评论
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_COMMENTS, getAdminCommentsData: jsonData})
+}*/
+
 // export const postAdminDetail = async (dispatch, url) => {
 //   //修改文章
 //   const res = await fetch(url)

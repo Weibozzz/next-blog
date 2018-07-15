@@ -45,6 +45,11 @@ export const reducer = (state = exampleInitialState, action) => {
       })
 
     //后台
+    case actionTypes.GET_COMMENTS:
+      //获得博客数据
+      return Object.assign({}, state, {
+        getAdminCommentsData: action.getAdminCommentsData
+      })
     case actionTypes.GET_ADMIN_DATA:
       //获得博客数据
       return Object.assign({}, state, {

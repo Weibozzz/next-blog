@@ -32,9 +32,15 @@ export const postUserCommentUrl = () => {
   return getDomain() + 'api/postUserComment';
 }
 
-export const getUserComment = () => {
+export const getUserCommentUrl = () => {
+  //获得用户留言
   return getDomain() + 'api/getUserComment';
 }
+
+/*export const getAdminCommentUrl = () => {
+  //获得用户评论
+  return getDomain() + 'api/getAdminComment';
+}*/
 
 export const postArticleUrl = () => {
   //发表文章

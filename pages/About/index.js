@@ -10,7 +10,7 @@ import {
 } from 'antd'
 import {COMMON_TITLE, ABOUT_TXT, LINK_ABOUT_ME, commentPlaceHolder} from '../../config/constantsData';
 import Comments from '../../components/Comments';
-import {getUserComment} from "../../config";
+import {getUserCommentUrl} from "../../config";
 import './index.less'
 
 const {Content} = Layout;
@@ -113,7 +113,7 @@ class About extends Component {
   }
 }
 About.getInitialProps = async function (context) {
-  const comments = await fetch(getUserComment())
+  const comments = await fetch(getUserCommentUrl())
   const commentsUserData = await comments.json()
 
 

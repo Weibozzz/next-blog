@@ -72,5 +72,7 @@ export const BG_INDEX = [
     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531646911000&di=a26a9a391b5906d908bbdecd5ed9373d&imgtype=0&src=http%3A%2F%2Fp1.pccoo.cn%2Fyp%2F20131021%2F201310211536103932.jpg'
   },
 ]
+//首页切换时间
+export const defaultTimer = 10000;
 //关于我
 export const commentPlaceHolder = '欢迎提出您在使用过程中遇到的问题或宝贵建议（400字以内），感谢您对博主的支持。(必填)'

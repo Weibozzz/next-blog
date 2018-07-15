@@ -11,13 +11,26 @@ class Index extends React.Component {
     super()
     this.state = {
       bg: '',
-      defaultIndexBg: 0
+      defaultIndexBg: 0,
+      timer:null
     }
   }
   componentWillMount(){
     this.setState({
       defaultIndexBg: this.getRandom()
     })
+  }
+  componentDidMount(){
+    let timer=setInterval(()=>{
+      this.setState({
+        defaultIndexBg:this.getRandom(),
+        timer
+      })
+    },ROUTER.defaultTimer)
+  }
+  componentWillUnmount(){
+    const {timer} = this.state;
+    clearInterval(timer)
   }
   getRandom(){
     const {BG_INDEX} = ROUTER;

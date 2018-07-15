@@ -37,13 +37,15 @@ npm run dev
 #### 遗留问题
 
 
-1. 关于我留言立即生效，后台留言
-2. eslint
-12. 推荐文章
-13. 文章分类icon
-14. 浏览记录
-15. detail页面4个replace
-15. 对象数组去重
+1. 手机端padding问题
+4. ant 的cont  padding  50
+5. eslint
+6. 推荐文章
+7. 文章分类icon
+8. 浏览记录
+9. detail页面4个replace
+10. 对象数组去重
+11. 文章图片
 
 ##### 待学习修改
 1. 面包屑导航
