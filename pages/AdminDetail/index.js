@@ -13,6 +13,7 @@ import EditArticle from '../../components/EditArticle';
 import {COMMON_TITLE} from '../../config/constantsData';
 import {getDetailUrl} from '../../config';
 import {getArticleInfo} from '../../until';
+import MyLayout from '../../components/MyLayout';
 
 const {Content} = Layout;
 
@@ -68,15 +69,15 @@ class AdminDetail extends Component {
         <Head>
           <title>{title}&raquo;{COMMON_TITLE}</title>
         </Head>
-        <Layout>
-          <Content style={{padding: '0 50px'}}>
+        <MyLayout>
+          <Content >
             <div style={{background: '#fff', padding: 24, minHeight: 380}}>
               <ArticleTitle detailArticle={adminBlogDetailData}/>
               <EditArticle dataSource={Object.assign({},adminBlogDetailData,{articleID})}/>
             </div>
 
           </Content>
-        </Layout>
+        </MyLayout>
       </div>
     );
   }

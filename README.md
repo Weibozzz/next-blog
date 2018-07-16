@@ -36,22 +36,17 @@ npm run dev
 
 #### 遗留问题
 
-
-1. 手机端padding问题
-4. ant 的cont  padding  50
-5. eslint
+1. 服务器导出sql文件
+2. 面包屑导航
 6. 推荐文章
 7. 文章分类icon
 8. 浏览记录
 9. detail页面4个replace
-10. 对象数组去重
 11. 文章图片
 
 ##### 待学习修改
-1. 面包屑导航
-2. 文章列表分页跳转问题
 4. 开发环境 warning.js:33 Warning: A component is `contentEditable`
-19. 顶部加载进度条
+5. eslint
 
 ## 关于作者 / About
 

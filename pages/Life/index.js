@@ -13,6 +13,7 @@ import {getLifeList} from '../../store/actions'
 import ListTitle from '../../components/ListTitle';
 import {getLifeUrl} from '../../config';
 import {COMMON_TITLE,LIFE_TXT} from '../../config/constantsData';
+import MyLayout from '../../components/MyLayout';
 
 const {Content} = Layout;
 
@@ -30,20 +31,20 @@ class Life extends Component {
 
   render() {
 
-    const {lifeData:listData} = this.props
+    const {lifeData:listData,userAgent='pc'} = this.props
     return (
       <div className="life">
         <Head>
           <title>{LIFE_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
-        <Layout>
-          <Content style={{padding: '0 50px'}}>
+        <MyLayout>
+          <Content >
             <div style={{background: '#fff', padding: 24, minHeight: 380}}>
               <ListTitle dataSource={{listData,pathname:'Life'}}/>
 
             </div>
           </Content>
-        </Layout>
+        </MyLayout>
       </div>
     )
   }

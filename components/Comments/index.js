@@ -20,11 +20,13 @@ const AutoCompleteOption = AutoComplete.Option;
 const formItemLayout = {
   labelCol: {
     xs: {span: 24},
-    sm: {span: 8},
+    sm: {span: 24},
+    lg: {span: 8},
   },
   wrapperCol: {
     xs: {span: 24},
-    sm: {span: 16},
+    sm: {span: 24},
+    lg: {span: 16},
   },
 };
 const tailFormItemLayout = {
@@ -34,6 +36,10 @@ const tailFormItemLayout = {
       offset: 0,
     },
     sm: {
+      span: 24,
+      offset: 0,
+    },
+    lg: {
       span: 16,
       offset: 8,
     },
@@ -130,7 +136,11 @@ class Comments extends Component {
       <div className="comment-wrapper">
         <h2>{commentTitle}：</h2>
         <Row>
-          <Col span={commentRow}>
+          <Col
+               sm={{ span: 24, offset: 0 }}
+               xs={{ span: 24, offset: 0 }}
+               lg={{ span: commentRow, offset: 0 }}
+          >
             <Form onSubmit={this.handleSubmit}>
               <FormItem
                 {...formItemLayout}

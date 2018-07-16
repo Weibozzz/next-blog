@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import Head from 'next/head';
 import * as ROUTER from '../../config/constantsData';
 
+import Router from 'next/router'
+import NProgress from 'nprogress'
+
+Router.onRouteChangeStart = (url) => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+}
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
 const MyHead = ()=>(
   <Head>
 
@@ -15,6 +24,7 @@ const MyHead = ()=>(
     <meta name="Description" content={ROUTER.Description}/>
     <meta name="author" content="刘伟波,liuweibo"/>
     <link rel='stylesheet' href='/_next/static/style.css'/>
+    <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
     <title>{ROUTER.INDEX_TITLE} &raquo; {ROUTER.COMMON_TITLE}</title>
   </Head>

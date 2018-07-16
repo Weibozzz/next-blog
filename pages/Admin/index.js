@@ -14,6 +14,7 @@ import {formatTime} from '../../until';
 import {getAdminBlogUrl, getBlogUrl, getTotalUrl, postAdminPasswordUrl,getUserCommentUrl,postUserCommentUrl,postCommentUrl} from '../../config';
 import {getAdminBlogList, getSearchList, postAdminPassword,postUserComments,postComments} from '../../store/actions';
 import {ALL, pageNum, TITLE,ADMIN_TXT,COMMON_TITLE} from "../../config/constantsData";
+import MyLayout from '../../components/MyLayout';
 const FormItem = Form.Item;
 const confirm = Modal.confirm;
 const TabPane = Tabs.TabPane;
@@ -287,8 +288,8 @@ class Admin extends Component {
         <Head>
           <title>{ADMIN_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
-        <Layout>
-          <Content style={{padding: '0 50px'}}>
+        <MyLayout>
+          <Content >
             {
               postAdminPasswordData.length ?
                 <div>
@@ -382,7 +383,7 @@ class Admin extends Component {
                 </div>
             }
           </Content>
-        </Layout>
+        </MyLayout>
       </div>
     )
   }

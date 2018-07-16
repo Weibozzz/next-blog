@@ -5,6 +5,7 @@ import Head from 'next/head';
 
 import EditArticle from '../../components/EditArticle';
 import {POST_ARTICLE_TXT,COMMON_TITLE} from '../../config/constantsData';
+import MyLayout from '../../components/MyLayout';
 
 const {Content} = Layout;
 
@@ -29,11 +30,11 @@ class PostArticle extends Component {
           <title>{POST_ARTICLE_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
         <div className="post-article">
-          <Layout>
-            <Content style={{padding: '0 50px'}}>
+          <MyLayout>
+            <Content >
               <EditArticle/>
             </Content>
-          </Layout>
+          </MyLayout>
         </div>
       </div>
     );

@@ -11,6 +11,7 @@ import {
 import {COMMON_TITLE, ABOUT_TXT, LINK_ABOUT_ME, commentPlaceHolder} from '../../config/constantsData';
 import Comments from '../../components/Comments';
 import {getUserCommentUrl} from "../../config";
+import MyLayout from '../../components/MyLayout';
 import './index.less'
 
 const {Content} = Layout;
@@ -40,8 +41,8 @@ class About extends Component {
         <Head>
           <title>{ABOUT_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
-        <Layout>
-          <Content style={{padding: '0 50px'}}>
+        <MyLayout >
+          <Content >
             <div className="about">
               <section>
                 <div className="header">
@@ -107,7 +108,7 @@ class About extends Component {
             </div>
 
           </Content>
-        </Layout>
+        </MyLayout>
       </div>
     );
   }

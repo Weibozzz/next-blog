@@ -5,7 +5,7 @@ import {
   List, Avatar, Icon, Pagination, Alert,
   Input, Button, Radio, Tooltip, Spin
 } from 'antd'
-
+import Router from 'next/router'
 import 'whatwg-fetch'
 import Link from 'next/link';
 import Head from 'next/head'
@@ -14,10 +14,9 @@ import {getSearchList, getSearchTotal, getSearchPageList} from '../../store/acti
 import ListTitle from '../../components/ListTitle';
 import {getBlogUrl, getTotalUrl} from '../../config';
 import {pageNum, TITLE, ALL,COMMON_TITLE,INDEX_TITLE,BLOG_TXT} from '../../config/constantsData';
-
+import MyLayout from '../../components/MyLayout';
 const {Content} = Layout;
 const Search = Input.Search;
-
 
 class Blog extends Component {
   constructor() {
@@ -60,7 +59,12 @@ class Blog extends Component {
     getSearchTotal(dispatch, getTotalUrl(queryTotalString))
   }
   componentDidMount(){
-
+    const {router={}} = Router
+    const {query={}} = router
+    const {id='1'} = query
+    this.setState({
+      currentPage: Number(id)
+    })
   }
   onChange(page, pageSize) {
     const {dispatch} = this.props
@@ -79,14 +83,11 @@ class Blog extends Component {
       }
       getSearchPageList(dispatch, getBlogUrl(queryStringObj))
     }
+    Router.push(`/Blog/${page}`)
 
   }
   onClickPageChange(e){
     e.preventDefault()
-    const {router} = this.props;
-    const {currentPage} = this.state;
-    const {pathname} = router;
-    // router.push(`${pathname}/${currentPage}`)
   }
   itemRender(current, type, originalElement) {
     if (type === 'prev') {
@@ -94,9 +95,10 @@ class Blog extends Component {
     } else if (type === 'next') {
       return <a>Next</a>;
     }
+    // return originalElement;
     return (
-      <Link as={`/Blog/${current}`} href={`/Blog?id=${current}`}>
-        <a >{current}</a>
+      <Link   as={`/Blog/${current}`} href={`/Blog?id=${current}`}>
+        <a onClick={this.onClickPageChange.bind(this)}>{current}</a>
       </Link>
     );
   }
@@ -104,7 +106,7 @@ class Blog extends Component {
   render() {
     let total,listData;
     let { currentPage } = this.state;
-    let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = []} = this.props;
+    let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = [],userAgent='pc'} = this.props;
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
     if (searchData.length) {
       pageBlogData = searchData
@@ -120,8 +122,8 @@ class Blog extends Component {
         <Head>
           <title>{BLOG_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
-        <Layout>
-          <Content style={{padding: '0 50px'}}>
+        <MyLayout>
+          <Content >
             <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
                     size="large"/>
             <div style={{background: '#fff', padding: 24, minHeight: 380}}>
@@ -130,7 +132,7 @@ class Blog extends Component {
               <Pagination current={currentPage} total={total} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
             </div>
           </Content>
-        </Layout>
+        </MyLayout>
       </div>
     )
   }

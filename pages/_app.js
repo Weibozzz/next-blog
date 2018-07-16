@@ -1,31 +1,57 @@
 import App, {Container} from 'next/app'
 import React from 'react'
-import { withRouter } from 'next/router'
+import {withRouter} from 'next/router'
 import withReduxStore from '../lib/with-redux-store'
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
 import Header from '../components/Header';
 import Footer from '../components/Footer'
 import '../asserts/styles.less'
 
 
-
 class MyApp extends App {
-  render () {
-    
-    const {Component, pageProps, reduxStore,router:{pathname}} = this.props;
+  constructor() {
+    super()
+    this.state = {
+      userAgent: {
+        userAgent:'pc'
+      }
+    }
+  }
+
+  componentDidMount() {
+    const ua = navigator.userAgent;
+    let userAgent;
+    if (ua.indexOf("Android") > 0 || ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0) {
+      //移动端
+      userAgent = 'mobile'
+    } else {
+      userAgent = 'pc'
+    }
+    this.setState({
+      userAgent:{
+        userAgent
+      }
+    })
+  }
+
+  render() {
+
+    const {Component, pageProps, reduxStore, router: {pathname}} = this.props;
+    const {userAgent} = this.state;
+    let myPageProps = {...pageProps, ...userAgent};
     return (
       <Container>
         <Provider store={reduxStore}>
           <div className="container">
             {
-              pathname==='/'
-              ?
+              pathname === '/'
+                ?
                 ''
-                : <Header/>
+                : <Header {...userAgent} />
             }
-            <Component {...pageProps} />
+            <Component {...myPageProps}  />
             {
-              pathname==='/'
+              pathname === '/'
                 ?
                 ''
                 :

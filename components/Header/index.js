@@ -8,6 +8,7 @@ import * as ROUTER from '../../config/constantsData';
 import {postAdminPasswordUrl} from '../../config';
 import {postAdminPassword} from '../../store/actions';
 import MyHead from '../../components/MyHead';
+import {LINK_ABOUT_ME} from "../../config/constantsData";
 
 //toptis不需要seo
 const DynasicTopTipsNoSsr = dynamic(import('../../components/TopTips'),{
@@ -103,6 +104,7 @@ class TopNav extends Component {
 
   render() {
     let {isLogin, selectedKeys = ['/']} = this.state;
+    const {userAgent='pc'} = this.props;
     if (Object.prototype.toString.call(selectedKeys) === '[object String]') {
       selectedKeys = ['/']
     }
@@ -116,10 +118,12 @@ class TopNav extends Component {
       <div>
         <MyHead/>
         <Layout>
-          <Header style={{position: 'fixed', height: '64px', width: '100%', padding: 0, zIndex: 10}}>
+          <Header style={{position: userAgent==='pc'?'fixed':'static', height: '64px', width: '100%', padding: 0, zIndex: 10}}>
             <Row>
               <Col span={2}></Col>
-              <Col span={17}>
+              <Col sm={{ span: 24 }}
+                   xs={{ span: 24 }}
+                   lg={{ span: 17}}>
                 <Menu
                   theme="dark"
                   mode="horizontal"
@@ -149,9 +153,17 @@ class TopNav extends Component {
               </Col>
             </Row>
           </Header>
-          <Content style={{padding: '0 50px', marginTop: 64}}>
-            <DynasicTopTipsNoSsr/>
-          </Content>
+
+          <Row>
+            <Col sm={{ span: 24, offset: 0 }}
+                 xs={{ span: 24, offset: 0 }}
+                 lg={{ span: 20, offset: 2}}>
+
+              <Content style={{ marginTop: 64}}>
+                <DynasicTopTipsNoSsr/>
+              </Content>
+            </Col>
+          </Row>
         </Layout>
       </div>
     );

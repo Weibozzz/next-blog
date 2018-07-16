@@ -19,7 +19,7 @@ const ListTitle = ({dataSource={}}) => {
       itemLayout="vertical"
       size="large"
       dataSource={listData}
-      footer={<div><b>ant design</b> footer part</div>}
+      footer={<div><b>我是有底线的</b> ……</div>}
       renderItem={item => (
         <List.Item
           key={item.title}

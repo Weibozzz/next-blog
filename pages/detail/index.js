@@ -13,6 +13,7 @@ import hljs from 'highlight.js';
 import ArticleTitle from '../../components/ArticleTitle';
 import PrevNextPage from '../../components/PrevNextPage';
 import Comments from '../../components/Comments';
+import MyLayout from '../../components/MyLayout';
 //其他
 import {getDetailUrl, getCommentsUrl,getLastIdUrl,getNextIdUrl} from '../../config';
 import {COMMON_TITLE,MY_BLOG} from '../../config/constantsData';
@@ -52,7 +53,7 @@ class Detail extends Component {
   }
   render() {
 //接口
-    let {blogData = [], commentsData = [],getCommentsData=[],lastIdData=[],nextIdData=[]} = this.props;
+    let {blogData = [], commentsData = [],getCommentsData=[],lastIdData=[],nextIdData=[],userAgent='pc'} = this.props;
     let {articleID} = this.state;
     let {content = '', createTime = '',title='',url='',id,type=''} = blogData[0] || {};
 
@@ -82,8 +83,11 @@ class Detail extends Component {
         <Head>
           <title>{title}{COMMON_TITLE}</title>
         </Head>
-        <Layout>
-          <Content style={{padding: '0 50px'}}>
+        <MyLayout>
+
+          <Content
+
+          >
             <div style={{background: '#fff', padding: 24}}>
               <ArticleTitle detailArticle={blogData[0]}/>
               <div
@@ -96,7 +100,7 @@ class Detail extends Component {
             </div>
             <Comments dataSource={{commentsData,articleID}}></Comments>
           </Content>
-        </Layout>
+        </MyLayout>
         <style>{`
         .a-img{
           margin-bottom:20px;
