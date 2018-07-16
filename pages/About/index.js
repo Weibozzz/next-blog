@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import Head from 'next/head';
 import Link from 'next/link';
 import 'whatwg-fetch'
+import marked from 'marked'
+import hljs from 'highlight.js';
 import {
   Layout, Menu, Breadcrumb, Row, Col,
   List, Avatar, Icon, Pagination, Alert,
@@ -10,12 +12,26 @@ import {
 } from 'antd'
 import {COMMON_TITLE, ABOUT_TXT, LINK_ABOUT_ME, commentPlaceHolder} from '../../config/constantsData';
 import Comments from '../../components/Comments';
-import {getUserCommentUrl} from "../../config";
+import {getUserCommentUrl,getDetailUrl} from "../../config";
 import MyLayout from '../../components/MyLayout';
 import './index.less'
 
 const {Content} = Layout;
-
+hljs.configure({
+  tabReplace: '  ',
+  classPrefix: 'hljs-',
+  languages: ['CSS', 'HTML, XML', 'JavaScript', 'PHP', 'Python', 'Stylus', 'TypeScript', 'Markdown']
+})
+marked.setOptions({
+  highlight: (code) => hljs.highlightAuto(code).value,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  smartypants: false
+});
 class About extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +43,10 @@ class About extends Component {
   }
 
   render() {
-    const {commentsUserData=[],getUserCommentsData=[]} = this.props;
+    const {commentsUserData=[],getUserCommentsData=[],aboutMeData=[],userAgent='pc'} = this.props;
+    console.log(userAgent)
+    const {content=''} = aboutMeData[0] || {};
+    let myContent = marked(decodeURIComponent(content));
     const dataSourceObj = {
       commentsData:getUserCommentsData.length?getUserCommentsData:commentsUserData,
       commentTitle: '留言',
@@ -43,66 +62,8 @@ class About extends Component {
         </Head>
         <MyLayout >
           <Content >
-            <div className="about">
-              <section>
-                <div className="header">
-                  About Blog
-                </div>
-                <div className="mid">
-                  <p>简单介绍下博客使用技术：</p>
-                  <p className="title">博客前端：</p>
-                  <p className="txt">采用服务器端渲染(ssr),基于 React.js 的通用应用框架:Next.js + antd-design + fetch + Less</p>
-                  <p className="title">博客后端:</p>
-                  <p className="txt">
-                    UI层：使用 Next + Next-Router + React + fetch + Less + antd-design
-                  </p>
-                  <p className="txt">
-                    服务层：使用 Node.js + Koa2 + Mysql
-                  </p>
-                </div>
-              </section>
-              <section>
-                <div className="header">
-                  About Me
-                </div>
-                <div className="mid">
-                  <p className="title">
-                    个人简介
-                  </p>
-                  <ul>
-                    <li>姓名：刘伟波</li>
-                    <li>英文名：Weibozzz</li>
-                    <li>爱好：写代码,Lol,旅游,下棋</li>
-                    <li>最不能忍受别人的事：不诚信，不守时</li>
-                  </ul>
-                  <p className="title">
-                    技能
-                  </p>
-                  <ul>
-                    <li>
-                      前端：HTML5/CSS3、ES(5/6)、JQ、vue全家桶、react全家桶、微信小程序、支付宝小程序
-                    </li>
-                    <li>
-                      UI框架：Bootstrap、Antd-design、Mint-UI、Iview 等等
-                    </li>
-                    <li>
-                      后端：Php、NodeJs、Mysql数据库、Express、Koa2、Egg.js 等等
-                    </li>
-                  </ul>
-                  <p className="title">
-                    联系方式
-                  </p>
-                  <p className="txt">
-                    739291780@qq.com
-                  </p>
-                  <p className="txt">
-                    <Link href={LINK_ABOUT_ME}>
-                      <a> 了解更多</a>
-                    </Link>
-                  </p>
-
-                </div>
-              </section>
+            <div className={userAgent==='pc'?'about':'about is-mobile'} >
+              <div className='about-me' dangerouslySetInnerHTML={{__html:myContent}}></div>
               <Divider/>
               <Comments dataSource={dataSourceObj}></Comments>
             </div>
@@ -114,11 +75,16 @@ class About extends Component {
   }
 }
 About.getInitialProps = async function (context) {
+  //评论
   const comments = await fetch(getUserCommentUrl())
   const commentsUserData = await comments.json()
+  //关于自己 id为1
+  let queryStrObj = {id:1};
+  const aboutMe = await fetch(getDetailUrl(queryStrObj))
+  const aboutMeData = await aboutMe.json()
 
 
-  return {commentsUserData}
+  return {commentsUserData,aboutMeData}
 }
 const mapStateToProps = state => {
   const {getUserCommentsData} = state;

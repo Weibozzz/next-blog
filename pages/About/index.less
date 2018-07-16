@@ -1,11 +1,35 @@
+
+//手机端样式
+.about.is-mobile{
+  .about-me{
+
+   &  ul{
+      margin-left: 3em;
+    }
+    &>p{
+      padding:0 1em;
+    }
+    h2{
+      margin: 20px 0;
+    }
+  }
+  .comment-wrapper{
+    h2{
+      text-indent: 1em;
+    }
+  }
+}
 .about{
   margin: 0 auto;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
   background: #fff;
   color: #3d5064;
-  section{
+  .about-me{
     padding: 20px;
-    .header{
+    h2:not(:first-child){
+      margin-top: 38px !important;
+    }
+    h2{
       margin: 20px;
       padding-bottom: 20px;
       text-align: center;
@@ -13,6 +37,11 @@
       color: #3d5064;
       font-size:2em;
       border-bottom: 1px dashed #3d5064;
+    }
+    &>p{
+      padding:0 40px;
+      font-size: 1.5em;
+      font-weight: 700;
     }
     .mid{
       text-indent: 5.5rem;
@@ -27,16 +56,18 @@
       }
     }
     ul{
-      margin: 1.5em 0 1.5em 3em;
+      margin: 1.5em 0 1.5em 5em;
+      padding-left: 0;
+      font-weight: 700;
       color: #3d5064;
-      li{
-        padding: .5rem 0;
-        list-style: disc;
-        text-indent: 0;
-        margin-left: 5.5em;
-      }
+    }
+    li{
+      display: list-item;
+      margin:.3em 0;
+      list-style: disc;
     }
   }
+
   .comment-wrapper{
     h2{
       text-indent: 5em;

@@ -61,7 +61,8 @@ class Detail extends Component {
       .filter(v=>v.a_id===articleID)
       .sort((a,b)=>b.createTime-a.createTime)
 
-    const bool = createTime > OldTime;
+    const bool = createTime > OldTime||articleID===1;
+    // console.log(createTime > OldTime,createTime > OldTime||articleID===1,articleID)
 
     let decode_html=decodeURIComponent(content)
     let _html_content=bool?
@@ -84,7 +85,6 @@ class Detail extends Component {
           <title>{title}{COMMON_TITLE}</title>
         </Head>
         <MyLayout>
-
           <Content
 
           >
@@ -97,8 +97,9 @@ class Detail extends Component {
                 }}
               ></div>
               <PrevNextPage dataSource={{url,lastIdData,nextIdData}}></PrevNextPage>
+              <Divider/>
+              <Comments dataSource={{commentsData,articleID}}></Comments>
             </div>
-            <Comments dataSource={{commentsData,articleID}}></Comments>
           </Content>
         </MyLayout>
         <style>{`
@@ -133,6 +134,9 @@ code {
 }
 .ant-divider{
     background:#3246da
+}
+.comment-wrapper h2{
+  margin-left:20px;
 }
 `}</style>
       </div>

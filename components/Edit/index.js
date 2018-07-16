@@ -104,14 +104,14 @@ class Edit extends Component {
   render() {
 
     let {aceBoxH, previewContent, originContent} = this.state;
-    const {createTime = ''} = this.props;
+    const {createTime = '',id=''} = this.props;
     return (
       <div>
         <div className="editor-main-a" style={{height: aceBoxH}}
              key='main'>
           <Row>
             {
-              createTime > OldTime || createTime === '' ?
+              createTime > OldTime || createTime === '' || id===1?
                 <div>
                   <Col span={12}>
                     <div style={{height: aceBoxH}}>

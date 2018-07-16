@@ -137,8 +137,8 @@ class Comments extends Component {
         <h2>{commentTitle}：</h2>
         <Row>
           <Col
-               sm={{ span: 24, offset: 0 }}
-               xs={{ span: 24, offset: 0 }}
+               sm={{ span: 22, offset: 1 }}
+               xs={{ span: 22, offset: 1 }}
                lg={{ span: commentRow, offset: 0 }}
           >
             <Form onSubmit={this.handleSubmit}>

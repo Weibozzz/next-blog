@@ -131,7 +131,7 @@ class EditArticle extends Component {
       urlVal=''
     } = this.state;
     const {dataSource = {}} = this.props;
-    const {createTime} = dataSource;
+    const {createTime,id} = dataSource;
     return (
       <div>
         <Row>
@@ -181,7 +181,7 @@ class EditArticle extends Component {
                                       rows={2}/>
           </Col>
         </Row>
-        <Edit editCont={editCont} createTime={createTime} handleChangeMarkEdit={this.handleChangeMarkEdit.bind(this)}/>
+        <Edit editCont={editCont} id={id} createTime={createTime} handleChangeMarkEdit={this.handleChangeMarkEdit.bind(this)}/>
         <Button type="primary" onClick={this.onSubmit.bind(this)}>提交</Button>
       </div>
     );

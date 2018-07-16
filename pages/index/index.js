@@ -6,13 +6,13 @@ import MyHead from '../../components/MyHead';
 import * as ROUTER from '../../config/constantsData';
 import './index.less'
 
+let timer;
 class Index extends React.Component {
   constructor() {
     super()
     this.state = {
       bg: '',
-      defaultIndexBg: 0,
-      timer:null
+      defaultIndexBg: 0
     }
   }
   componentWillMount(){
@@ -21,15 +21,13 @@ class Index extends React.Component {
     })
   }
   componentDidMount(){
-    let timer=setInterval(()=>{
+    timer=setInterval(()=>{
       this.setState({
-        defaultIndexBg:this.getRandom(),
-        timer
+        defaultIndexBg:this.getRandom()
       })
     },ROUTER.defaultTimer)
   }
   componentWillUnmount(){
-    const {timer} = this.state;
     clearInterval(timer)
   }
   getRandom(){
