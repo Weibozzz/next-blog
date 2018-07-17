@@ -40,7 +40,6 @@ npm run dev
 6. 推荐文章
 7. 文章分类icon
 8. 浏览记录
-9. detail页面4个replace
 11. 文章图片
 
 ##### 待学习修改

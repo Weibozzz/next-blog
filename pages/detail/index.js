@@ -62,20 +62,37 @@ class Detail extends Component {
       .sort((a,b)=>b.createTime-a.createTime)
 
     const bool = createTime > OldTime||articleID===1;
-    // console.log(createTime > OldTime,createTime > OldTime||articleID===1,articleID)
 
     let decode_html=decodeURIComponent(content)
+    const myBlog = 'http://www.liuweibo.cn/'
+    const myOldGithub = 'https://15691808595.github.io'
+    const myNewGithub = 'https://Weibozzz.github.io'
+    const regExp = /(http:\/\/www\.liuweibo\.cn\/(jianli|img|liuweibo_FrontEnd_CV\.doc))|(https:\/\/15691808595\.github\.io)/gim;
     let _html_content=bool?
       marked(getHtml(decode_html, createTime))
       :
       type==='interesting'||type==='fight'&&id>=146&&id<=178
         ?
-      getHtml(decode_html
+        getHtml(decode_html
+            .replace(regExp, (res) => {
+              switch (res){
+                case myBlog+'jianli':
+                  return myBlog+'static/jianli'
+                case myBlog+'img':
+                  return myBlog+'static'
+                case myBlog+'liuweibo_FrontEnd_CV.doc':
+                  return myBlog+'static/cv/liuweibo_FrontEnd_CV.doc'
+                case myOldGithub:
+                  return myNewGithub
+              }
+            })
+          , createTime)
+      /*getHtml(decode_html
         .replace(/https:\/\/15691808595\.github\.io/gi,'https://weibozzz.github.io')
-        .replace(/http:\/\/www\.liuweibo\.cn\/(jianli)/gi,'/static/jianli')
-        .replace(/http:\/\/www\.liuweibo\.cn\/(img)/gi,'/static')
-        .replace(/http:\/\/www\.liuweibo\.cn\/(liuweibo_FrontEnd_CV.doc)/gi,'/static/cv/liuweibo_FrontEnd_CV.doc')
-        , createTime)
+        .replace(/http:\/\/www\.liuweibo\.cn\/(jianli)/gi,'static/jianli')
+        .replace(/http:\/\/www\.liuweibo\.cn\/(img)/gi,'static')
+        .replace(/http:\/\/www\.liuweibo\.cn\/(liuweibo_FrontEnd_CV.doc)/gi,'static/cv/liuweibo_FrontEnd_CV.doc')
+        , createTime)*/
         :getHtml(decode_html, createTime)
 
 

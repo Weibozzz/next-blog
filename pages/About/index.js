@@ -44,7 +44,6 @@ class About extends Component {
 
   render() {
     const {commentsUserData=[],getUserCommentsData=[],aboutMeData=[],userAgent='pc'} = this.props;
-    console.log(userAgent)
     const {content=''} = aboutMeData[0] || {};
     let myContent = marked(decodeURIComponent(content));
     const dataSourceObj = {
