@@ -41,6 +41,7 @@ npm run dev
 7. 文章分类icon
 8. 浏览记录
 11. 文章图片
+12. 详情页文章目录
 
 ##### 待学习修改
 4. 开发环境 warning.js:33 Warning: A component is `contentEditable`
