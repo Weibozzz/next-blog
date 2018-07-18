@@ -1,17 +1,32 @@
 import React, {Component} from 'react'
-import {Layout, Menu, Breadcrumb, Row, Col,List, Avatar, Icon, Pagination, Alert, Input, Button, Select,message} from 'antd'
+import {
+  Layout,
+  Menu,
+  Breadcrumb,
+  Row,
+  Col,
+  List,
+  Avatar,
+  Icon,
+  Pagination,
+  Alert,
+  Input,
+  Button,
+  Select,
+  message
+} from 'antd'
 import {connect} from 'react-redux'
 
 import Edit from '../../components/Edit';
 
-import {postArticleUrl} from '../../config';
+import {getBlogUrl, getTotalUrl, postArticleUrl} from '../../config';
 import {postArticle} from '../../store/actions';
 import {regUrl} from '../../until';
+import {POST_ARTICLE_TYPE, POST_ARTICLE_COPY, ALL, pageNum} from '../../config/constantsData';
 
 const {TextArea} = Input;
 const Option = Select.Option;
 const InputGroup = Input.Group;
-
 
 
 class EditArticle extends Component {
@@ -23,14 +38,14 @@ class EditArticle extends Component {
       shortVal: '',
       urlVal: '',
       editCont: '',
-      isEdit:'', //空值默认不为修改文章
-      notEditArticle:false  //默认不修改文章
+      isEdit: '', //空值默认不为修改文章
+      notEditArticle: false  //默认不修改文章
     }
   }
 
   componentWillMount() {
     const {dataSource = {}} = this.props;
-    const {title, short, type, url, content,articleID=''} = dataSource;
+    const {title, short, type, url, content, articleID = ''} = dataSource;
 
     this.setState({
       selectVal: type,
@@ -38,7 +53,7 @@ class EditArticle extends Component {
       shortVal: short,
       urlVal: url,
       editCont: content,
-      isEdit:articleID
+      isEdit: articleID
     })
   }
 
@@ -70,94 +85,91 @@ class EditArticle extends Component {
   handleChangeMarkEdit(txt) {
     this.setState({
       editCont: txt,
-      notEditArticle:true //正在修改文章
+      notEditArticle: true //正在修改文章
     })
   }
 
   onSubmit() {
     const {dispatch} = this.props;
     const {password} = localStorage;
-    const {isEdit,notEditArticle} = this.state;
-    const {
-      selectVal='',
-      titleVal='',
-      shortVal='',
-      urlVal='',
-      editCont='',
-      isEdit:id,
+    const {isEdit, notEditArticle} = this.state;
+    let {
+      selectVal = '',
+      titleVal = '',
+      shortVal = '',
+      urlVal = '',
+      editCont = '',
+      isEdit: id,
     } = this.state;
-    let queryParamsObj={
+
+    if (titleVal === '' || selectVal === '' || editCont === '') {
+      message.error('必填项不能为空');
+      return;
+    }
+    if (urlVal !== '' && !regUrl.test(urlVal)) {
+      message.warning('url不正确')
+      return;
+    }
+    const bool = isEdit !== '';
+    if (!bool) {
+      //如果是发布文章，带上版权信息
+      editCont += POST_ARTICLE_COPY
+    }
+    let queryParamsObj = {
       title: titleVal.trim(),
       url: urlVal.trim(),
-      content:!notEditArticle?decodeURIComponent(editCont): encodeURIComponent(editCont),
+      content: !notEditArticle ? decodeURIComponent(editCont) : encodeURIComponent(editCont),
       user: '刘伟波',
       type: selectVal,
       short: shortVal.trim(),
       img: 'js.png',
-      token:password
+      token: password
     };
-    if(urlVal!==''&&!regUrl.test(urlVal)){
-      message.warning('url不正确')
-      return ;
-    }
-    const bool = isEdit!=='';
-    if(bool){
+    if (bool) {
       //修改文章 isEdit为文章id
-      queryParamsObj=Object.assign({},queryParamsObj,{id})
-    }
-    if(titleVal===''||selectVal===''||editCont===''){
-      message.error('必填项不能为空');
-      return ;
+      queryParamsObj = Object.assign({}, queryParamsObj, {id})
     }
 
-    postArticle(dispatch, postArticleUrl(), queryParamsObj).then(res=>{
-      const {postArticleData=[]} = res;
-      if(Array.isArray(postArticleData)&&!postArticleData.length){
+    postArticle(dispatch, postArticleUrl(), queryParamsObj).then(res => {
+      const {postArticleData = []} = res;
+      if (Array.isArray(postArticleData) && !postArticleData.length) {
         message.warning('您可能没权限,或者文章已存在')
-        return ;
+        return;
       }
-      if(res){
-        message.success(`${bool?'修改':'发布'}文章成功`);
+      if (res) {
+        message.success(`${bool ? '修改' : '发布'}文章成功`);
       }
     })
   }
 
   render() {
     const {
-      editCont='',
-      selectVal='',
-      titleVal='',
-      shortVal='',
-      urlVal=''
+      editCont = '',
+      selectVal = '',
+      titleVal = '',
+      shortVal = '',
+      urlVal = ''
     } = this.state;
     const {dataSource = {}} = this.props;
-    const {createTime,id} = dataSource;
+    const {createTime, id} = dataSource;
     return (
       <div>
         <Row>
           <Col span={24}>
             <InputGroup compact>
-              <Input style={{ width: '90%' }}
+              <Input style={{width: '90%'}}
                      onChange={this.handleChangeTitle.bind(this)}
                      placeholder="文章标题"
                      title='文章标题'
-                     defaultValue={titleVal} />
-              <Select style={{ width: '10%' }}
+                     defaultValue={titleVal}/>
+              <Select style={{width: '10%'}}
                       onChange={this.handleChangeSelect.bind(this)}
-                      defaultValue={selectVal===''?'文章类型':selectVal}>
-                <Option value="h5">html</Option>
-                <Option value="css">css</Option>
-                <Option value="js">javascript</Option>
-                <Option value="vue">vue</Option>
-                <Option value="react">react</Option>
-                <Option value="angular">angular</Option>
-                <Option value="node">node</Option>
-                <Option value="php">php</Option>
-                <Option value="mysql">mysql</Option>
-                <Option value="server">服务器之类</Option>
-                <Option value="interesting">生活喜好</Option>
-                <Option value="fight">激励向上</Option>
-                <Option value="others">其他</Option>
+                      defaultValue={selectVal === '' ? '文章类型' : selectVal}>
+                {
+                  POST_ARTICLE_TYPE.map(v => (
+                    <Option value={v.key}>{v.value}</Option>
+                  ))
+                }
               </Select>
             </InputGroup>
           </Col>
@@ -181,11 +193,11 @@ class EditArticle extends Component {
                                       rows={2}/>
           </Col>
         </Row>
-        <Edit editCont={editCont} id={id} createTime={createTime} handleChangeMarkEdit={this.handleChangeMarkEdit.bind(this)}/>
+        <Edit editCont={editCont} id={id} createTime={createTime}
+              handleChangeMarkEdit={this.handleChangeMarkEdit.bind(this)}/>
         <Button type="primary" onClick={this.onSubmit.bind(this)}>提交</Button>
       </div>
     );
   }
 }
-
 export default connect()(EditArticle)

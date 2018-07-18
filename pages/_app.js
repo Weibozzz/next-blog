@@ -6,6 +6,7 @@ import {Provider} from 'react-redux'
 import Header from '../components/Header';
 import Footer from '../components/Footer'
 import '../asserts/styles.less'
+import './index.less'
 
 
 class MyApp extends App {

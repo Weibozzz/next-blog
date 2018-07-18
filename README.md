@@ -36,16 +36,16 @@ npm run dev
 
 #### 遗留问题
 
-1. 发布文章修改文章自动保存
+1. 发布文章版权,查找最大文章id
+2. 关于我图片,参考慕课网
+3. cdn图片
 6. 推荐文章
-7. 文章分类icon
 8. 浏览记录
-11. 文章图片
 12. 详情页文章目录
-13. 发表文章默认带上版权url信息
+14. 发布文章修改文章自动保存
 
 ##### 待学习修改
-4. 开发环境 warning.js:33 Warning: A component is `contentEditable`
+1. 开发环境 warning.js:33 Warning: A component is `contentEditable`
 5. eslint
 
 ## 关于作者 / About

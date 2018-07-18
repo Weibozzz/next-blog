@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { List, Avatar, Icon ,Divider} from 'antd';
 import {formatTime,getArticleInfo} from '../../until';
+import './index.less'
 
 const ArticleTitle = ({detailArticle={}})=>{
   let {title,createTime,user,visitor,lastModify,modifyCount} = detailArticle
@@ -8,7 +9,7 @@ const ArticleTitle = ({detailArticle={}})=>{
     lastModify=createTime
   }
   return (
-    <div>
+    <div className="article-title css-move-top">
       <h2>{title}</h2>
       <ul className="clearfix detail-info" >
         <li className="fl">发布时间：{formatTime(createTime)}</li>

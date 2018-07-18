@@ -219,6 +219,7 @@ class Comments extends Component {
           commentsData.map((v, i) =>
             (
               <Card
+                class="css-move-top"
                 bodyStyle={{background: "#f8f8f8"}}
                 key={i} title={
                 <span>

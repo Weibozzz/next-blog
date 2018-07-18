@@ -69,3 +69,24 @@ export function toQueryStr(obj) {
   return "?" + JSON.stringify(obj).replace(/{|}|\"|\'/g, "").replace(/,/g, "&").replace(/:/g, "=");
 }
 export const regUrl = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
+/**
+ * 取出指定数组长度的随机数组
+ * @param arr
+ * @param len
+ * @returns {Array}
+ */
+export const getRandomArr=(arr,len)=> {
+  let result = []
+  while (1) {
+    var random = Math.random() * arr.length | 0;
+    if (result.indexOf(random) === -1) {
+      result.push(random)
+    }
+    if (result.length === len) {
+
+      break;
+    }
+
+  }
+  return result;
+}

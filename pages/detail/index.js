@@ -18,6 +18,7 @@ import MyLayout from '../../components/MyLayout';
 import {getDetailUrl, getCommentsUrl,getLastIdUrl,getNextIdUrl} from '../../config';
 import {COMMON_TITLE,MY_BLOG} from '../../config/constantsData';
 import {getHtml, OldTime} from '../../until';
+import './index.less'
 //定义
 const {Content} = Layout;
 
