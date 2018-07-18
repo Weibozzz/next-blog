@@ -20,10 +20,97 @@
   }
 }
 .about{
+  position:relative;
   margin: 0 auto;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
   background: #fff;
   color: #3d5064;
+  &.is-mobile{
+    position:static;
+    overflow: hidden;
+    .cv-wrapper{
+      top:0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .about-me{
+      padding-top: 240px;
+    }
+  }
+
+  .cv-wrapper{
+    position: absolute;
+    right: 50px;
+    top: 150px;
+    width: 216px;
+    height: 248px;
+    text-align: center;
+    background: rgba(0,0,0,.1);
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.05);
+    border-radius: 12px;
+    transition: all .3s;
+    cursor:pointer;
+    img{
+      position: absolute;
+      top: -16.6px;
+      left: 50%;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      transition: all .3s;
+    }
+    .info{
+      .title{
+        font-size: 16px;
+        line-height: 24px;
+        margin-top: 92px;
+        white-space: nowrap;
+        color: #07111b;
+        font-weight: 700;
+      }
+      .remark{
+        font-size: 12px;
+        margin-bottom: 12px;
+        color: #4D555D;
+        height: 24px;
+        line-height: 24px;
+      }
+    }
+    .content{
+      position:relative;
+      top:0;
+      font-size: 12px;
+      line-height: 24px;
+      color: #4D555D;
+      height: 72px;
+      padding: 0 36px;
+      text-align: justify;
+      font-weight: 400;
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow: hidden;
+      transition: all .3s;
+    }
+    &:hover{
+      background: rgba(0,0,0,0);
+      transition: all .3s;
+      img{
+        width:60px;
+        height:60px;
+        transition: all .3s;
+      }
+      .info{
+       opacity:0;
+        transition: all .3s;
+      }
+      .content{
+        top:-82px;
+        transition: all .3s;
+        height:168px;
+      }
+    }
+  }
   .about-me{
     padding: 20px;
     h2:not(:first-child){
@@ -62,6 +149,7 @@
       color: #3d5064;
     }
     li{
+      width:80%;
       display: list-item;
       margin:.3em 0;
       list-style: disc;
