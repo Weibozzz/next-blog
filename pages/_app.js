@@ -14,7 +14,7 @@ class MyApp extends App {
     super()
     this.state = {
       userAgent: {
-        userAgent:'pc'
+        userAgent: 'pc'
       }
     }
   }
@@ -29,7 +29,7 @@ class MyApp extends App {
       userAgent = 'pc'
     }
     this.setState({
-      userAgent:{
+      userAgent: {
         userAgent
       }
     })
@@ -45,14 +45,14 @@ class MyApp extends App {
         <Provider store={reduxStore}>
           <div className="container">
             {
-              pathname === '/'
+              pathname === '/' || pathname === '/Gallery'
                 ?
                 ''
                 : <Header {...userAgent} />
             }
             <Component {...myPageProps}  />
             {
-              pathname === '/'
+              pathname === '/' || pathname === '/Gallery'
                 ?
                 ''
                 :

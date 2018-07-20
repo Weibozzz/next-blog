@@ -46,4 +46,6 @@ export default ControllerUnit;
     isInverse： false  // 图片是否正反面
     isCenter: false   //图片是否居中
  }
+
+
  **/

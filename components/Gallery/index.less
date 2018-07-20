@@ -34,7 +34,7 @@ html, body {
   .img-figure {
     position: absolute;
     width: 320px;
-    height: 360px;
+    min-height: 360px;
     margin: 0;
     padding: 40px;
     background-color: #fff;
@@ -46,6 +46,11 @@ html, body {
 
     &.is-inverse{
       transform: translate(320px) rotateY(180deg);
+    }
+  }
+  .my-img-figure{
+    img{
+      width: 100%;
     }
   }
 

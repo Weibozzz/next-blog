@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Gallery from '../../components/Gallery/Main';
+import Gallery from '../../components/Gallery';
 import './index.less'
 
 class Gallert extends Component {

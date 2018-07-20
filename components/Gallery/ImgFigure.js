@@ -35,18 +35,22 @@ class ImgFigure extends React.Component {
 
     /* 如果props属性中指定了这张图片的位置,则使用 */
     if (this.props.arrange.pos) {
-      styleObj = this.props.arrange.pos;
+      Object.keys(this.props.arrange.pos).forEach(key => {
+        styleObj[key] = this.props.arrange.pos[key]
+      })
     }
 
     /* 添加图片旋转角度样式 */
     if(this.props.arrange.rotate){
-      this.props.myRotate(styleObj,this.props.arrange.rotate)
+      let prefixArr =  ['MozTransform','MsTransform','WebkitTransform','transform'];
+      prefixArr.forEach( value => {
+        styleObj[value] = `rotate(${this.props.arrange.rotate}deg)`;
+      });
     }
 
     /* 设置中心图片的z-index,保证中心图片始终在最上层 */
     if(this.props.arrange.isCenter){
-      //
-      // this.props.myCenter(styleObj)
+      styleObj.zIndex = 11;
     }
     return styleObj;
   }
@@ -57,17 +61,19 @@ class ImgFigure extends React.Component {
 
     let figureClass = classNames({
       'img-figure': true,
+      'my-img-figure': true,
       'is-inverse': this.props.arrange.isInverse   // 反转样式
     });
 
     let data = this.props.data;
 
     return (
-      <figure className={figureClass}
+      <figure
+        className={figureClass}
               style={styleObj}
               onClick={this.handleClick}>
 
-        <img style={{width:'100px'}} src={data.fileName} alt={data.title}/>
+        <img src={data.imageUrl} alt={data.title}/>
         <figcaption>
           <h2 className="img-title">{data.title}</h2>
           <div className="img-back" onClick={this.handleClick}>
@@ -78,8 +84,6 @@ class ImgFigure extends React.Component {
     );
   }
 }
-
-
 
 export default ImgFigure;
 
@@ -98,4 +102,6 @@ export default ImgFigure;
     isInverse： false  // 图片是否正反面
     isCenter: false   //图片是否居中
  }
+
+
  **/
