@@ -2,23 +2,20 @@ import ImgFigure from './ImgFigure.js';
 import ControllerUnit from './ControllerUnit.js';
 import React from 'react';
 import {findDOMNode} from 'react-dom';
+import {Button} from 'antd';
 import MyHead from '../MyHead';
 import {getRangeRandom, get30DegRandom} from './until';
 import {getRandomArr} from '../../until';
-import {qiniuyun_cdn,qiniuyun_cdn_1,qiniuyun_cdn_2} from '../../config/qiniuyun_cdn';
+import {qiniuyun_cdn, qiniuyun_cdn_1, qiniuyun_cdn_2} from '../../config/qiniuyun_cdn';
 import './index.less'
 
-// console.log([...qiniuyun_cdn,...qiniuyun_cdn_1,...qiniuyun_cdn_2].length)
-const imageDatas = getRandomArr(qiniuyun_cdn,20).map(v=>({
-  "imageUrl": qiniuyun_cdn[v].dl_remove_attname_url,
-  "title": "Heaven of time",
-  "desc": "Here he comes Here comes Speed Racer."
-}))
+
+const extendArr = [...qiniuyun_cdn, ...qiniuyun_cdn_1, ...qiniuyun_cdn_2];
+
 /**
  * 获取图片的输出地址，imageJsonDatas和imageDatas的结构详见最下面
  * 这种图片地址获取方式是通过webpack的loader实现的
  */
-
 
 
 class GalleryByReactApp extends React.Component {
@@ -31,12 +28,12 @@ class GalleryByReactApp extends React.Component {
         top: 0
       },
       leftSection: {  // 左扇区，x和y临界值
-        x: [0,0],
-        y: [0,0]
+        x: [0, 0],
+        y: [0, 0]
       },
       rightSection: { // 右扇区，x和y临界值
-        x: [0,0],
-        y: [0,0]
+        x: [0, 0],
+        y: [0, 0]
       },
       topSection: {   // 上扇区，x和y临界值
         x: [0, 0],
@@ -53,7 +50,9 @@ class GalleryByReactApp extends React.Component {
              isInverse： false  // 图片是否正反面
              isCenter: false   //图片是否居中
         }  */
-      ]
+      ],
+      extendArr,
+      myImage: []
     };
   }
 
@@ -62,8 +61,8 @@ class GalleryByReactApp extends React.Component {
    *  @param: centerIndex指定居中排布哪个图片
    */
   rearrange(centerIndex) {
-    let { imgsArrangeArr } = this.state;
-    let { centerPos, leftSection, rightSection, topSection } = this.Constant;
+    let {imgsArrangeArr} = this.state;
+    let {centerPos, leftSection, rightSection, topSection} = this.Constant;
 
     /**
      * 1. 根据传入的索引分离出居中图片
@@ -103,7 +102,7 @@ class GalleryByReactApp extends React.Component {
     /** 布局左两扇区的图片 */
     for (let i = 0, j = imgsArrangeArr.length, k = j / 2; i < j; i++) {
       //前半部分布局左边,右边部分布局右边,y值左右扇区多一样，所以这里取左扇区的值
-      let xRang = i<k ? leftSection.x :rightSection.x;
+      let xRang = i < k ? leftSection.x : rightSection.x;
       imgsArrangeArr[i] = {
         pos: {
           top: getRangeRandom(leftSection.y[0], leftSection.y[1]),
@@ -121,7 +120,7 @@ class GalleryByReactApp extends React.Component {
     /** 将中心图片插回imgsArrangeArr */
     imgsArrangeArr.splice(centerIndex, 0, center[0]);
 
-    this.setState({ imgsArrangeArr });
+    this.setState({imgsArrangeArr});
   }
 
   /**
@@ -129,7 +128,7 @@ class GalleryByReactApp extends React.Component {
    * @param index 需要被居中的图片的索引值
    * return {function}
    */
-  center(index){
+  center(index) {
     this.rearrange(index);
   }
 
@@ -138,20 +137,55 @@ class GalleryByReactApp extends React.Component {
    * @param index 传入当前被执行inverse操作的图片对应的图片信息数组的index值
    */
   inverse(index) {
-    let { imgsArrangeArr } = this.state;
+    let {imgsArrangeArr} = this.state;
     imgsArrangeArr[index].isInverse = !imgsArrangeArr[index].isInverse;
     this.setState({
       imgsArrangeArr
     });
   }
 
+  componentWillMount() {
+    this.changeImages()
+  }
+
+  changeImages(param) {
+    //换一批
+    let {extendArr} = this.state;
+    let resultArr=[];
+    if(Object.prototype.toString.call(param)==='[object String]'){
+      const reg_rule = {
+        life:/^image\/life/,
+        fight:/^image\/fight/,
+        my:/^image\/my/,
+        scenery:/^image\/scenery/,
+      }
+      if(param==='all'){
+        console.log(param)
+        resultArr=extendArr
+      }else {
+        resultArr=extendArr.filter(v=>{
+          return reg_rule[param].test(v.key);
+        })
+      }
+    }else {
+      resultArr=extendArr
+    }
+    this.setState({
+      myImage: getRandomArr(resultArr, 20).map(v => {
+        return {
+          "imageUrl": resultArr[v].dl_remove_attname_url,
+          "title": "Heaven of time",
+          "desc": "Here he comes Here comes Speed Racer."
+        };
+      })
+    })
+  }
 
   /**
    * componentDidMount方法：组件渲染完成后(即已经出现在dom中)执行的操作
    * 操作：为每张图片计算其位置范围
    */
   componentDidMount() {
-
     /** 拿到舞台的大小，计算一半的值*/
     let stageDOM = findDOMNode(this.refs['stage']), // 拿到舞台dom节点
       stageW = stageDOM.scrollWidth,              // 舞台宽度
@@ -180,8 +214,8 @@ class GalleryByReactApp extends React.Component {
     /** 计算右扇区，x和y的临界值*/
     this.Constant.rightSection.x[0] = halfStageW + halfImgW;            // 右扇区最左值，贴到中心图片的右边，距离中心线半个图片宽度
     this.Constant.rightSection.x[1] = stageW - halfImgW;                // 右扇区最右值，道理同左扇区最右值
-    this.Constant.rightSection.y[0] =  this.Constant.leftSection.y[0];  // 同左扇区最上
-    this.Constant.rightSection.y[1] =  this.Constant.leftSection.y[1];  // 同左扇区最下
+    this.Constant.rightSection.y[0] = this.Constant.leftSection.y[0];  // 同左扇区最上
+    this.Constant.rightSection.y[1] = this.Constant.leftSection.y[1];  // 同左扇区最下
     /** 计算上扇，x和y的临界值 */
     this.Constant.topSection.y[0] = -halfImgH;                          // 上扇区最上，同左右扇区最上
     this.Constant.topSection.y[1] = halfStageH - halfImgH * 3;          // 上扇区最下，道理同左扇区最右值
@@ -195,6 +229,8 @@ class GalleryByReactApp extends React.Component {
   render() {
     let cotrollerUnits = [],
       imgFigure = [];
+
+    let {myImage: imageDatas} = this.state;
 
     imageDatas.forEach((value, index) => {
       if (!this.state.imgsArrangeArr[index]) {
@@ -211,15 +247,15 @@ class GalleryByReactApp extends React.Component {
       let commonProps = {
         key: index,
         arrange: this.state.imgsArrangeArr[index],
-        inverse: this.inverse.bind(this,index),
-        center: this.center.bind(this,index)
+        inverse: this.inverse.bind(this, index),
+        center: this.center.bind(this, index)
       };
-      imgFigure.push( <ImgFigure data={value} ref={'imgFigure' + index} {...commonProps} /> );
-      cotrollerUnits.push( <ControllerUnit  {...commonProps} />);
+      imgFigure.push(<ImgFigure data={value} ref={'imgFigure' + index} {...commonProps} />);
+      cotrollerUnits.push(<ControllerUnit  {...commonProps} />);
     });
 
     return (
-      <div style={{height:'100%'}}>
+      <div className="gallery-component" style={{height: '100%'}}>
         <MyHead></MyHead>
         <section className="stage" ref="stage">
           <section className="img-sec">
@@ -229,6 +265,13 @@ class GalleryByReactApp extends React.Component {
             {cotrollerUnits}
           </nav>
         </section>
+        <div className="btn-group" >
+          <Button type="primary" onClick={this.changeImages.bind(this,'life')}>生活篇</Button>
+          <Button type="danger" onClick={this.changeImages.bind(this,'scenery')}>景色篇</Button>
+          <Button type="dashed" onClick={this.changeImages.bind(this,'my')}>自恋篇</Button>
+          <Button type="primary" onClick={this.changeImages.bind(this,'fight')}>激励篇</Button>
+          <Button type="danger" onClick={this.changeImages.bind(this,'all')}>换一批</Button>
+        </div>
       </div>
     );
   }

@@ -66,7 +66,6 @@ class ImgFigure extends React.Component {
     });
 
     let data = this.props.data;
-
     return (
       <figure
         className={figureClass}
