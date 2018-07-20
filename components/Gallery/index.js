@@ -160,7 +160,6 @@ class GalleryByReactApp extends React.Component {
         scenery:/^image\/scenery/,
       }
       if(param==='all'){
-        console.log(param)
         resultArr=extendArr
       }else {
         resultArr=extendArr.filter(v=>{

@@ -7,8 +7,11 @@ import Link from 'next/link';
 import {formatTime,getRandomArr} from '../../until';
 import {ARTICLE_TYPE_ICON,LIFE_IMAGE} from '../../config/constantsData';
 import * as ROUTER from "../../config/constantsData";
+import {qiniuyun_cdn, qiniuyun_cdn_1, qiniuyun_cdn_2} from '../../config/qiniuyun_cdn';
 import './index.less'
 
+const extendArr = [...qiniuyun_cdn, ...qiniuyun_cdn_1, ...qiniuyun_cdn_2];
+const lifeImages = extendArr.filter(v=>/^image\/life/.test(v.key))
 const IconText = ({type, text}) => (
   <span>
     <Icon type={type} style={{marginRight: 8}}/>
@@ -22,7 +25,7 @@ const ListTitle = ({dataSource={}}) => {
   //随机图片   热门文章（每一页排名前三）  最新文章（最近10天）
   let randomArr=[],hotData=[],newData=[];
   if(listData.length){
-    randomArr = getRandomArr(LIFE_IMAGE,listData.length);
+    randomArr = getRandomArr(lifeImages,listData.length);
     hotData=listData.map(v=>({id:v.id,visitor:v.visitor})).sort((a,b)=>b.visitor-a.visitor).slice(0,3)
     newData=listData.filter(v=>v.createTime-diff>=0).map(v=>v.id);
   }
@@ -47,7 +50,7 @@ const ListTitle = ({dataSource={}}) => {
             extra={pathname === '' ?
               <img className="img" width={40} alt="logo" src={ARTICLE_TYPE_ICON[item.type]}/>
               :
-              <img className="img" width={272} alt="logo" src={LIFE_IMAGE[lifeImageSrc]}/>}
+              <img className="img" width={272} alt="logo" src={lifeImages[lifeImageSrc].dl_remove_attname_url}/>}
           >
             <List.Item.Meta
               avatar={<Avatar src={item.avatar}/>}
