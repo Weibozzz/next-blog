@@ -1,3 +1,4 @@
+import {removeSameArray,reg_rule} from '../until';
 export const requ_url = 'https://portal.qiniu.com/api/kodo/bucket/files?bucket=static&delimiter=&limit=50&marker=';
 export const qiniuyun_cdn = [
   {
@@ -1144,14 +1145,14 @@ export const qiniuyun_cdn_2 =[
     "mime_type": "image/jpeg",
     "end_user": "",
     "ftype": 0
-  }, {
-    "key": "requestAnimation.gif",
-    "dl_url": "http://pbw4yrlys.bkt.clouddn.com/requestAnimation.gif?attname=",
-    "dl_remove_attname_url": "http://pbw4yrlys.bkt.clouddn.com/requestAnimation.gif",
-    "hash": "FizS9e2jNqFe8kfmvVQPFpuPeU7a",
-    "file_size": 122498,
-    "put_time": "2018-07-15T12:28:20.1748562+08:00",
-    "mime_type": "image/gif",
-    "end_user": "",
-    "ftype": 0
   }]
+//去重后的所有图片
+export const qiniuyun_cdn_all = removeSameArray([...qiniuyun_cdn, ...qiniuyun_cdn_1, ...qiniuyun_cdn_2],'dl_remove_attname_url');
+
+export const qiniuyun_cdn_all_type = {
+  lifeImages:qiniuyun_cdn_all.filter(v=>reg_rule['life'].test(v.key)),
+  fightImages:qiniuyun_cdn_all.filter(v=>reg_rule['fight'].test(v.key)),
+  myImages:qiniuyun_cdn_all.filter(v=>reg_rule['my'].test(v.key)),
+  sceneryImages:qiniuyun_cdn_all.filter(v=>reg_rule['scenery'].test(v.key))
+}
+

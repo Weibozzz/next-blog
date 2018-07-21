@@ -7,11 +7,10 @@ import Link from 'next/link';
 import {formatTime,getRandomArr} from '../../until';
 import {ARTICLE_TYPE_ICON,LIFE_IMAGE} from '../../config/constantsData';
 import * as ROUTER from "../../config/constantsData";
-import {qiniuyun_cdn, qiniuyun_cdn_1, qiniuyun_cdn_2} from '../../config/qiniuyun_cdn';
+import {qiniuyun_cdn_all_type} from '../../config/qiniuyun_cdn';
 import './index.less'
 
-const extendArr = [...qiniuyun_cdn, ...qiniuyun_cdn_1, ...qiniuyun_cdn_2];
-const lifeImages = extendArr.filter(v=>/^image\/life/.test(v.key))
+const lifeImages = qiniuyun_cdn_all_type.lifeImages;
 const IconText = ({type, text}) => (
   <span>
     <Icon type={type} style={{marginRight: 8}}/>
@@ -37,9 +36,12 @@ const ListTitle = ({dataSource={}}) => {
       footer={<div style={{color:'#999'}}>我是有底线的 ……</div>}
       renderItem={(item,index) => {
         let lifeImageSrc = randomArr.length?randomArr[index]:'';
+        let ResultLifeUrl = lifeImages[lifeImageSrc].dl_remove_attname_url;
+        let isIcon = pathname === '';
         return (
           <List.Item
             key={item.title}
+            className={isIcon?'':'life-img-wrapper'}
             actions={[
               formatTime(item.createTime),
               <IconText type="star-o" text="156"/>,
@@ -47,10 +49,10 @@ const ListTitle = ({dataSource={}}) => {
               <IconText type="message" text="2"/>,
               <IconText type="eye-o" text={item.visitor}/>,
             ]}
-            extra={pathname === '' ?
-              <img className="img" width={40} alt="logo" src={ARTICLE_TYPE_ICON[item.type]}/>
+            extra={isIcon ?
+              <img className="icon-img" width={40} alt="logo" src={ARTICLE_TYPE_ICON[item.type]}/>
               :
-              <img className="img" width={272} alt="logo" src={lifeImages[lifeImageSrc].dl_remove_attname_url}/>}
+              <img className="life-img" width={272} alt="logo" src={ResultLifeUrl}/>}
           >
             <List.Item.Meta
               avatar={<Avatar src={item.avatar}/>}

@@ -10,6 +10,8 @@ import {
 import {formatTime, regUrl} from "../../until";
 import {postComments,postUserComments} from "../../store/actions";
 import {postCommentUrl,postUserCommentUrl} from "../../config";
+import {COMMENT_IMAGES} from "../../config/constantsData";
+import './index.less'
 
 
 //表单定义
@@ -217,12 +219,14 @@ class Comments extends Component {
         </Row>
         {
           commentsData.map((v, i) =>
-            (
-              <Card
-                class="css-move-top"
-                bodyStyle={{background: "#f8f8f8"}}
-                key={i} title={
-                <span>
+            {
+              let index = i%COMMENT_IMAGES.length;
+              return (
+                <Card
+                  className="css-move-top"
+                  bodyStyle={{background: "#f8f8f8"}}
+                  key={i} title={
+                  <span>
                   {
                     v.website && regUrl.test(v.website) ?
                       <Link href={v.website}>
@@ -231,13 +235,15 @@ class Comments extends Component {
                       :
                       <span style={{color: '#000', fontWeight: 'bold'}}>{v.user||v.name}</span>
                   }
-                  说道：
+                    说道：
                     </span>
-              }
-                extra={<a href="javascript:;">{formatTime(v.createTime)}</a>}>
-                <p>{v.msg}</p>
-              </Card>
-            )
+                }
+                  extra={<a href="javascript:;">{formatTime(v.createTime)}</a>}>
+                  <p className="msg-p">{v.msg}</p>
+                  <img src={COMMENT_IMAGES[index]} alt=""/>
+                </Card>
+              )
+            }
           )
         }
       </div>

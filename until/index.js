@@ -90,3 +90,26 @@ export const getRandomArr=(arr,len)=> {
   }
   return result;
 }
+/**
+ * 对象数组去重
+ * @param arr
+ * @param key
+ * @returns {*}
+ */
+export const removeSameArray = (arr,key)=>{
+  let obj={}
+  return arr.reduce((total,item)=>{
+    let val = item[key];
+    if(!obj[val]){
+      total.push(item)
+      obj[val]=val
+    }
+    return total;
+  },[])
+}
+export const reg_rule = {
+  life:/^image\/life/,
+  fight:/^image\/fight/,
+  my:/^image\/my/,
+  scenery:/^image\/scenery/,
+}

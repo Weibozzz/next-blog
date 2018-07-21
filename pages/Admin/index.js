@@ -41,7 +41,7 @@ class Admin extends Component {
 
   componentDidMount() {
     const {dispatch} = this.props;
-    const {password} = localStorage
+    const {password} = sessionStorage
     const queryStringObj = {
       type: ALL,
       num: 1,
@@ -64,7 +64,7 @@ class Admin extends Component {
 
   onChange(page, pageSize) {
     const {dispatch} = this.props;
-    const {password} = localStorage;
+    const {password} = sessionStorage;
 
     const queryStringObj = {
       type: ALL,
@@ -110,7 +110,7 @@ class Admin extends Component {
   handleDelArticle(id) {
     const {dispatch} = this.props;
     const {defaultConfirmObj} = this.state;
-    const {password} = localStorage;
+    const {password} = sessionStorage;
     const queryStringObj = {
       type: 'del',
       num: id,
@@ -141,7 +141,7 @@ class Admin extends Component {
   handleDelUserComment(id){
     const {dispatch} = this.props;
     const {defaultConfirmObj} = this.state;
-    const {password} = localStorage;
+    const {password} = sessionStorage;
     const queryStringObj = {
       type: 'del',
       num: id,
@@ -172,7 +172,7 @@ class Admin extends Component {
   handleDelAdminComment(id){
     const {dispatch} = this.props;
     const {defaultConfirmObj} = this.state;
-    const {password} = localStorage;
+    const {password} = sessionStorage;
     const queryStringObj = {
       type: 'del',
       num: id,
@@ -207,13 +207,15 @@ class Admin extends Component {
         postAdminPassword(dispatch, postAdminPasswordUrl(), {password: md5(password)}).then(res => {
           const {postAdminPasswordData = []} = res;
           if(!postAdminPasswordData.length){
+            message.warning('密码不正确，重新输入！！！')
             return ;
           }
           const {password} = postAdminPasswordData[0];
-          localStorage.setItem('password',password)
+          sessionStorage.setItem('password',password)
           this.setState({
             isLogin: true
           })
+          location.reload()
         })
       }
     });

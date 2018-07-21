@@ -133,6 +133,12 @@ export const POST_ARTICLE_TYPE = [
   {key: "fight", value: " 激励向上"},
   {key: "others", value: " 其他"},
 ];
+//评论icon
+export const COMMENT_IMAGES = [
+  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532749734&di=fbfe0c2328cc8115b40f23945818cc58&imgtype=jpg&er=1&src=http%3A%2F%2Fen.pimg.jp%2F012%2F462%2F665%2F1%2F12462665.jpg',
+  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532155572971&di=b2ae74aa22311f807cc768c088ab71c6&imgtype=0&src=http%3A%2F%2Fis2.mzstatic.com%2Fimage%2Fthumb%2FPurple69%2Fv4%2Fb1%2Fb1%2F2c%2Fb1b12c2a-3a8f-420d-d988-b09c2455188e%2Fmzl.gzrdswmf.png%2F0x0ss-85.jpg',
+  'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532751108&di=333a1fefafd1ec1b1838f5305acfa215&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F14%2F39%2F99%2F02K58PIC4t7_1024.png'
+];
 
 
 
@@ -143,7 +149,7 @@ export const POST_ARTICLE_COPY = `
 
 链接：[http://www.liuweibo.cn/Blog](http://www.liuweibo.cn/Blog)
 
-来源：[刘伟波博客](http://www.liuweibo.cn/Blog)
+来源：[刘伟波博客](http://www.liuweibo.cn)
 
 本文原创版权属于刘伟波 ，转载请注明出处，谢谢合作
       `;

@@ -71,7 +71,7 @@ class TopNav extends Component {
   componentDidMount() {
     const {pathname = '/'} = location;
     const {dispatch} = this.props;
-    const {password = ''} = localStorage;
+    const {password = ''} = sessionStorage;
     this.setState({
       selectedKeys: [pathname]
     })
@@ -95,8 +95,8 @@ class TopNav extends Component {
   }
 
   onExit() {
-    //退出清除localStorage
-    localStorage.removeItem('password')
+    //退出清除sessionStorage
+    sessionStorage.removeItem('password')
     this.setState({
       isLogin: false
     })

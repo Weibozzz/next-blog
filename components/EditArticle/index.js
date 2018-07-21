@@ -91,7 +91,7 @@ class EditArticle extends Component {
 
   onSubmit() {
     const {dispatch} = this.props;
-    const {password} = localStorage;
+    const {password} = sessionStorage;
     const {isEdit, notEditArticle} = this.state;
     let {
       selectVal = '',
