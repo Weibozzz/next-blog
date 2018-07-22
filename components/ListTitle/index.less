@@ -32,7 +32,16 @@
     }
   }
 }
-.ant-list-vertical .ant-list-item-extra{
+.life-img-wrapper .ant-list-item-extra{
+  position: relative;
+  width: 272px;
+  height: 200px;
   max-height: 200px;
   overflow: hidden;
+  .life-img{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
 }

@@ -1,3 +1,5 @@
+import {removeSameArray, reg_rule} from '../until';
+
 export const requ_url = 'https://portal.qiniu.com/api/kodo/bucket/files?bucket=static&delimiter=&limit=50&marker=';
 export const qiniuyun_cdn = [
   {
@@ -1003,7 +1005,7 @@ export const qiniuyun_cdn_1 = [
     "end_user": "",
     "ftype": 0
   }]
-export const qiniuyun_cdn_2 =[
+export const qiniuyun_cdn_2 = [
   {
     "key": "image/scenery/IMG_20161103_210116.jpg",
     "dl_url": "http://pbw4yrlys.bkt.clouddn.com/image/scenery/IMG_20161103_210116.jpg?attname=",
@@ -1144,14 +1146,29 @@ export const qiniuyun_cdn_2 =[
     "mime_type": "image/jpeg",
     "end_user": "",
     "ftype": 0
-  }, {
-    "key": "requestAnimation.gif",
-    "dl_url": "http://pbw4yrlys.bkt.clouddn.com/requestAnimation.gif?attname=",
-    "dl_remove_attname_url": "http://pbw4yrlys.bkt.clouddn.com/requestAnimation.gif",
-    "hash": "FizS9e2jNqFe8kfmvVQPFpuPeU7a",
-    "file_size": 122498,
-    "put_time": "2018-07-15T12:28:20.1748562+08:00",
-    "mime_type": "image/gif",
-    "end_user": "",
-    "ftype": 0
   }]
+export const qiniuyun_cdn_icon = {
+  "angular": "http://pbw4yrlys.bkt.clouddn.com/image/icon/angular.jpg",
+  "css": "http://pbw4yrlys.bkt.clouddn.com/image/icon/css.jpg",
+  "fight": "http://pbw4yrlys.bkt.clouddn.com/image/icon/fight.jpg",
+  "h5": "http://pbw4yrlys.bkt.clouddn.com/image/icon/h5.jpg",
+  "interesting": "http://pbw4yrlys.bkt.clouddn.com/image/icon/interesting.jpg",
+  "js": "http://pbw4yrlys.bkt.clouddn.com/image/icon/js.jpg",
+  "mysql": "http://pbw4yrlys.bkt.clouddn.com/image/icon/mysql.jpg",
+  "node": "http://pbw4yrlys.bkt.clouddn.com/image/icon/node.png",
+  "others": "http://pbw4yrlys.bkt.clouddn.com/image/icon/others.jpg",
+  "php": "http://pbw4yrlys.bkt.clouddn.com/image/icon/php.jpg",
+  "react": "http://pbw4yrlys.bkt.clouddn.com/image/icon/react.jpg",
+  "server": "http://pbw4yrlys.bkt.clouddn.com/image/icon/server.jpg",
+  "vue": "http://pbw4yrlys.bkt.clouddn.com/image/icon/vue.jpg"
+}
+//去重后的所有图片
+export const qiniuyun_cdn_all = removeSameArray([...qiniuyun_cdn, ...qiniuyun_cdn_1, ...qiniuyun_cdn_2], 'dl_remove_attname_url');
+
+export const qiniuyun_cdn_all_type = {
+  lifeImages: qiniuyun_cdn_all.filter(v => reg_rule['life'].test(v.key)),
+  fightImages: qiniuyun_cdn_all.filter(v => reg_rule['fight'].test(v.key)),
+  myImages: qiniuyun_cdn_all.filter(v => reg_rule['my'].test(v.key)),
+  sceneryImages: qiniuyun_cdn_all.filter(v => reg_rule['scenery'].test(v.key))
+}
+

@@ -6,11 +6,11 @@ import {Button} from 'antd';
 import MyHead from '../MyHead';
 import {getRangeRandom, get30DegRandom} from './until';
 import {getRandomArr} from '../../until';
-import {qiniuyun_cdn, qiniuyun_cdn_1, qiniuyun_cdn_2} from '../../config/qiniuyun_cdn';
+import {qiniuyun_cdn_all,qiniuyun_cdn_all_type} from '../../config/qiniuyun_cdn';
 import './index.less'
 
 
-const extendArr = [...qiniuyun_cdn, ...qiniuyun_cdn_1, ...qiniuyun_cdn_2];
+const extendArr = qiniuyun_cdn_all;
 
 /**
  * 获取图片的输出地址，imageJsonDatas和imageDatas的结构详见最下面
@@ -153,18 +153,10 @@ class GalleryByReactApp extends React.Component {
     let {extendArr} = this.state;
     let resultArr=[];
     if(Object.prototype.toString.call(param)==='[object String]'){
-      const reg_rule = {
-        life:/^image\/life/,
-        fight:/^image\/fight/,
-        my:/^image\/my/,
-        scenery:/^image\/scenery/,
-      }
       if(param==='all'){
         resultArr=extendArr
       }else {
-        resultArr=extendArr.filter(v=>{
-          return reg_rule[param].test(v.key);
-        })
+        resultArr=qiniuyun_cdn_all_type[param+'Images']
       }
     }else {
       resultArr=extendArr

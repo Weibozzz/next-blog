@@ -42,7 +42,9 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     this.state={
-      articleID:''
+      articleID:'',
+      h2Dom:[],
+      h3Dom:[],
     }
   }
   componentWillMount(){
@@ -51,6 +53,26 @@ class Detail extends Component {
     this.setState({
       articleID
     })
+  }
+  componentDidMount(){
+    let h2Text = this.getInnerText('h2');
+    let h3Text = this.getInnerText('h3');
+    this.setState({
+      h2Dom:h2Text,
+      h3Dom:h3Text,
+    })
+  }
+  getInnerText(tag){
+    let cont = document.getElementsByClassName('new-detail')[0]
+    let domHn = cont.getElementsByTagName(tag);
+    return [...domHn].map((v,index)=>{
+      let id = `article-${tag}-${index}`;
+      v.setAttribute('id',id)
+      return {
+        id,
+        txt:v.innerText
+      };
+    });
   }
   render() {
 //接口
@@ -88,12 +110,6 @@ class Detail extends Component {
               }
             })
           , createTime)
-      /*getHtml(decode_html
-        .replace(/https:\/\/15691808595\.github\.io/gi,'https://weibozzz.github.io')
-        .replace(/http:\/\/www\.liuweibo\.cn\/(jianli)/gi,'static/jianli')
-        .replace(/http:\/\/www\.liuweibo\.cn\/(img)/gi,'static')
-        .replace(/http:\/\/www\.liuweibo\.cn\/(liuweibo_FrontEnd_CV.doc)/gi,'static/cv/liuweibo_FrontEnd_CV.doc')
-        , createTime)*/
         :getHtml(decode_html, createTime)
 
 

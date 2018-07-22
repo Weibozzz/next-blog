@@ -7,7 +7,7 @@ import marked from 'marked'
 import hljs from 'highlight.js';
 
 import {getHtml, OldTime} from '../../until';
-import './test.less';
+import './index.less';
 
 const { TextArea } = Input;
 
