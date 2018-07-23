@@ -2,6 +2,7 @@
 
 #### 项目介绍
 利用react服务端框架next.js写的博客
+线上地址： [http://www.liuweibo.cn](http://www.liuweibo.cn) 
 
 #### 软件架构
 软件架构说明
