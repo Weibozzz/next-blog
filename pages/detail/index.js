@@ -9,6 +9,8 @@ import 'whatwg-fetch'
 import Head from 'next/head';
 import marked from 'marked'
 import hljs from 'highlight.js';
+import MarkNav from 'markdown-navbar';
+import './markdown-navbar.less';
 //组件
 import ArticleTitle from '../../components/ArticleTitle';
 import PrevNextPage from '../../components/PrevNextPage';
@@ -43,8 +45,6 @@ class Detail extends Component {
     super(props);
     this.state={
       articleID:'',
-      h2Dom:[],
-      h3Dom:[],
     }
   }
   componentWillMount(){
@@ -55,24 +55,6 @@ class Detail extends Component {
     })
   }
   componentDidMount(){
-    let h2Text = this.getInnerText('h2');
-    let h3Text = this.getInnerText('h3');
-    this.setState({
-      h2Dom:h2Text,
-      h3Dom:h3Text,
-    })
-  }
-  getInnerText(tag){
-    let cont = document.getElementsByClassName('new-detail')[0]
-    let domHn = cont.getElementsByTagName(tag);
-    return [...domHn].map((v,index)=>{
-      let id = `article-${tag}-${index}`;
-      v.setAttribute('id',id)
-      return {
-        id,
-        txt:v.innerText
-      };
-    });
   }
   render() {
 //接口
@@ -124,12 +106,34 @@ class Detail extends Component {
           >
             <div style={{background: '#fff', padding: 24}}>
               <ArticleTitle detailArticle={blogData[0]}/>
-              <div
-                className={bool?'new-detail':'old-detail'}
-                dangerouslySetInnerHTML={{
-                  __html:_html_content
-                }}
-              ></div>
+              <Row>
+                <Col
+                  sm={{ span: 24}}
+                  xs={{ span: 24}}
+                  lg={{ span: bool?16:24}}>
+                  <div
+                    className={bool?'new-detail':'old-detail'}
+                    dangerouslySetInnerHTML={{
+                      __html:_html_content
+                    }}
+                  ></div>
+                </Col>
+                {
+                  bool?<Col
+                    className="sticky-nav"
+                    sm={{ span: 0}}
+                    xs={{ span: 0}}
+                    lg={{ span: 8}}
+                    span={8}>
+                    <MarkNav
+                      className="article-menu"
+                      source={decode_html}
+                      headingTopOffset={0}
+                    />
+                  </Col>:''
+                }
+
+              </Row>
               <PrevNextPage dataSource={{url,lastIdData,nextIdData}}></PrevNextPage>
               <Divider/>
               <Comments dataSource={{commentsData,articleID}}></Comments>
@@ -171,6 +175,10 @@ code {
 }
 .comment-wrapper h2{
   margin-left:20px;
+}
+.sticky-nav{
+  position: sticky;
+  top: 128px;
 }
 `}</style>
       </div>
