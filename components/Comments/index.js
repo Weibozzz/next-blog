@@ -135,7 +135,7 @@ class Comments extends Component {
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
     ));
     return (
-      <div className="comment-wrapper">
+      <div className="comment-wrapper" id="comment">
         <h2>{commentTitle}：</h2>
         <Row>
           <Col

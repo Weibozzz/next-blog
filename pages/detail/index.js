@@ -100,17 +100,35 @@ class Detail extends Component {
         <Head>
           <title>{title}{COMMON_TITLE}</title>
         </Head>
-        <MyLayout>
-          <Content
+        <MyLayout >
 
-          >
-            <div style={{background: '#fff', padding: 24}}>
-              <ArticleTitle detailArticle={blogData[0]}/>
+          <Col
+            className='left-icon-wrapper'
+            sm={{ span: 0}}
+            xs={{ span: 0}}
+            lg={{ span: 2}}>
+            <div className="remark-num">10</div>
+            <Button className='my-button-icon'>
+              <Icon type="like" />
+            </Button>
+            <Icon className='icon' type="weibo" />
+            <Icon className='icon' type="twitter" />
+            <Icon className='icon' type="wechat" />
+            <a href="#comment">
+              <Icon  className='icon' type="message" />
+            </a>
+          </Col>
+          <Col sm={{ span: 24}}
+               xs={{ span: 24}}
+               lg={{ span: 22}}>
+
+            <ArticleTitle detailArticle={blogData[0]}/>
+            <div style={{background: '#fff', padding: '0 24px 24px 24px'}}>
               <Row>
                 <Col
                   sm={{ span: 24}}
                   xs={{ span: 24}}
-                  lg={{ span: bool?16:24}}>
+                  lg={{ span: bool?15:24}}>
                   <div
                     className={bool?'new-detail':'old-detail'}
                     dangerouslySetInnerHTML={{
@@ -123,8 +141,7 @@ class Detail extends Component {
                     className="sticky-nav"
                     sm={{ span: 0}}
                     xs={{ span: 0}}
-                    lg={{ span: 8}}
-                    span={8}>
+                    lg={{ span: 8}}>
                     <MarkNav
                       className="article-menu"
                       source={decode_html}
@@ -135,10 +152,19 @@ class Detail extends Component {
 
               </Row>
               <PrevNextPage dataSource={{url,lastIdData,nextIdData}}></PrevNextPage>
+              <Row className='zan-wrapper'>
+                <Col span={4} offset={10}>
+                  <Button type="primary" size="large">
+                    赞
+                    <span className="split-line">|</span>
+                    10
+                  </Button>
+                </Col>
+              </Row>
               <Divider/>
               <Comments dataSource={{commentsData,articleID}}></Comments>
             </div>
-          </Content>
+          </Col>
         </MyLayout>
         <style>{`
         .a-img{
