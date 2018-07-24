@@ -4,8 +4,8 @@ export const MIIT_BEIAN = 'http://www.miitbeian.gov.cn'
 
 //請求地址
 export const DEV_DOMAIN = 'http://localhost:7654/';
-export const DEV_DOMAIN_4322 = 'http://localhost:4322';
-export const MY_BLOG = dev ? DEV_DOMAIN_4322 : 'http://www.liuweibo.cn'
+export const DEV_DOMAIN_4323 = 'http://localhost:4323';
+export const MY_BLOG = dev ? DEV_DOMAIN_4323 : 'http://www.liuweibo.cn'
 export const ONLINE_DOMAIN = MY_BLOG + ':7654';
 export const ONLINE_GITBOOK = MY_BLOG + ':4321';
 export const LINK_ABOUT_ME = MY_BLOG + 'p/146';
@@ -22,15 +22,15 @@ export const ALL = 'all'
 //导航路由
 export const INDEX = '/'
 export const INDEX_TXT = '网站首页'
-export const BLOG = '/Blog'
+export const BLOG = '/blog'
 export const BLOG_TXT = '文章列表'
-export const ADMIN = '/Admin'
+export const ADMIN = '/admin'
 export const ADMIN_TXT = '后台管理'
-export const LIFE = '/Life'
+export const LIFE = '/life'
 export const LIFE_TXT = '生活记录'
-export const ABOUT = '/About'
+export const ABOUT = '/about'
 export const ABOUT_TXT = '关于我'
-export const POST_ARTICLE = '/PostArticle'
+export const POST_ARTICLE = '/postArticle'
 export const POST_ARTICLE_TXT = '发布文章'
 export const DOCS_TXT = '文档中心'
 
@@ -141,6 +141,19 @@ export const COMMENT_IMAGES = [
 ];
 
 
+//色系
+export const COLORS_ARR = [
+  '#FF5F57',
+  '#FFBD2E',
+  '#28CA42',
+  '#941966',
+  '#1c2c36',
+  '#2982ff',
+  '#e0f0d8',
+  '#0098c8',
+  '#ba2d2a',
+  '#de3803',
+]
 
 //发布文章版权
 export const POST_ARTICLE_COPY =(id)=>{

@@ -241,7 +241,7 @@ class Admin extends Component {
       v === 'title' ?
         {
           title: v, dataIndex: v, render: (text, row, index) =>
-          <Link as={`/AdminDetail/${row.id}`} href={`/AdminDetail/${row.id}`}>
+          <Link as={`/adminDetail/${row.id}`} href={`/adminDetail/${row.id}`}>
             <a>{text}</a>
           </Link>
         } :

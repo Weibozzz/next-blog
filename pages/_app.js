@@ -45,14 +45,14 @@ class MyApp extends App {
         <Provider store={reduxStore}>
           <div className="container">
             {
-              pathname === '/' || pathname === '/Gallery'
+              pathname === '/' || pathname === '/gallery'
                 ?
                 ''
                 : <Header {...userAgent} />
             }
             <Component {...myPageProps}  />
             {
-              pathname === '/' || pathname === '/Gallery'
+              pathname === '/' || pathname === '/gallery'
                 ?
                 ''
                 :

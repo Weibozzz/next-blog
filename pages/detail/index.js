@@ -165,6 +165,7 @@ class Detail extends Component {
               <Comments dataSource={{commentsData,articleID}}></Comments>
             </div>
           </Col>
+
         </MyLayout>
         <style>{`
         .a-img{

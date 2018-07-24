@@ -108,9 +108,9 @@ class TopNav extends Component {
     if (Object.prototype.toString.call(selectedKeys) === '[object String]') {
       selectedKeys = ['/']
     }
-    const regSelectKey = /\/Blog[\/]?[0-9]?/;
+    const regSelectKey = /\/blog[\/]?[0-9]?/;
     if(selectedKeys[0]&&regSelectKey.test(selectedKeys[0])){
-      selectedKeys=['/Blog']
+      selectedKeys=['/blog']
     }
     let newRoutes;
     if (isLogin) {

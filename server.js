@@ -5,7 +5,7 @@ const compression = require('compression')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-let port= dev?4322:80
+let port= dev?4323:80
 console.log(port)
 
 app.prepare()
@@ -22,14 +22,14 @@ app.prepare()
       app.render(req, res, actualPage, queryParams)
     })
     //点击分页二级页面
-    server.get('/Blog/:id', (req, res) => {
+    server.get('/blog/:id', (req, res) => {
       const actualPage = '/Blog'
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)
     })
     //后台二级页面
-    server.get('/AdminDetail/:id', (req, res) => {
-      const actualPage = '/AdminDetail'
+    server.get('/adminDetail/:id', (req, res) => {
+      const actualPage = '/adminDetail'
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)
     })
