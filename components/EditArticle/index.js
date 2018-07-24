@@ -90,7 +90,8 @@ class EditArticle extends Component {
   }
 
   onSubmit() {
-    const {dispatch} = this.props;
+    const {dispatch,sourceData=[]} = this.props;
+    const {id:maxArticleId} = sourceData[0] || '';
     const {password} = sessionStorage;
     const {isEdit, notEditArticle} = this.state;
     let {
@@ -113,7 +114,8 @@ class EditArticle extends Component {
     const bool = isEdit !== '';
     if (!bool) {
       //如果是发布文章，带上版权信息
-      editCont += POST_ARTICLE_COPY
+
+      editCont += POST_ARTICLE_COPY(maxArticleId)
     }
     let queryParamsObj = {
       title: titleVal.trim(),
@@ -129,7 +131,6 @@ class EditArticle extends Component {
       //修改文章 isEdit为文章id
       queryParamsObj = Object.assign({}, queryParamsObj, {id})
     }
-
     postArticle(dispatch, postArticleUrl(), queryParamsObj).then(res => {
       const {postArticleData = []} = res;
       if (Array.isArray(postArticleData) && !postArticleData.length) {

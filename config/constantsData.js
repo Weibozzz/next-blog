@@ -4,7 +4,7 @@ export const MIIT_BEIAN = 'http://www.miitbeian.gov.cn'
 
 //請求地址
 export const DEV_DOMAIN = 'http://localhost:7654/';
-export const DEV_DOMAIN_4322 = 'http://localhost:4322/';
+export const DEV_DOMAIN_4322 = 'http://localhost:4322';
 export const MY_BLOG = dev ? DEV_DOMAIN_4322 : 'http://www.liuweibo.cn'
 export const ONLINE_DOMAIN = MY_BLOG + ':7654';
 export const ONLINE_GITBOOK = MY_BLOG + ':4321';
@@ -143,13 +143,15 @@ export const COMMENT_IMAGES = [
 
 
 //发布文章版权
-export const POST_ARTICLE_COPY = `
+export const POST_ARTICLE_COPY =(id)=>{
+  return  `
       
 作者：刘伟波
 
-链接：[http://www.liuweibo.cn/Blog](http://www.liuweibo.cn/Blog)
+链接：[${MY_BLOG}/p/${id+1}](${MY_BLOG}/p/${id+1})
 
 来源：[刘伟波博客](http://www.liuweibo.cn)
 
 本文原创版权属于刘伟波 ，转载请注明出处，谢谢合作
       `;
+}
