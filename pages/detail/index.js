@@ -94,7 +94,6 @@ class Detail extends Component {
           , createTime)
         :getHtml(decode_html, createTime)
 
-
     return (
       <div className="detail">
         <Head>
@@ -122,7 +121,7 @@ class Detail extends Component {
                xs={{ span: 24}}
                lg={{ span: 22}}>
 
-            <ArticleTitle detailArticle={blogData[0]}/>
+            <ArticleTitle commentsData={commentsData} detailArticle={blogData[0]}/>
             <div style={{background: '#fff', padding: '0 24px 24px 24px'}}>
               <Row>
                 <Col

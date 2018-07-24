@@ -1,33 +1,31 @@
 import React,{Component} from 'react';
+import {connect} from 'react-redux';
 import { List, Avatar, Icon ,Divider,Row,Col} from 'antd';
 import {formatTime,getArticleInfo} from '../../until';
 import {COLORS_ARR} from '../../config/constantsData';
+import {DEFAULT_TAG_ARR,getRandomMarginTop,getRandomMarginLeft,getRandomTxt} from '../../config/constantTag';
 import './index.less'
 
-const STEP = 20;
-const MARGIN_TOPS = 2;
-const MARGIN_LEFTS = 5;
-const getRandomMarginTop = ()=>{
-  return Math.floor(Math.random()*MARGIN_TOPS)*STEP;
-}
-const getRandomMarginLeft = ()=>{
-  return Math.ceil(Math.random()*MARGIN_LEFTS)*STEP;
-}
 
-const ArticleTitle = ({detailArticle={}})=>{
+const ArticleTitle = (...args)=>{
+  const {detailArticle={},commentsData=[]} = args[0];
+  let hasUrlComment = commentsData.filter(v=>v.website!=='').slice(0,10)
+  if(hasUrlComment.length<10){
+    hasUrlComment=[...hasUrlComment,...DEFAULT_TAG_ARR].slice(0,10)
+  }
   let {title,createTime,user,visitor,lastModify,modifyCount,type='js',url=''} = detailArticle
   if(lastModify===0){
     lastModify=createTime
   }
   return (
-    <div className="article-title ">
+    <div className="article-title-component ">
       <Row>
         <Col sm={{ span: 24}}
              xs={{ span: 24}}
              lg={{ span: 15}}>
 
-          <h2>{title}</h2>
-          <p>
+          <h1>{title}</h1>
+          <p className="tag-wrapper">
             {
               url===''?
                 <span className="origin-article">原</span>:''
@@ -50,13 +48,17 @@ const ArticleTitle = ({detailArticle={}})=>{
         >
           <div className="content">
             {
-              COLORS_ARR.map(v=>(
-                <a className="link-friends-a"
-                   style={{marginLeft:getRandomMarginLeft(),marginTop:getRandomMarginTop()}}
-                   href="https://www.baidu.com" target="_blank">
-                  <span style={{backgroundColor:v}}>{v}</span>
-                </a>
-              ))
+              hasUrlComment.map((v,index)=>{
+                let ran = Math.random()*COLORS_ARR.length | 0;
+                let color = COLORS_ARR[ran];
+                return (
+                  <a key={index} className="link-friends-a"
+                     style={{marginLeft:getRandomMarginLeft(),marginTop:getRandomMarginTop()}}
+                     href={v.website} target="_blank" title={v.user}>
+                    <span style={{backgroundColor:color}}>{getRandomTxt(v.user)}</span>
+                  </a>
+                );
+              })
             }
           </div>
           <div className="remark" title="想展示你的友情链接？赶快评论吧，这里会加上你的友链。">
@@ -75,4 +77,8 @@ const ArticleTitle = ({detailArticle={}})=>{
     </div>
   )
 }
-export default ArticleTitle
+const mapStateToProps = state => {
+  const {getCommentsData} = state;
+  return {getCommentsData};
+}
+export default connect(mapStateToProps)(ArticleTitle)
