@@ -1,10 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 class ImgFigure extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state={
+      copied: false
+    }
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -55,7 +58,9 @@ class ImgFigure extends React.Component {
     return styleObj;
   }
 
-
+  onCopyLink(e){
+    console.log(arguments)
+  }
   render() {
     let styleObj = this.getImgeStyle();
 
@@ -70,9 +75,14 @@ class ImgFigure extends React.Component {
       <figure
         className={figureClass}
               style={styleObj}
-              onClick={this.handleClick}>
+              onClick={this.handleClick}
+      >
 
-        <img src={data.imageUrl} alt={data.title}/>
+        <CopyToClipboard text={data.imageUrl}
+                         onCopy={() => this.setState({copied: true})}>
+          <img
+             src={data.imageUrl} alt={data.title}/>
+        </CopyToClipboard>
         <figcaption>
           <h2 className="img-title">{data.title}</h2>
           <div className="img-back" onClick={this.handleClick}>

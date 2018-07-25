@@ -20,6 +20,11 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         searchTotalData: action.searchTotalData
       })
+    case actionTypes.ADD_ZAN:
+      //搜索的所有页数
+      return Object.assign({}, state, {
+        addZanData: action.addZanData
+      })
 
     case actionTypes.GET_LIFE:
       //生活板块
