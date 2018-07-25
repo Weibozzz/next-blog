@@ -5,7 +5,7 @@ const compression = require('compression')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-let port= dev?4323:80
+let port= dev?4324:80
 console.log(port)
 
 app.prepare()

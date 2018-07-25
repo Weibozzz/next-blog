@@ -13,7 +13,7 @@ const ArticleTitle = (...args)=>{
   if(hasUrlComment.length<10){
     hasUrlComment=[...hasUrlComment,...DEFAULT_TAG_ARR].slice(0,10)
   }
-  let {title,createTime,user,visitor,lastModify,modifyCount,type='js',url=''} = detailArticle
+  let {title,createTime,user,visitor,lastModify,modifyCount,type='js',url='',like=0} = detailArticle
   if(lastModify===0){
     lastModify=createTime
   }

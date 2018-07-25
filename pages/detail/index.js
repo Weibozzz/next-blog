@@ -17,10 +17,12 @@ import PrevNextPage from '../../components/PrevNextPage';
 import Comments from '../../components/Comments';
 import MyLayout from '../../components/MyLayout';
 //其他
-import {getDetailUrl, getCommentsUrl,getLastIdUrl,getNextIdUrl} from '../../config';
+import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl,addZanUrl} from '../../config';
 import {COMMON_TITLE,MY_BLOG} from '../../config/constantsData';
 import {getHtml, OldTime} from '../../until';
 import './index.less'
+import {addZan} from "../../store/actions";
+
 //定义
 const {Content} = Layout;
 
@@ -45,6 +47,7 @@ class Detail extends Component {
     super(props);
     this.state={
       articleID:'',
+      articleLike:0
     }
   }
   componentWillMount(){
@@ -56,12 +59,27 @@ class Detail extends Component {
   }
   componentDidMount(){
   }
+  onAddZan(){
+    const {articleID} = this.state;
+    const {dispatch} = this.props;
+    const queryStringObj = {
+      id:articleID
+    }
+    addZan(dispatch, addZanUrl(queryStringObj)).then(res=>{
+      const {addZanData=[]} = res;
+      const {like=0} = addZanData[0]
+      this.setState({
+        articleLike:like
+      })
+    })
+  }
   render() {
 //接口
     let {blogData = [], commentsData = [],getCommentsData=[],lastIdData=[],nextIdData=[],userAgent='pc'} = this.props;
-    let {articleID} = this.state;
-    let {content = '', createTime = '',title='',url='',id,type=''} = blogData[0] || {};
+    let {articleID,articleLike} = this.state;
+    let {content = '', createTime = '',title='',url='',id,type='',like=0} = blogData[0] || {};
 
+    const resultLike = Math.max(articleLike,like)
     commentsData=[...commentsData,...getCommentsData]
       .filter(v=>v.a_id===articleID)
       .sort((a,b)=>b.createTime-a.createTime)
@@ -106,8 +124,8 @@ class Detail extends Component {
             sm={{ span: 0}}
             xs={{ span: 0}}
             lg={{ span: 2}}>
-            <div className="remark-num">10</div>
-            <Button className='my-button-icon'>
+            <div className="remark-num">{resultLike}</div>
+            <Button onClick={this.onAddZan.bind(this)} className='my-button-icon'>
               <Icon type="like" />
             </Button>
             <Icon className='icon' type="weibo" />
@@ -153,10 +171,10 @@ class Detail extends Component {
               <PrevNextPage dataSource={{url,lastIdData,nextIdData}}></PrevNextPage>
               <Row className='zan-wrapper'>
                 <Col span={4} offset={10}>
-                  <Button type="primary" size="large">
+                  <Button onClick={this.onAddZan.bind(this)} type="primary" size="large">
                     赞
                     <span className="split-line">|</span>
-                    10
+                    {resultLike}
                   </Button>
                 </Col>
               </Row>

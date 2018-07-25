@@ -22,6 +22,13 @@ export const getSearchTotal = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_SEARCH_TOTAL_DATA, searchTotalData: jsonData})
 
 }
+export const addZan = async (dispatch, url) => {
+  //搜索的所有页数
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.ADD_ZAN, addZanData: jsonData})
+
+}
 export const getLifeList = async (dispatch, url) => {
   //生活板块
   const res = await fetch(url)

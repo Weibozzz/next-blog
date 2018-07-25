@@ -5,6 +5,7 @@ import {Row, Col,Input} from 'antd';
 
 import marked from 'marked'
 import hljs from 'highlight.js';
+import * as qiniu from 'qiniu-js'
 
 import {getHtml, OldTime} from '../../until';
 import './index.less';

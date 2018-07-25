@@ -5,6 +5,9 @@ import {toQueryStr} from '../until';
 export const getBlogUrl = (obj) => {
   return getDomain() + 'api/getBlog' + toQueryStr(obj);
 }
+export const addZanUrl = (obj) => {
+  return getDomain() + 'api/zan' + toQueryStr(obj);
+}
 export const getDetailUrl = (obj) => {
   return getDomain() + 'api/detail' + toQueryStr(obj);
 }
