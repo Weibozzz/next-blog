@@ -19,7 +19,7 @@ import MyLayout from '../../components/MyLayout';
 //其他
 import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl,addZanUrl} from '../../config';
 import {COMMON_TITLE,MY_BLOG} from '../../config/constantsData';
-import {getHtml, OldTime} from '../../until';
+import {getHtml, OldTime,debounce} from '../../until';
 import './index.less'
 import {addZan} from "../../store/actions";
 
@@ -27,6 +27,7 @@ import {addZan} from "../../store/actions";
 const {Content} = Layout;
 
 
+let timer;
 hljs.configure({
   tabReplace: '  ',
   classPrefix: 'hljs-',
@@ -59,19 +60,25 @@ class Detail extends Component {
   }
   componentDidMount(){
   }
+
   onAddZan(){
     const {articleID} = this.state;
     const {dispatch} = this.props;
     const queryStringObj = {
       id:articleID
     }
-    addZan(dispatch, addZanUrl(queryStringObj)).then(res=>{
-      const {addZanData=[]} = res;
-      const {like=0} = addZanData[0]
-      this.setState({
-        articleLike:like
+    if(timer){
+      clearTimeout(timer)
+    }
+    timer=setTimeout(()=>{
+      addZan(dispatch, addZanUrl(queryStringObj)).then(res=>{
+        const {addZanData=[]} = res;
+        const {like=0} = addZanData[0]
+        this.setState({
+          articleLike:like
+        })
       })
-    })
+    },500)
   }
   render() {
 //接口

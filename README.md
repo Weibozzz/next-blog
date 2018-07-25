@@ -42,7 +42,12 @@ npm run dev
 3. 配置图片描述和更改
 4.
 6. 推荐文章
-7.
+7. $sql="select t_view from date_view order by id desc limit 2"
+8. $sql = "update visitor_counter set `all`=`all`+1 where id=1";
+$sql="insert into date_view(date) values ('$now')";
+ $sql='select max(id)as maxId from date_view';
+  $sql="update date_view set `t_view`=`t_view`+1 where id='$maxId'";
+   $sql="select `date` from date_view where id = '$maxId'";
 8. 浏览记录
 14. 发布文章修改文章自动保存
 

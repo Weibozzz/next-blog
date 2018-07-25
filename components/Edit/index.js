@@ -8,7 +8,7 @@ import hljs from 'highlight.js';
 import * as qiniu from 'qiniu-js'
 
 import {getHtml, OldTime} from '../../until';
-import './index.less';
+// import './index.less';
 
 const { TextArea } = Input;
 

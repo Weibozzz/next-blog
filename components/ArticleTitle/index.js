@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import { List, Avatar, Icon ,Divider,Row,Col} from 'antd';
-import {formatTime,getArticleInfo} from '../../until';
+import {formatTime} from '../../until';
 import {COLORS_ARR} from '../../config/constantsData';
 import {DEFAULT_TAG_ARR,getRandomMarginTop,getRandomMarginLeft,getRandomTxt} from '../../config/constantTag';
+import Ad from '../Ad';
 import './index.less'
 
 
@@ -46,7 +47,8 @@ const ArticleTitle = (...args)=>{
              lg={{ span: 8}}
               className="advertisement-wrapper"
         >
-          <div className="content">
+          <Ad dataSource={hasUrlComment}/>
+        {/*  <div className="content">
             {
               hasUrlComment.map((v,index)=>{
                 let ran = Math.random()*COLORS_ARR.length | 0;
@@ -63,7 +65,7 @@ const ArticleTitle = (...args)=>{
           </div>
           <div className="remark" title="想展示你的友情链接？赶快评论吧，这里会加上你的友链。">
             <a className="my-link" href="#comment">想展示你的友情链接？</a>
-          </div>
+          </div>*/}
         </Col>
       </Row>
 
