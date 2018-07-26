@@ -23,7 +23,7 @@ app.prepare()
     })
     //点击分页二级页面
     server.get('/blog/:id', (req, res) => {
-      const actualPage = '/Blog'
+      const actualPage = '/blog'
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)
     })
