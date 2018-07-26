@@ -83,7 +83,7 @@ class Blog extends Component {
       }
       getSearchPageList(dispatch, getBlogUrl(queryStringObj))
     }
-    Router.push(`/Blog/${page}`)
+    Router.push(`/blog/${page}`)
 
   }
   onClickPageChange(e){
@@ -97,7 +97,7 @@ class Blog extends Component {
     }
     // return originalElement;
     return (
-      <Link   as={`/Blog/${current}`} href={`/Blog?id=${current}`}>
+      <Link   as={`/blog/${current}`} href={`/blog?id=${current}`}>
         <a onClick={this.onClickPageChange.bind(this)}>{current}</a>
       </Link>
     );
