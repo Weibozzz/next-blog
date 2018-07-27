@@ -13,6 +13,8 @@ import {
 import {COMMON_TITLE, ABOUT_TXT, LINK_ABOUT_ME, commentPlaceHolder} from '../../config/constantsData';
 import Comments from '../../components/Comments';
 import {getUserCommentUrl,getDetailUrl} from "../../config";
+import {POPUP_TIPS} from '../../config/constantTag';
+import {fnTextPopup} from '../../until';
 import MyLayout from '../../components/MyLayout';
 import './index.less'
 
@@ -35,8 +37,21 @@ marked.setOptions({
 class About extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      fn:null
+    }
   }
-
+  componentDidMount(){
+    //点击页面出现 富强 民主
+    let fn=fnTextPopup(POPUP_TIPS);
+    this.setState({
+      fn
+    })
+  }
+  componentWillUnmount(){
+    let {fn} = this.state;
+    document.documentElement.removeEventListener('click', fn);
+  }
   render() {
     const {commentsUserData=[],getUserCommentsData=[],aboutMeData=[],userAgent='pc'} = this.props;
     const {content=''} = aboutMeData[0] || {};

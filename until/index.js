@@ -1,5 +1,5 @@
 import timeago from 'timeago.js';
-
+import {COLORS_ARR}  from '../config/constantsData';
 let format = require('date-format');
 export const updateHtml = str => {
   return str.replace(/'|"|:|\.|\[|\]|\\/g, function (str) {
@@ -123,16 +123,19 @@ export const reg_rule = {
 }
 export const fnTextPopup = function (arr, options) {
   // arr参数是必须的
+  const len = COLORS_ARR.length;
   if (!arr || !arr.length) {
     return;
   }
   // 主逻辑
   let index = 0;
-  document.documentElement.addEventListener('click', function (event) {
+  let fn=function (event) {
+    let color1 = COLORS_ARR[Math.random()*len | 0];
+    let color2 = COLORS_ARR[Math.random()*len | 0];
     let x = event.pageX, y = event.pageY;
     let eleText = document.createElement('span');
     eleText.className = 'text-popup';
-    eleText.backgroundImage='linear-gradient(to right, red, green, red)';
+    eleText.style.backgroundImage=`linear-gradient(to right, ${color1}, ${color2}, ${color1})`;
     this.appendChild(eleText);
     if (arr[index]) {
       eleText.innerHTML = arr[index];
@@ -142,12 +145,14 @@ export const fnTextPopup = function (arr, options) {
     }
     // 动画结束后删除自己
     eleText.addEventListener('animationend', function () {
-      // eleText.parentNode.removeChild(eleText);
+      eleText.parentNode.removeChild(eleText);
     });
     // 位置
     eleText.style.left = (x - eleText.clientWidth / 2) + 'px';
     eleText.style.top = (y - eleText.clientHeight) + 'px';
     // index递增
     index++;
-  });
+  }
+  document.documentElement.addEventListener('click', fn);
+  return fn;
 };

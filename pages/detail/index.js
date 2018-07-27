@@ -24,10 +24,8 @@ import {getHtml, OldTime,fnTextPopup} from '../../until';
 import './index.less'
 import './pop-tips.less'
 import {addZan} from "../../store/actions";
-
 //定义
 const {Content} = Layout;
-
 
 let timer;
 hljs.configure({
@@ -50,7 +48,8 @@ class Detail extends Component {
     super(props);
     this.state={
       articleID:'',
-      articleLike:0
+      articleLike:0,
+      fn:null
     }
   }
   componentWillMount(){
@@ -62,9 +61,15 @@ class Detail extends Component {
   }
   componentDidMount(){
     //点击页面出现 富强 民主
-    fnTextPopup(POPUP_TIPS);
+    let fn=fnTextPopup(POPUP_TIPS);
+    this.setState({
+      fn
+    })
   }
-
+  componentWillUnmount(){
+    let {fn} = this.state;
+    document.documentElement.removeEventListener('click', fn);
+  }
   onAddZan(){
     const {articleID} = this.state;
     const {dispatch} = this.props;
