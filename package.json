@@ -48,6 +48,7 @@
     "showdown": "^1.8.6",
     "sticky-js": "^1.2.0",
     "style-loader": "^0.21.0",
+    "timeago.js": "^3.0.2",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {

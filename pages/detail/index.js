@@ -19,8 +19,10 @@ import MyLayout from '../../components/MyLayout';
 //其他
 import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl,addZanUrl} from '../../config';
 import {COMMON_TITLE,MY_BLOG} from '../../config/constantsData';
-import {getHtml, OldTime,debounce} from '../../until';
+import {POPUP_TIPS} from '../../config/constantTag';
+import {getHtml, OldTime,fnTextPopup} from '../../until';
 import './index.less'
+import './pop-tips.less'
 import {addZan} from "../../store/actions";
 
 //定义
@@ -59,6 +61,8 @@ class Detail extends Component {
     })
   }
   componentDidMount(){
+    //点击页面出现 富强 民主
+    fnTextPopup(POPUP_TIPS);
   }
 
   onAddZan(){
@@ -231,6 +235,8 @@ code {
   position: sticky;
   top: 128px;
 }
+
+
 `}</style>
       </div>
     );

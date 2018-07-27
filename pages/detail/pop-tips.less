@@ -1,0 +1,25 @@
+.text-popup {
+  animation: textPopup 1s;
+  color: red;
+  user-select: none;
+  white-space: nowrap;
+  position: absolute;
+  z-index: 99;
+  background-image: linear-gradient(to right, red, green, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-size: 200% 100%;
+}
+@keyframes textPopup {
+  0%, 100% {
+    opacity: 0;
+    background-position: 0 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    background-position: -100% 0;
+  }
+}

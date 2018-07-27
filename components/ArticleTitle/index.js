@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import { List, Avatar, Icon ,Divider,Row,Col} from 'antd';
-import {formatTime} from '../../until';
+import {formatTime,regUrl} from '../../until';
 import {COLORS_ARR} from '../../config/constantsData';
 import {DEFAULT_TAG_ARR,getRandomMarginTop,getRandomMarginLeft,getRandomTxt} from '../../config/constantTag';
 import Ad from '../Ad';
@@ -10,7 +10,7 @@ import './index.less'
 
 const ArticleTitle = (...args)=>{
   const {detailArticle={},commentsData=[]} = args[0];
-  let hasUrlComment = commentsData.filter(v=>v.website!=='').slice(0,10)
+  let hasUrlComment = commentsData.filter(v=>regUrl.test(v.website)).slice(0,10)
   if(hasUrlComment.length<10){
     hasUrlComment=[...hasUrlComment,...DEFAULT_TAG_ARR].slice(0,10)
   }
