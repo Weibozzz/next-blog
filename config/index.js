@@ -21,7 +21,12 @@ export const getLastIdUrl = (obj) => {
 export const getNextIdUrl = (obj) => {
   return getDomain() + 'api/nextId' + toQueryStr(obj);
 }
-
+export const getIpUrl = (obj) => {
+  return getDomain() + 'api/getIp' + toQueryStr(obj);
+}
+export const postSaveIpUrl = ()=>{
+  return getDomain() + 'api/saveIp';
+}
 
 //评论
 export const getCommentsUrl = (obj) => {

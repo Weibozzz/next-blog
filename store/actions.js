@@ -36,6 +36,13 @@ export const getLifeList = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_LIFE, lifeData: jsonData})
 
 }
+export const getIpList = async (dispatch, url) => {
+  //生活板块
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_IP, ipListData: jsonData})
+
+}
 
 export const postComments = async (dispatch, url,body) => {
   //发布评论,然后获得更新后的评论
@@ -45,6 +52,16 @@ export const postComments = async (dispatch, url,body) => {
   })
   const jsonData = await res.json()
   return dispatch({type: actionTypes.POST_COMMENTS, getCommentsData: jsonData})
+
+}
+export const postSaveIp = async (dispatch, url,body) => {
+  //存储ip
+  const res = await fetch(url,{
+    method: 'POST',
+    body:JSON.stringify(body)
+  })
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.SAVE_IP, geSaveIpData: jsonData})
 
 }
 export const postUserComments = async (dispatch, url,body) => {

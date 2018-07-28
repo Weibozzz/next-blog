@@ -25,6 +25,7 @@ const MyHead = ()=>(
     <link rel='stylesheet' href='/_next/static/style.css'/>
     <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
+      <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
     <title>{ROUTER.INDEX_TITLE} &raquo; {ROUTER.COMMON_TITLE}</title>
   </Head>
 )

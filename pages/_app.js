@@ -22,6 +22,7 @@ class MyApp extends App {
 
   componentDidMount() {
     const ua = navigator.userAgent;
+
     let userAgent;
     if (ua.indexOf("Android") > 0 || ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0) {
       //移动端

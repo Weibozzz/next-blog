@@ -11,8 +11,8 @@ import {
 } from 'antd';
 
 import {formatTime} from '../../until';
-import {getAdminBlogUrl, getBlogUrl, getTotalUrl, postAdminPasswordUrl,getUserCommentUrl,postUserCommentUrl,postCommentUrl} from '../../config';
-import {getAdminBlogList, getSearchList, postAdminPassword,postUserComments,postComments} from '../../store/actions';
+import {getAdminBlogUrl, getBlogUrl, getTotalUrl, postAdminPasswordUrl,getUserCommentUrl,postUserCommentUrl,postCommentUrl,getIpUrl} from '../../config';
+import {getAdminBlogList, getSearchList, postAdminPassword,postUserComments,postComments,getIpList} from '../../store/actions';
 import {ALL, pageNum, TITLE,ADMIN_TXT,COMMON_TITLE} from "../../config/constantsData";
 import MyLayout from '../../components/MyLayout';
 const FormItem = Form.Item;
@@ -50,6 +50,7 @@ class Admin extends Component {
     }
     getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
     postComments(dispatch, postCommentUrl(),queryStringObj)
+    getIpList(dispatch, getIpUrl(queryStringObj))
   }
 
 

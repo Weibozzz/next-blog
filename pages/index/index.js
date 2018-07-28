@@ -2,11 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Button, Switch,Row,Col} from 'antd';
 import Link from 'next/link';
+import {getIPs} from 'real-ip';
 import MyHead from '../../components/MyHead';
 import * as ROUTER from '../../config/constantsData';
-import {getIPs} from '../../until';
+import {postSaveIp} from '../../store/actions';
+import {postSaveIpUrl} from '../../config';
 import './index.less'
-const publicIp = require('public-ip');
 
 
 let timer;
@@ -24,24 +25,18 @@ class Index extends React.Component {
     })
   }
   componentDidMount(){
+    const {dispatch} = this.props;
+    getIPs(ip => {
+      let queryParamsObj = {real_ip: ip, ip: returnCitySN['cip'], address: returnCitySN['cname']};
+      //存取用户ip
+      postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj)
+    })
     timer=setInterval(()=>{
       this.setState({
         defaultIndexBg:this.getRandom()
       })
     },ROUTER.defaultTimer)
 
-    getIPs(ip=>{
-      publicIp.v4().then(ip => {
-        console.log('ipv4',ip);
-        //=> '46.5.21.123'
-      });
-
-      publicIp.v6().then(ip => {
-        console.log('ipv6',ip);
-        //=> 'fe80::200:f8ff:fe21:67cf'
-      });
-      console.log('真实ip',ip)
-    })
   }
   componentWillUnmount(){
     clearInterval(timer)

@@ -48,6 +48,16 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         postArticleData: action.postArticleData
       })
+    case actionTypes.SAVE_IP:
+      //存取ip地址返回
+      return Object.assign({}, state, {
+        geSaveIpData: action.geSaveIpData
+      })
+    case actionTypes.GET_IP:
+      //存取ip地址返回
+      return Object.assign({}, state, {
+        ipListData: action.ipListData
+      })
 
     //后台
     case actionTypes.GET_COMMENTS:
