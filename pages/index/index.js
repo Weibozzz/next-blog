@@ -2,11 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Button, Switch,Row,Col} from 'antd';
 import Link from 'next/link';
-import {getIPs} from 'real-ip';
 import MyHead from '../../components/MyHead';
 import * as ROUTER from '../../config/constantsData';
-import {postSaveIp} from '../../store/actions';
-import {postSaveIpUrl} from '../../config';
 import './index.less'
 
 
@@ -25,12 +22,6 @@ class Index extends React.Component {
     })
   }
   componentDidMount(){
-    const {dispatch} = this.props;
-    getIPs(ip => {
-      let queryParamsObj = {real_ip: ip, ip: returnCitySN['cip'], address: returnCitySN['cname']};
-      //存取用户ip
-      postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj)
-    })
     timer=setInterval(()=>{
       this.setState({
         defaultIndexBg:this.getRandom()
@@ -108,6 +99,10 @@ class Index extends React.Component {
             </div>
           </Col>
         </Row>
+        <div className="sitemap">
+          <a href={`${ROUTER.MY_BLOG}/sitemap.html`} >网站地图</a>
+          <a href={`${ROUTER.MY_BLOG}/sitemap.xml`} >网站地图</a>
+        </div>
 
       </div>
     )

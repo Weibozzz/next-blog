@@ -4,8 +4,8 @@ export const MIIT_BEIAN = 'http://www.miitbeian.gov.cn'
 
 //請求地址
 export const DEV_DOMAIN = 'http://localhost:7654/';
-export const DEV_DOMAIN_4323 = 'http://localhost:4323';
-export const MY_BLOG = dev ? DEV_DOMAIN_4323 : 'http://www.liuweibo.cn'
+export const DEV_DOMAIN_4324 = 'http://localhost:4324';
+export const MY_BLOG = dev ? DEV_DOMAIN_4324 : 'http://www.liuweibo.cn'
 export const ONLINE_DOMAIN = MY_BLOG + ':7654';
 export const ONLINE_GITBOOK = MY_BLOG + ':4321';
 export const LINK_ABOUT_ME = MY_BLOG + 'p/146';

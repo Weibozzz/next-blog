@@ -47,6 +47,7 @@
     "real-ip": "^1.0.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "robots.txt": "^1.1.0",
     "showdown": "^1.8.6",
     "sticky-js": "^1.2.0",
     "style-loader": "^0.21.0",

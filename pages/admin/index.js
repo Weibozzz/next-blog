@@ -11,10 +11,27 @@ import {
 } from 'antd';
 
 import {formatTime} from '../../until';
-import {getAdminBlogUrl, getBlogUrl, getTotalUrl, postAdminPasswordUrl,getUserCommentUrl,postUserCommentUrl,postCommentUrl,getIpUrl} from '../../config';
-import {getAdminBlogList, getSearchList, postAdminPassword,postUserComments,postComments,getIpList} from '../../store/actions';
-import {ALL, pageNum, TITLE,ADMIN_TXT,COMMON_TITLE} from "../../config/constantsData";
+import {
+  getAdminBlogUrl,
+  getBlogUrl,
+  getTotalUrl,
+  postAdminPasswordUrl,
+  getUserCommentUrl,
+  postUserCommentUrl,
+  postCommentUrl,
+  getIpUrl
+} from '../../config';
+import {
+  getAdminBlogList,
+  getSearchList,
+  postAdminPassword,
+  postUserComments,
+  postComments,
+  getIpList
+} from '../../store/actions';
+import {ALL, pageNum, TITLE, ADMIN_TXT, COMMON_TITLE} from "../../config/constantsData";
 import MyLayout from '../../components/MyLayout';
+
 const FormItem = Form.Item;
 const confirm = Modal.confirm;
 const TabPane = Tabs.TabPane;
@@ -29,7 +46,7 @@ class Admin extends Component {
       currentPage: 1,
       inputVal: '',
       isLogin: false,
-      defaultConfirmObj:{
+      defaultConfirmObj: {
         title: 'Are you sure delete this article?',
         content: 'Some descriptions',
         okText: 'Yes',
@@ -46,10 +63,10 @@ class Admin extends Component {
       type: ALL,
       num: 1,
       pageNum,
-      token:password
+      token: password
     }
     getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
-    postComments(dispatch, postCommentUrl(),queryStringObj)
+    postComments(dispatch, postCommentUrl(), queryStringObj)
     getIpList(dispatch, getIpUrl(queryStringObj))
   }
 
@@ -71,7 +88,7 @@ class Admin extends Component {
       type: ALL,
       num: page,
       pageNum,
-      token:password
+      token: password
     }
     getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
   }
@@ -115,16 +132,16 @@ class Admin extends Component {
     const queryStringObj = {
       type: 'del',
       num: id,
-      token:password
+      token: password
     };
     confirm({
       ...defaultConfirmObj,
       onOk() {
         getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj)).then(res => {
-          const {adminBlogData=[]} = res;
-          if(!adminBlogData.length){
+          const {adminBlogData = []} = res;
+          if (!adminBlogData.length) {
             message.warning('您可能没权限')
-            return ;
+            return;
           }
           if (res) {
             message.success(`id为${id}的文章删除成功`)
@@ -138,24 +155,25 @@ class Admin extends Component {
     });
 
   }
+
   //删除留言
-  handleDelUserComment(id){
+  handleDelUserComment(id) {
     const {dispatch} = this.props;
     const {defaultConfirmObj} = this.state;
     const {password} = sessionStorage;
     const queryStringObj = {
       type: 'del',
       num: id,
-      token:password
+      token: password
     };
     confirm({
       ...defaultConfirmObj,
       onOk() {
         postUserComments(dispatch, postUserCommentUrl(), queryStringObj).then(res => {
           const {getUserCommentsData} = res;
-          if(!getUserCommentsData.length){
+          if (!getUserCommentsData.length) {
             message.warning('您可能没权限')
-            return ;
+            return;
           }
           if (res) {
             message.success(`id为${id}的用户留言删除成功`)
@@ -169,24 +187,25 @@ class Admin extends Component {
     });
 
   }
+
   //删除评论
-  handleDelAdminComment(id){
+  handleDelAdminComment(id) {
     const {dispatch} = this.props;
     const {defaultConfirmObj} = this.state;
     const {password} = sessionStorage;
     const queryStringObj = {
       type: 'del',
       num: id,
-      token:password
+      token: password
     };
     confirm({
       ...defaultConfirmObj,
       onOk() {
         postComments(dispatch, postCommentUrl(), queryStringObj).then(res => {
           const {getCommentsData} = res;
-          if(!getCommentsData.length){
+          if (!getCommentsData.length) {
             message.warning('您可能没权限')
-            return ;
+            return;
           }
           if (res) {
             message.success(`id为${id}的用户评论删除成功`)
@@ -199,6 +218,7 @@ class Admin extends Component {
       },
     });
   }
+
   handleSubmit = (e) => {
     const {dispatch} = this.props;
     e.preventDefault();
@@ -207,12 +227,12 @@ class Admin extends Component {
         const {password} = values;
         postAdminPassword(dispatch, postAdminPasswordUrl(), {password: md5(password)}).then(res => {
           const {postAdminPasswordData = []} = res;
-          if(!postAdminPasswordData.length){
+          if (!postAdminPasswordData.length) {
             message.warning('密码不正确，重新输入！！！')
-            return ;
+            return;
           }
           const {password} = postAdminPasswordData[0];
-          sessionStorage.setItem('password',password)
+          sessionStorage.setItem('password', password)
           this.setState({
             isLogin: true
           })
@@ -232,7 +252,15 @@ class Admin extends Component {
     function callback(key) {
     }
 
-    let {adminBlogData = [], totalPageData = [], searchData = [],commentsUserData=[],getUserCommentsData=[],getCommentsData=[],dispatch} = this.props;
+    let {adminBlogData = [], totalPageData = [], searchData = [], commentsUserData = [], getUserCommentsData = [], getCommentsData = [], ipListData = [], dispatch} = this.props;
+    //浏览记录
+    const ipKeys = ipListData.map(v => ([...Object.keys(v)]));
+    const ipColumns = ipKeys && ipKeys[0] ? ipKeys[0].map(v => (
+      {
+        title: v, dataIndex: v
+      }
+    )) : [];
+    const ipData = ipListData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     //文章
     if (searchData.length) {
       adminBlogData = searchData
@@ -255,17 +283,17 @@ class Admin extends Component {
     )) : [];
     const data = adminBlogData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     //留言
-    if(getUserCommentsData.length){
-      commentsUserData=getUserCommentsData
+    if (getUserCommentsData.length) {
+      commentsUserData = getUserCommentsData
     }
     const keysUserComments = commentsUserData.map(v => ([...Object.keys(v), '操作']));
     const columnsUserComments = keysUserComments && keysUserComments[0] ? keysUserComments[0].map(v => (
-        v === '操作' ?
-          {
-            title: v, dataIndex: v, render: (text, row, index) =>
-            <a href="javascript:;" onClick={this.handleDelUserComment.bind(this, row.id)}>删除</a>
-          } :
-          {title: v, dataIndex: v}
+      v === '操作' ?
+        {
+          title: v, dataIndex: v, render: (text, row, index) =>
+          <a href="javascript:;" onClick={this.handleDelUserComment.bind(this, row.id)}>删除</a>
+        } :
+        {title: v, dataIndex: v}
     )) : [];
     const dataCommentsUserData = commentsUserData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     //评论
@@ -284,7 +312,7 @@ class Admin extends Component {
 
     //分页
     const {total} = totalPageData[0] || {};
-    const {postAdminPasswordData=[]} = this.props;
+    const {postAdminPasswordData = []} = this.props;
     const {getFieldDecorator} = this.props.form;
     return (
       <div>
@@ -292,7 +320,7 @@ class Admin extends Component {
           <title>{ADMIN_TXT}&raquo;{COMMON_TITLE}</title>
         </Head>
         <MyLayout>
-          <Content >
+          <Content>
             {
               postAdminPasswordData.length ?
                 <div>
@@ -356,6 +384,24 @@ class Admin extends Component {
                           }}
                         />
                       </TabPane>
+                      <TabPane tab="浏览记录" key="4">
+
+                        <Table
+                          bordered={true}
+                          columns={ipColumns}
+                          dataSource={ipData}
+                          pagination={false}
+                          onChange={onChange}
+                          onRow={(record) => {
+                            return {
+                              onClick: () => {
+                              },       // 点击行
+                              onMouseEnter: () => {
+                              },  // 鼠标移入行
+                            };
+                          }}
+                        />
+                      </TabPane>
                     </Tabs>
                   </div>
                 </div>
@@ -400,11 +446,11 @@ Admin.getInitialProps = async function () {
   const commentsUserData = await comments.json()
 
 
-  return {totalPageData,commentsUserData}
+  return {totalPageData, commentsUserData}
 }
 const mapStateToProps = state => {
-  const {adminBlogData, searchData,postAdminPasswordData,getUserCommentsData,getCommentsData} = state
-  return {adminBlogData, searchData,postAdminPasswordData,getUserCommentsData,getCommentsData};
+  const {adminBlogData, searchData, postAdminPasswordData, getUserCommentsData, getCommentsData, ipListData} = state
+  return {adminBlogData, searchData, postAdminPasswordData, getUserCommentsData, getCommentsData, ipListData};
 }
 const WrappedNormalLoginForm = Form.create()(Admin);
 export default connect(mapStateToProps)(WrappedNormalLoginForm)
