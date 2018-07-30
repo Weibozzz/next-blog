@@ -40,9 +40,9 @@ export const postUserCommentUrl = () => {
   return getDomain() + 'api/postUserComment';
 }
 
-export const getUserCommentUrl = () => {
+export const getUserCommentUrl = (obj) => {
   //获得用户留言
-  return getDomain() + 'api/getUserComment';
+  return getDomain() + 'api/getUserComment'+ toQueryStr(obj);
 }
 
 /*export const getAdminCommentUrl = () => {

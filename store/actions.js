@@ -93,6 +93,12 @@ export const getAdminBlogList = async (dispatch, url) => {
   const jsonData = await res.json()
   return dispatch({type: actionTypes.GET_ADMIN_DATA, adminBlogData: jsonData})
 }
+export const getCommentsUserList = async (dispatch, url) => {
+  //上拉加载更多的评论
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_COMMENTS_USER, getCommentsUserData: jsonData})
+}
 
 /*export const getCommentsList = async (dispatch, url) => {
   //得到所有用户评论

@@ -20,7 +20,7 @@ import MyLayout from '../../components/MyLayout';
 import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl,addZanUrl} from '../../config';
 import {COMMON_TITLE,MY_BLOG} from '../../config/constantsData';
 import {POPUP_TIPS} from '../../config/constantTag';
-import {getHtml, OldTime,fnTextPopup} from '../../until';
+import {getHtml, OldTime} from '../../until';
 import './index.less'
 import './pop-tips.less'
 import {addZan} from "../../store/actions";
@@ -60,15 +60,9 @@ class Detail extends Component {
     })
   }
   componentDidMount(){
-    //点击页面出现 富强 民主
-    let fn=fnTextPopup(POPUP_TIPS);
-    this.setState({
-      fn
-    })
+
   }
   componentWillUnmount(){
-    let {fn} = this.state;
-    document.documentElement.removeEventListener('click', fn);
   }
   onAddZan(){
     const {articleID} = this.state;

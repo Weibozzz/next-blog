@@ -27,7 +27,8 @@ import {
   postAdminPassword,
   postUserComments,
   postComments,
-  getIpList
+  getIpList,
+  getCommentsUserList
 } from '../../store/actions';
 import {ALL, pageNum, TITLE, ADMIN_TXT, COMMON_TITLE} from "../../config/constantsData";
 import MyLayout from '../../components/MyLayout';
@@ -42,10 +43,12 @@ class Admin extends Component {
   constructor() {
     super()
     this.state = {
-      pageNum: 10,
+      pageNum,
       currentPage: 1,
       inputVal: '',
       isLogin: false,
+      isLoading: false,
+      pageSize:1,
       defaultConfirmObj: {
         title: 'Are you sure delete this article?',
         content: 'Some descriptions',
@@ -68,8 +71,51 @@ class Admin extends Component {
     getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
     postComments(dispatch, postCommentUrl(), queryStringObj)
     getIpList(dispatch, getIpUrl(queryStringObj))
+    getCommentsUserList(dispatch, getUserCommentUrl(queryStringObj))
+
+    window.onscroll = () => {
+      this.scrollBTMLoading()
+    }
+    window.onresize = () => {
+      this.scrollBTMLoading()
+    }
   }
 
+  componentWillUnmount() {
+    window.onscroll = null;
+    window.onresize = null;
+  }
+
+  scrollBTMLoading() {
+    const {dispatch} = this.props;
+    let {pageSize:num} = this.state
+    const {password} = sessionStorage;
+    const queryStringObj = {
+      type: ALL,
+      num,
+      pageNum,
+      token: password
+    }
+    let footerDom = document.getElementsByClassName('footer-content')[0];
+    let {innerHeight: windowHeight} = window;
+    let {bottom} = footerDom.getBoundingClientRect();
+    if (bottom === windowHeight) {
+      console.log('该请求数据了')
+      let newNum=++num;
+      this.setState({
+        isLoading: true,
+        pageSize:newNum
+      })
+      getCommentsUserList(dispatch, getUserCommentUrl({...queryStringObj, num: newNum})).then(res => {
+        console.log(res)
+        if (res) {
+          this.setState({
+            isLoading: false
+          })
+        }
+      })
+    }
+  }
 
   itemRender(current, type, originalElement) {
     if (type === 'prev') {
@@ -252,7 +298,7 @@ class Admin extends Component {
     function callback(key) {
     }
 
-    let {adminBlogData = [], totalPageData = [], searchData = [], commentsUserData = [], getUserCommentsData = [], getCommentsData = [], ipListData = [], dispatch} = this.props;
+    let {adminBlogData = [], totalPageData = [], searchData = [], getCommentsUserData: commentsUserData = [], getUserCommentsData = [], getCommentsData = [], ipListData = [], dispatch} = this.props;
     //浏览记录
     const ipKeys = ipListData.map(v => ([...Object.keys(v)]));
     const ipColumns = ipKeys && ipKeys[0] ? ipKeys[0].map(v => (
@@ -270,14 +316,14 @@ class Admin extends Component {
       v === 'title' ?
         {
           title: v, dataIndex: v, render: (text, row, index) =>
-          <Link as={`/adminDetail/${row.id}`} href={`/adminDetail/${row.id}`}>
-            <a>{text}</a>
-          </Link>
+            <Link as={`/adminDetail/${row.id}`} href={`/adminDetail/${row.id}`}>
+              <a>{text}</a>
+            </Link>
         } :
         v === '操作' ?
           {
             title: v, dataIndex: v, render: (text, row, index) =>
-            <a href="javascript:;" onClick={this.handleDelArticle.bind(this, row.id)}>删除</a>
+              <a href="javascript:;" onClick={this.handleDelArticle.bind(this, row.id)}>删除</a>
           } :
           {title: v, dataIndex: v}
     )) : [];
@@ -291,7 +337,7 @@ class Admin extends Component {
       v === '操作' ?
         {
           title: v, dataIndex: v, render: (text, row, index) =>
-          <a href="javascript:;" onClick={this.handleDelUserComment.bind(this, row.id)}>删除</a>
+            <a href="javascript:;" onClick={this.handleDelUserComment.bind(this, row.id)}>删除</a>
         } :
         {title: v, dataIndex: v}
     )) : [];
@@ -302,7 +348,7 @@ class Admin extends Component {
       v === '操作' ?
         {
           title: v, dataIndex: v, render: (text, row, index) =>
-          <a href="javascript:;" onClick={this.handleDelAdminComment.bind(this, row.id)}>删除</a>
+            <a href="javascript:;" onClick={this.handleDelAdminComment.bind(this, row.id)}>删除</a>
         } :
         {title: v, dataIndex: v}
     )) : [];
@@ -314,6 +360,7 @@ class Admin extends Component {
     const {total} = totalPageData[0] || {};
     const {postAdminPasswordData = []} = this.props;
     const {getFieldDecorator} = this.props.form;
+    const {isLoading} = this.state;
     return (
       <div>
         <Head>
@@ -324,6 +371,7 @@ class Admin extends Component {
             {
               postAdminPasswordData.length ?
                 <div>
+
                   <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
                           size="large"/>
                   <div style={{background: '#fff', padding: 24, minHeight: 380}}>
@@ -403,7 +451,13 @@ class Admin extends Component {
                         />
                       </TabPane>
                     </Tabs>
+                    {
+                      isLoading ? <div style={{textAlign: 'center'}} className="loading-admin">loading……</div>
+                        : ''
+                    }
+
                   </div>
+
                 </div>
                 :
                 <div style={{background: '#fff', padding: 24, minHeight: 380}}>
@@ -429,6 +483,7 @@ class Admin extends Component {
                       </Button>
                     </FormItem>
                   </Form>
+
                 </div>
             }
           </Content>
@@ -442,15 +497,20 @@ Admin.getInitialProps = async function () {
   let queryTotalString = {type: ALL};
   const totalPage = await fetch(getTotalUrl(queryTotalString))
   const totalPageData = await totalPage.json()
-  const comments = await fetch(getUserCommentUrl())
-  const commentsUserData = await comments.json()
 
-
-  return {totalPageData, commentsUserData}
+  return {totalPageData}
 }
 const mapStateToProps = state => {
-  const {adminBlogData, searchData, postAdminPasswordData, getUserCommentsData, getCommentsData, ipListData} = state
-  return {adminBlogData, searchData, postAdminPasswordData, getUserCommentsData, getCommentsData, ipListData};
+  const {adminBlogData, searchData, postAdminPasswordData, getUserCommentsData, getCommentsData, ipListData, getCommentsUserData} = state
+  return {
+    adminBlogData,
+    searchData,
+    postAdminPasswordData,
+    getUserCommentsData,
+    getCommentsData,
+    ipListData,
+    getCommentsUserData
+  };
 }
 const WrappedNormalLoginForm = Form.create()(Admin);
 export default connect(mapStateToProps)(WrappedNormalLoginForm)

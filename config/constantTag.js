@@ -11,8 +11,10 @@ export const getRandomMarginLeft = ()=>{
 export const getRandomTxt = (text)=>{
   let len = text.length;
   let random = Math.random()*len;
+  //最少截取4个字符
+  let result= Math.max(Math.ceil(random),4)
   if(len>MAX_LENGTH_TXT){
-    return text.slice(0,Math.ceil(random));
+    return text.slice(0,result);
   }
   return text;
 }
