@@ -48,6 +48,7 @@ class Admin extends Component {
       inputVal: '',
       isLogin: false,
       isLoading: false,
+      tabKey:'1',
       pageSize:1,
       defaultConfirmObj: {
         title: 'Are you sure delete this article?',
@@ -88,7 +89,7 @@ class Admin extends Component {
 
   scrollBTMLoading() {
     const {dispatch} = this.props;
-    let {pageSize:num} = this.state
+    let {pageSize:num,tabKey} = this.state
     const {password} = sessionStorage;
     const queryStringObj = {
       type: ALL,
@@ -99,21 +100,33 @@ class Admin extends Component {
     let footerDom = document.getElementsByClassName('footer-content')[0];
     let {innerHeight: windowHeight} = window;
     let {bottom} = footerDom.getBoundingClientRect();
-    if (bottom === windowHeight) {
+    if (bottom-windowHeight<1&&tabKey!=='1') {
       console.log('该请求数据了')
       let newNum=++num;
       this.setState({
         isLoading: true,
         pageSize:newNum
       })
-      getCommentsUserList(dispatch, getUserCommentUrl({...queryStringObj, num: newNum})).then(res => {
-        console.log(res)
-        if (res) {
-          this.setState({
-            isLoading: false
-          })
-        }
-      })
+      let newQueryStringObj = {...queryStringObj, num: newNum};
+      if(tabKey==='4'){
+        //浏览记录分页
+        getIpList(dispatch, getIpUrl(newQueryStringObj)).then(res => {
+          if (res) {
+            this.setState({
+              isLoading: false
+            })
+          }
+        })
+      }else if(tabKey==='3'){
+        //评论管理
+        postComments(dispatch, postCommentUrl(), newQueryStringObj).then(res=>{
+          if (res) {
+            this.setState({
+              isLoading: false
+            })
+          }
+        })
+      }
     }
   }
 
@@ -168,7 +181,6 @@ class Admin extends Component {
 
     getSearchList(dispatch, getBlogUrl(queryStringObj))
   }
-
 
   //删除文章
   handleDelArticle(id) {
@@ -241,7 +253,7 @@ class Admin extends Component {
     const {password} = sessionStorage;
     const queryStringObj = {
       type: 'del',
-      num: id,
+      delNum: id,
       token: password
     };
     confirm({
@@ -264,7 +276,11 @@ class Admin extends Component {
       },
     });
   }
-
+  callback(key) {
+    this.setState({
+      tabKey:key
+    })
+  }
   handleSubmit = (e) => {
     const {dispatch} = this.props;
     e.preventDefault();
@@ -293,9 +309,6 @@ class Admin extends Component {
     }
 
     function onClick(pagination, filters, sorter) {
-    }
-
-    function callback(key) {
     }
 
     let {adminBlogData = [], totalPageData = [], searchData = [], getCommentsUserData: commentsUserData = [], getUserCommentsData = [], getCommentsData = [], ipListData = [], dispatch} = this.props;
@@ -375,7 +388,7 @@ class Admin extends Component {
                   <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
                           size="large"/>
                   <div style={{background: '#fff', padding: 24, minHeight: 380}}>
-                    <Tabs defaultActiveKey="1" onChange={callback}>
+                    <Tabs defaultActiveKey="1" onChange={this.callback.bind(this)}>
                       <TabPane tab="文章管理" key="1">
                         <Table
                           bordered={true}

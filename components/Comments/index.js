@@ -7,9 +7,9 @@ import {
   AutoComplete, List, Avatar, Icon, Divider, message
 } from 'antd';
 
-import {formatTime, regUrl} from "../../until";
-import {postComments,postUserComments} from "../../store/actions";
-import {postCommentUrl,postUserCommentUrl} from "../../config";
+import {formatTime, regUrl, real_ip} from "../../until";
+import {postComments, postUserComments} from "../../store/actions";
+import {postCommentUrl, postUserCommentUrl} from "../../config";
 import {COMMENT_IMAGES} from "../../config/constantsData";
 import './index.less'
 
@@ -79,36 +79,40 @@ class Comments extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {dispatch, dataSource = {}} = this.props;
-    const {commentsData:commentsDataOrigin = [],articleID: id,isUserSubmit=false} = dataSource;
-    if (!id&&!isUserSubmit) {
+    const {commentsData: commentsDataOrigin = [], articleID: id, isUserSubmit = false} = dataSource;
+    if (!id && !isUserSubmit) {
       return;
     }
-    this.props.form.validateFieldsAndScroll((err, values) => {
+    this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
-        const {comment='', email='', nickname='', website=''} = values;
+        const {comment = '', email = '', nickname = '', website = ''} = values;
         if (website !== '' && !regUrl.test(website)) {
           message.warning('url不正确,示例："http://www.xxx.com"')
           return;
         }
-        if(nickname.length<2||comment.length<2){
+        if (nickname.length < 2 || comment.length < 2) {
           message.warning('用户名或者评论内容过少')
           return;
         }
-        const isExist = commentsDataOrigin.findIndex(v=>v.user===nickname||v.name===nickname)!==-1
-        if(isExist){
+
+        const realIp = await real_ip()
+        let queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};
+        const isExist = commentsDataOrigin.findIndex(v => v.user === nickname || v.name === nickname) !== -1
+        if (isExist) {
           message.warning('用户名已存在')
           return;
         }
         const queryStringComment = {
           id,
-          comment:comment.trim(),
-          email:email.trim(),
-          nickname:nickname.trim(),
-          website:website.trim(),
-          name:nickname.trim()
+          comment: comment.trim(),
+          email: email.trim(),
+          nickname: nickname.trim(),
+          website: website.trim(),
+          name: nickname.trim(),
+          ...queryParamsObj
         }
         //如果是详情页提交它，如果是关于我，则不用关心id
-        isUserSubmit?
+        isUserSubmit ?
           postUserComments(dispatch, postUserCommentUrl(), queryStringComment).then(res => {
             const {getUserCommentsData} = res;
             if (getUserCommentsData.length) {
@@ -116,18 +120,18 @@ class Comments extends Component {
             }
           })
           :
-        postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
-          if (res) {
-            message.success(`评论发表成功`);
-          }
-        })
+          postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
+            if (res) {
+              message.success(`评论发表成功`);
+            }
+          })
       }
     });
   }
 
   render() {
     const {dataSource = {}} = this.props;
-    const {commentsData = [],commentTitle='发表评论',commentPlaceHolder='来吐槽',commentBtnMsg='提交评论',commentRow=8} = dataSource;
+    const {commentsData = [], commentTitle = '发表评论', commentPlaceHolder = '来吐槽', commentBtnMsg = '提交评论', commentRow = 8} = dataSource;
     //表单
     const {getFieldDecorator} = this.props.form;
     const {autoCompleteResult} = this.state;
@@ -139,9 +143,9 @@ class Comments extends Component {
         <h2>{commentTitle}：</h2>
         <Row>
           <Col
-               sm={{ span: 22, offset: 1 }}
-               xs={{ span: 22, offset: 1 }}
-               lg={{ span: commentRow, offset: 0 }}
+            sm={{span: 22, offset: 1}}
+            xs={{span: 22, offset: 1}}
+            lg={{span: commentRow, offset: 0}}
           >
             <Form onSubmit={this.handleSubmit}>
               <FormItem
@@ -218,9 +222,8 @@ class Comments extends Component {
           </Col>
         </Row>
         {
-          commentsData.map((v, i) =>
-            {
-              let index = i%COMMENT_IMAGES.length;
+          commentsData.map((v, i) => {
+              let index = i % COMMENT_IMAGES.length;
               return (
                 <Card
                   className="css-move-top"
@@ -230,10 +233,10 @@ class Comments extends Component {
                   {
                     v.website && regUrl.test(v.website) ?
                       <Link href={v.website}>
-                        <a style={{color: '#34538b', fontWeight: 'bold'}}>{v.user||v.name}</a>
+                        <a style={{color: '#34538b', fontWeight: 'bold'}}>{v.user || v.name}</a>
                       </Link>
                       :
-                      <span style={{color: '#000', fontWeight: 'bold'}}>{v.user||v.name}</span>
+                      <span style={{color: '#000', fontWeight: 'bold'}}>{v.user || v.name}</span>
                   }
                     说道：
                     </span>

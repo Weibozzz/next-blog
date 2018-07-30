@@ -1,5 +1,6 @@
 import timeago from 'timeago.js';
 import {COLORS_ARR}  from '../config/constantsData';
+import {getIPs} from 'real-ip';
 let format = require('date-format');
 export const updateHtml = str => {
   return str.replace(/'|"|:|\.|\[|\]|\\/g, function (str) {
@@ -71,7 +72,7 @@ export const getHtml = (str, newTime) => {
   }
 }
 
-export function toQueryStr(obj) {
+export function toQueryStr(obj){
   return "?" + JSON.stringify(obj).replace(/{|}|\"|\'/g, "").replace(/,/g, "&").replace(/:/g, "=");
 }
 
@@ -156,3 +157,8 @@ export const fnTextPopup = function (arr, options) {
   document.documentElement.addEventListener('click', fn);
   return fn;
 };
+export const real_ip = ()=> new Promise((resolve, reject) => {
+  getIPs(ip=>{
+    resolve(ip)
+  })
+});

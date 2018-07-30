@@ -96,7 +96,7 @@ class About extends Component {
 }
 About.getInitialProps = async function (context) {
   //评论
-  const comments = await fetch(getUserCommentUrl())
+  const comments = await fetch(getUserCommentUrl({hasToken:'no'}))
   const commentsUserData = await comments.json()
   //关于自己 id为1
   let queryStrObj = {id:1};

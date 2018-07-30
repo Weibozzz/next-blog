@@ -9,13 +9,13 @@ import Router from 'next/router'
 import 'whatwg-fetch'
 import Link from 'next/link';
 import Head from 'next/head'
-import {getIPs} from 'real-ip';
 
 import {getSearchList, getSearchTotal, getSearchPageList,postSaveIp} from '../../store/actions'
 import ListTitle from '../../components/ListTitle';
 import {getBlogUrl, getTotalUrl,postSaveIpUrl} from '../../config';
 import {pageNum, TITLE, ALL,COMMON_TITLE,INDEX_TITLE,BLOG_TXT} from '../../config/constantsData';
 import MyLayout from '../../components/MyLayout';
+import {real_ip} from '../../until';
 const {Content} = Layout;
 const Search = Input.Search;
 
@@ -29,7 +29,7 @@ class Blog extends Component {
   }
 
 
-  componentDidMount(){
+  async componentDidMount(){
     const {router={}} = Router
     const {query={}} = router
     const {id='1'} = query
@@ -37,11 +37,10 @@ class Blog extends Component {
       currentPage: Number(id)
     })
     const {dispatch} = this.props;
-    getIPs(ip => {
-      let queryParamsObj = {real_ip: ip, ip: returnCitySN['cip'], address: returnCitySN['cname']};
-      //存取用户ip
-      postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj)
-    })
+    const realIp = await real_ip()
+    let queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};
+    //存取用户ip
+    postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj)
   }
   onSearch(val) {
     const {dispatch} = this.props;
