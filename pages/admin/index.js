@@ -48,8 +48,8 @@ class Admin extends Component {
       inputVal: '',
       isLogin: false,
       isLoading: false,
-      tabKey:'1',
-      pageSize:1,
+      tabKey: '1',
+      pageSize: 1,
       defaultConfirmObj: {
         title: 'Are you sure delete this article?',
         content: 'Some descriptions',
@@ -89,7 +89,7 @@ class Admin extends Component {
 
   scrollBTMLoading() {
     const {dispatch} = this.props;
-    let {pageSize:num,tabKey} = this.state
+    let {pageSize: num, tabKey} = this.state
     const {password} = sessionStorage;
     const queryStringObj = {
       type: ALL,
@@ -100,15 +100,15 @@ class Admin extends Component {
     let footerDom = document.getElementsByClassName('footer-content')[0];
     let {innerHeight: windowHeight} = window;
     let {bottom} = footerDom.getBoundingClientRect();
-    if (bottom-windowHeight<1&&tabKey!=='1') {
+    if (bottom - windowHeight < 1 && tabKey !== '1') {
       console.log('该请求数据了')
-      let newNum=++num;
+      let newNum = ++num;
       this.setState({
         isLoading: true,
-        pageSize:newNum
+        pageSize: newNum
       })
       let newQueryStringObj = {...queryStringObj, num: newNum};
-      if(tabKey==='4'){
+      if (tabKey === '4') {
         //浏览记录分页
         getIpList(dispatch, getIpUrl(newQueryStringObj)).then(res => {
           if (res) {
@@ -117,9 +117,9 @@ class Admin extends Component {
             })
           }
         })
-      }else if(tabKey==='3'){
+      } else if (tabKey === '3') {
         //评论管理
-        postComments(dispatch, postCommentUrl(), newQueryStringObj).then(res=>{
+        postComments(dispatch, postCommentUrl(), newQueryStringObj).then(res => {
           if (res) {
             this.setState({
               isLoading: false
@@ -276,11 +276,13 @@ class Admin extends Component {
       },
     });
   }
+
   callback(key) {
     this.setState({
-      tabKey:key
+      tabKey: key
     })
   }
+
   handleSubmit = (e) => {
     const {dispatch} = this.props;
     e.preventDefault();
@@ -304,6 +306,74 @@ class Admin extends Component {
     });
   }
 
+  //设置文章评论
+  setCommentWidth(v) {
+    let extend = {};
+    if (v === '操作') {
+      extend = {
+        width: 50, render: (text, row, index) =>
+          <a href="javascript:;" onClick={this.handleDelAdminComment.bind(this, row.id)}>删除</a>
+      }
+    }
+    if (v === 'a_id') {
+      extend = {
+        width: 50,render: (text, row, index) =>
+          <Link as={`/p/${row.a_id}`} href={`/p/${row.a_id}`}>
+            <a>{text}</a>
+          </Link>
+      }
+    }
+    if (v === 'id' ) {
+      extend = {width: 50}
+    }
+    if (v === 'user') {
+      extend = {width: 80};
+    }
+    if (v === 'email' || v === 'website' || v === 'createTime') {
+      extend = {width: 150};
+    }
+    if (v === 'address' || v === 'ip' || v === 'real_ip') {
+      extend = {width: 100}
+    }
+    return {title: v, dataIndex: v, ...extend};
+  }
+
+  //设置用户留言
+  setUserCommentWidth(v) {
+    let extend = {};
+    if (v === '操作') {
+      extend = {
+        width: 50, render: (text, row, index) =>
+          <a href="javascript:;" onClick={this.handleDelUserComment.bind(this, row.id)}>删除</a>
+      }
+    }
+    if (v === 'address' || v === 'ip' || v === 'real_ip' || v === 'website') {
+      extend = {width: 100}
+    }
+    return {title: v, dataIndex: v, ...extend};
+  }
+
+  //设置文章增删改查
+  setArticle(v) {
+    let extend = {};
+    if (v === 'title') {
+      extend = {
+        render: (text, row, index) =>
+          <Link as={`/adminDetail/${row.id}`} href={`/adminDetail/${row.id}`}>
+            <a>{text}</a>
+          </Link>
+      }
+    }else {
+      if(v==='操作'){
+        extend={
+           render: (text, row, index) =>
+            <a href="javascript:;" onClick={this.handleDelArticle.bind(this, row.id)}>删除</a>
+        }
+      }
+    }
+    return {title: v, dataIndex: v, ...extend};
+  }
+
   render() {
     function onChange(pagination, filters, sorter) {
     }
@@ -314,57 +384,33 @@ class Admin extends Component {
     let {adminBlogData = [], totalPageData = [], searchData = [], getCommentsUserData: commentsUserData = [], getUserCommentsData = [], getCommentsData = [], ipListData = [], dispatch} = this.props;
     //浏览记录
     const ipKeys = ipListData.map(v => ([...Object.keys(v)]));
-    const ipColumns = ipKeys && ipKeys[0] ? ipKeys[0].map(v => (
-      {
-        title: v, dataIndex: v
-      }
-    )) : [];
+    const ipColumns = ipKeys && ipKeys[0] ? ipKeys[0].map(v => ({
+      title: v, dataIndex: v
+    })) : [];
     const ipData = ipListData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     //文章
     if (searchData.length) {
       adminBlogData = searchData
     }
     const keys = adminBlogData.map(v => ([...Object.keys(v), '操作']));
-    const columns = keys && keys[0] ? keys[0].map(v => (
-      v === 'title' ?
-        {
-          title: v, dataIndex: v, render: (text, row, index) =>
-            <Link as={`/adminDetail/${row.id}`} href={`/adminDetail/${row.id}`}>
-              <a>{text}</a>
-            </Link>
-        } :
-        v === '操作' ?
-          {
-            title: v, dataIndex: v, render: (text, row, index) =>
-              <a href="javascript:;" onClick={this.handleDelArticle.bind(this, row.id)}>删除</a>
-          } :
-          {title: v, dataIndex: v}
-    )) : [];
+    const columns = keys && keys[0] ? keys[0].map(v => {
+      return this.setArticle(v);
+    }) : [];
     const data = adminBlogData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     //留言
     if (getUserCommentsData.length) {
       commentsUserData = getUserCommentsData
     }
     const keysUserComments = commentsUserData.map(v => ([...Object.keys(v), '操作']));
-    const columnsUserComments = keysUserComments && keysUserComments[0] ? keysUserComments[0].map(v => (
-      v === '操作' ?
-        {
-          title: v, dataIndex: v, render: (text, row, index) =>
-            <a href="javascript:;" onClick={this.handleDelUserComment.bind(this, row.id)}>删除</a>
-        } :
-        {title: v, dataIndex: v}
-    )) : [];
+    const columnsUserComments = keysUserComments && keysUserComments[0] ? keysUserComments[0].map(v => {
+      return this.setUserCommentWidth(v);
+    }) : [];
     const dataCommentsUserData = commentsUserData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     //评论
     const keysAdminComments = getCommentsData.map(v => ([...Object.keys(v), '操作']));
-    const columnsAdminComments = keysAdminComments && keysAdminComments[0] ? keysAdminComments[0].map(v => (
-      v === '操作' ?
-        {
-          title: v, dataIndex: v, render: (text, row, index) =>
-            <a href="javascript:;" onClick={this.handleDelAdminComment.bind(this, row.id)}>删除</a>
-        } :
-        {title: v, dataIndex: v}
-    )) : [];
+    const columnsAdminComments = keysAdminComments && keysAdminComments[0] ? keysAdminComments[0].map(v => {
+      return this.setCommentWidth(v);
+    }) : [];
     const dataAdminCommentsData = getCommentsData.map(
       (v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)})
     )
