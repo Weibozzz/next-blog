@@ -54,9 +54,14 @@ export const reducer = (state = exampleInitialState, action) => {
         geSaveIpData: action.geSaveIpData
       })
     case actionTypes.GET_IP:
-      //存取ip地址返回
+      //得到ip地址返回
       return Object.assign({}, state, {
         ipListData: action.ipListData
+      })
+    case actionTypes.GET_VIEW:
+      //得到view数量返回
+      return Object.assign({}, state, {
+        viewListData: action.viewListData
       })
 
     //后台

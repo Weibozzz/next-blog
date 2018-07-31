@@ -19,7 +19,8 @@ import {
   getUserCommentUrl,
   postUserCommentUrl,
   postCommentUrl,
-  getIpUrl
+  getIpUrl,
+  getViewUrl
 } from '../../config';
 import {
   getAdminBlogList,
@@ -28,7 +29,8 @@ import {
   postUserComments,
   postComments,
   getIpList,
-  getCommentsUserList
+  getCommentsUserList,
+  getViewList
 } from '../../store/actions';
 import {ALL, pageNum, TITLE, ADMIN_TXT, COMMON_TITLE} from "../../config/constantsData";
 import MyLayout from '../../components/MyLayout';
@@ -73,6 +75,7 @@ class Admin extends Component {
     postComments(dispatch, postCommentUrl(), queryStringObj)
     getIpList(dispatch, getIpUrl(queryStringObj))
     getCommentsUserList(dispatch, getUserCommentUrl(queryStringObj))
+    getViewList(dispatch, getViewUrl())
 
     window.onscroll = () => {
       this.scrollBTMLoading()
@@ -304,6 +307,15 @@ class Admin extends Component {
     });
   }
 
+  getView({date}){
+    if(date){
+      const viewListData = JSON.parse(date)
+      let {t_view:curView} = viewListData[0];
+        let {t_view:yesView} = viewListData[1];
+        return {curView,yesView};
+    }
+    return {};
+  }
   render() {
     function onChange(pagination, filters, sorter) {
     }
@@ -311,7 +323,12 @@ class Admin extends Component {
     function onClick(pagination, filters, sorter) {
     }
 
-    let {adminBlogData = [], totalPageData = [], searchData = [], getCommentsUserData: commentsUserData = [], getUserCommentsData = [], getCommentsData = [], ipListData = [], dispatch} = this.props;
+    let {adminBlogData = [], totalPageData = [], searchData = [],
+      viewListData={},
+      getCommentsUserData: commentsUserData = [], getUserCommentsData = [],
+      getCommentsData = [], ipListData = [], dispatch} = this.props;
+    const {curView,yesView} = this.getView(viewListData)
+    console.log(viewListData)
     //浏览记录
     const ipKeys = ipListData.map(v => ([...Object.keys(v)]));
     const ipColumns = ipKeys && ipKeys[0] ? ipKeys[0].map(v => (
@@ -388,6 +405,9 @@ class Admin extends Component {
                   <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
                           size="large"/>
                   <div style={{background: '#fff', padding: 24, minHeight: 380}}>
+                    <div className="view-date">
+                      昨日访问量：{yesView} 今日访问量：{curView}
+                    </div>
                     <Tabs defaultActiveKey="1" onChange={this.callback.bind(this)}>
                       <TabPane tab="文章管理" key="1">
                         <Table
@@ -514,7 +534,7 @@ Admin.getInitialProps = async function () {
   return {totalPageData}
 }
 const mapStateToProps = state => {
-  const {adminBlogData, searchData, postAdminPasswordData, getUserCommentsData, getCommentsData, ipListData, getCommentsUserData} = state
+  const {adminBlogData, searchData, postAdminPasswordData, getUserCommentsData, getCommentsData, ipListData, getCommentsUserData,viewListData} = state
   return {
     adminBlogData,
     searchData,
@@ -522,7 +542,8 @@ const mapStateToProps = state => {
     getUserCommentsData,
     getCommentsData,
     ipListData,
-    getCommentsUserData
+    getCommentsUserData,
+    viewListData
   };
 }
 const WrappedNormalLoginForm = Form.create()(Admin);
