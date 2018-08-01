@@ -43,6 +43,13 @@ export const getIpList = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_IP, ipListData: jsonData})
 
 }
+export const getViewList = async (dispatch, url) => {
+  //生活板块
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_VIEW, viewListData: jsonData})
+
+}
 
 export const postComments = async (dispatch, url,body) => {
   //发布评论,然后获得更新后的评论

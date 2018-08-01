@@ -59,6 +59,10 @@ export const getLifeUrl = () => {
   //生活板块
   return getDomain() + 'api/life';
 }
+export const getViewUrl = () => {
+  //生活板块
+  return getDomain() + 'api/getView';
+}
 
 //后台
 export const getAdminBlogUrl = (obj) => {
