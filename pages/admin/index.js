@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Head from 'next/head'
-import Link from 'next/link';
 import md5 from 'blueimp-md5';
 
 
@@ -10,23 +9,18 @@ import {
   Layout, Menu, Breadcrumb, Row, Col, Pagination, Input, Tabs, Table, List, Avatar, Icon, message, Modal
 } from 'antd';
 
-import {formatTime} from '../../until';
 import {
   getAdminBlogUrl,
-  getBlogUrl,
   getTotalUrl,
   postAdminPasswordUrl,
   getUserCommentUrl,
-  postUserCommentUrl,
   postCommentUrl,
   getIpUrl,
   getViewUrl
 } from '../../config';
 import {
   getAdminBlogList,
-  getSearchList,
   postAdminPassword,
-  postUserComments,
   postComments,
   getIpList,
   getCommentsUserList,
@@ -34,9 +28,10 @@ import {
 } from '../../store/actions';
 import {ALL, pageNum, TITLE, ADMIN_TXT, COMMON_TITLE} from "../../config/constantsData";
 import MyLayout from '../../components/MyLayout';
+import {REQ_ACTION} from './req-action';
+import {TABLE_DATA} from './table-data';
 
 const FormItem = Form.Item;
-const confirm = Modal.confirm;
 const TabPane = Tabs.TabPane;
 const {Content} = Layout;
 const Search = Input.Search;
@@ -78,10 +73,10 @@ class Admin extends Component {
     getViewList(dispatch, getViewUrl())
 
     window.onscroll = () => {
-      this.scrollBTMLoading()
+      REQ_ACTION.scrollBTMLoading(this)
     }
     window.onresize = () => {
-      this.scrollBTMLoading()
+      REQ_ACTION.scrollBTMLoading(this)
     }
   }
 
@@ -90,48 +85,6 @@ class Admin extends Component {
     window.onresize = null;
   }
 
-  scrollBTMLoading() {
-    const {dispatch} = this.props;
-    let {pageSize: num, tabKey} = this.state
-    const {password} = sessionStorage;
-    const queryStringObj = {
-      type: ALL,
-      num,
-      pageNum,
-      token: password
-    }
-    let footerDom = document.getElementsByClassName('footer-content')[0];
-    let {innerHeight: windowHeight} = window;
-    let {bottom} = footerDom.getBoundingClientRect();
-    if (bottom - windowHeight < 1 && tabKey !== '1') {
-      console.log('该请求数据了')
-      let newNum = ++num;
-      this.setState({
-        isLoading: true,
-        pageSize: newNum
-      })
-      let newQueryStringObj = {...queryStringObj, num: newNum};
-      if (tabKey === '4') {
-        //浏览记录分页
-        getIpList(dispatch, getIpUrl(newQueryStringObj)).then(res => {
-          if (res) {
-            this.setState({
-              isLoading: false
-            })
-          }
-        })
-      } else if (tabKey === '3') {
-        //评论管理
-        postComments(dispatch, postCommentUrl(), newQueryStringObj).then(res => {
-          if (res) {
-            this.setState({
-              isLoading: false
-            })
-          }
-        })
-      }
-    }
-  }
 
   itemRender(current, type, originalElement) {
     if (type === 'prev') {
@@ -142,150 +95,13 @@ class Admin extends Component {
     return originalElement;
   }
 
-  onChange(page, pageSize) {
-    const {dispatch} = this.props;
-    const {password} = sessionStorage;
 
-    const queryStringObj = {
-      type: ALL,
-      num: page,
-      pageNum,
-      token: password
-    }
-    getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj))
-  }
-
-
-  onSearch(val) {
-    this.setState({
-      inputVal: val,
-      currentPage: 1
-    })
-
-    const {dispatch} = this.props;
-    let queryStringObj;
-    this.setState({
-      keyWard: val
-    })
-    if (val) {
-      queryStringObj = {
-        type: TITLE,
-        num: 1,
-        pageNum,
-        wd: val
-      }
-    } else {
-      queryStringObj = {
-        type: ALL,
-        num: 1,
-        pageNum
-      }
-    }
-
-    getSearchList(dispatch, getBlogUrl(queryStringObj))
-  }
-
-  //删除文章
-  handleDelArticle(id) {
-    const {dispatch} = this.props;
-    const {defaultConfirmObj} = this.state;
-    const {password} = sessionStorage;
-    const queryStringObj = {
-      type: 'del',
-      num: id,
-      token: password
-    };
-    confirm({
-      ...defaultConfirmObj,
-      onOk() {
-        getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj)).then(res => {
-          const {adminBlogData = []} = res;
-          if (!adminBlogData.length) {
-            message.warning('您可能没权限')
-            return;
-          }
-          if (res) {
-            message.success(`id为${id}的文章删除成功`)
-          } else {
-            message.error('删除失败')
-          }
-        })
-      },
-      onCancel() {
-      },
-    });
-
-  }
-
-  //删除留言
-  handleDelUserComment(id) {
-    const {dispatch} = this.props;
-    const {defaultConfirmObj} = this.state;
-    const {password} = sessionStorage;
-    const queryStringObj = {
-      type: 'del',
-      num: id,
-      token: password
-    };
-    confirm({
-      ...defaultConfirmObj,
-      onOk() {
-        postUserComments(dispatch, postUserCommentUrl(), queryStringObj).then(res => {
-          const {getUserCommentsData} = res;
-          if (!getUserCommentsData.length) {
-            message.warning('您可能没权限')
-            return;
-          }
-          if (res) {
-            message.success(`id为${id}的用户留言删除成功`)
-          } else {
-            message.error('删除失败')
-          }
-        })
-      },
-      onCancel() {
-      },
-    });
-
-  }
-
-  //删除评论
-  handleDelAdminComment(id) {
-    const {dispatch} = this.props;
-    const {defaultConfirmObj} = this.state;
-    const {password} = sessionStorage;
-    const queryStringObj = {
-      type: 'del',
-      delNum: id,
-      token: password
-    };
-    confirm({
-      ...defaultConfirmObj,
-      onOk() {
-        postComments(dispatch, postCommentUrl(), queryStringObj).then(res => {
-          const {getCommentsData} = res;
-          if (!getCommentsData.length) {
-            message.warning('您可能没权限')
-            return;
-          }
-          if (res) {
-            message.success(`id为${id}的用户评论删除成功`)
-          } else {
-            message.error('删除失败')
-          }
-        })
-      },
-      onCancel() {
-      },
-    });
-  }
-
-  callback(key) {
+  onTabChangeCallback(key) {
     this.setState({
       tabKey: key
     })
   }
-
+  //登录
   handleSubmit = (e) => {
     const {dispatch} = this.props;
     e.preventDefault();
@@ -309,86 +125,8 @@ class Admin extends Component {
     });
   }
 
-<<<<<<< HEAD
-  //设置文章评论
-  setCommentWidth(v) {
-    let extend = {};
-    if (v === '操作') {
-      extend = {
-        width: 50, render: (text, row, index) =>
-          <a href="javascript:;" onClick={this.handleDelAdminComment.bind(this, row.id)}>删除</a>
-      }
-    }
-    if (v === 'a_id') {
-      extend = {
-        width: 50,render: (text, row, index) =>
-          <Link as={`/p/${row.a_id}`} href={`/p/${row.a_id}`}>
-            <a>{text}</a>
-          </Link>
-      }
-    }
-    if (v === 'id' ) {
-      extend = {width: 50}
-    }
-    if (v === 'user') {
-      extend = {width: 80};
-    }
-    if (v === 'email' || v === 'website' || v === 'createTime') {
-      extend = {width: 150};
-    }
-    if (v === 'address' || v === 'ip' || v === 'real_ip') {
-      extend = {width: 100}
-    }
-    return {title: v, dataIndex: v, ...extend};
-  }
 
-  //设置用户留言
-  setUserCommentWidth(v) {
-    let extend = {};
-    if (v === '操作') {
-      extend = {
-        width: 50, render: (text, row, index) =>
-          <a href="javascript:;" onClick={this.handleDelUserComment.bind(this, row.id)}>删除</a>
-      }
-    }
-    if (v === 'address' || v === 'ip' || v === 'real_ip' || v === 'website') {
-      extend = {width: 100}
-    }
-    return {title: v, dataIndex: v, ...extend};
-  }
 
-  //设置文章增删改查
-  setArticle(v) {
-    let extend = {};
-    if (v === 'title') {
-      extend = {
-        render: (text, row, index) =>
-          <Link as={`/adminDetail/${row.id}`} href={`/adminDetail/${row.id}`}>
-            <a>{text}</a>
-          </Link>
-      }
-    }else {
-      if(v==='操作'){
-        extend={
-           render: (text, row, index) =>
-            <a href="javascript:;" onClick={this.handleDelArticle.bind(this, row.id)}>删除</a>
-        }
-      }
-    }
-    return {title: v, dataIndex: v, ...extend};
-  }
-
-=======
-  getView({date}){
-    if(date){
-      const viewListData = JSON.parse(date)
-      let {t_view:curView} = viewListData[0];
-        let {t_view:yesView} = viewListData[1];
-        return {curView,yesView};
-    }
-    return {};
-  }
->>>>>>> 7a1098539593eeced66a5cc02d5b9720aca2e13c
   render() {
     function onChange(pagination, filters, sorter) {
     }
@@ -399,41 +137,19 @@ class Admin extends Component {
     let {adminBlogData = [], totalPageData = [], searchData = [],
       viewListData={},
       getCommentsUserData: commentsUserData = [], getUserCommentsData = [],
-      getCommentsData = [], ipListData = [], dispatch} = this.props;
-    const {curView,yesView} = this.getView(viewListData)
-    console.log(viewListData)
+      getCommentsData = [], ipListData = []} = this.props;
+    //昨日今日浏览记录
+    const {curView,yesView} = TABLE_DATA.getView(viewListData)
     //浏览记录
-    const ipKeys = ipListData.map(v => ([...Object.keys(v)]));
-    const ipColumns = ipKeys && ipKeys[0] ? ipKeys[0].map(v => ({
-      title: v, dataIndex: v
-    })) : [];
-    const ipData = ipListData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
+    const {ipColumns,ipData} = TABLE_DATA.ipData(ipListData)
     //文章
-    if (searchData.length) {
-      adminBlogData = searchData
-    }
-    const keys = adminBlogData.map(v => ([...Object.keys(v), '操作']));
-    const columns = keys && keys[0] ? keys[0].map(v => {
-      return this.setArticle(v);
-    }) : [];
-    const data = adminBlogData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
+    const {columns,data} = TABLE_DATA.articleData(searchData,adminBlogData)
     //留言
-    if (getUserCommentsData.length) {
-      commentsUserData = getUserCommentsData
-    }
-    const keysUserComments = commentsUserData.map(v => ([...Object.keys(v), '操作']));
-    const columnsUserComments = keysUserComments && keysUserComments[0] ? keysUserComments[0].map(v => {
-      return this.setUserCommentWidth(v);
-    }) : [];
-    const dataCommentsUserData = commentsUserData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
+    const {columnsUserComments,dataCommentsUserData} = TABLE_DATA.articleUserCommentData(getUserCommentsData,commentsUserData)
+
     //评论
-    const keysAdminComments = getCommentsData.map(v => ([...Object.keys(v), '操作']));
-    const columnsAdminComments = keysAdminComments && keysAdminComments[0] ? keysAdminComments[0].map(v => {
-      return this.setCommentWidth(v);
-    }) : [];
-    const dataAdminCommentsData = getCommentsData.map(
-      (v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)})
-    )
+    const {columnsAdminComments,dataAdminCommentsData} = TABLE_DATA.articleComment(getCommentsData)
+
 
     //分页
     const {total} = totalPageData[0] || {};
@@ -451,13 +167,13 @@ class Admin extends Component {
               postAdminPasswordData.length ?
                 <div>
 
-                  <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
+                  <Search placeholder="input search text" onSearch={REQ_ACTION.onSearch.bind(this,this)} enterButton="Search"
                           size="large"/>
                   <div style={{background: '#fff', padding: 24, minHeight: 380}}>
                     <div className="view-date">
                       昨日访问量：{yesView} 今日访问量：{curView}
                     </div>
-                    <Tabs defaultActiveKey="1" onChange={this.callback.bind(this)}>
+                    <Tabs defaultActiveKey="1" onChange={this.onTabChangeCallback.bind(this)}>
                       <TabPane tab="文章管理" key="1">
                         <Table
                           bordered={true}
@@ -465,6 +181,7 @@ class Admin extends Component {
                           dataSource={data}
                           pagination={false}
                           onChange={onChange}
+                          scroll={{ x: 1300 }}
                           onRow={(record) => {
                             return {
                               onClick: () => {
@@ -477,7 +194,7 @@ class Admin extends Component {
                         <Pagination
 
                           defaultCurrent={this.state.currentPage}
-                          total={total} itemRender={this.itemRender.bind(this)} onChange={this.onChange.bind(this)}/>
+                          total={total} itemRender={this.itemRender.bind(this)} onChange={REQ_ACTION.onChange.bind(this,this)}/>
                       </TabPane>
                       <TabPane tab="留言管理" key="2">
                         <Table
@@ -486,6 +203,7 @@ class Admin extends Component {
                           dataSource={dataCommentsUserData}
                           pagination={false}
                           onChange={onChange}
+                          scroll={{ x: 1300 }}
                           onRow={(record) => {
                             return {
                               onClick: () => {
@@ -504,6 +222,7 @@ class Admin extends Component {
                           dataSource={dataAdminCommentsData}
                           pagination={false}
                           onChange={onChange}
+                          scroll={{ x: 1300 }}
                           onRow={(record) => {
                             return {
                               onClick: () => {
@@ -522,6 +241,7 @@ class Admin extends Component {
                           dataSource={ipData}
                           pagination={false}
                           onChange={onChange}
+                          scroll={{ x: 1300 }}
                           onRow={(record) => {
                             return {
                               onClick: () => {
