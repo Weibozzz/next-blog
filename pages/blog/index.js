@@ -90,6 +90,9 @@ class Blog extends Component {
       }
       getSearchPageList(dispatch, getBlogUrl(queryStringObj))
     }
+    if(wd!==''){
+      return ;
+    }
     Router.push(`/blog/${page}`)
 
   }

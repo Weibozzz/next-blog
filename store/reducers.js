@@ -31,6 +31,12 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         lifeData: action.lifeData
       })
+    case actionTypes.SET_COMMENT_INDEX:
+      //设置评论回复index
+
+      return Object.assign({}, state, {
+        commentIndex: action.commentIndex
+      })
 
 
     case actionTypes.POST_COMMENTS:

@@ -36,6 +36,11 @@ export const getLifeList = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_LIFE, lifeData: jsonData})
 
 }
+export const setCommentIndex =  (dispatch, commentIndex) => {
+  //设置评论回复index
+  return dispatch({type: actionTypes.SET_COMMENT_INDEX, commentIndex})
+
+}
 export const getIpList = async (dispatch, url) => {
   //生活板块
   const res = await fetch(url)

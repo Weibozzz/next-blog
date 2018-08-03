@@ -48,24 +48,6 @@ const ArticleTitle = (...args)=>{
               className="advertisement-wrapper"
         >
           <Ad dataSource={hasUrlComment}/>
-        {/*  <div className="content">
-            {
-              hasUrlComment.map((v,index)=>{
-                let ran = Math.random()*COLORS_ARR.length | 0;
-                let color = COLORS_ARR[ran];
-                return (
-                  <a key={index} className="link-friends-a"
-                     style={{marginLeft:getRandomMarginLeft(),marginTop:getRandomMarginTop()}}
-                     href={v.website} target="_blank" title={v.user}>
-                    <span style={{backgroundColor:color}}>{getRandomTxt(v.user)}</span>
-                  </a>
-                );
-              })
-            }
-          </div>
-          <div className="remark" title="想展示你的友情链接？赶快评论吧，这里会加上你的友链。">
-            <a className="my-link" href="#comment">想展示你的友情链接？</a>
-          </div>*/}
         </Col>
       </Row>
 

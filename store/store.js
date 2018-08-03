@@ -3,7 +3,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 import {reducer} from './reducers';
 
-const exampleInitialState = {}
+const exampleInitialState = {commentIndex:-1}
 
 
 export function initializeStore(initialState = exampleInitialState) {
