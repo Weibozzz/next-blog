@@ -90,8 +90,8 @@ class Detail extends Component {
     let {content = '', createTime = '',title='',url='',id,type='',like=0} = blogData[0] || {};
 
     const resultLike = Math.max(articleLike,like)
-    commentsData=[...commentsData,...getCommentsData]
-      .filter(v=>v.a_id===articleID)
+
+    commentsData=commentsData.length>getCommentsData.length?commentsData:getCommentsData
       .sort((a,b)=>b.createTime-a.createTime)
 
     const bool = createTime > OldTime||articleID===1;

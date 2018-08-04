@@ -7,7 +7,7 @@ import {
 } from 'antd';
 
 import { regUrl, real_ip} from "../../until";
-import {postComments, postUserComments} from "../../store/actions";
+import {postComments, postUserComments,setCommentIndex} from "../../store/actions";
 import {postCommentUrl, postUserCommentUrl} from "../../config";
 
 const FormItem = Form.Item;
@@ -60,7 +60,7 @@ class FormComment extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    const {dispatch, dataSource = {}} = this.props;
+    const {dispatch, dataSource = {},answerId} = this.props;
     const {commentsData: commentsDataOrigin = [], articleID: id, isUserSubmit = false} = dataSource;
     if (!id && !isUserSubmit) {
       return;
@@ -79,7 +79,10 @@ class FormComment extends Component {
 
         const realIp = await real_ip()
         let queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};
-        const isExist = commentsDataOrigin.findIndex(v => v.user === nickname || v.name === nickname) !== -1
+        const isExist = commentsDataOrigin.findIndex(v => {
+          const {user,name} = v;
+          return ((user  || name) === nickname)&&((user  || name) !== '刘伟波');
+        }) !== -1
         if (isExist) {
           message.warning('用户名已存在')
           return;
@@ -91,6 +94,7 @@ class FormComment extends Component {
           nickname: nickname.trim(),
           website: website.trim(),
           name: nickname.trim(),
+          answerId,
           ...queryParamsObj
         }
         //如果是详情页提交它，如果是关于我，则不用关心id
@@ -107,6 +111,8 @@ class FormComment extends Component {
               message.success(`评论发表成功`);
             }
           })
+
+        setCommentIndex(dispatch,-1)
       }
     });
   }
@@ -193,6 +199,9 @@ class FormComment extends Component {
 
   }
 }
-
+const mapStateToProps = state => {
+  const {answerId} = state;
+  return {answerId};
+}
 const WrappedRegistrationForm = Form.create()(FormComment);
-export default WrappedRegistrationForm;
+export default connect(mapStateToProps)(WrappedRegistrationForm);

@@ -9,7 +9,9 @@ import {
 
 import {formatTime, regUrl} from "../../until";
 import {COMMENT_IMAGES} from "../../config/constantsData";
-import {setCommentIndex} from '../../store/actions';
+import {setCommentIndex,setAnswerId} from '../../store/actions';
+import {qiniuyun_cdn_icon_i} from '../../config/qiniuyun_cdn';
+import './index.less'
 
 class MyCard extends Component {
   constructor(props) {
@@ -17,9 +19,18 @@ class MyCard extends Component {
     this.state = {}
   }
 
-  onFormActive(index){
+  onFormActive(index,answerId){
     const {dispatch} = this.props;
     setCommentIndex(dispatch,index)
+    setAnswerId(dispatch,answerId)
+  }
+  getUserReactDom(v){
+    return v.website && regUrl.test(v.website) ?
+      <Link href={v.website}>
+        <a className="link-comment-user" style={{color: '#34538b', fontWeight: 'bold'}}>{v.user || v.name}</a>
+      </Link>
+      :
+      <span style={{color: '#000', fontWeight: 'bold'}}>{v.user || v.name}</span>;
   }
   render() {
     const {dataSource = {}, children = {},commentIndex=-1} = this.props;
@@ -30,12 +41,7 @@ class MyCard extends Component {
       key={i} title={
       <span>
                   {
-                    v.website && regUrl.test(v.website) ?
-                      <Link href={v.website}>
-                        <a style={{color: '#34538b', fontWeight: 'bold'}}>{v.user || v.name}</a>
-                      </Link>
-                      :
-                      <span style={{color: '#000', fontWeight: 'bold'}}>{v.user || v.name}</span>
+                    this.getUserReactDom(v)
                   }
         说道：
 
@@ -43,9 +49,26 @@ class MyCard extends Component {
     }
       extra={<a href="javascript:;">{formatTime(v.createTime)}</a>}>
       <p className="msg-p">{v.msg}</p>
-      <img src={COMMENT_IMAGES[index]} alt=""/>
-      <div><a onClick={this.onFormActive.bind(this,i)} href="javascript:;">回复</a></div>
+      <div className="icon-comment">
+        <div className="icon-posi"><img src={(v.user || v.name)==='刘伟波'?qiniuyun_cdn_icon_i.i:COMMENT_IMAGES[index]} alt=""/></div>
+      </div>
+      <div><a onClick={this.onFormActive.bind(this,i,v.id)} href="javascript:;">回复</a></div>
       <div className="form-active">
+        {
+          v.answerArr?<ul className="answer-wrapper-ul">
+            {
+              v.answerArr.map((s,k)=>(
+                <li key={k}>
+                  {s.msg}
+                  <br/>
+                    — {this.getUserReactDom(s)}
+                  {(s.user || s.name)==='刘伟波'?<span className="author">作者</span>:''}
+                  <span className="time">{formatTime(s.createTime)}</span>
+                </li>
+              ))
+            }
+          </ul>:''
+        }
         {commentIndex===i?children:''}
       </div>
     </Card>

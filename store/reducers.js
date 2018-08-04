@@ -33,9 +33,13 @@ export const reducer = (state = exampleInitialState, action) => {
       })
     case actionTypes.SET_COMMENT_INDEX:
       //设置评论回复index
-
       return Object.assign({}, state, {
         commentIndex: action.commentIndex
+      })
+    case actionTypes.SET_ANSWER_ID:
+      //设置回复评论answerid
+      return Object.assign({}, state, {
+        answerId: action.answerId
       })
 
 

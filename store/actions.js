@@ -41,6 +41,11 @@ export const setCommentIndex =  (dispatch, commentIndex) => {
   return dispatch({type: actionTypes.SET_COMMENT_INDEX, commentIndex})
 
 }
+export const setAnswerId =  (dispatch, answerId) => {
+  //设置回复评论answerid
+  return dispatch({type: actionTypes.SET_ANSWER_ID, answerId})
+
+}
 export const getIpList = async (dispatch, url) => {
   //生活板块
   const res = await fetch(url)

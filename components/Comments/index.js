@@ -10,6 +10,7 @@ import {COMMENT_IMAGES} from "../../config/constantsData";
 import MyCard from '../MyCard';
 import FormComment from '../FormComment';
 import {mockCommentsData} from './mockData';
+import {getMyCommenData} from './until';
 import './index.less'
 
 
@@ -35,8 +36,7 @@ class Comments extends Component {
   render() {
     const {dataSource = {}, commentIndex = -1} = this.props;
     let {commentsData = [], commentTitle = '发表评论', commentRow = 8} = dataSource;
-
-    commentsData = mockCommentsData
+    commentsData = getMyCommenData(commentsData)
     return (
       <div className="comment-wrapper" id="comment">
         <h2>{commentTitle}：</h2>

@@ -1234,6 +1234,9 @@ export const qiniuyun_cdn_icon = {
   "server": "http://pbw4yrlys.bkt.clouddn.com/image/icon/server.jpg",
   "vue": "http://pbw4yrlys.bkt.clouddn.com/image/icon/vue.jpg"
 }
+export const qiniuyun_cdn_icon_i = {
+  'i':'http://pbw4yrlys.bkt.clouddn.com/image/i/IMG_20160604_143931.jpg'
+}
 //去重后的所有图片
 export const qiniuyun_cdn_all = removeSameArray([...qiniuyun_cdn, ...qiniuyun_cdn_1, ...qiniuyun_cdn_2,...qiniuyun_cdn_fight], 'dl_remove_attname_url');
 
