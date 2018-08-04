@@ -143,12 +143,12 @@ class Admin extends Component {
     //浏览记录
     const {ipColumns,ipData} = TABLE_DATA.ipData(ipListData)
     //文章
-    const {columns,data} = TABLE_DATA.articleData(searchData,adminBlogData)
+    const {columns,data} = TABLE_DATA.articleData(searchData,adminBlogData,this)
     //留言
-    const {columnsUserComments,dataCommentsUserData} = TABLE_DATA.articleUserCommentData(getUserCommentsData,commentsUserData)
+    const {columnsUserComments,dataCommentsUserData} = TABLE_DATA.articleUserCommentData(getUserCommentsData,commentsUserData,this)
 
     //评论
-    const {columnsAdminComments,dataAdminCommentsData} = TABLE_DATA.articleComment(getCommentsData)
+    const {columnsAdminComments,dataAdminCommentsData} = TABLE_DATA.articleComment(getCommentsData,this)
 
 
     //分页

@@ -13,33 +13,33 @@ export const TABLE_DATA = {
       ipColumns,ipData
     };
   },
-  articleData(searchData,adminBlogData){
+  articleData(searchData,adminBlogData,_this){
     if (searchData.length) {
       adminBlogData = searchData
     }
     const keys = adminBlogData.map(v => ([...Object.keys(v), '操作']));
     const columns = keys && keys[0] ? keys[0].map(v => {
-      return SET_TABLE.setArticle(v,this);
+      return SET_TABLE.setArticle(v,_this);
     }) : [];
     const data = adminBlogData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     return {columns,data};
   },
-  articleUserCommentData(getUserCommentsData,commentsUserData){
+  articleUserCommentData(getUserCommentsData,commentsUserData,_this){
 
     if (getUserCommentsData.length) {
       commentsUserData = getUserCommentsData
     }
     const keysUserComments = commentsUserData.map(v => ([...Object.keys(v), '操作']));
     const columnsUserComments = keysUserComments && keysUserComments[0] ? keysUserComments[0].map(v => {
-      return SET_TABLE.setUserCommentWidth(v,this);
+      return SET_TABLE.setUserCommentWidth(v,_this);
     }) : [];
     const dataCommentsUserData = commentsUserData.map((v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)}))
     return {columnsUserComments,dataCommentsUserData};
   },
-  articleComment(getCommentsData){
+  articleComment(getCommentsData,_this){
     const keysAdminComments = getCommentsData.map(v => ([...Object.keys(v), '操作']));
     const columnsAdminComments = keysAdminComments && keysAdminComments[0] ? keysAdminComments[0].map(v => {
-      return SET_TABLE.setCommentWidth(v,this);
+      return SET_TABLE.setCommentWidth(v,_this);
     }) : [];
     const dataAdminCommentsData = getCommentsData.map(
       (v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)})
