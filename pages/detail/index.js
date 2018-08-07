@@ -7,6 +7,7 @@ import {
 } from 'antd';
 import 'whatwg-fetch'
 import Head from 'next/head';
+import Router from 'next/router'
 import marked from 'marked'
 import hljs from 'highlight.js';
 import MarkNav from 'markdown-navbar';
@@ -49,7 +50,8 @@ class Detail extends Component {
     this.state={
       articleID:'',
       articleLike:0,
-      fn:null
+      fn:null,
+      isShowEditIcon:false
     }
   }
   componentWillMount(){
@@ -60,7 +62,12 @@ class Detail extends Component {
     })
   }
   componentDidMount(){
-
+    const {password} = sessionStorage;
+    const {query={}} = Router;
+    const {id=''} = query
+    this.setState({
+      isShowEditIcon:password?id:''
+    })
   }
   componentWillUnmount(){
   }
@@ -86,7 +93,7 @@ class Detail extends Component {
   render() {
 //接口
     let {blogData = [], commentsData = [],getCommentsData=[],lastIdData=[],nextIdData=[],userAgent='pc'} = this.props;
-    let {articleID,articleLike} = this.state;
+    let {articleID,articleLike,isShowEditIcon} = this.state;
     let {content = '', createTime = '',title='',url='',id,type='',like=0} = blogData[0] || {};
 
     const resultLike = Math.max(articleLike,like)
@@ -141,6 +148,13 @@ class Detail extends Component {
             <Icon className='icon' type="weibo" />
             <Icon className='icon' type="twitter" />
             <Icon className='icon' type="wechat" />
+
+            {
+              isShowEditIcon?
+                <a href={`/adminDetail/${isShowEditIcon}`}>
+                  <Icon className='icon' type="edit" />
+                </a>:''
+            }
             <a href="#comment">
               <Icon  className='icon' type="message" />
             </a>
@@ -156,6 +170,7 @@ class Detail extends Component {
                   sm={{ span: 24}}
                   xs={{ span: 24}}
                   lg={{ span: bool?15:24}}>
+
                   <div
                     className={bool?'new-detail':'old-detail'}
                     dangerouslySetInnerHTML={{

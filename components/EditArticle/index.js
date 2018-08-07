@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Link from 'next/link';
 import {
   Layout,
   Menu,
@@ -16,12 +17,13 @@ import {
   message
 } from 'antd'
 import {connect} from 'react-redux'
+import Router from 'next/router'
 
 import Edit from '../../components/Edit';
 
 import {getBlogUrl, getTotalUrl, postArticleUrl} from '../../config';
 import {postArticle} from '../../store/actions';
-import {regUrl} from '../../until';
+import {regUrl, getHtml} from '../../until';
 import {POST_ARTICLE_TYPE, POST_ARTICLE_COPY, ALL, pageNum} from '../../config/constantsData';
 
 const {TextArea} = Input;
@@ -33,27 +35,54 @@ class EditArticle extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectVal: '',
+      selectVal: 'js',
       titleVal: '',
       shortVal: '',
       urlVal: '',
       editCont: '',
       isEdit: '', //空值默认不为修改文章
-      notEditArticle: false  //默认不修改文章
+      notEditArticle: false,  //默认不修改文章
+      timer: null
     }
   }
 
   componentWillMount() {
     const {dataSource = {}} = this.props;
-    const {title, short, type, url, content, articleID = ''} = dataSource;
+    const {title, short, type, url, content, articleID = '', createTime} = dataSource;
 
     this.setState({
       selectVal: type,
       titleVal: title,
       shortVal: short,
       urlVal: url,
-      editCont: content,
-      isEdit: articleID
+      editCont: getHtml(content, createTime),
+      isEdit: articleID,
+      isAutoSave: false,
+      isNowEdit:false
+    })
+  }
+
+  componentDidMount() {
+    this.setState({
+      timer: setInterval(() => {
+        const {isAutoSave} = this.state;
+        console.log('willmount',isAutoSave)
+        if(isAutoSave){
+          this.onSubmit()
+          this.setState({
+            isAutoSave:false,
+            isNowEdit:false,
+          })
+        }
+      }, 30000)
+    })
+
+  }
+
+  componentWillUnmount() {
+    const {timer} = this.state;
+    this.setState({
+      timer: clearInterval(timer)
     })
   }
 
@@ -83,15 +112,30 @@ class EditArticle extends Component {
 
   //编辑器内容
   handleChangeMarkEdit(txt) {
+    console.log(123)
+    const {editCont, isAutoSave,isNowEdit} = this.state;
     this.setState({
       editCont: txt,
+      isNowEdit:true,
+      isAutoSave: txt !== editCont&&!isNowEdit, //如果之前和现在的不一样并且没有正在修改，则设置为true,设置自动保存
       notEditArticle: true //正在修改文章
     })
+    console.log('txt !== editCont&&!isNowEdit',txt !== editCont&&!isNowEdit)
+    let timer;
+    if(timer){
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      this.setState({
+        isNowEdit:false
+      })
+      console.log('txt !== editCont&&!isNowEdit 后',txt !== editCont&&!isNowEdit)
+    }, 1000);
   }
 
   onSubmit() {
-    const {dispatch,sourceData=[]} = this.props;
-    const {id:maxArticleId} = sourceData[0] || '';
+    const {dispatch, sourceData = []} = this.props;
+    let {id: maxArticleId} = sourceData[0] || '';
     const {password} = sessionStorage;
     const {isEdit, notEditArticle} = this.state;
     let {
@@ -102,7 +146,6 @@ class EditArticle extends Component {
       editCont = '',
       isEdit: id,
     } = this.state;
-
     if (titleVal === '' || selectVal === '' || editCont === '') {
       message.error('必填项不能为空');
       return;
@@ -138,9 +181,35 @@ class EditArticle extends Component {
         return;
       }
       if (res) {
-        message.success(`${bool ? '修改' : '发布'}文章成功`);
+        message.success(bool ? this.editTipsDom() : this.postTipsDom(++maxArticleId));
       }
     })
+  }
+
+  postTipsDom(maxArticleId) {
+    return <span>
+      发布文章成功，点击
+      <Link href={`/adminDetail/${maxArticleId}`}>
+        <a>修改</a>
+      </Link>
+      或者
+      <Link href={`/p/${maxArticleId}`}>
+        <a>查看</a>
+      </Link>
+      文章
+    </span>;
+  }
+
+  editTipsDom() {
+    const {query = {}} = Router;
+    const {id = ''} = query
+    return <span>
+      修改文章成功，点击
+      <Link href={`/p/${id}`}>
+        <a>查看</a>
+      </Link>
+      文章
+    </span>;
   }
 
   render() {
@@ -201,4 +270,5 @@ class EditArticle extends Component {
     );
   }
 }
+
 export default connect()(EditArticle)
