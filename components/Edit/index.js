@@ -55,6 +55,54 @@ class Edit extends Component {
   }
 
   componentDidMount() {
+    document.addEventListener('paste', function (e) {
+      let cbd = e.clipboardData;
+      for(var i = 0; i < cbd.items.length; i++) {
+        var item = cbd.items[i];
+        if (item.kind == "file") {
+          var blob = item.getAsFile();
+          if (blob.size === 0) {
+            return;
+          }
+          console.log(item)
+          // blob 就是从剪切板获得的文件 可以进行上传或其他操作
+          /*-----------------------与后台进行交互 start-----------------------*/
+          /*var data = new FormData();
+          data.append('discoverPics', blob);
+          $.ajax({
+              url: '/discover/addDiscoverPicjson.htm',
+              type: 'POST',
+              cache: false,
+              data: data,
+              processData: false,
+              contentType: false,
+              success:function(res){
+                var obj = JSON.parse(res);
+                var wrap = $('#editDiv');
+                var file = obj.data.toString();
+                var img = document.createElement("img");
+                  img.src = file;
+              wrap.appendChild(img);
+              },error:function(){
+                
+              }
+          })*/
+          /*-----------------------与后台进行交互 end-----------------------*/
+          /*-----------------------不与后台进行交互 直接预览start-----------------------*/
+          var reader = new FileReader();
+          var imgs = new Image();
+          imgs.file = blob;
+          reader.onload = (function (aImg) {
+            return function (e) {
+              aImg.src = e.target.result;
+            };
+          })(imgs);
+          reader.readAsDataURL(blob);
+          console.log(imgs)
+          /*-----------------------不与后台进行交互 直接预览end-----------------------*/
+        }
+      }
+        })
     this.setState({
       aceBoxH: document.documentElement.clientHeight - document.querySelector('.editor-main-a').offsetHeight + 'px'
     })
@@ -101,7 +149,9 @@ class Edit extends Component {
     this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight) / (this.editWrap.offsetHeight - this.editContainer.offsetHeight)
     this.hasContentChanged = false
   }
+  onPaste(e){
 
+  }
   render() {
 
     let {aceBoxH, previewContent, originContent} = this.state;
@@ -120,6 +170,7 @@ class Edit extends Component {
                            onScroll={this.containerScroll} ref={node => this.editContainer = node}>
                         <div contentEditable="plaintext-only"
                              className="common-wrapper " onInput={this.onContentChange}
+                             onPaste={this.onPaste}
                              ref={node => this.editWrap = node}>
                           {originContent}
                         </div>

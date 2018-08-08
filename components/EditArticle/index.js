@@ -25,7 +25,7 @@ import {getBlogUrl, getTotalUrl, postArticleUrl} from '../../config';
 import {postArticle} from '../../store/actions';
 import {regUrl, getHtml} from '../../until';
 import {POST_ARTICLE_TYPE, POST_ARTICLE_COPY, ALL, pageNum} from '../../config/constantsData';
-
+import './index.less'
 const {TextArea} = Input;
 const Option = Select.Option;
 const InputGroup = Input.Group;
@@ -57,33 +57,15 @@ class EditArticle extends Component {
       urlVal: url,
       editCont: getHtml(content, createTime),
       isEdit: articleID,
-      isAutoSave: false,
-      isNowEdit:false
+      saveStatus:''
     })
   }
 
   componentDidMount() {
-    this.setState({
-      timer: setInterval(() => {
-        const {isAutoSave} = this.state;
-        console.log('willmount',isAutoSave)
-        if(isAutoSave){
-          this.onSubmit()
-          this.setState({
-            isAutoSave:false,
-            isNowEdit:false,
-          })
-        }
-      }, 30000)
-    })
 
   }
 
   componentWillUnmount() {
-    const {timer} = this.state;
-    this.setState({
-      timer: clearInterval(timer)
-    })
   }
 
   handleChangeSelect(value) {
@@ -112,25 +94,37 @@ class EditArticle extends Component {
 
   //编辑器内容
   handleChangeMarkEdit(txt) {
-    console.log(123)
-    const {editCont, isAutoSave,isNowEdit} = this.state;
+    let time=15;
+    let inter = setInterval(() => {
+      this.setState({
+        saveStatus:`正在保存(${--time})……`
+      })
+      if(time===0){
+        clearInterval(inter)
+      }
+    }, 1000);
     this.setState({
       editCont: txt,
-      isNowEdit:true,
-      isAutoSave: txt !== editCont&&!isNowEdit, //如果之前和现在的不一样并且没有正在修改，则设置为true,设置自动保存
+      saveStatus:`正在保存(${time})……`,
       notEditArticle: true //正在修改文章
     })
-    console.log('txt !== editCont&&!isNowEdit',txt !== editCont&&!isNowEdit)
-    let timer;
+    let {timer}=this.state;
     if(timer){
       clearTimeout(timer)
+      this.setState({
+        timer:null,
+        saveStatus:`正在保存(${time})……`
+      })
     }
     timer = setTimeout(() => {
+      this.onSubmit()
       this.setState({
-        isNowEdit:false
+        saveStatus:'已提交'
       })
-      console.log('txt !== editCont&&!isNowEdit 后',txt !== editCont&&!isNowEdit)
-    }, 1000);
+    }, time*1000);
+    this.setState({
+      timer
+    })
   }
 
   onSubmit() {
@@ -218,7 +212,8 @@ class EditArticle extends Component {
       selectVal = '',
       titleVal = '',
       shortVal = '',
-      urlVal = ''
+      urlVal = '',
+      saveStatus
     } = this.state;
     const {dataSource = {}} = this.props;
     const {createTime, id} = dataSource;
@@ -266,6 +261,7 @@ class EditArticle extends Component {
         <Edit editCont={editCont} id={id} createTime={createTime}
               handleChangeMarkEdit={this.handleChangeMarkEdit.bind(this)}/>
         <Button type="primary" onClick={this.onSubmit.bind(this)}>提交</Button>
+        <span className="save-status">{saveStatus}</span>
       </div>
     );
   }
