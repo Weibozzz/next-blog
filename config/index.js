@@ -44,6 +44,10 @@ export const getUserCommentUrl = (obj) => {
   //获得用户留言
   return getDomain() + 'api/getUserComment'+ toQueryStr(obj);
 }
+export const getQiniuTokenUrl = (obj) => {
+  //获得七牛云存储的token
+  return getDomain() + 'api/getQiniuToken'+ toQueryStr(obj);
+}
 
 /*export const getAdminCommentUrl = () => {
   //获得用户评论

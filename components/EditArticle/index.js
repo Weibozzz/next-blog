@@ -14,18 +14,22 @@ import {
   Input,
   Button,
   Select,
-  message
+  message, Upload, Modal
 } from 'antd'
 import {connect} from 'react-redux'
 import Router from 'next/router'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import Edit from '../../components/Edit';
 
-import {getBlogUrl, getTotalUrl, postArticleUrl} from '../../config';
-import {postArticle} from '../../store/actions';
-import {regUrl, getHtml} from '../../until';
+import {getBlogUrl, getTotalUrl, postArticleUrl,getQiniuTokenUrl} from '../../config';
+import { bucket_domin } from '../../config/qiniu_config';
+import {postArticle,getQiniuToken} from '../../store/actions';
+import {regUrl, getHtml,getImageName} from '../../until';
 import {POST_ARTICLE_TYPE, POST_ARTICLE_COPY, ALL, pageNum} from '../../config/constantsData';
 import './index.less'
+
+const qiniu = require('qiniu-js')
 const {TextArea} = Input;
 const Option = Select.Option;
 const InputGroup = Input.Group;
@@ -42,7 +46,20 @@ class EditArticle extends Component {
       editCont: '',
       isEdit: '', //空值默认不为修改文章
       notEditArticle: false,  //默认不修改文章
-      timer: null
+      timer: null,
+      markdownUploadLink:[],
+
+      previewVisible: false,
+      bucket:'',
+      imageTwo:'', //图片二级目录 image/common/xxx.jpg
+      previewImage: '',
+      loadPercent:0,
+      fileList: [{
+        uid: '-1',
+        name: 'xxx.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      }],
     }
   }
 
@@ -57,7 +74,7 @@ class EditArticle extends Component {
       urlVal: url,
       editCont: getHtml(content, createTime),
       isEdit: articleID,
-      saveStatus:''
+      saveStatus: ''
     })
   }
 
@@ -94,34 +111,34 @@ class EditArticle extends Component {
 
   //编辑器内容
   handleChangeMarkEdit(txt) {
-    let time=15;
+    let time = 15;
     let inter = setInterval(() => {
       this.setState({
-        saveStatus:`正在保存(${--time})……`
+        saveStatus: `正在保存(${--time})……`
       })
-      if(time===0){
+      if (time === 0) {
         clearInterval(inter)
       }
     }, 1000);
     this.setState({
       editCont: txt,
-      saveStatus:`正在保存(${time})……`,
+      saveStatus: `正在保存(${time})……`,
       notEditArticle: true //正在修改文章
     })
-    let {timer}=this.state;
-    if(timer){
+    let {timer} = this.state;
+    if (timer) {
       clearTimeout(timer)
       this.setState({
-        timer:null,
-        saveStatus:`正在保存(${time})……`
+        timer: null,
+        saveStatus: `正在保存(${time})……`
       })
     }
     timer = setTimeout(() => {
       this.onSubmit()
       this.setState({
-        saveStatus:'已提交'
+        saveStatus: '已提交'
       })
-    }, time*1000);
+    }, time * 1000);
     this.setState({
       timer
     })
@@ -206,6 +223,87 @@ class EditArticle extends Component {
     </span>;
   }
 
+  //上传
+
+  handleCancel = () => this.setState({previewVisible: false})
+  handlePreview = (file) => {
+    this.setState({
+      previewImage: file.url || file.thumbUrl,
+      previewVisible: true,
+    });
+  }
+
+  handleChange = ({fileList}) => {
+    this.setState({fileList})
+  }
+
+  async beforeUpload(file, fileList) {
+    const {password} = sessionStorage
+    let {bucket,imageTwo,markdownUploadLink} = this.state;
+    bucket = bucket||'article';
+    let self = this;
+    const {dispatch} = this.props;
+    const paramsObj = {
+      bucket,
+      token:password
+    }
+    let qiniuData;
+    try {
+      qiniuData=await getQiniuToken(dispatch, getQiniuTokenUrl(paramsObj))
+    } catch (err) {
+      message.error('七牛获取token错误'+JSON.stringify(err))
+      return ;
+    }
+    const {qiniuToken:qiniuTokenData}=qiniuData
+    const {qiniuToken} = qiniuTokenData[0]||{}
+    const observer = {
+      next(res) {
+        const {total} = res;
+        const {percent} = total;
+        self.setState({
+          loadPercent:percent
+        })
+        if(percent===100){
+          message.success('上传成功')
+        }
+      },
+      error(err) {
+        // ...
+        message.error('err:'+JSON.stringify(err))
+      },
+      complete(res) {
+        // ...
+      }
+    }
+    const {name,lastModified,size} = file;
+    const {font,back='png'} = getImageName(name)
+    const newFileName =`image/${imageTwo?imageTwo:'common'}/${font}_${lastModified}_${size}_${+new Date()}${back}`
+    const config = {
+      useCdnDomain: true,
+      region: null
+    };
+    const putExtra = {
+      fname: "",
+      params: {},
+      mimeType: [] || null
+    };
+    const observable = qiniu.upload(file, newFileName, qiniuToken, putExtra, config)
+    const subscription = observable.subscribe(observer) // 上传开始
+    let qiniu_upload_link = bucket_domin[bucket]+newFileName;
+    this.setState({
+      markdownUploadLink:[...markdownUploadLink,qiniu_upload_link]
+    })
+    return true;
+  }
+  handleChangeBucket(e){
+    const arr = e.target.value.split(',');
+    const bucket = arr[0];
+    const imageTwo = arr[1];
+    this.setState({
+      bucket,
+      imageTwo
+    })
+  }
   render() {
     const {
       editCont = '',
@@ -213,10 +311,21 @@ class EditArticle extends Component {
       titleVal = '',
       shortVal = '',
       urlVal = '',
-      saveStatus
+      saveStatus,
+      bucket,
+      loadPercent,
+      markdownUploadLink
     } = this.state;
     const {dataSource = {}} = this.props;
     const {createTime, id} = dataSource;
+    //上传
+    const {previewVisible, previewImage, fileList} = this.state;
+    const uploadButton = (
+      <div>
+        <Icon type="plus"/>
+        <div className="ant-upload-text">Upload</div>
+      </div>
+    );
     return (
       <div>
         <Row>
@@ -241,15 +350,6 @@ class EditArticle extends Component {
         </Row>
         <Row>
           <Col span={24}>
-            <Input
-              defaultValue={urlVal}
-              onChange={this.handleChangeUrl.bind(this)}
-              title="参考的URL链接地址"
-              placeholder="参考的URL链接地址"/>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
                                     <TextArea
                                       onChange={this.handleChangeShort.bind(this)}
                                       placeholder='简短介绍'
@@ -258,10 +358,52 @@ class EditArticle extends Component {
                                       rows={2}/>
           </Col>
         </Row>
+        <Row>
+          <Col span={24}>
+            <Input
+              defaultValue={urlVal}
+              onChange={this.handleChangeUrl.bind(this)}
+              title="参考的URL链接地址"
+              placeholder="参考的URL链接地址"/>
+          </Col>
+        </Row>
+
         <Edit editCont={editCont} id={id} createTime={createTime}
               handleChangeMarkEdit={this.handleChangeMarkEdit.bind(this)}/>
         <Button type="primary" onClick={this.onSubmit.bind(this)}>提交</Button>
         <span className="save-status">{saveStatus}</span>
+        {markdownUploadLink.length?
+          markdownUploadLink.map((v,i)=>
+            <div style={{wordBreak:'break-all'}} className='markdown-image-link' >第{i+2}张: ![{v}]({v})</div>
+           )
+          :''}
+        <Row>
+          <Col span={20}>
+            <div className="upload-wrapper" style={{border:`1px solid ${loadPercent===100?'green':'orange'}`}}>
+              <Upload
+                action=""
+                listType="picture-card"
+                fileList={fileList}
+                beforeUpload={this.beforeUpload.bind(this)}
+                onPreview={this.handlePreview}
+                onChange={this.handleChange}
+              >
+                {uploadButton}
+              </Upload>
+            </div>
+            <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
+              <img alt="example" style={{width: '100%'}} src={previewImage}/>
+            </Modal>
+          </Col>
+          <Col span={4}>
+            <Input
+              defaultValue={bucket}
+              onChange={this.handleChangeBucket.bind(this)}
+              title="上传的bucket,默认为article，文件名二级目录以逗号分隔，如common，例如：article,common"
+              placeholder="鼠标移上面看如何传参"/>
+            { loadPercent===0||loadPercent===100?'':<span>{loadPercent}%</span>}
+          </Col>
+        </Row>
       </div>
     );
   }

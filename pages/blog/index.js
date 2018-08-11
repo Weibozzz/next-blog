@@ -16,6 +16,8 @@ import {getBlogUrl, getTotalUrl,postSaveIpUrl} from '../../config';
 import {pageNum, TITLE, ALL,COMMON_TITLE,INDEX_TITLE,BLOG_TXT} from '../../config/constantsData';
 import MyLayout from '../../components/MyLayout';
 import {real_ip} from '../../until';
+
+
 const {Content} = Layout;
 const Search = Input.Search;
 

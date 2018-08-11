@@ -43,12 +43,11 @@ npm run dev
 4.
 6. 推荐文章
 7.
-8. 浏览记录月周天总
+8. 
 14.
 
 ##### 待学习修改
 1. 开发环境 warning.js:33 Warning: A component is `contentEditable`
-2. 自动上传图片到七牛云，并且转为markdown格式图片
 5. eslint
 
 ## 关于作者 / About

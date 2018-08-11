@@ -98,7 +98,19 @@ export const getRandomArr = (arr, len) => {
   }
   return result;
 }
+/**
+ * 获得图片前缀name
+ * @param imageName
+ * @returns {string}
+ */
+export const getImageName = (imageName)=>{
+  const index = imageName.lastIndexOf('.');
+  return {
+    font:index<0?imageName:imageName.substring(0,index),
+    back:index<0?'.png':imageName.substring(index)
+  }
 
+};
 /**
  * 对象数组去重
  * @param arr

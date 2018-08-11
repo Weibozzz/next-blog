@@ -36,6 +36,13 @@ export const getLifeList = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_LIFE, lifeData: jsonData})
 
 }
+export const getQiniuToken = async (dispatch, url) => {
+  //获得七牛云存储的token
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_QINIU_TOKEN, qiniuToken: jsonData})
+
+}
 export const setCommentIndex =  (dispatch, commentIndex) => {
   //设置评论回复index
   return dispatch({type: actionTypes.SET_COMMENT_INDEX, commentIndex})

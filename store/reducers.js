@@ -42,6 +42,12 @@ export const reducer = (state = exampleInitialState, action) => {
         answerId: action.answerId
       })
 
+    case actionTypes.GET_QINIU_TOKEN:
+      //获得七牛云存储的token
+      return Object.assign({}, state, {
+        qiniuToken: action.qiniuToken
+      })
+
 
     case actionTypes.POST_COMMENTS:
       //发布评论,然后获得更新后的评论

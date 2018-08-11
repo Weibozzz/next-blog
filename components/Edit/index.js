@@ -5,7 +5,6 @@ import {Row, Col,Input} from 'antd';
 
 import marked from 'marked'
 import hljs from 'highlight.js';
-import * as qiniu from 'qiniu-js'
 
 import {getHtml, OldTime} from '../../until';
 // import './index.less';
@@ -35,8 +34,7 @@ class Edit extends Component {
       previewContent: '',
       aceBoxH: null,
       originContent: '',
-      inputValue:''
-
+      inputValue:'',
     }
 
     this.cacheValue()
@@ -61,10 +59,10 @@ class Edit extends Component {
         var item = cbd.items[i];
         if (item.kind == "file") {
           var blob = item.getAsFile();
+          console.log(blob)
           if (blob.size === 0) {
             return;
           }
-          console.log(item)
           // blob 就是从剪切板获得的文件 可以进行上传或其他操作
           /*-----------------------与后台进行交互 start-----------------------*/
           /*var data = new FormData();
@@ -107,7 +105,6 @@ class Edit extends Component {
       aceBoxH: document.documentElement.clientHeight - document.querySelector('.editor-main-a').offsetHeight + 'px'
     })
   }
-
   cacheValue() {
     this.currentTabIndex = 1
     this.hasContentChanged = false
@@ -152,12 +149,15 @@ class Edit extends Component {
   onPaste(e){
 
   }
+
   render() {
 
     let {aceBoxH, previewContent, originContent} = this.state;
     const {createTime = '',id=''} = this.props;
+
     return (
       <div>
+
         <div className="editor-main-a" style={{height: aceBoxH}}
              key='main'>
           <Row>
