@@ -47,6 +47,7 @@ class EditArticle extends Component {
       isEdit: '', //空值默认不为修改文章
       notEditArticle: false,  //默认不修改文章
       timer: null,
+      inter:null,
       markdownUploadLink:[],
 
       previewVisible: false,
@@ -112,7 +113,14 @@ class EditArticle extends Component {
   //编辑器内容
   handleChangeMarkEdit(txt) {
     let time = 15;
-    let inter = setInterval(() => {
+    let {inter} = this.state;
+    if(inter){
+      clearInterval(inter)
+      this.setState({
+        inter: null
+      })
+    }
+    inter = setInterval(() => {
       this.setState({
         saveStatus: `正在保存(${--time})……`
       })
@@ -122,6 +130,7 @@ class EditArticle extends Component {
     }, 1000);
     this.setState({
       editCont: txt,
+      inter,
       saveStatus: `正在保存(${time})……`,
       notEditArticle: true //正在修改文章
     })

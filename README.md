@@ -2,7 +2,8 @@
 
 #### 项目介绍
 利用react服务端框架next.js写的博客
-线上地址： [http://www.liuweibo.cn](http://www.liuweibo.cn) 
+线上地址： [http://www.liuweibo.cn](http://www.liuweibo.cn)
+本项目使用next.js经验分享：[http://www.liuweibo.cn/p/206](http://www.liuweibo.cn/p/206)
 
 #### 软件架构
 软件架构说明
@@ -43,7 +44,7 @@ npm run dev
 4.
 6. 推荐文章
 7.
-8. 
+8.
 14.
 
 ##### 待学习修改
