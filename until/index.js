@@ -111,6 +111,20 @@ export const getImageName = (imageName)=>{
   }
 
 };
+//节流函数
+export const throttle = (fn,interval)=>{
+  let timer;
+  return ()=>{
+    if(timer){
+      return ;
+    }
+    timer=setTimeout(() => {
+      clearTimeout(timer)
+      fn()
+      timer=null;
+    }, interval||500);
+  };
+}
 /**
  * 对象数组去重
  * @param arr

@@ -28,7 +28,7 @@ import {postArticle,getQiniuToken} from '../../store/actions';
 import {regUrl, getHtml,getImageName} from '../../until';
 import {POST_ARTICLE_TYPE, POST_ARTICLE_COPY, ALL, pageNum} from '../../config/constantsData';
 import './index.less'
-
+const copy = require('copy-text-to-clipboard');
 const qiniu = require('qiniu-js')
 const {TextArea} = Input;
 const Option = Select.Option;
@@ -84,6 +84,11 @@ class EditArticle extends Component {
   }
 
   componentWillUnmount() {
+  }
+  shouldComponentUpdate(a,b){
+    const {fileList,editCont} = b;
+    const {fileList:stateFileList,editCont:stateEditCont} =this.state;
+    return fileList.length!==stateFileList.length||editCont===stateEditCont;
   }
 
   handleChangeSelect(value) {
@@ -313,6 +318,10 @@ class EditArticle extends Component {
       imageTwo
     })
   }
+  onCopyLink(v){
+    let link=`![${v}](${v})`;
+    copy(link)
+  }
   render() {
     const {
       editCont = '',
@@ -380,10 +389,10 @@ class EditArticle extends Component {
         <Edit editCont={editCont} id={id} createTime={createTime}
               handleChangeMarkEdit={this.handleChangeMarkEdit.bind(this)}/>
         <Button type="primary" onClick={this.onSubmit.bind(this)}>提交</Button>
-        <span className="save-status">{saveStatus}</span>
+        <div className="save-status">{saveStatus}</div>
         {markdownUploadLink.length?
           markdownUploadLink.map((v,i)=>
-            <div style={{wordBreak:'break-all'}} className='markdown-image-link' >第{i+2}张: ![{v}]({v})</div>
+            <Button className='markdown-image-link' onClick={this.onCopyLink.bind(this,v)} type='danger' size='small'>第{i+2}张</Button>
            )
           :''}
         <Row>

@@ -21,6 +21,7 @@
     "axios": "^0.18.0",
     "child_process": "^1.0.2",
     "classnames": "^2.2.6",
+    "copy-text-to-clipboard": "^1.0.4",
     "css-loader": "^0.28.11",
     "date-format": "^1.2.0",
     "dns": "^0.2.2",

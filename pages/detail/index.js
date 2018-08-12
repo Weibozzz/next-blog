@@ -21,10 +21,13 @@ import MyLayout from '../../components/MyLayout';
 import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl} from '../../config';
 import {COMMON_TITLE, MY_BLOG} from '../../config/constantsData';
 import {POPUP_TIPS} from '../../config/constantTag';
-import {getHtml, OldTime} from '../../until';
+import {getHtml, OldTime,throttle} from '../../until';
 import './index.less'
 import './pop-tips.less'
 import {addZan} from "../../store/actions";
+import NProgress from 'nprogress'
+
+
 //定义
 const {Content} = Layout;
 
@@ -66,12 +69,18 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    window.onscroll = () => {
-      this.getRateWidth()
+    Router.onRouteChangeStart = (url) => {
+      NProgress.start()
     }
-    window.onresize = () => {
+    Router.onRouteChangeComplete = () => NProgress.done()
+    Router.onRouteChangeError = () => NProgress.done()
+
+    window.onscroll = throttle(() => {
       this.getRateWidth()
-    }
+    })
+    window.onresize =throttle(() => {
+      this.getRateWidth()
+    })
     const {password} = sessionStorage;
     const {query = {}} = Router;
     const {id = ''} = query
