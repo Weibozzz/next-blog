@@ -1,0 +1,3 @@
+[submodule "lwbBlogBuild"]
+	path = lwbBlogBuild
+	url = https://gitee.com/Weibozzz/lwbBlogBuild.git

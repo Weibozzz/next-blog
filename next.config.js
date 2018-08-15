@@ -7,6 +7,7 @@ module.exports =   withLess(
       javascriptEnabled: true,
       cssModules: true,
 
-    }
+    },
+    distDir: 'lwbBlogBuild'
   }
 )
