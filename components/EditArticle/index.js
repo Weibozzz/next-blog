@@ -14,7 +14,7 @@ import {
   Input,
   Button,
   Select,
-  message, Upload, Modal
+  message, Upload, Modal, Radio
 } from 'antd'
 import {connect} from 'react-redux'
 import Router from 'next/router'
@@ -22,16 +22,20 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import Edit from '../../components/Edit';
 
-import {getBlogUrl, getTotalUrl, postArticleUrl,getQiniuTokenUrl} from '../../config';
-import { bucket_domin } from '../../config/qiniu_config';
-import {postArticle,getQiniuToken} from '../../store/actions';
-import {regUrl, getHtml,getImageName} from '../../until';
-import {POST_ARTICLE_TYPE, POST_ARTICLE_COPY, ALL, pageNum} from '../../config/constantsData';
+import {getBlogUrl, getTotalUrl, postArticleUrl, getQiniuTokenUrl} from '../../config';
+import {bucket_domin} from '../../config/qiniu_config';
+import {postArticle, getQiniuToken} from '../../store/actions';
+import {regUrl, getHtml, getImageName} from '../../until';
+import {checkAndHandleCompression} from '../../until/upload-file';
+import {POST_ARTICLE_TYPE, POST_ARTICLE_COPY, ALL, pageNum, UPLOAD_MAX_SIZE} from '../../config/constantsData';
 import './index.less'
+
 const copy = require('copy-text-to-clipboard');
 const qiniu = require('qiniu-js')
 const {TextArea} = Input;
 const Option = Select.Option;
+
+const RadioGroup = Radio.Group;
 const InputGroup = Input.Group;
 
 
@@ -47,14 +51,16 @@ class EditArticle extends Component {
       isEdit: '', //空值默认不为修改文章
       notEditArticle: false,  //默认不修改文章
       timer: null,
-      inter:null,
-      markdownUploadLink:[],
+      inter: null,
+      markdownUploadLink: [],
+      isAutoSubmit: true,
+      radioValue: 1,
 
       previewVisible: false,
-      bucket:'',
-      imageTwo:'', //图片二级目录 image/common/xxx.jpg
+      bucket: '',
+      imageTwo: '', //图片二级目录 image/common/xxx.jpg
       previewImage: '',
-      loadPercent:0,
+      loadPercent: 0,
       fileList: [{
         uid: '-1',
         name: 'xxx.png',
@@ -85,10 +91,11 @@ class EditArticle extends Component {
 
   componentWillUnmount() {
   }
-  shouldComponentUpdate(a,b){
-    const {fileList,editCont} = b;
-    const {fileList:stateFileList,editCont:stateEditCont} =this.state;
-    return fileList.length!==stateFileList.length||editCont===stateEditCont;
+
+  shouldComponentUpdate(a, b) {
+    const {fileList, editCont} = b;
+    const {fileList: stateFileList, editCont: stateEditCont} = this.state;
+    return fileList.length !== stateFileList.length || editCont === stateEditCont;
   }
 
   handleChangeSelect(value) {
@@ -118,8 +125,8 @@ class EditArticle extends Component {
   //编辑器内容
   handleChangeMarkEdit(txt) {
     let time = 15;
-    let {inter} = this.state;
-    if(inter){
+    let {inter, isAutoSubmit} = this.state;
+    if (inter) {
       clearInterval(inter)
       this.setState({
         inter: null
@@ -148,7 +155,9 @@ class EditArticle extends Component {
       })
     }
     timer = setTimeout(() => {
-      this.onSubmit()
+      if (isAutoSubmit) {
+        this.onSubmit()
+      }
       this.setState({
         saveStatus: '已提交'
       })
@@ -178,6 +187,15 @@ class EditArticle extends Component {
     if (urlVal !== '' && !regUrl.test(urlVal)) {
       message.warning('url不正确')
       return;
+    }
+    let {inter} = this.state;
+    if (inter) {
+      clearInterval(inter)
+      this.setState({
+        inter: null,
+        isAutoSubmit: false,
+        saveStatus: '已提交'
+      })
     }
     const bool = isEdit !== '';
     if (!bool) {
@@ -253,45 +271,57 @@ class EditArticle extends Component {
 
   async beforeUpload(file, fileList) {
     const {password} = sessionStorage
-    let {bucket,imageTwo,markdownUploadLink} = this.state;
-    bucket = bucket||'article';
+    let {bucket, imageTwo, markdownUploadLink, radioValue} = this.state;
+    bucket = bucket || 'article';
     let self = this;
     const {dispatch} = this.props;
     const paramsObj = {
       bucket,
-      token:password
+      token: password
     }
     let qiniuData;
     try {
-      qiniuData=await getQiniuToken(dispatch, getQiniuTokenUrl(paramsObj))
+      qiniuData = await getQiniuToken(dispatch, getQiniuTokenUrl(paramsObj))
     } catch (err) {
-      message.error('七牛获取token错误'+JSON.stringify(err))
-      return ;
+      message.error('七牛获取token错误' + JSON.stringify(err))
+      return;
     }
-    const {qiniuToken:qiniuTokenData}=qiniuData
-    const {qiniuToken} = qiniuTokenData[0]||{}
+    const {qiniuToken: qiniuTokenData} = qiniuData
+    const {qiniuToken} = qiniuTokenData[0] || {}
     const observer = {
       next(res) {
         const {total} = res;
         const {percent} = total;
         self.setState({
-          loadPercent:percent
+          loadPercent: percent
         })
-        if(percent===100){
+        if (percent === 100) {
           message.success('上传成功')
         }
       },
       error(err) {
+        console.log(err)
         // ...
-        message.error('err:'+JSON.stringify(err))
+        message.error('err:' + JSON.stringify(err))
       },
       complete(res) {
         // ...
       }
     }
-    const {name,lastModified,size} = file;
-    const {font,back='png'} = getImageName(name)
-    const newFileName =`image/${imageTwo?imageTwo:'common'}/${font}_${lastModified}_${size}_${+new Date()}${back}`
+    const {name, lastModified, size} = file;
+    console.log(size / 1024 + 'kb')
+    console.log(size / 1024 / 1024 + 'M')
+    let {uploadSrc, uploadFile} = {}
+    if (size / 1024 / 1024 > UPLOAD_MAX_SIZE && radioValue === 1) {
+      //如果大于 UPLOAD_MAX_SIZE M进行压缩,并且选择了可以压缩
+      ({uploadSrc, uploadFile} = await checkAndHandleCompression(file, UPLOAD_MAX_SIZE));
+    } else {
+      uploadFile = file;
+    }
+    console.log(uploadFile)
+
+    const {font, back = 'png'} = getImageName(name)
+    const newFileName = `image/${imageTwo ? imageTwo : 'common'}/${font}_${lastModified}_${size}_${+new Date()}${back}`
     const config = {
       useCdnDomain: true,
       region: null
@@ -301,15 +331,17 @@ class EditArticle extends Component {
       params: {},
       mimeType: [] || null
     };
-    const observable = qiniu.upload(file, newFileName, qiniuToken, putExtra, config)
+    // return ;
+    const observable = qiniu.upload(uploadFile, newFileName, qiniuToken, putExtra, config)
     const subscription = observable.subscribe(observer) // 上传开始
-    let qiniu_upload_link = bucket_domin[bucket]+newFileName;
+    let qiniu_upload_link = bucket_domin[bucket] + newFileName;
     this.setState({
-      markdownUploadLink:[...markdownUploadLink,qiniu_upload_link]
+      markdownUploadLink: [...markdownUploadLink, qiniu_upload_link]
     })
     return true;
   }
-  handleChangeBucket(e){
+
+  handleChangeBucket(e) {
     const arr = e.target.value.split(',');
     const bucket = arr[0];
     const imageTwo = arr[1];
@@ -318,10 +350,18 @@ class EditArticle extends Component {
       imageTwo
     })
   }
-  onCopyLink(v){
-    let link=`![${v}](${v})`;
+
+  onCopyLink(v) {
+    let link = `![${v}](${v})`;
     copy(link)
   }
+
+  onChangeRadio = (e) => {
+    this.setState({
+      radioValue: e.target.value,
+    });
+  }
+
   render() {
     const {
       editCont = '',
@@ -337,7 +377,7 @@ class EditArticle extends Component {
     const {dataSource = {}} = this.props;
     const {createTime, id} = dataSource;
     //上传
-    const {previewVisible, previewImage, fileList} = this.state;
+    const {previewVisible, previewImage, fileList, radioValue} = this.state;
     const uploadButton = (
       <div>
         <Icon type="plus"/>
@@ -390,14 +430,15 @@ class EditArticle extends Component {
               handleChangeMarkEdit={this.handleChangeMarkEdit.bind(this)}/>
         <Button type="primary" onClick={this.onSubmit.bind(this)}>提交</Button>
         <div className="save-status">{saveStatus}</div>
-        {markdownUploadLink.length?
-          markdownUploadLink.map((v,i)=>
-            <Button className='markdown-image-link' onClick={this.onCopyLink.bind(this,v)} type='danger' size='small'>第{i+2}张</Button>
-           )
-          :''}
+        {markdownUploadLink.length ?
+          markdownUploadLink.map((v, i) =>
+            <Button className='markdown-image-link' onClick={this.onCopyLink.bind(this, v)} type='danger'
+                    size='small'>第{i + 2}张</Button>
+          )
+          : ''}
         <Row>
           <Col span={20}>
-            <div className="upload-wrapper" style={{border:`1px solid ${loadPercent===100?'green':'orange'}`}}>
+            <div className="upload-wrapper" style={{border: `1px solid ${loadPercent === 100 ? 'green' : 'orange'}`}}>
               <Upload
                 action=""
                 listType="picture-card"
@@ -419,7 +460,13 @@ class EditArticle extends Component {
               onChange={this.handleChangeBucket.bind(this)}
               title="上传的bucket,默认为article，文件名二级目录以逗号分隔，如common，例如：article,common"
               placeholder="鼠标移上面看如何传参"/>
-            { loadPercent===0||loadPercent===100?'':<span>{loadPercent}%</span>}
+            {loadPercent === 0 || loadPercent === 100 ? '' : <span>{loadPercent}%</span>}
+            <div title={`这里默认大于${UPLOAD_MAX_SIZE}M会自动压缩图片`}>
+              <RadioGroup onChange={this.onChangeRadio} value={radioValue}>
+                <Radio value={1}>压缩文件</Radio>
+                <Radio value={2}>不压缩文件</Radio>
+              </RadioGroup>
+            </div>
           </Col>
         </Row>
       </div>

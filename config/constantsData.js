@@ -10,6 +10,8 @@ export const ONLINE_DOMAIN = MY_BLOG + ':7654';
 export const ONLINE_GITBOOK = MY_BLOG + ':4321';
 export const LINK_ABOUT_ME = MY_BLOG + 'p/146';
 
+// 图片大于这个数会先压缩在上传到七牛云，单位M
+export const UPLOAD_MAX_SIZE = 1;
 
 //github地址
 export const GITHUB_ADDRESS = 'https://github.com/Weibozzz/next-blog';
