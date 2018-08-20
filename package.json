@@ -10,6 +10,7 @@
     "export": "next export",
     "start": "cross-env NODE_ENV=production node server.js",
     "prd": "cross-env NODE_ENV=production pm2 start server.js",
+    "submodule:update":"git submodule update --init --recursive",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
