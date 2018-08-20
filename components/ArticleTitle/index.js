@@ -14,7 +14,7 @@ const ArticleTitle = (...args)=>{
   if(hasUrlComment.length<10){
     hasUrlComment=[...hasUrlComment,...DEFAULT_TAG_ARR].slice(0,10)
   }
-  let {title,createTime,user,visitor,lastModify,modifyCount,type='js',url='',like=0} = detailArticle
+  let {title,createTime,user,visitor,lastModify,modifyCount,type=['js'],url='',like=0} = detailArticle
   if(lastModify===0){
     lastModify=createTime
   }
@@ -31,7 +31,10 @@ const ArticleTitle = (...args)=>{
               url===''?
                 <span className="origin-article">原</span>:''
             }
-            <span className="tag">{type}</span>
+            {
+              type.split(',').map(v=>(<span key={v} className="tag">{v}</span>))
+            }
+
           </p>
           <ul className="clearfix detail-info" >
             <li className="fl">发布时间：{formatTime(createTime)}</li>

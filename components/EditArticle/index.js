@@ -100,7 +100,7 @@ class EditArticle extends Component {
 
   handleChangeSelect(value) {
     this.setState({
-      selectVal: value
+      selectVal: value.join()
     })
   }
 
@@ -374,6 +374,7 @@ class EditArticle extends Component {
       loadPercent,
       markdownUploadLink
     } = this.state;
+    const resultSelectVal = selectVal?selectVal.split(','):[]
     const {dataSource = {}} = this.props;
     const {createTime, id} = dataSource;
     //上传
@@ -389,14 +390,16 @@ class EditArticle extends Component {
         <Row>
           <Col span={24}>
             <InputGroup compact>
-              <Input style={{width: '90%'}}
+              <Input style={{width: '50%'}}
                      onChange={this.handleChangeTitle.bind(this)}
                      placeholder="文章标题"
                      title='文章标题'
                      defaultValue={titleVal}/>
-              <Select style={{width: '10%'}}
+              <Select style={{width: '50%'}}
+                      mode="tags"
+                      placeholder="请选择文章类型"
                       onChange={this.handleChangeSelect.bind(this)}
-                      defaultValue={selectVal === '' ? '文章类型' : selectVal}>
+                      defaultValue={resultSelectVal}>
                 {
                   POST_ARTICLE_TYPE.map(v => (
                     <Option value={v.key}>{v.value}</Option>

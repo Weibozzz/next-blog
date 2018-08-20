@@ -40,6 +40,8 @@ const ListTitle = ({dataSource = {}}) => {
         let lifeImageSrc = randomArr.length ? randomArr[index] : '';
         let ResultLifeUrl = lifeImages[lifeImageSrc].dl_remove_attname_url;
         let isIcon = pathname === '';
+        const {type} = item;
+        const srcImg = type.split(',')[0]||'js'
         return (
           <List.Item
             key={item.title}
@@ -52,7 +54,7 @@ const ListTitle = ({dataSource = {}}) => {
               <IconText type="eye-o" text={item.visitor}/>,
             ]}
             extra={isIcon ?
-              <img className="icon-img" width={40} alt="logo" src={qiniuyun_cdn_icon[item.type]}/>
+              <img className="icon-img" width={40} alt="logo" src={qiniuyun_cdn_icon[srcImg]}/>
               :
               <img className="life-img" width={272} alt="logo" src={ResultLifeUrl}/>}
           >
