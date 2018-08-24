@@ -252,8 +252,10 @@ class Detail extends Component {
                           <a >{v.title}</a>
                         </Link>
                         {
-                          v.type.split(',').map((v,index)=>(<span style={{marginLeft:index===0?10:0}} key={v} className="tag">{v}</span>))
+                          v.type.split(',').map((v,index)=>(<span style={{marginLeft:index===0?10:0}} key={v} className="tag">{v} </span>))
                         }
+
+                        <span  style={{color:'#666'}}><Icon type="eye" /> {v.visitor}</span>
                       </li>
                     ))
                   }
