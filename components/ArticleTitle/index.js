@@ -38,9 +38,9 @@ const ArticleTitle = (...args)=>{
           </p>
           <ul className="clearfix detail-info" >
             <li className="fl">发布时间：{formatTime(createTime)}</li>
-            <li className="fl">作者：{user}</li>
-            <li className="fl">浏览次数：{visitor}</li>
-            <li className="fl">最后修改：{formatTime(lastModify)}</li>
+            <li className="fl"><Icon type="user" /> {user}</li>
+            <li className="fl"><Icon type="eye" /> {visitor}</li>
+            <li className="fl"><Icon type="edit" /> {formatTime(lastModify)}</li>
             <li className="fl">修改次数：{modifyCount}</li>
           </ul>
           <Divider/>

@@ -15,6 +15,20 @@ export const getSearchList = async (dispatch, url) => {
   return dispatch({type: actionTypes.SEARCH_DATA, searchData: jsonData})
 
 }
+export const getHotArticleList = async (dispatch, url) => {
+  //获得热门文章
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.HOT_ARTICLE_DATA, hotArticleData: jsonData})
+
+}
+export const getHotRecommendList = async (dispatch, url) => {
+  //获得不同type热门文章
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.HOT_RECOMMEND_DATA, hotRecommendData: jsonData})
+
+}
 export const getSearchTotal = async (dispatch, url) => {
   //搜索的所有页数
   const res = await fetch(url)

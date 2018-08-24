@@ -8,6 +8,8 @@ import Footer from '../components/Footer'
 import '../asserts/styles.less'
 import './index.less'
 import './markdown.less'
+import Router from 'next/router'
+import NProgress from 'nprogress'
 
 
 class MyApp extends App {
@@ -22,7 +24,6 @@ class MyApp extends App {
 
   componentDidMount() {
     const ua = navigator.userAgent;
-
     let userAgent;
     if (ua.indexOf("Android") > 0 || ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0) {
       //移动端
@@ -38,7 +39,11 @@ class MyApp extends App {
   }
 
   render() {
-
+    Router.onRouteChangeStart = (url) => {
+      NProgress.start()
+    }
+    Router.onRouteChangeComplete = () => NProgress.done()
+    Router.onRouteChangeError = () => NProgress.done()
     const {Component, pageProps, reduxStore, router: {pathname}} = this.props;
     const {userAgent} = this.state;
     let myPageProps = {...pageProps, ...userAgent};

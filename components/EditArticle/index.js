@@ -309,18 +309,16 @@ class EditArticle extends Component {
       }
     }
     const {name, lastModified, size} = file;
-    console.log(size / 1024 + 'kb')
-    console.log(size / 1024 / 1024 + 'M')
+    const {font, back = '.png'} = getImageName(name)
     let {uploadSrc, uploadFile} = {}
-    if (size / 1024 / 1024 > UPLOAD_MAX_SIZE && radioValue === 1) {
+    if (size / 1024 / 1024 > UPLOAD_MAX_SIZE && radioValue === 1 && back !== '.gif') {
       //如果大于 UPLOAD_MAX_SIZE M进行压缩,并且选择了可以压缩
       ({uploadSrc, uploadFile} = await checkAndHandleCompression(file, UPLOAD_MAX_SIZE));
     } else {
       uploadFile = file;
     }
-    console.log(uploadFile)
 
-    const {font, back = 'png'} = getImageName(name)
+
     const newFileName = `image/${imageTwo ? imageTwo : 'common'}/${font}_${lastModified}_${size}_${+new Date()}${back}`
     const config = {
       useCdnDomain: true,
@@ -374,7 +372,7 @@ class EditArticle extends Component {
       loadPercent,
       markdownUploadLink
     } = this.state;
-    const resultSelectVal = selectVal?selectVal.split(','):[]
+    const resultSelectVal = selectVal ? selectVal.split(',') : []
     const {dataSource = {}} = this.props;
     const {createTime, id} = dataSource;
     //上传

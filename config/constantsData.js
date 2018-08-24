@@ -19,6 +19,7 @@ export const TOP_TIPS = 'next服务端渲染博客正在重构和开发中......
 //分页数
 export const pageNum = 10;
 export const TITLE = 'title'
+export const ARTICLE = 'article'
 export const ALL = 'all'
 
 //导航路由
@@ -134,6 +135,7 @@ export const POST_ARTICLE_TYPE = [
   {key: "interesting", value: " 生活喜好"},
   {key: "fight", value: " 激励向上"},
   {key: "others", value: " 其他"},
+  {key: "算法", value: " 算法"},
 ];
 //评论icon
 export const COMMENT_IMAGES = [

@@ -7,6 +7,7 @@ import {
 } from 'antd';
 import 'whatwg-fetch'
 import Head from 'next/head';
+import Link from 'next/link';
 import Router from 'next/router'
 import marked from 'marked'
 import hljs from 'highlight.js';
@@ -24,8 +25,7 @@ import {POPUP_TIPS} from '../../config/constantTag';
 import {getHtml, OldTime,throttle} from '../../until';
 import './index.less'
 import './pop-tips.less'
-import {addZan} from "../../store/actions";
-import NProgress from 'nprogress'
+import {addZan, getHotArticleList,getHotRecommendList} from "../../store/actions";
 
 
 //定义
@@ -61,7 +61,13 @@ class Detail extends Component {
   }
 
   componentWillMount() {
-    const {blogData = []} = this.props;
+    const {blogData = [],dispatch} = this.props;
+    let {type = ''} = blogData[0] || {};
+    type=type.split(',')[0]
+    const queryTotalString = {
+      type: 'hot|'+type
+    };
+    getHotRecommendList(dispatch, getBlogUrl(queryTotalString))
     let {id: articleID} = blogData[0] || {};
     this.setState({
       articleID
@@ -69,11 +75,6 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    Router.onRouteChangeStart = (url) => {
-      NProgress.start()
-    }
-    Router.onRouteChangeComplete = () => NProgress.done()
-    Router.onRouteChangeError = () => NProgress.done()
 
     window.onscroll = throttle(() => {
       this.getRateWidth()
@@ -128,7 +129,7 @@ class Detail extends Component {
 
   render() {
 //接口
-    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc'} = this.props;
+    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc',hotRecommendData=[]} = this.props;
     let {articleID, articleLike, isShowEditIcon,topWidth} = this.state;
     let {content = '', createTime = '', title = '', url = '', id, type = '', like = 0} = blogData[0] || {};
 
@@ -241,6 +242,23 @@ class Detail extends Component {
                 </Col>
               </Row>
               <Divider/>
+              <div className='recommend-post'>
+                <h3>你可能感兴趣的文章</h3>
+                <ul className='recommend-post-ul'>
+                  {
+                    hotRecommendData.map(v=>(
+                      <li key={v.id}>
+                        <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
+                          <a >{v.title}</a>
+                        </Link>
+                        {
+                          v.type.split(',').map((v,index)=>(<span style={{marginLeft:index===0?10:0}} key={v} className="tag">{v}</span>))
+                        }
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
               <Comments dataSource={{commentsData, articleID}}></Comments>
             </div>
           </Col>
@@ -320,8 +338,8 @@ Detail.getInitialProps = async function (context) {
   return {blogData, commentsData, lastIdData, nextIdData}
 }
 const mapStateToProps = state => {
-  const {getCommentsData} = state
-  return {getCommentsData};
+  const {getCommentsData,hotRecommendData} = state
+  return {getCommentsData,hotRecommendData};
 }
 const WrappedRegistrationForm = Form.create()(Detail);
 export default connect(mapStateToProps)(WrappedRegistrationForm);

@@ -19,7 +19,7 @@ const IconText = ({type, text}) => (
     {text}
   </span>
 )
-const ListTitle = ({dataSource = {}}) => {
+const ListTitle = ({dataSource = {},searchType=''}) => {
   const {listData = [], pathname = ''} = dataSource;
   const noeDate = Date.now() / 1000 | 0;
   const diff = noeDate - 10 * 24 * 60 * 60;
@@ -40,8 +40,9 @@ const ListTitle = ({dataSource = {}}) => {
         let lifeImageSrc = randomArr.length ? randomArr[index] : '';
         let ResultLifeUrl = lifeImages[lifeImageSrc].dl_remove_attname_url;
         let isIcon = pathname === '';
-        const {type} = item;
-        const srcImg = type.split(',')[0]||'js'
+        const {type=['js']} = item;
+        const srcImg = type.split(',')[0]||'js';
+        const qiniu_srcImg = qiniuyun_cdn_icon[srcImg]||qiniuyun_cdn_icon.others
         return (
           <List.Item
             key={item.title}
@@ -54,9 +55,9 @@ const ListTitle = ({dataSource = {}}) => {
               <IconText type="eye-o" text={item.visitor}/>,
             ]}
             extra={isIcon ?
-              <img className="icon-img" width={40} alt="logo" src={qiniuyun_cdn_icon[srcImg]}/>
+              <img className="icon-img" width={40} alt={srcImg} src={qiniu_srcImg}/>
               :
-              <img className="life-img" width={272} alt="logo" src={ResultLifeUrl}/>}
+              <img className="life-img" width={272} alt={srcImg} src={ResultLifeUrl}/>}
           >
             <List.Item.Meta
               avatar={<Avatar src={item.avatar}/>}
@@ -75,12 +76,15 @@ const ListTitle = ({dataSource = {}}) => {
                         :
                         ''
                     }
+                    {
+                      type.split(',').map((v,index)=>(<span style={{marginLeft:index===0?10:0}} key={v} className="tag">{v}</span>))
+                    }
 
 
                   </a>
                 </Link>
               }
-              description={pathname === '' ? '' : item.short}
+              description={pathname === '' ? searchType==='article'?'暂不支持模糊查询高亮，可以点击进去搜索':'' : item.short}
             />
             {
               pathname === '' ? '' :

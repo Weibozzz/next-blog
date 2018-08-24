@@ -10,6 +10,16 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         searchData: action.searchData
       })
+    case actionTypes.HOT_ARTICLE_DATA:
+      //获得热门文章
+      return Object.assign({}, state, {
+        hotArticleData: action.hotArticleData
+      })
+    case actionTypes.HOT_RECOMMEND_DATA:
+      //获得不同type热门文章
+      return Object.assign({}, state, {
+        hotRecommendData: action.hotRecommendData
+      })
     case actionTypes.SEARCH_PAGE_DATA:
       //点击搜索分页搜索到的文章列表
       return Object.assign({}, state, {
