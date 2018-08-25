@@ -73,6 +73,7 @@ export const getHtml = (str, newTime) => {
 }
 
 export function toQueryStr(obj){
+  console.log(obj)
   return "?" + JSON.stringify(obj).replace(/{|}|\"|\'/g, "").replace(/,/g, "&").replace(/:/g, "=");
 }
 

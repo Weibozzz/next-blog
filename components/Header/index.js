@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Layout, Menu, Breadcrumb, Row, Col} from 'antd';
+import {Layout, Menu, Breadcrumb, Row, Col,message} from 'antd';
 import Link from 'next/link'
 // prefetch预加载
 import dynamic from 'next/dynamic';
 import * as ROUTER from '../../config/constantsData';
-import {postAdminPasswordUrl} from '../../config';
-import {postAdminPassword} from '../../store/actions';
+import {getBlogUrl, postAdminPasswordUrl} from '../../config';
+import {getSearchList, postAdminPassword} from '../../store/actions';
 import MyHead from '../../components/MyHead';
 import {LINK_ABOUT_ME} from "../../config/constantsData";
+import './index.less'
 
 //toptis不需要seo
 const DynasicTopTipsNoSsr = dynamic(import('../../components/TopTips'),{
@@ -40,6 +41,12 @@ const routes = [
     href: ROUTER.ABOUT,
     txt: ROUTER.ABOUT_TXT,
     isSuperAdmin: false
+  },
+  {
+    href: ROUTER.BLOG,
+    txt: '我的收藏',
+    isSuperAdmin: false,
+    isMyCollcet:true
   },
   {
     href: ROUTER.ADMIN,
@@ -101,7 +108,21 @@ class TopNav extends Component {
       isLogin: false
     })
   }
-
+  onMyCollect(){
+    const {dispatch} = this.props;
+    let collectArrStr = localStorage.getItem('collectArrStr');
+    let collectArr;
+    try {
+      collectArr = JSON.parse(collectArrStr)
+    } catch (err) {
+      collectArr = []
+    }
+    if(!collectArr.length){
+      message.warning(`还没有收藏过文章，点击小星星进行本地收藏！`);
+    }
+    console.log(collectArr)
+    getSearchList(dispatch, 'myCollect',collectArr)
+  }
   render() {
     let {isLogin, selectedKeys = ['/']} = this.state;
     const {userAgent='pc'} = this.props;
@@ -139,13 +160,20 @@ class TopNav extends Component {
                   {
                     newRoutes.map((item, index) => {
                       return item.exit ?
-                        <Menu.Item key={item.href}>
+                        <Menu.Item key={item.txt}>
                           <Link prefetch href={item.href}>
                             <a onClick={this.onExit.bind(this)}>{item.txt}</a>
                           </Link>
                         </Menu.Item>
                         :
-                        <Menu.Item key={item.href}>
+                        item.isMyCollcet?
+                          <Menu.Item key={item.txt}>
+                            <Link prefetch href={item.href}>
+                              <a onClick={this.onMyCollect.bind(this)}>{item.txt}</a>
+                            </Link>
+                          </Menu.Item>
+                          :
+                        <Menu.Item key={item.txt}>
                           <Link prefetch href={item.href}>
                             <a>{item.txt}</a>
                           </Link>

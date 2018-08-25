@@ -2,43 +2,43 @@ const STEP = 20;
 const MARGIN_TOPS = 2;
 const MARGIN_LEFTS = 5;
 const MAX_LENGTH_TXT = 6;
-export const getRandomMarginTop = ()=>{
-  return Math.floor(Math.random()*MARGIN_TOPS)*STEP;
+export const getRandomMarginTop = () => {
+  return Math.floor(Math.random() * MARGIN_TOPS) * STEP;
 }
-export const getRandomMarginLeft = ()=>{
-  return Math.ceil(Math.random()*MARGIN_LEFTS)*STEP;
+export const getRandomMarginLeft = () => {
+  return Math.ceil(Math.random() * MARGIN_LEFTS) * STEP;
 }
-export const getRandomTxt = (text)=>{
+export const getRandomTxt = (text) => {
   let len = text.length;
-  let random = Math.random()*len;
+  let random = Math.random() * len;
   //最少截取4个字符
-  let result= Math.max(Math.ceil(random),4)
-  if(len>MAX_LENGTH_TXT){
-    return text.slice(0,result);
+  let result = Math.max(Math.ceil(random), 4)
+  if (len > MAX_LENGTH_TXT) {
+    return text.slice(0, result);
   }
   return text;
 }
 
-export const DEFAULT_TAG_ARR =[
+export const DEFAULT_TAG_ARR = [
   {
-    website:'http://www.liuweibo.cn',
-    user:'刘伟波网站'
+    website: 'http://www.liuweibo.cn',
+    user: '刘伟波网站'
   },
   {
-    website:'https://segmentfault.com/u/weibozzz',
-    user:'sf'
+    website: 'https://segmentfault.com/u/weibozzz',
+    user: 'sf'
   },
   {
-    website:'https://github.com/Weibozzz',
-    user:'github'
+    website: 'https://github.com/Weibozzz',
+    user: 'github'
   },
   {
-    website:'http://www.liuweibo.cn:4321/',
-    user:'文档中心'
+    website: 'http://www.liuweibo.cn:4321/',
+    user: '文档中心'
   },
   {
-    website:'https://github.com/Weibozzz/next-blog',
-    user:'本网站源码'
+    website: 'https://github.com/Weibozzz/next-blog',
+    user: '本网站源码'
   },
 ]
 export const POPUP_TIPS = [
@@ -60,3 +60,12 @@ export const POPUP_TIPS = [
   '金钱损失了还能挽回，一旦失去信誉就很难挽回',
   '人之所以能，是相信能',
 ]
+export const default_comment = [{
+  "id": -1,
+  "a_id": -1,
+  "user": "刘伟波",
+  "website": "http://www.liuweibo.cn",
+  "msg": "关于技术问题或者有啥不懂的都可以留言，我会定期回复答疑，感謝支持！",
+  "createTime": "-1",
+  "answerId": null
+}];

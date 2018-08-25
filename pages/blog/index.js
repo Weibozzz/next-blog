@@ -71,7 +71,10 @@ class Blog extends Component {
     postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj)
   }
 
-  onSearch(val, type = ALL) {
+  onSearch(val, type) {
+    if(Object.prototype.toString.call(type)!=='[object String]'){
+      type='all'
+    }
     const {dispatch} = this.props;
     const {searchType} = this.state;
     let queryStringObj, queryTotalString;

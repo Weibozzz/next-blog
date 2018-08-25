@@ -102,13 +102,13 @@ class FormComment extends Component {
           postUserComments(dispatch, postUserCommentUrl(), queryStringComment).then(res => {
             const {getUserCommentsData} = res;
             if (getUserCommentsData.length) {
-              message.success(`留言发表成功`);
+              message.success(`留言发表成功，感谢支持！`);
             }
           })
           :
           postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
             if (res) {
-              message.success(`评论发表成功`);
+              message.success(`评论发表成功，感谢支持！`);
             }
           })
 

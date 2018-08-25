@@ -32,6 +32,9 @@ class MyCard extends Component {
       :
       <span style={{color: '#000', fontWeight: 'bold'}}>{v.user || v.name}</span>;
   }
+  isAuth(v){
+    return (v.user || v.name)==='刘伟波'?<span style={{marginLeft:5,marginRight:10}} className="author-comment">作者</span>:'';
+  }
   render() {
     const {dataSource = {}, children = {},commentIndex=-1} = this.props;
     const {index, v, i} = dataSource
@@ -43,6 +46,7 @@ class MyCard extends Component {
                   {
                     this.getUserReactDom(v)
                   }
+        {this.isAuth(v)}
         说道：
 
                     </span>
@@ -62,7 +66,7 @@ class MyCard extends Component {
                   {s.msg}
                   <br/>
                     — {this.getUserReactDom(s)}
-                  {(s.user || s.name)==='刘伟波'?<span className="author">作者</span>:''}
+                  {this.isAuth(s)}
                   <span className="time">{formatTime(s.createTime)}</span>
                 </li>
               ))

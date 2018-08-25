@@ -131,7 +131,7 @@ class Edit extends Component {
                   </Col>
                   <Col span={12}>
                     <div>
-                      <div className="  content-edit"
+                      <div className="markdown-style  content-edit"
                            ref={node => this.previewContainer = node}
                            onMouseOver={this.setCurrentIndex.bind(this, 2)} onScroll={this.containerScroll}>
                         <div className=" common-wrapper" ref={node => this.previewWrap = node}

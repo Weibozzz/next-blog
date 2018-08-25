@@ -57,7 +57,7 @@ export const SET_TABLE = {
         width: 80, fixed: 'left'
       }
     }
-    if (v === 'createTime') {
+    if (v === 'account') {
       extend = {
         fixed: 'right'
       }

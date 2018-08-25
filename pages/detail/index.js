@@ -210,7 +210,7 @@ class Detail extends Component {
                   lg={{span: bool ? 15 : 24}}>
 
                   <div
-                    className={bool ? 'new-detail' : 'old-detail'}
+                    className={bool ? 'new-detail markdown-style' : 'old-detail'}
                     dangerouslySetInnerHTML={{
                       __html: _html_content
                     }}
@@ -275,23 +275,8 @@ class Detail extends Component {
     border:1px solid #ccc;
     background-color:#f5f5f5;
 }
-code {
-    padding: 2px 4px;
-    font-size: 90%;
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-radius: 4px;
-}
-.new-detail ul{
-    margin: 1.5em 0 1.5em 3em;
-    padding-left: 0;
-}
 
-.new-detail li{
-    display: list-item;
-    margin:.3em 0;
-    list-style: disc;
-}
+
 .new-detail h1,.new-detail h2{
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;

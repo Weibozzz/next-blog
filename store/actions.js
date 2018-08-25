@@ -8,8 +8,11 @@ export const getSearchPageList = async (dispatch, url) => {
   const jsonData = await res.json()
   return dispatch({type: actionTypes.SEARCH_PAGE_DATA, searchData: jsonData})
 }
-export const getSearchList = async (dispatch, url) => {
+export const getSearchList = async (dispatch, url,myCollect) => {
   //第一次搜索到的文章列表
+  if(url==='myCollect'){
+    return dispatch({type: actionTypes.SEARCH_DATA, searchData: myCollect});
+  }
   const res = await fetch(url)
   const jsonData = await res.json()
   return dispatch({type: actionTypes.SEARCH_DATA, searchData: jsonData})
