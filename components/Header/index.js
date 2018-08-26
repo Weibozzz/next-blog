@@ -120,7 +120,6 @@ class TopNav extends Component {
     if(!collectArr.length){
       message.warning(`还没有收藏过文章，点击小星星进行本地收藏！`);
     }
-    console.log(collectArr)
     getSearchList(dispatch, 'myCollect',collectArr)
   }
   render() {

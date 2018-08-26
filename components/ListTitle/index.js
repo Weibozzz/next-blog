@@ -72,6 +72,9 @@ class ListTitle extends Component {
     const {dataSource = {},searchType=''} = this.props;
     const {listData = [], pathname = ''} = dataSource;
     let {collectArr=[]} = this.state;
+    if(!collectArr){
+      collectArr=[]
+    }
     collectArr=collectArr.map(v=>v.id)
     const noeDate = Date.now() / 1000 | 0;
     const diff = noeDate - 10 * 24 * 60 * 60;

@@ -199,7 +199,6 @@ class Blog extends Component {
     } else {
       ({total} = totalPageData[0] || {})
     }
-    console.log(listData)
     return (
       <div className="Blog">
         <Head>
