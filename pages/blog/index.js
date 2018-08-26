@@ -78,18 +78,27 @@ class Blog extends Component {
     if (Object.prototype.toString.call(type) !== '[object String]') {
       type = 'all';
     }
+
+    this.setState({
+      keyWard: val
+    })
     if(type!=='all'){
-      this.setState({
-        isNotWd:true,
-        searchType:type
-      })
+      if(val==='btnSearch'){
+        this.setState({
+          isNotWd:false,
+          searchType:TITLE,
+          keyWard:''
+        })
+      }else {
+        this.setState({
+          isNotWd:true,
+          searchType:type
+        })
+      }
     }
     const {dispatch} = this.props;
     const {searchType} = this.state;
     let queryStringObj, queryTotalString;
-    this.setState({
-      keyWard: val
-    })
     if (val) {
       queryStringObj = {
         type: searchType,
@@ -103,12 +112,12 @@ class Blog extends Component {
       };
     } else {
       queryStringObj = {
-        type,
+        type:searchType,
         num: 1,
         pageNum
       }
       queryTotalString = {
-        type
+        type:searchType
       };
     }
 
@@ -133,7 +142,6 @@ class Blog extends Component {
       }
       getSearchPageList(dispatch, getBlogUrl(queryStringObj))
     }
-    console.log(isNotWd)
     if (wd !== ''||isNotWd) {
       return;
     }
@@ -213,7 +221,7 @@ class Blog extends Component {
               <Content>
                 <Row>
                   <Col span={20}>
-                    <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
+                    <Search placeholder="input search text" onSearch={this.onSearch.bind(this,'btnSearch')} enterButton="Search"
                             size="large"/>
                   </Col>
                   <Col span={4}>
