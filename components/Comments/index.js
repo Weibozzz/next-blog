@@ -38,7 +38,6 @@ class Comments extends Component {
     const {dataSource = {}, commentIndex = -1} = this.props;
     let {commentsData = [], commentTitle = '发表评论', commentRow = 8} = dataSource;
     commentsData = [...default_comment,...getMyCommenData(commentsData)]
-    console.log(commentsData)
     return (
       <div className="comment-wrapper" id="comment">
         <h2>{commentTitle}：</h2>

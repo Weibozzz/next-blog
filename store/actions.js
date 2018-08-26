@@ -84,6 +84,13 @@ export const getViewList = async (dispatch, url) => {
   return dispatch({type: actionTypes.GET_VIEW, viewListData: jsonData})
 
 }
+export const getCreateTimeList = async (dispatch, url) => {
+  //获得所有创建文章的时间
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.GET_CREATE_TIME, createTimeListData: jsonData})
+
+}
 
 export const postComments = async (dispatch, url,body) => {
   //发布评论,然后获得更新后的评论

@@ -27,6 +27,9 @@ export const getIpUrl = (obj) => {
 export const postSaveIpUrl = ()=>{
   return getDomain() + 'api/saveIp';
 }
+export const getCreateTimeUrl = ()=>{
+  return getDomain() + 'api/getCreateTime';
+}
 
 //评论
 export const getCommentsUrl = (obj) => {

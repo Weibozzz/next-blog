@@ -16,10 +16,10 @@ import {
   getSearchTotal,
   getSearchPageList,
   postSaveIp,
-  getIpList, getViewList
+  getIpList, getViewList, getCreateTimeList
 } from '../../store/actions'
 import ListTitle from '../../components/ListTitle';
-import {getBlogUrl, getIpUrl, getTotalUrl, getViewUrl, postSaveIpUrl} from '../../config';
+import {getBlogUrl, getIpUrl, getTotalUrl, getViewUrl, postSaveIpUrl, getCreateTimeUrl} from '../../config';
 import {
   pageNum,
   TITLE,
@@ -31,7 +31,7 @@ import {
   POST_ARTICLE_TYPE
 } from '../../config/constantsData';
 import MyLayout from '../../components/MyLayout';
-import {real_ip} from '../../until';
+import {real_ip,getYearAndMounth,cancelRepeat} from '../../until';
 import './index.less'
 
 const Option = Select.Option;
@@ -44,18 +44,21 @@ class Blog extends Component {
     this.state = {
       currentPage: 1,
       keyWard: '',
-      searchType: TITLE
+      searchType: TITLE,
+      isNotWd:false
     };
   }
 
-  componentWillMount(){
+  componentWillMount() {
     const {dispatch} = this.props;
     const queryTotalString = {
       type: 'hot'
     };
     getHotArticleList(dispatch, getBlogUrl(queryTotalString))
     getViewList(dispatch, getViewUrl())
+    getCreateTimeList(dispatch, getCreateTimeUrl())
   }
+
   async componentDidMount() {
 
     const {router = {}} = Router
@@ -72,8 +75,14 @@ class Blog extends Component {
   }
 
   onSearch(val, type) {
-    if(Object.prototype.toString.call(type)!=='[object String]'){
-      type='all'
+    if (Object.prototype.toString.call(type) !== '[object String]') {
+      type = 'all';
+    }
+    if(type!=='all'){
+      this.setState({
+        isNotWd:true,
+        searchType:type
+      })
     }
     const {dispatch} = this.props;
     const {searchType} = this.state;
@@ -109,7 +118,7 @@ class Blog extends Component {
 
   onChange(page, pageSize) {
     const {dispatch} = this.props
-    const {keyWard: wd} = this.state
+    const {keyWard: wd,isNotWd,searchType} = this.state
     this.setState({
       currentPage: page
     })
@@ -117,14 +126,15 @@ class Blog extends Component {
     let {searchTotalData = []} = this.props;
     if (searchTotalData.length) {
       let queryStringObj = {
-        type: TITLE,
+        type: searchType,
         num: page,
         pageNum,
         wd
       }
       getSearchPageList(dispatch, getBlogUrl(queryStringObj))
     }
-    if (wd !== '') {
+    console.log(isNotWd)
+    if (wd !== ''||isNotWd) {
       return;
     }
     Router.push(`/blog/${page}`)
@@ -151,15 +161,32 @@ class Blog extends Component {
 
   onSearchTypeHandleChange(value) {
     this.setState({
-      searchType: value
+      searchType: value,
     })
   }
-
+  onArticleTime(title){
+    const reg = /(\d{4})年(\d{2})月/;
+    let yyyy,mm;
+    if(!reg.test(title)){
+      yyyy=2017
+      mm=1
+    }else {
+      const arr = title.match(reg)
+      yyyy=+arr[1]||2017
+      mm=+arr[2]||1
+    }
+    const t1=new Date(yyyy+'-'+mm+'-01 00:00:00').getTime()/1000;
+    mm==12 && (yyyy+=1,mm=0);
+    const t2=new Date(yyyy+'-'+(mm+1)+'-01 00:00:00').getTime()/1000;
+    this.onSearch('',`timeRange|${t1}.${t2}`)
+  }
   render() {
     let total, listData;
     let {currentPage, searchType} = this.state;
-    let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = [], userAgent = 'pc',hotArticleData=[]} = this.props;
+    let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = [], userAgent = 'pc', hotArticleData = [], createTimeListData = []} = this.props;
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
+    const yearMonthArr = createTimeListData.map(v=>getYearAndMounth(v.createTime))
+    const resultYMArr = cancelRepeat(yearMonthArr)
     if (searchData.length) {
       pageBlogData = searchData
     }
@@ -172,6 +199,7 @@ class Blog extends Component {
     } else {
       ({total} = totalPageData[0] || {})
     }
+    console.log(listData)
     return (
       <div className="Blog">
         <Head>
@@ -179,7 +207,10 @@ class Blog extends Component {
         </Head>
         <MyLayout>
           <Row>
-            <Col span={16}>
+            <Col
+              sm={{span: 24}}
+              xs={{span: 24}}
+              lg={{span: 16}}>
               <Content>
                 <Row>
                   <Col span={20}>
@@ -202,13 +233,15 @@ class Blog extends Component {
                 </Row>
                 <div style={{background: '#fff', padding: 24, minHeight: 380}}>
                   <ListTitle searchType={searchType} dataSource={{listData}}/>
-
                   <Pagination current={currentPage} total={total} itemRender={this.itemRender.bind(this)}
                               onChange={this.onChange.bind(this)}/>
                 </div>
               </Content>
             </Col>
-            <Col span={8}>
+            <Col
+              sm={{span: 0}}
+              xs={{span: 0}}
+              lg={{span: 8}}>
               <div className=" blog-right ">
                 <div className='tag-container'>
                   <p className='title'>相关标签</p>
@@ -248,20 +281,20 @@ class Blog extends Component {
                   <p className='title'>排行榜</p>
                   <ul>
                     {
-                      hotArticleData.map((v,index)=>{
+                      hotArticleData.map((v, index) => {
 
                         return <li key={v.id} className="clearfix">
                           <Row>
                             <Col span={1}>
-                              <span style={{color:'#999'}}>{index+1}.</span>
+                              <span style={{color: '#999'}}>{index + 1}.</span>
                             </Col>
-                            <Col  span={19}>
+                            <Col span={19}>
                               <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
-                                <a style={{marginLeft:4}}> {v.title}</a>
+                                <a style={{marginLeft: 4}}> {v.title}</a>
                               </Link>
                             </Col>
                             <Col span={4}>
-                              <span className='fr' style={{color:'#666'}}><Icon type="eye" /> {v.visitor}</span>
+                              <span className='fr' style={{color: '#666'}}><Icon type="eye"/> {v.visitor}</span>
                             </Col>
                           </Row>
                         </li>;
@@ -271,6 +304,13 @@ class Blog extends Component {
                 </div>
                 <div>
                   <h3>文章存档</h3>
+                  <Row>
+                    {
+                      Object.entries(resultYMArr).map(v=>(
+                        <Col span={12} onClick={this.onArticleTime.bind(this,v[0])} key={v[0]}> {v[0]}({v[1]})</Col>
+                      ))
+                    }
+                  </Row>
                 </div>
               </div>
             </Col>
@@ -299,7 +339,7 @@ Blog.getInitialProps = async function (context) {
 }
 //这里根据需要传入redux
 const mapStateToProps = state => {
-  const {res, searchData, searchTotalData,hotArticleData} = state
-  return {res, searchData, searchTotalData,hotArticleData};
+  const {res, searchData, searchTotalData, hotArticleData, createTimeListData} = state
+  return {res, searchData, searchTotalData, hotArticleData, createTimeListData};
 }
 export default connect(mapStateToProps)(Blog)

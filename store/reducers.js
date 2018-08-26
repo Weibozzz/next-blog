@@ -41,6 +41,11 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         lifeData: action.lifeData
       })
+    case actionTypes.GET_CREATE_TIME:
+      //生活板块
+      return Object.assign({}, state, {
+        createTimeListData: action.createTimeListData
+      })
     case actionTypes.SET_COMMENT_INDEX:
       //设置评论回复index
       return Object.assign({}, state, {

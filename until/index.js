@@ -73,10 +73,28 @@ export const getHtml = (str, newTime) => {
 }
 
 export function toQueryStr(obj){
-  console.log(obj)
   return "?" + JSON.stringify(obj).replace(/{|}|\"|\'/g, "").replace(/,/g, "&").replace(/:/g, "=");
 }
-
+//对所有文章创建时间进行处理
+export function getYearAndMounth(time) {
+  if(!time)return '';
+  const tt=new Date(Number(time)*1000);
+  return tt.getFullYear()+'年'+String(+tt.getMonth()+1).padStart(2,0)+'月';
+}
+//数组去重并且记住每个重复的个数
+export function cancelRepeat(arr) {
+  let newArr=[];
+  let obj={};
+  for(let i in arr){
+    if(!obj[arr[i]]){
+      obj[arr[i]]=1;
+      newArr.push(arr[i]);
+    }else {
+      obj[arr[i]]++;
+    }
+  }
+  return obj;
+}
 export const regUrl = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
 /**
  * 取出指定数组长度的随机数组
@@ -85,19 +103,22 @@ export const regUrl = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&
  * @returns {Array}
  */
 export const getRandomArr = (arr, len) => {
-  let result = []
+  let result = [];
+  let resultArr = [];
   while (1) {
     let random = Math.random() * arr.length | 0;
     if (result.indexOf(random) === -1) {
       result.push(random)
     }
-    if (result.length === len) {
-
+    if(result.length===10){
+      resultArr=resultArr.concat(result)
+      result=[]
+    }
+    if (resultArr.length>=len ) {
       break;
     }
-
   }
-  return result;
+  return resultArr.slice(0,len)
 }
 /**
  * 获得图片前缀name

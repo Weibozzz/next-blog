@@ -78,7 +78,7 @@ class ListTitle extends Component {
     //随机图片   热门文章（每一页排名前三）  最新文章（最近10天）
     let randomArr = [], hotData = [], newData = [];
 
-    if (listData.length) {
+    if (listData.length&&!pathname) {
       randomArr = getRandomArr(lifeImages, listData.length);
       hotData = listData.map(v => ({id: v.id, visitor: v.visitor})).sort((a, b) => b.visitor - a.visitor).slice(0, 3)
       newData = listData.filter(v => v.createTime - diff >= 0).map(v => v.id);
