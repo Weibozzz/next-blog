@@ -81,20 +81,23 @@ class ListTitle extends Component {
     //随机图片   热门文章（每一页排名前三）  最新文章（最近10天）
     let randomArr = [], hotData = [], newData = [];
 
-    if (listData.length&&!pathname) {
+    if (listData.length&&pathname) {
       randomArr = getRandomArr(lifeImages, listData.length);
       hotData = listData.map(v => ({id: v.id, visitor: v.visitor})).sort((a, b) => b.visitor - a.visitor).slice(0, 3)
       newData = listData.filter(v => v.createTime - diff >= 0).map(v => v.id);
     }
     return (
       <List
+        className="list-title-wrapper"
         itemLayout="vertical"
         size="large"
         dataSource={listData}
         footer={<div style={{color: '#999'}}>我是有底线的 ……</div>}
         renderItem={(item, index) => {
-          let lifeImageSrc = randomArr.length ? randomArr[index] : '';
-          let ResultLifeUrl = lifeImages[lifeImageSrc].dl_remove_attname_url;
+          let lifeImageSrc = randomArr.length ? randomArr[index] : null;
+
+          let ResultLifeUrl = lifeImageSrc!==null&&lifeImages[lifeImageSrc].dl_remove_attname_url;
+
           let isIcon = pathname === '';
           const {type=['js']} = item;
           const srcImg = type.split(',')[0]||'js';

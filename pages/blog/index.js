@@ -31,12 +31,13 @@ import {
   POST_ARTICLE_TYPE
 } from '../../config/constantsData';
 import MyLayout from '../../components/MyLayout';
-import {real_ip,getYearAndMounth,cancelRepeat} from '../../until';
+import {real_ip, getYearAndMounth, cancelRepeat} from '../../until';
 import './index.less'
 
 const Option = Select.Option;
 const {Content} = Layout;
 const Search = Input.Search;
+
 
 class Blog extends Component {
   constructor() {
@@ -45,7 +46,10 @@ class Blog extends Component {
       currentPage: 1,
       keyWard: '',
       searchType: TITLE,
-      isNotWd:false
+      isNotWd: false,
+      timeActiveIndex: -1,
+      all:'全部文章',
+      highLightAll:true
     };
   }
 
@@ -75,51 +79,52 @@ class Blog extends Component {
   }
 
   onSearch(val, type) {
-    if (Object.prototype.toString.call(type) !== '[object String]') {
+    const {all,searchType} = this.state;
+    if (Object.prototype.toString.call(type) !== '[object String]' && type != null) {
       type = 'all';
     }
+    if (type == null) {
+      type = TITLE
+    }
+    if (!type.startsWith('timeRange|')) {
+      //不是时间筛选
+      this.setState({
+        timeActiveIndex: -1,
+        highLightAll:false
+      })
+    }
+    if(type===all){
+      //===全部文章
+      type='all'
+      this.setState({
+        highLightAll:true
+      })
+    }
 
+    if(searchType==='article'){
+      type='article'
+    }
     this.setState({
-      keyWard: val
+      keyWard: val,
     })
-    if(type!=='all'){
-      if(val==='btnSearch'){
-        this.setState({
-          isNotWd:false,
-          searchType:TITLE,
-          keyWard:''
-        })
-      }else {
-        this.setState({
-          isNotWd:true,
-          searchType:type
-        })
-      }
+    if (type !== 'all') {
+      this.setState({
+        isNotWd: true,
+        searchType:type,
+        highLightAll:false
+      })
     }
     const {dispatch} = this.props;
-    const {searchType} = this.state;
-    let queryStringObj, queryTotalString;
-    if (val) {
-      queryStringObj = {
-        type: searchType,
-        num: 1,
-        pageNum,
-        wd: val
-      }
-      queryTotalString = {
-        type: searchType,
-        wd: val
-      };
-    } else {
-      queryStringObj = {
-        type:searchType,
-        num: 1,
-        pageNum
-      }
-      queryTotalString = {
-        type:searchType
-      };
+    let queryStringObj = {
+      type,
+      num: 1,
+      pageNum,
+      wd: val
     }
+    let queryTotalString = {
+      type,
+      wd: val
+    };
 
     getSearchList(dispatch, getBlogUrl(queryStringObj))
     getSearchTotal(dispatch, getTotalUrl(queryTotalString))
@@ -127,7 +132,7 @@ class Blog extends Component {
 
   onChange(page, pageSize) {
     const {dispatch} = this.props
-    const {keyWard: wd,isNotWd,searchType} = this.state
+    const {keyWard: wd, isNotWd, searchType} = this.state
     this.setState({
       currentPage: page
     })
@@ -142,7 +147,7 @@ class Blog extends Component {
       }
       getSearchPageList(dispatch, getBlogUrl(queryStringObj))
     }
-    if (wd !== ''||isNotWd) {
+    if (wd !== '' || isNotWd) {
       return;
     }
     Router.push(`/blog/${page}`)
@@ -172,28 +177,33 @@ class Blog extends Component {
       searchType: value,
     })
   }
-  onArticleTime(title){
+
+  onArticleTime(title, timeIndex) {
     const reg = /(\d{4})年(\d{2})月/;
-    let yyyy,mm;
-    if(!reg.test(title)){
-      yyyy=2017
-      mm=1
-    }else {
+    this.setState({
+      timeActiveIndex: timeIndex
+    })
+    let yyyy, mm;
+    if (!reg.test(title)) {
+      yyyy = 2017
+      mm = 1
+    } else {
       const arr = title.match(reg)
-      yyyy=+arr[1]||2017
-      mm=+arr[2]||1
+      yyyy = +arr[1] || 2017
+      mm = +arr[2] || 1
     }
-    const t1=new Date(yyyy+'-'+mm+'-01 00:00:00').getTime()/1000;
-    mm==12 && (yyyy+=1,mm=0);
-    const t2=new Date(yyyy+'-'+(mm+1)+'-01 00:00:00').getTime()/1000;
-    this.onSearch('',`timeRange|${t1}.${t2}`)
+    const t1 = new Date(yyyy + '-' + mm + '-01 00:00:00').getTime() / 1000;
+    mm == 12 && (yyyy += 1, mm = 0);
+    const t2 = new Date(yyyy + '-' + (mm + 1) + '-01 00:00:00').getTime() / 1000;
+    this.onSearch('', `timeRange|${t1}.${t2}`)
   }
+
   render() {
     let total, listData;
-    let {currentPage, searchType} = this.state;
+    let {currentPage, searchType, timeActiveIndex,all,highLightAll} = this.state;
     let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = [], userAgent = 'pc', hotArticleData = [], createTimeListData = []} = this.props;
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
-    const yearMonthArr = createTimeListData.map(v=>getYearAndMounth(v.createTime))
+    const yearMonthArr = createTimeListData.map(v => getYearAndMounth(v.createTime))
     const resultYMArr = cancelRepeat(yearMonthArr)
     if (searchData.length) {
       pageBlogData = searchData
@@ -207,6 +217,16 @@ class Blog extends Component {
     } else {
       ({total} = totalPageData[0] || {})
     }
+    const iconArr = ['mysql', 'react', 'vue', 'angular', 'node'];
+
+    const selectBefore = (
+      <Select defaultValue="title模糊搜索"
+              onChange={this.onSearchTypeHandleChange.bind(this)}
+              style={{ width: 140 }}>
+        <Option value={TITLE}>title模糊搜索</Option>
+        <Option value={ARTICLE}>article模糊搜索</Option>
+      </Select>
+    );
     return (
       <div className="Blog">
         <Head>
@@ -219,25 +239,8 @@ class Blog extends Component {
               xs={{span: 24}}
               lg={{span: 16}}>
               <Content>
-                <Row>
-                  <Col span={20}>
-                    <Search placeholder="input search text" onSearch={this.onSearch.bind(this,'btnSearch')} enterButton="Search"
-                            size="large"/>
-                  </Col>
-                  <Col span={4}>
-                    <Select
-                      showSearch
-                      style={{width: '100%'}}
-                      placeholder="title模糊搜索"
-                      optionFilterProp="children"
-                      onChange={this.onSearchTypeHandleChange.bind(this)}
-                      filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                    >
-                      <Option value={TITLE}>title模糊搜索</Option>
-                      <Option value={ARTICLE}>article模糊搜索</Option>
-                    </Select>
-                  </Col>
-                </Row>
+                <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
+                        size="large" addonBefore={selectBefore}/>
                 <div style={{background: '#fff', padding: 24, minHeight: 380}}>
                   <ListTitle searchType={searchType} dataSource={{listData}}/>
                   <Pagination current={currentPage} total={total} itemRender={this.itemRender.bind(this)}
@@ -254,69 +257,47 @@ class Blog extends Component {
                   <p className='title'>相关标签</p>
                   <ul className='clearfix'>
                     {
-                      POST_ARTICLE_TYPE.map(v => {
-                        switch (v.key) {
-                          case 'mysql':
-                            return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                       className='tag fl iconfont icon-mysql'>{v.key}</li>;
-                            break;
-                          case 'react':
-                            return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                       className='tag fl iconfont icon-react'>{v.key}</li>;
-                            break;
-                          case 'vue':
-                            return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                       className='tag fl iconfont icon-vue'>{v.key}</li>;
-                            break;
-                          case 'angular':
-                            return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                       className='tag fl iconfont icon-angular'>{v.key}</li>;
-                            break;
-                          case 'node':
-                            return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                       className='tag fl iconfont icon-nodejs'>{v.key}</li>;
-                            break;
-                          default:
-                            return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                       className='tag fl '>{v.key}</li>;
-                        }
+                      [...[{key: all}], ...POST_ARTICLE_TYPE].map(v => {
+                        return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
+                                   className={`${((v.key === all&&highLightAll)||searchType === v.key) ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>{v.key}</li>;
                       })
                     }
                   </ul>
                 </div>
                 <div>
                   <p className='title'>排行榜</p>
-                  <ul>
-                    {
-                      hotArticleData.map((v, index) => {
-
-                        return <li key={v.id} className="clearfix">
-                          <Row>
-                            <Col span={1}>
-                              <span style={{color: '#999'}}>{index + 1}.</span>
-                            </Col>
-                            <Col span={19}>
-                              <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
-                                <a style={{marginLeft: 4}}> {v.title}</a>
-                              </Link>
-                            </Col>
-                            <Col span={4}>
-                              <span className='fr' style={{color: '#666'}}><Icon type="eye"/> {v.visitor}</span>
-                            </Col>
-                          </Row>
-                        </li>;
-                      })
-                    }
-                  </ul>
+                  <List
+                    size="small"
+                    bordered
+                    dataSource={hotArticleData}
+                    renderItem={(v, index) => (<List.Item>
+                      <Col span={20}>
+                        <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
+                          <a style={{marginLeft: 4}}> {v.title}</a>
+                        </Link>
+                      </Col>
+                      <Col span={4} className='fr'>
+                        <span className='fr' style={{color: '#666'}}><Icon type="eye"/> {v.visitor}</span>
+                      </Col>
+                    </List.Item>)}
+                  />
                 </div>
                 <div>
                   <h3>文章存档</h3>
                   <Row>
-                    {
-                      Object.entries(resultYMArr).map(v=>(
-                        <Col span={12} onClick={this.onArticleTime.bind(this,v[0])} key={v[0]}> {v[0]}({v[1]})</Col>
-                      ))
-                    }
+                    <List
+                      size="small"
+                      dataSource={Object.entries(resultYMArr)}
+                      renderItem={(item, index) => (
+                        <Col span={12} onClick={this.onArticleTime.bind(this, item[0], index)} key={item[0]}>
+                          <List.Item>
+                            <span
+                              className={`time-active ${timeActiveIndex === index ? 'active' : ''}`}>{item[0]}({item[1]})</span>
+                          </List.Item>
+                        </Col>
+                      )
+                      }
+                    />
                   </Row>
                 </div>
               </div>

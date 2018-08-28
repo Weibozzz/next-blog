@@ -117,8 +117,9 @@ class TopNav extends Component {
     } catch (err) {
       collectArr = []
     }
-    if(!collectArr.length){
-      message.warning(`还没有收藏过文章，点击小星星进行本地收藏！`);
+    if(!Array.isArray(collectArr)||!collectArr.length){
+      message.warning(`还没有收藏过文章，点击全部文章，然后点击小星星进行本地收藏！`);
+      return ;
     }
     getSearchList(dispatch, 'myCollect',collectArr)
   }

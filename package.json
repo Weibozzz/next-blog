@@ -10,7 +10,7 @@
     "export": "next export",
     "start": "cross-env NODE_ENV=production node server.js",
     "prd": "cross-env NODE_ENV=production pm2 start server.js",
-    "submodule:update":"git submodule update --init --recursive",
+    "submodule:update": "git submodule update --init --recursive",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -45,6 +45,7 @@
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.4.1",
     "react-highlight": "^0.12.0",
+    "react-lazyload": "^2.3.0",
     "react-markdown": "^3.3.4",
     "react-mde": "^5.6.0",
     "react-redux": "^5.0.7",

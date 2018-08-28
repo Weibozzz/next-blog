@@ -28,6 +28,7 @@ import './pop-tips.less'
 import {addZan, getHotArticleList,getHotRecommendList} from "../../store/actions";
 
 
+
 //定义
 const {Content} = Layout;
 
@@ -215,6 +216,7 @@ class Detail extends Component {
                       __html: _html_content
                     }}
                   ></div>
+
                 </Col>
                 {
                   bool ? <Col

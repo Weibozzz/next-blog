@@ -110,7 +110,7 @@ export const getRandomArr = (arr, len) => {
     if (result.indexOf(random) === -1) {
       result.push(random)
     }
-    if(result.length===10){
+    if(result.length===Math.min(10,len)){
       resultArr=resultArr.concat(result)
       result=[]
     }
