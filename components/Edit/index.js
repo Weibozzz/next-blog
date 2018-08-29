@@ -20,11 +20,12 @@ marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
   gfm: true,
   tables: true,
-  breaks: false,
+  breaks: true,
   pedantic: false,
-  sanitize: true,
   smartLists: true,
-  smartypants: false
+  xhtml:false,
+  smartypants: false,
+  sanitize: false,
 });
 
 class Edit extends Component {
@@ -78,7 +79,6 @@ class Edit extends Component {
 
   onContentChange(e) {
     let innerText = e.target.innerText
-    // let innerText = e.target.value
     let markCont = marked(innerText)
     const {handleChangeMarkEdit} = this.props;
     handleChangeMarkEdit(innerText)
