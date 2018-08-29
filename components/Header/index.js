@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Layout, Menu, Breadcrumb, Row, Col,message} from 'antd';
+import {Layout, Menu, Breadcrumb, Row, Col, message} from 'antd';
 import Link from 'next/link'
 // prefetch预加载
 import dynamic from 'next/dynamic';
 import * as ROUTER from '../../config/constantsData';
-import {getBlogUrl, postAdminPasswordUrl} from '../../config';
-import {getSearchList, postAdminPassword} from '../../store/actions';
+import {getBlogUrl, postAdminPasswordUrl, getTotalUrl} from '../../config';
+import {getSearchList, getSearchTotal, postAdminPassword, collectArticleList} from '../../store/actions';
 import MyHead from '../../components/MyHead';
-import {LINK_ABOUT_ME} from "../../config/constantsData";
+import {LINK_ABOUT_ME, pageNum} from "../../config/constantsData";
 import './index.less'
 
 //toptis不需要seo
-const DynasicTopTipsNoSsr = dynamic(import('../../components/TopTips'),{
-  ssr:false
+const DynasicTopTipsNoSsr = dynamic(import('../../components/TopTips'), {
+  ssr: false
 })
 const {Header, Content} = Layout;
 const routes = [
@@ -25,7 +25,8 @@ const routes = [
   {
     href: ROUTER.BLOG,
     txt: ROUTER.BLOG_TXT,
-    isSuperAdmin: false
+    isSuperAdmin: false,
+    isArticleList: true
   },
   {
     href: ROUTER.LIFE,
@@ -46,7 +47,7 @@ const routes = [
     href: ROUTER.BLOG,
     txt: '我的收藏',
     isSuperAdmin: false,
-    isMyCollcet:true
+    isMyCollcet: true
   },
   {
     href: ROUTER.ADMIN,
@@ -71,6 +72,7 @@ class TopNav extends Component {
     super(props);
     this.state = {
       isLogin: false,
+      isAll: false,
       defaultSelectedKeys: '/'
     }
   }
@@ -108,8 +110,14 @@ class TopNav extends Component {
       isLogin: false
     })
   }
-  onMyCollect(){
+
+  onMyCollect(articleList) {
+    const {isAll} = this.state;
+    let bool = articleList === 'articleList';
     const {dispatch} = this.props;
+    !bool && this.setState({
+      isAll: !isAll
+    })
     let collectArrStr = localStorage.getItem('collectArrStr');
     let collectArr;
     try {
@@ -117,21 +125,63 @@ class TopNav extends Component {
     } catch (err) {
       collectArr = []
     }
-    if(!Array.isArray(collectArr)||!collectArr.length){
+    if (!Array.isArray(collectArr) || !collectArr.length) {
       message.warning(`还没有收藏过文章，点击全部文章，然后点击小星星进行本地收藏！`);
-      return ;
+      return;
     }
-    getSearchList(dispatch, 'myCollect',collectArr)
+
+    if (this.state.isAll || bool) {
+      console.log(123, this.state.isAll, bool)
+      let queryStringObj = {
+        type: 'all',
+        num: 1,
+        pageNum,
+        wd: ''
+      }
+      let queryTotalString = {
+        type: 'all',
+        wd: ''
+      };
+      getSearchList(dispatch, getBlogUrl(queryStringObj))
+      getSearchTotal(dispatch, getTotalUrl(queryTotalString))
+      if (bool) {
+        collectArticleList(dispatch, false)
+        return;
+      }
+    } else {
+      getSearchList(dispatch, 'myCollect', collectArr)
+    }
+    collectArticleList(dispatch, !this.state.isAll)
   }
+
+  onMyFn(item) {
+    const {isCollectArticle} = this.props;
+    let fn = () => {
+    };
+    if (item.exit) {
+      fn = this.onExit.bind(this)
+    } else if (item.isMyCollcet) {
+      fn = this.onMyCollect.bind(this)
+    }
+    else if (item.isArticleList&&isCollectArticle) {
+      fn = this.onMyCollect.bind(this, 'articleList')
+    }
+    return <Menu.Item key={item.txt}>
+      <Link prefetch href={item.href}>
+        <a onClick={fn}>{item.txt}</a>
+      </Link>
+    </Menu.Item>;
+  }
+
   render() {
     let {isLogin, selectedKeys = ['/']} = this.state;
-    const {userAgent='pc'} = this.props;
+    const {userAgent = 'pc'} = this.props;
     if (Object.prototype.toString.call(selectedKeys) === '[object String]') {
       selectedKeys = ['/']
     }
     const regSelectKey = /\/blog[\/]?[0-9]?/;
-    if(selectedKeys[0]&&regSelectKey.test(selectedKeys[0])){
-      selectedKeys=['/blog']
+    if (selectedKeys[0] && regSelectKey.test(selectedKeys[0])) {
+      selectedKeys = ['/blog']
     }
     let newRoutes;
     if (isLogin) {
@@ -143,12 +193,18 @@ class TopNav extends Component {
       <div>
         <MyHead/>
         <Layout>
-          <Header style={{position: userAgent==='pc'?'fixed':'static', height: '64px', width: '100%', padding: 0, zIndex: 10}}>
+          <Header style={{
+            position: userAgent === 'pc' ? 'fixed' : 'static',
+            height: '64px',
+            width: '100%',
+            padding: 0,
+            zIndex: 10
+          }}>
             <Row>
               <Col span={2}></Col>
-              <Col sm={{ span: 24 }}
-                   xs={{ span: 24 }}
-                   lg={{ span: 17}}>
+              <Col sm={{span: 24}}
+                   xs={{span: 24}}
+                   lg={{span: 17}}>
                 <Menu
                   theme="dark"
                   mode="horizontal"
@@ -159,25 +215,7 @@ class TopNav extends Component {
                 >
                   {
                     newRoutes.map((item, index) => {
-                      return item.exit ?
-                        <Menu.Item key={item.txt}>
-                          <Link prefetch href={item.href}>
-                            <a onClick={this.onExit.bind(this)}>{item.txt}</a>
-                          </Link>
-                        </Menu.Item>
-                        :
-                        item.isMyCollcet?
-                          <Menu.Item key={item.txt}>
-                            <Link prefetch href={item.href}>
-                              <a onClick={this.onMyCollect.bind(this)}>{item.txt}</a>
-                            </Link>
-                          </Menu.Item>
-                          :
-                        <Menu.Item key={item.txt}>
-                          <Link prefetch href={item.href}>
-                            <a>{item.txt}</a>
-                          </Link>
-                        </Menu.Item>
+                      return this.onMyFn(item)
 
                     })
                   }
@@ -187,11 +225,11 @@ class TopNav extends Component {
           </Header>
 
           <Row>
-            <Col sm={{ span: 24, offset: 0 }}
-                 xs={{ span: 24, offset: 0 }}
-                 lg={{ span: 20, offset: 2}}>
+            <Col sm={{span: 24, offset: 0}}
+                 xs={{span: 24, offset: 0}}
+                 lg={{span: 20, offset: 2}}>
 
-              <Content style={{ marginTop: 64}}>
+              <Content style={{marginTop: 64}}>
                 <DynasicTopTipsNoSsr/>
               </Content>
             </Col>
@@ -203,8 +241,8 @@ class TopNav extends Component {
 }
 
 const mapStateToProps = state => {
-  const {postAdminPasswordData} = state
-  return {postAdminPasswordData};
+  const {postAdminPasswordData,isCollectArticle} = state
+  return {postAdminPasswordData,isCollectArticle};
 }
 export default connect(mapStateToProps)(TopNav)
 

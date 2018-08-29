@@ -70,6 +70,11 @@ export const setAnswerId =  (dispatch, answerId) => {
   return dispatch({type: actionTypes.SET_ANSWER_ID, answerId})
 
 }
+export const collectArticleList =  (dispatch, isCollectArticle) => {
+  //设置是否展示收藏文章列表
+  return dispatch({type: actionTypes.IS_COLLECT_ARTICLE, isCollectArticle})
+
+}
 export const getIpList = async (dispatch, url) => {
   //生活板块
   const res = await fetch(url)

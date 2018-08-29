@@ -56,6 +56,11 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         answerId: action.answerId
       })
+    case actionTypes.IS_COLLECT_ARTICLE:
+      //设置是否展示收藏文章列表
+      return Object.assign({}, state, {
+        isCollectArticle: action.isCollectArticle
+      })
 
     case actionTypes.GET_QINIU_TOKEN:
       //获得七牛云存储的token

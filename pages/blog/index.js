@@ -16,7 +16,7 @@ import {
   getSearchTotal,
   getSearchPageList,
   postSaveIp,
-  getIpList, getViewList, getCreateTimeList
+  getIpList, getViewList, getCreateTimeList, collectArticleList
 } from '../../store/actions'
 import ListTitle from '../../components/ListTitle';
 import {getBlogUrl, getIpUrl, getTotalUrl, getViewUrl, postSaveIpUrl, getCreateTimeUrl} from '../../config';
@@ -48,8 +48,8 @@ class Blog extends Component {
       searchType: TITLE,
       isNotWd: false,
       timeActiveIndex: -1,
-      all:'全部文章',
-      highLightAll:true
+      all: '全部文章',
+      highLightAll: true
     };
   }
 
@@ -79,7 +79,7 @@ class Blog extends Component {
   }
 
   onSearch(val, type) {
-    const {all,searchType} = this.state;
+    const {all, searchType} = this.state;
     if (Object.prototype.toString.call(type) !== '[object String]' && type != null) {
       type = 'all';
     }
@@ -90,19 +90,19 @@ class Blog extends Component {
       //不是时间筛选
       this.setState({
         timeActiveIndex: -1,
-        highLightAll:false
+        highLightAll: false
       })
     }
-    if(type===all){
+    if (type === all) {
       //===全部文章
-      type='all'
+      type = 'all'
       this.setState({
-        highLightAll:true
+        highLightAll: true
       })
     }
 
-    if(searchType==='article'){
-      type='article'
+    if (searchType === 'article') {
+      type = 'article'
     }
     this.setState({
       keyWard: val,
@@ -110,8 +110,8 @@ class Blog extends Component {
     if (type !== 'all') {
       this.setState({
         isNotWd: true,
-        searchType:type,
-        highLightAll:false
+        searchType: type,
+        highLightAll: false
       })
     }
     const {dispatch} = this.props;
@@ -128,6 +128,7 @@ class Blog extends Component {
 
     getSearchList(dispatch, getBlogUrl(queryStringObj))
     getSearchTotal(dispatch, getTotalUrl(queryTotalString))
+    collectArticleList(dispatch, false)
   }
 
   onChange(page, pageSize) {
@@ -200,8 +201,12 @@ class Blog extends Component {
 
   render() {
     let total, listData;
-    let {currentPage, searchType, timeActiveIndex,all,highLightAll} = this.state;
-    let {pageBlogData = [], totalPageData = [], searchData = [], searchTotalData = [], userAgent = 'pc', hotArticleData = [], createTimeListData = []} = this.props;
+    let {currentPage, searchType, timeActiveIndex, all, highLightAll} = this.state;
+    let {
+      pageBlogData = [], totalPageData = [], searchData = [],
+      searchTotalData = [], userAgent = 'pc', hotArticleData = [],
+      createTimeListData = [], isCollectArticle = false
+    } = this.props;
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
     const yearMonthArr = createTimeListData.map(v => getYearAndMounth(v.createTime))
     const resultYMArr = cancelRepeat(yearMonthArr)
@@ -222,7 +227,7 @@ class Blog extends Component {
     const selectBefore = (
       <Select defaultValue="title模糊搜索"
               onChange={this.onSearchTypeHandleChange.bind(this)}
-              style={{ width: 140 }}>
+              style={{width: 140}}>
         <Option value={TITLE}>title模糊搜索</Option>
         <Option value={ARTICLE}>article模糊搜索</Option>
       </Select>
@@ -243,8 +248,10 @@ class Blog extends Component {
                         size="large" addonBefore={selectBefore}/>
                 <div style={{background: '#fff', padding: 24, minHeight: 380}}>
                   <ListTitle searchType={searchType} dataSource={{listData}}/>
+                  {!isCollectArticle &&
                   <Pagination current={currentPage} total={total} itemRender={this.itemRender.bind(this)}
-                              onChange={this.onChange.bind(this)}/>
+                              onChange={this.onChange.bind(this)}/>}
+
                 </div>
               </Content>
             </Col>
@@ -259,7 +266,7 @@ class Blog extends Component {
                     {
                       [...[{key: all}], ...POST_ARTICLE_TYPE].map(v => {
                         return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                   className={`${((v.key === all&&highLightAll)||searchType === v.key) ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>{v.key}</li>;
+                                   className={`${((v.key === all && highLightAll) || searchType === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>{v.key}</li>;
                       })
                     }
                   </ul>
@@ -327,7 +334,7 @@ Blog.getInitialProps = async function (context) {
 }
 //这里根据需要传入redux
 const mapStateToProps = state => {
-  const {res, searchData, searchTotalData, hotArticleData, createTimeListData} = state
-  return {res, searchData, searchTotalData, hotArticleData, createTimeListData};
+  const {res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle} = state
+  return {res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle};
 }
 export default connect(mapStateToProps)(Blog)
