@@ -21,6 +21,7 @@ import MyLayout from '../../components/MyLayout';
 //其他
 import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl} from '../../config';
 import {COMMON_TITLE, MY_BLOG} from '../../config/constantsData';
+import {markdownConfig} from '../../config/markdown';
 import {POPUP_TIPS} from '../../config/constantTag';
 import {getHtml, OldTime,throttle} from '../../until';
 import './index.less'
@@ -33,20 +34,11 @@ import {addZan, getHotArticleList,getHotRecommendList} from "../../store/actions
 const {Content} = Layout;
 
 let timer;
-hljs.configure({
-  tabReplace: '  ',
-  classPrefix: 'hljs-',
-  languages: ['CSS', 'HTML, XML', 'JavaScript', 'PHP', 'Python', 'Stylus', 'TypeScript', 'Markdown']
-})
+const {options,config} = markdownConfig
+hljs.configure(config)
 marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: true,
-  smartLists: true,
-  smartypants: false
+  ...options
 });
 
 class Detail extends Component {

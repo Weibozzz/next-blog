@@ -7,25 +7,16 @@ import marked from 'marked'
 import hljs from 'highlight.js';
 
 import {getHtml, OldTime} from '../../until';
+import {markdownConfig} from "../../config/markdown";
 // import './index.less';
 
 const { TextArea } = Input;
 
-hljs.configure({
-  tabReplace: '  ',
-  classPrefix: 'hljs-',
-  languages: ['CSS', 'HTML, XML', 'JavaScript', 'PHP', 'Python', 'Stylus', 'TypeScript', 'Markdown']
-})
+const {options,config} = markdownConfig
+hljs.configure(config)
 marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
-  gfm: true,
-  tables: true,
-  breaks: true,
-  pedantic: false,
-  smartLists: true,
-  xhtml:false,
-  smartypants: false,
-  sanitize: false,
+  ...options
 });
 
 class Edit extends Component {
