@@ -76,6 +76,10 @@ class FormComment extends Component {
           message.warning('用户名或者评论内容过少')
           return;
         }
+        if(comment.length>500){
+          message.warning('评论内容不能超过500字符')
+          return;
+        }
 
         const realIp = await real_ip()
         let queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};

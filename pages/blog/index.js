@@ -199,6 +199,13 @@ class Blog extends Component {
     this.onSearch('', `timeRange|${t1}.${t2}`)
   }
 
+  getTagKey(item){
+    const {key,value} = item;
+    if(key==='interesting'||key==='fight'||key==='others'){
+      return value;
+    }
+    return key;
+  }
   render() {
     let total, listData;
     let {currentPage, searchType, timeActiveIndex, all, highLightAll} = this.state;
@@ -266,7 +273,7 @@ class Blog extends Component {
                     {
                       [...[{key: all}], ...POST_ARTICLE_TYPE].map(v => {
                         return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                   className={`${((v.key === all && highLightAll) || searchType === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>{v.key}</li>;
+                                   className={`${((v.key === all && highLightAll) || searchType === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>{this.getTagKey(v)}</li>;
                       })
                     }
                   </ul>

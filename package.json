@@ -20,6 +20,7 @@
     "@zeit/next-less": "0.3.0",
     "antd": "^3.6.4",
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "child_process": "^1.0.2",
     "classnames": "^2.2.6",
     "copy-text-to-clipboard": "^1.0.4",

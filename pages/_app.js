@@ -5,6 +5,7 @@ import withReduxStore from '../lib/with-redux-store'
 import {Provider} from 'react-redux'
 import Header from '../components/Header';
 import Footer from '../components/Footer'
+import 'babel-polyfill'
 import '../asserts/styles.less'
 import './index.less'
 import './markdown.less'
