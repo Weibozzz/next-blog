@@ -7,7 +7,7 @@ import {
 } from 'antd';
 
 import { regUrl, real_ip} from "../../until";
-import {postComments, postUserComments,setCommentIndex} from "../../store/actions";
+import {postComments, postUserComments, setAnswerId, setCommentIndex} from "../../store/actions";
 import {postCommentUrl, postUserCommentUrl} from "../../config";
 
 const FormItem = Form.Item;
@@ -117,6 +117,7 @@ class FormComment extends Component {
           })
 
         setCommentIndex(dispatch,-1)
+        setAnswerId(dispatch,'')
       }
     });
   }

@@ -42,15 +42,11 @@ npm run dev
 2. cdn  node查看图片日期
 3. 配置图片描述和更改
 4. 上传图片高质量暂未支持上传,上传代码改进
-6. 推荐文章
 7. 上传为刚好1M bug
-8. 发布文章定时器
-9. 后台要支持快速改文章标签支持多选
 10. 登陆后支持收藏文章和修改评论
-14. 发布文章自动跳转修改文章，文章末尾有br标签
-15. 拼音匹配
-16. 收藏hover title提示
-17. github的star
+7. 顶部加载滚动条首次没loading
+8. 增加koa子模块
+
 
 ##### 待学习修改
 1. 开发环境 warning.js:33 Warning: A component is `contentEditable`

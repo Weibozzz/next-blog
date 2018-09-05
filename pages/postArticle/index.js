@@ -13,17 +13,6 @@ const {Content} = Layout;
 
 
 class PostArticle extends Component {
-  constructor() {
-    super()
-    this.state = {
-
-    }
-
-  }
-
-
-
-
   render() {
     const {pageBlogData} = this.props;
     return (

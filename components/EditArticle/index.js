@@ -90,6 +90,13 @@ class EditArticle extends Component {
   }
 
   componentWillUnmount() {
+    let {inter,timer} = this.state;
+    this.setState({
+      inter:null,
+      timer:null,
+    })
+    clearInterval(inter);
+    clearTimeout(timer)
   }
 
   shouldComponentUpdate(a, b) {
@@ -125,7 +132,7 @@ class EditArticle extends Component {
   //编辑器内容
   handleChangeMarkEdit(txt) {
     let time = 15;
-    let {inter, isAutoSubmit} = this.state;
+    let {inter,timer, isAutoSubmit} = this.state;
     if (inter) {
       clearInterval(inter)
       this.setState({
@@ -146,7 +153,6 @@ class EditArticle extends Component {
       saveStatus: `正在保存(${time})……`,
       notEditArticle: true //正在修改文章
     })
-    let {timer} = this.state;
     if (timer) {
       clearTimeout(timer)
       this.setState({
@@ -188,14 +194,16 @@ class EditArticle extends Component {
       message.warning('url不正确')
       return;
     }
-    let {inter} = this.state;
+    let {inter,timer} = this.state;
     if (inter) {
-      clearInterval(inter)
       this.setState({
         inter: null,
+        timer:null,
         isAutoSubmit: false,
         saveStatus: '已提交'
       })
+      clearInterval(inter);
+      clearTimeout(timer)
     }
     const bool = isEdit !== '';
     if (!bool) {
@@ -224,7 +232,11 @@ class EditArticle extends Component {
         return;
       }
       if (res) {
-        message.success(bool ? this.editTipsDom() : this.postTipsDom(++maxArticleId));
+        const newMaxArticleId = ++maxArticleId
+        message.success(bool ? this.editTipsDom() : this.postTipsDom(newMaxArticleId));
+        if(!bool){
+          Router.push(`/adminDetail/${newMaxArticleId}`)
+        }
       }
     })
   }

@@ -22,7 +22,7 @@ import MyLayout from '../../components/MyLayout';
 import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl} from '../../config';
 import {COMMON_TITLE, MY_BLOG} from '../../config/constantsData';
 import {markdownConfig} from '../../config/markdown';
-import {POPUP_TIPS} from '../../config/constantTag';
+import {getRandomMarginLeft, getRandomMarginTop, getRandomTxt, POPUP_TIPS} from '../../config/constantTag';
 import {getHtml, OldTime,throttle} from '../../until';
 import './index.less'
 import './pop-tips.less'
@@ -177,9 +177,12 @@ class Detail extends Component {
             xs={{span: 0}}
             lg={{span: 2}}>
             <div className="remark-num">{resultLike}</div>
-            <Button onClick={this.onAddZan.bind(this)} className='my-button-icon'>
-              <Icon type="like"/>
-            </Button>
+            <Tooltip placement="right" title={`赞一个吧！`}>
+              <Button onClick={this.onAddZan.bind(this)} className='my-button-icon'>
+                <Icon type="like"/>
+              </Button>
+            </Tooltip>
+
             <Icon className='icon' type="weibo"/>
             <Icon className='icon' type="twitter"/>
             <Icon className='icon' type="wechat"/>
@@ -191,7 +194,9 @@ class Detail extends Component {
                 </a> : ''
             }
             <a href="#comment">
-              <Icon className='icon' type="message"/>
+              <Tooltip placement="right" title={`来评论吧`}>
+                <Icon className='icon' type="message"/>
+              </Tooltip>
             </a>
           </Col>
           <Col sm={{span: 24}}
@@ -232,11 +237,13 @@ class Detail extends Component {
               <PrevNextPage dataSource={{url, lastIdData, nextIdData}}></PrevNextPage>
               <Row className='zan-wrapper'>
                 <Col span={4} offset={10}>
-                  <Button onClick={this.onAddZan.bind(this)} type="primary" size="large">
-                    赞
-                    <span className="split-line">|</span>
-                    {resultLike}
-                  </Button>
+                  <Tooltip placement="bottom" title={`赞一个吧！`}>
+                    <Button onClick={this.onAddZan.bind(this)} type="primary" size="large">
+                      赞
+                      <span className="split-line">|</span>
+                      {resultLike}
+                    </Button>
+                  </Tooltip>
                 </Col>
               </Row>
               <Divider/>
@@ -247,7 +254,9 @@ class Detail extends Component {
                     hotRecommendData.map(v=>(
                       <li key={v.id}>
                         <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
-                          <a >{v.title}</a>
+                          <Tooltip placement="top" title={v.title}>
+                            <a >{v.title}</a>
+                          </Tooltip>
                         </Link>
                         {
                           v.type.split(',').map((v,index)=>(<span style={{marginLeft:index===0?10:0}} key={v} className="tag">{v} </span>))

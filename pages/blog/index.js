@@ -199,13 +199,14 @@ class Blog extends Component {
     this.onSearch('', `timeRange|${t1}.${t2}`)
   }
 
-  getTagKey(item){
-    const {key,value} = item;
-    if(key==='interesting'||key==='fight'||key==='others'){
+  getTagKey(item) {
+    const {key, value} = item;
+    if (key === 'interesting' || key === 'fight' || key === 'others') {
       return value;
     }
     return key;
   }
+
   render() {
     let total, listData;
     let {currentPage, searchType, timeActiveIndex, all, highLightAll} = this.state;
@@ -273,7 +274,11 @@ class Blog extends Component {
                     {
                       [...[{key: all}], ...POST_ARTICLE_TYPE].map(v => {
                         return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                   className={`${((v.key === all && highLightAll) || searchType === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>{this.getTagKey(v)}</li>;
+                                   className={`${((v.key === all && highLightAll) || searchType === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>
+                          <Tooltip placement="right" title={this.getTagKey(v)}>
+                            {this.getTagKey(v)}
+                          </Tooltip>
+                        </li>;
                       })
                     }
                   </ul>
@@ -287,11 +292,15 @@ class Blog extends Component {
                     renderItem={(v, index) => (<List.Item>
                       <Col span={20}>
                         <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
-                          <a style={{marginLeft: 4}}> {v.title}</a>
+                          <Tooltip placement="top" title={v.title}>
+                            <a style={{marginLeft: 4}}> {v.title}</a>
+                          </Tooltip>
                         </Link>
                       </Col>
                       <Col span={4} className='fr'>
-                        <span className='fr' style={{color: '#666'}}><Icon type="eye"/> {v.visitor}</span>
+                        <Tooltip placement="right" title={`阅读量 ${v.visitor}`}>
+                          <span className='fr' style={{color: '#666'}}><Icon type="eye"/> {v.visitor}</span>
+                        </Tooltip>
                       </Col>
                     </List.Item>)}
                   />
@@ -305,8 +314,13 @@ class Blog extends Component {
                       renderItem={(item, index) => (
                         <Col span={12} onClick={this.onArticleTime.bind(this, item[0], index)} key={item[0]}>
                           <List.Item>
-                            <span
-                              className={`time-active ${timeActiveIndex === index ? 'active' : ''}`}>{item[0]}({item[1]})</span>
+                            <Tooltip placement="right" title={`${item[0]}的文章`}>
+                              <span
+                                className={`time-active ${timeActiveIndex === index ? 'active' : ''}`}>
+                              {item[0]}({item[1]})
+                            </span>
+                            </Tooltip>
+
                           </List.Item>
                         </Col>
                       )

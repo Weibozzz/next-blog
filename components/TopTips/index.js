@@ -54,10 +54,11 @@ class TopTips extends Component {
         />
         <div>
           <ButtonGroup href={GITHUB_ADDRESS}>
-            <Button className="github-style bm-no-border " icon="github">Star</Button>
-            <Button className="bm-no-border">{stargazers_count}</Button>
+            <Button className="github-style bm-no-border " icon="github">Github</Button>
+            <Tooltip placement="right" title={`Star`}>
+              <Button className="bm-no-border">{stargazers_count}</Button>
+            </Tooltip>
           </ButtonGroup>
-
         </div>
         <style>{`
           .github-style {
@@ -65,8 +66,6 @@ class TopTips extends Component {
   background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
 }
 .bm-no-border{
-  background-color: #eff3f6;
-  background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
   border-bottom: none;
 }
 
