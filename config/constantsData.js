@@ -15,7 +15,7 @@ export const UPLOAD_MAX_SIZE = 1;
 
 //github地址
 export const GITHUB_ADDRESS = 'https://github.com/Weibozzz/next-blog';
-export const TOP_TIPS = 'next服务端渲染博客正在重构和开发中......'
+export const TOP_TIPS = '欢迎来到刘伟波个人网站，喜欢可以收藏哦!'
 //分页数
 export const pageNum = 10;
 export const TITLE = 'title'
@@ -36,6 +36,15 @@ export const ABOUT_TXT = '关于我'
 export const POST_ARTICLE = '/postArticle'
 export const POST_ARTICLE_TXT = '发布文章'
 export const DOCS_TXT = '文档中心'
+export const MENU_RULE = {
+  '/':[BLOG_TXT],
+  [BLOG]:[BLOG_TXT],
+  '我的收藏':[BLOG_TXT],
+  [LIFE]:[LIFE_TXT],
+  [ABOUT]:[ABOUT_TXT],
+  [POST_ARTICLE]:[POST_ARTICLE_TXT],
+  [ADMIN]:[ADMIN_TXT],
+}
 
 //seo
 export const COMMON_TITLE = '刘伟波-天天向上'
@@ -43,6 +52,8 @@ export const INDEX_TITLE = '刘伟波的个人网站'
 export const INDEX_ENGLISH = 'Liu WeiBo\'s Personal Website'
 export const KEYWORDS = '刘伟波, 个人网站,个人博客,  web前端'
 export const Description = '刘伟波的个人网站，刘伟波的技术作品，刘伟波的生活成长'
+
+export const githubApi = 'https://api.github.com/repos/Weibozzz/next-blog'
 
 //首页背景
 export const BG_INDEX = [
@@ -130,13 +141,18 @@ export const POST_ARTICLE_TYPE = [
   {key: "angular", value: " angular"},
   {key: "node", value: " node"},
   {key: "php", value: " php"},
+  {key: "java", value: " java"},
   {key: "mysql", value: " mysql"},
   {key: "server", value: " 服务器之类"},
   {key: "interesting", value: " 生活喜好"},
   {key: "fight", value: " 激励向上"},
+  {key: "markdown", value: " markdown"},
+  {key: "设计模式", value: " 设计模式"},
+  {key: "阅读书籍", value: " 阅读书籍"},
   {key: "算法", value: " 算法"},
   {key: "工具", value: " 工具"},
   {key: "正则", value: " 正则"},
+  {key: "技巧", value: " 技巧"},
   {key: "others", value: " 其他"},
 ];
 //评论icon

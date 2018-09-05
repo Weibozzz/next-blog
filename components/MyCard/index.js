@@ -36,7 +36,7 @@ class MyCard extends Component {
   getUserReactDom(v){
     return v.website && regUrl.test(v.website) ?
       <Link href={v.website}>
-        <a className="link-comment-user" style={{color: '#34538b', fontWeight: 'bold'}}>{v.user || v.name}</a>
+        <a className="link-comment-user" style={{color: '#017E66', fontWeight: 'bold'}}>{v.user || v.name}</a>
       </Link>
       :
       <span style={{color: '#000', fontWeight: 'bold'}}>{v.user || v.name}</span>;

@@ -8,7 +8,7 @@ import * as ROUTER from '../../config/constantsData';
 import {getBlogUrl, postAdminPasswordUrl, getTotalUrl} from '../../config';
 import {getSearchList, getSearchTotal, postAdminPassword, collectArticleList} from '../../store/actions';
 import MyHead from '../../components/MyHead';
-import {LINK_ABOUT_ME, pageNum} from "../../config/constantsData";
+import {MENU_RULE, pageNum} from "../../config/constantsData";
 import './index.less'
 
 //toptis不需要seo
@@ -82,7 +82,7 @@ class TopNav extends Component {
     const {dispatch} = this.props;
     const {password = ''} = sessionStorage;
     this.setState({
-      selectedKeys: [pathname]
+      selectedKeys: MENU_RULE[pathname]||MENU_RULE['/']
     })
     if (!password) {
       return;
@@ -131,7 +131,6 @@ class TopNav extends Component {
     }
 
     if (this.state.isAll || bool) {
-      console.log(123, this.state.isAll, bool)
       let queryStringObj = {
         type: 'all',
         num: 1,
