@@ -132,8 +132,12 @@ class Detail extends Component {
       .sort((a, b) => b.createTime - a.createTime)
 
     const bool = createTime > OldTime || articleID === 1;
-
-    let decode_html = decodeURIComponent(content)
+    let decode_html;
+    try {
+       decode_html = decodeURIComponent(content)
+    } catch (err) {
+       decode_html = content
+    }
     const myBlog = 'http://www.liuweibo.cn/'
     const myOldGithub = 'https://15691808595.github.io'
     const myNewGithub = 'https://Weibozzz.github.io'

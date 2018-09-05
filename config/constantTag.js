@@ -66,6 +66,6 @@ export const default_comment = [{
   "user": "刘伟波",
   "website": "http://www.liuweibo.cn",
   "msg": "关于技术问题或者有啥不懂的都可以留言，我会定期回复答疑，感謝支持！",
-  "createTime": "-1",
+  "createTime": +new Date()/1000,
   "answerId": null
 }];

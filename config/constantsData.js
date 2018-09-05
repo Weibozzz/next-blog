@@ -134,8 +134,10 @@ export const POST_ARTICLE_TYPE = [
   {key: "server", value: " 服务器之类"},
   {key: "interesting", value: " 生活喜好"},
   {key: "fight", value: " 激励向上"},
-  {key: "others", value: " 其他"},
   {key: "算法", value: " 算法"},
+  {key: "工具", value: " 工具"},
+  {key: "正则", value: " 正则"},
+  {key: "others", value: " 其他"},
 ];
 //评论icon
 export const COMMENT_IMAGES = [
@@ -162,7 +164,7 @@ export const COLORS_ARR = [
 //发布文章版权
 export const POST_ARTICLE_COPY =(id)=>{
   return  `
-         
+         <br>
 作者：刘伟波
 
 链接：[${MY_BLOG}/p/${id+1}](${MY_BLOG}/p/${id+1})

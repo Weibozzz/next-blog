@@ -36,7 +36,12 @@ class Edit extends Component {
 
   componentWillMount() {
     const {editCont = '', createTime = ''} = this.props;
-    let decodeOrigin = decodeURIComponent(editCont)
+    let decodeOrigin;
+    try {
+      decodeOrigin = decodeURIComponent(editCont)
+    } catch (err) {
+      decodeOrigin = editCont
+    }
     let markedContent = marked(decodeOrigin);
     this.setState({
       previewContent: markedContent,
