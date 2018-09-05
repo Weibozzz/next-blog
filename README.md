@@ -45,7 +45,8 @@ npm run dev
 6. 推荐文章
 7. 上传为刚好1Mbug
 8. 发布文章定时器
-14.
+14. 发布文章自动跳转修改文章，文章末尾有br标签
+15. 拼音匹配
 
 ##### 待学习修改
 1. 开发环境 warning.js:33 Warning: A component is `contentEditable`
