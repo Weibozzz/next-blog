@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+  Tooltip
+} from 'antd';
 import Link from 'next/link';
 import { COLORS_ARR } from '../../config/constantsData';
 import { getRandomMarginTop, getRandomMarginLeft, getRandomTxt } from '../../config/constantTag';
@@ -20,22 +23,25 @@ class Ad extends Component {
               const color = COLORS_ARR[ran];
               return (
                 <Link key={v.user} href={v.website}>
-                  <a
-                    className="link-friends-a"
-                    style={{ marginLeft: getRandomMarginLeft(), marginTop: getRandomMarginTop() }}
-                    target="_blank"
-                    title={v.user}
-                  >
-                    <span style={{ backgroundColor: color }}>{getRandomTxt(v.user)}</span>
-                  </a>
+                  <Tooltip placement="right" title={v.user}>
+                    <a
+                      className="link-friends-a"
+                      style={{ marginLeft: getRandomMarginLeft(), marginTop: getRandomMarginTop() }}
+                      target="_blank"
+                    >
+                      <span style={{ backgroundColor: color }}>{getRandomTxt(v.user)}</span>
+                    </a>
+                  </Tooltip>
                 </Link>
-
               );
             })
           }
         </div>
-        <div className="remark" title="想展示你的友情链接？赶快评论吧，这里会加上你的友链。">
-          <a className="my-link" href="#comment">想展示你的友情链接？</a>
+        <div className="remark">
+          <Tooltip placement="bottomLeft" title="想展示你的友情链接？赶快评论吧，这里会加上你的友链。">
+            <a className="my-link" href="#comment">想展示你的友情链接？</a>
+          </Tooltip>
+
         </div>
       </div>
     );

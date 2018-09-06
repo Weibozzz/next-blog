@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Row, Col, Form, Button, Icon, Divider
+  Row, Col, Form, Tooltip, Button, Icon, Divider
 } from 'antd';
 import 'whatwg-fetch';
 import Head from 'next/head';
@@ -22,7 +22,6 @@ import {
 } from '../../config';
 import { COMMON_TITLE } from '../../config/constantsData';
 import { markdownConfig } from '../../config/markdown';
-// import { POPUP_TIPS } from '../../config/constantTag';
 import { getHtml, OldTime, throttle } from '../../until';
 import './index.less';
 import './pop-tips.less';
@@ -30,7 +29,6 @@ import { addZan, getHotRecommendList } from "../../store/actions";
 
 
 // 定义
-// const { Content } = Layout;
 
 let timer;
 const { options, config } = markdownConfig;
@@ -85,6 +83,17 @@ class Detail extends Component {
     window.onresize = null;
   }
 
+  getRateWidth() {
+    const { scrollHeight } = document.body;
+    const { innerHeight, innerWidth } = window;
+    const { scrollY } = window;
+    // 这里的rate会大于1，原因是toptips组件ssr为false,导致高度有错误
+    const rate = Math.min(scrollY / (scrollHeight - innerHeight), 1);
+    const topWidth = rate * innerWidth;
+    this.setState({
+      topWidth
+    });
+  }
 
   onAddZan() {
     const { articleID } = this.state;
@@ -106,24 +115,16 @@ class Detail extends Component {
     }, 500);
   }
 
-  getRateWidth() {
-    const { scrollHeight } = document.body;
-    const { innerHeight, innerWidth } = window;
-    const { scrollY } = window;
-    // 这里的rate会大于1，原因是toptips组件ssr为false,导致高度有错误
-    const rate = Math.min(scrollY / (scrollHeight - innerHeight), 1);
-    const topWidth = rate * innerWidth;
-    this.setState({
-      topWidth
-    });
-  }
-
   render() {
     // 接口
-    const {
-      blogData = [], getCommentsData = [], lastIdData = [], nextIdData = [], hotRecommendData = []
+    let {
+      commentsData = [],
     } = this.props;
-    let { commentsData = [] } = this.props;
+    const {
+      getCommentsData = [],
+      lastIdData = [], nextIdData = [],
+      hotRecommendData = [], blogData = [],
+    } = this.props;
     const {
       articleID, articleLike, isShowEditIcon, topWidth
     } = this.state;
@@ -162,7 +163,7 @@ class Detail extends Component {
               case myOldGithub:
                 return myNewGithub;
               default:
-                break;
+                return '';
             }
           }),
         createTime)
@@ -186,9 +187,12 @@ class Detail extends Component {
             lg={{ span: 2 }}
           >
             <div className="remark-num">{resultLike}</div>
-            <Button onClick={this.onAddZan.bind(this)} className="my-button-icon">
-              <Icon type="like" />
-            </Button>
+            <Tooltip placement="right" title="赞一个吧！">
+              <Button onClick={this.onAddZan.bind(this)} className="my-button-icon">
+                <Icon type="like" />
+              </Button>
+            </Tooltip>
+
             <Icon className="icon" type="weibo" />
             <Icon className="icon" type="twitter" />
             <Icon className="icon" type="wechat" />
@@ -202,7 +206,9 @@ class Detail extends Component {
                 ) : ''
             }
             <a href="#comment">
-              <Icon className="icon" type="message" />
+              <Tooltip placement="right" title="来评论吧">
+                <Icon className="icon" type="message" />
+              </Tooltip>
             </a>
           </Col>
           <Col
@@ -249,11 +255,13 @@ class Detail extends Component {
               <PrevNextPage dataSource={{ url, lastIdData, nextIdData }} />
               <Row className="zan-wrapper">
                 <Col span={4} offset={10}>
-                  <Button onClick={this.onAddZan.bind(this)} type="primary" size="large">
-                    赞
-                    <span className="split-line">|</span>
-                    {resultLike}
-                  </Button>
+                  <Tooltip placement="bottom" title="赞一个吧！">
+                    <Button onClick={this.onAddZan.bind(this)} type="primary" size="large">
+                      赞
+                      <span className="split-line">|</span>
+                      {resultLike}
+                    </Button>
+                  </Tooltip>
                 </Col>
               </Row>
               <Divider />
@@ -264,14 +272,17 @@ class Detail extends Component {
                     hotRecommendData.map(v => (
                       <li key={v.id}>
                         <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
-                          <a>{v.title}</a>
+                          <Tooltip placement="top" title={v.title}>
+                            <a>{v.title}</a>
+                          </Tooltip>
                         </Link>
                         {
-                          v.type.split(',').map((item, index) => (
-                            <span style={{ marginLeft: index === 0 ? 10 : 0 }} key={item} className="tag">
-                              {item}
+                          v.type.split(',').map((ss, index) => (
+                            <span style={{ marginLeft: index === 0 ? 10 : 0 }} key={ss} className="tag">
+                              {ss}
                               {' '}
-                            </span>))
+                            </span>
+                          ))
                         }
 
                         <span style={{ color: '#666' }}>

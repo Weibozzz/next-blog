@@ -67,22 +67,24 @@ class MyCard extends Component {
 )}
         extra={<a href="###">{formatTime(v.createTime)}</a>}
       >
-        <div className="msg-p">
-          <div dangerouslySetInnerHTML={{ __html: markHtml }} />
+        <div style={{ position: 'relative' }}>
+          <div className="msg-p">
+            <div dangerouslySetInnerHTML={{ __html: markHtml }} />
+          </div>
+          <div className="icon-comment">
+            <div className="icon-posi"><img src={(v.user || v.name) === '刘伟波' ? qiniuyun_cdn_icon_i.i : COMMENT_IMAGES[index]} alt="" /></div>
+          </div>
+          {
+          v.id !== -1 ? <div><a onClick={this.onFormActive.bind(this, i, v.id)} href="###">回复</a></div> : ''
+        }
         </div>
-        <div className="icon-comment">
-          <div className="icon-posi"><img src={(v.user || v.name) === '刘伟波' ? qiniuyun_cdn_icon_i.i : COMMENT_IMAGES[index]} alt="" /></div>
-        </div>
-        {
-        v.id !== -1 ? <div><a onClick={this.onFormActive.bind(this, i, v.id)} href="###">回复</a></div> : ''
-      }
 
         <div className="form-active">
           {
           v.answerArr ? (
             <ul className="answer-wrapper-ul">
               {
-              v.answerArr.map((s) => (
+              v.answerArr.map((s, k) => (
                 <li key={s.createTime}>
                   <div dangerouslySetInnerHTML={{ __html: marked(getHtml(s.msg)) }} />
                     —
