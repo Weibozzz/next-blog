@@ -32,6 +32,7 @@ import {
 } from '../../config/constantsData';
 import MyLayout from '../../components/MyLayout';
 import {real_ip, getYearAndMounth, cancelRepeat} from '../../until';
+import {getType,getTimeIndex,isHighLightAll,tagHighLight} from './searchType';
 import './index.less'
 
 const Option = Select.Option;
@@ -49,7 +50,8 @@ class Blog extends Component {
       isNotWd: false,
       timeActiveIndex: -1,
       all: '全部文章',
-      highLightAll: true
+      highLightAll: true,
+      tagHighLight:false
     };
   }
 
@@ -78,54 +80,32 @@ class Blog extends Component {
     postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj)
   }
 
-  onSearch(val, type) {
-    const {all, searchType} = this.state;
-    if (Object.prototype.toString.call(type) !== '[object String]' && type != null) {
-      type = 'all';
-    }
-    if (type == null) {
-      type = TITLE
-    }
-    if (!type.startsWith('timeRange|')) {
-      //不是时间筛选
+  onSearch(type, val) {
+    const {searchType} = this.state;
+    const resultType = getType(type, searchType);
+    const resultIndex = getTimeIndex(type);
+    if(resultIndex===-1){
       this.setState({
         timeActiveIndex: -1,
-        highLightAll: false
-      })
-    }
-    if (type === all) {
-      //===全部文章
-      type = 'all'
-      this.setState({
-        highLightAll: true
-      })
-    }
-
-    if (searchType === 'article') {
-      type = 'article'
-    }
-    this.setState({
-      keyWard: val,
-    })
-    if (type !== 'all') {
-      this.setState({
-        isNotWd: true,
-        searchType: type,
-        highLightAll: false
       })
     }
     const {dispatch} = this.props;
+    this.setState({
+      keyWard: val,
+      highLightAll:isHighLightAll(resultType),
+      isNotWd: true,
+      tagHighLight:tagHighLight(resultType)
+    })
     let queryStringObj = {
-      type,
+      type: resultType,
       num: 1,
       pageNum,
       wd: val
     }
     let queryTotalString = {
-      type,
+      type: resultType,
       wd: val
     };
-
     getSearchList(dispatch, getBlogUrl(queryStringObj))
     getSearchTotal(dispatch, getTotalUrl(queryTotalString))
     collectArticleList(dispatch, false)
@@ -196,7 +176,7 @@ class Blog extends Component {
     const t1 = new Date(yyyy + '-' + mm + '-01 00:00:00').getTime() / 1000;
     mm == 12 && (yyyy += 1, mm = 0);
     const t2 = new Date(yyyy + '-' + (mm + 1) + '-01 00:00:00').getTime() / 1000;
-    this.onSearch('', `timeRange|${t1}.${t2}`)
+    this.onSearch(`timeRange|${t1}.${t2}`, '')
   }
 
   getTagKey(item) {
@@ -209,7 +189,7 @@ class Blog extends Component {
 
   render() {
     let total, listData;
-    let {currentPage, searchType, timeActiveIndex, all, highLightAll} = this.state;
+    let {currentPage, tagHighLight,searchType, timeActiveIndex, all, highLightAll, keywords} = this.state;
     let {
       pageBlogData = [], totalPageData = [], searchData = [],
       searchTotalData = [], userAgent = 'pc', hotArticleData = [],
@@ -252,7 +232,8 @@ class Blog extends Component {
               xs={{span: 24}}
               lg={{span: 16}}>
               <Content>
-                <Search placeholder="input search text" onSearch={this.onSearch.bind(this)} enterButton="Search"
+                <Search placeholder="input search text" onSearch={this.onSearch.bind(this, 'handSearch')}
+                        enterButton="Search"
                         size="large" addonBefore={selectBefore}/>
                 <div style={{background: '#fff', padding: 24, minHeight: 380}}>
                   <ListTitle searchType={searchType} dataSource={{listData}}/>
@@ -273,8 +254,8 @@ class Blog extends Component {
                   <ul className='clearfix'>
                     {
                       [...[{key: all}], ...POST_ARTICLE_TYPE].map(v => {
-                        return <li onClick={this.onSearch.bind(this, '', v.key)} key={v.key}
-                                   className={`${((v.key === all && highLightAll) || searchType === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>
+                        return <li onClick={this.onSearch.bind(this, v.key, '')} key={v.key}
+                                   className={`${((v.key === all && highLightAll) || tagHighLight === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>
                           <Tooltip placement="right" title={this.getTagKey(v)}>
                             {this.getTagKey(v)}
                           </Tooltip>
