@@ -4,20 +4,20 @@ const MARGIN_LEFTS = 5;
 const MAX_LENGTH_TXT = 6;
 export const getRandomMarginTop = () => {
   return Math.floor(Math.random() * MARGIN_TOPS) * STEP;
-}
+};
 export const getRandomMarginLeft = () => {
   return Math.ceil(Math.random() * MARGIN_LEFTS) * STEP;
-}
+};
 export const getRandomTxt = (text) => {
-  let len = text.length;
-  let random = Math.random() * len;
-  //最少截取4个字符
-  let result = Math.max(Math.ceil(random), 4)
+  const len = text.length;
+  const random = Math.random() * len;
+  // 最少截取4个字符
+  const result = Math.max(Math.ceil(random), 4);
   if (len > MAX_LENGTH_TXT) {
     return text.slice(0, result);
   }
   return text;
-}
+};
 
 export const DEFAULT_TAG_ARR = [
   {
@@ -40,7 +40,7 @@ export const DEFAULT_TAG_ARR = [
     website: 'https://github.com/Weibozzz/next-blog',
     user: '本网站源码'
   },
-]
+];
 export const POPUP_TIPS = [
   '人生可以没有名利，金钱，但必须拥有美好心情',
   '岁月会让你的大脑变得轻松，也会让你的脚步变得沉重',
@@ -59,13 +59,13 @@ export const POPUP_TIPS = [
   '再冷的石头，坐上三年也会暖',
   '金钱损失了还能挽回，一旦失去信誉就很难挽回',
   '人之所以能，是相信能',
-]
+];
 export const default_comment = [{
-  "id": -1,
-  "a_id": -1,
-  "user": "刘伟波",
-  "website": "http://www.liuweibo.cn",
-  "msg": "关于技术问题或者有啥不懂的都可以留言，我会定期回复答疑，感謝支持！",
-  "createTime": +new Date()/1000,
-  "answerId": null
+  id: -1,
+  a_id: -1,
+  user: "刘伟波",
+  website: "http://www.liuweibo.cn",
+  msg: "关于技术问题或者有啥不懂的都可以留言，我会定期回复答疑，感謝支持！",
+  createTime: +new Date() / 1000,
+  answerId: null
 }];

@@ -1,61 +1,62 @@
-const dev = process.env.NODE_ENV !== 'production'
-//备案地址
-export const MIIT_BEIAN = 'http://www.miitbeian.gov.cn'
+const dev = process.env.NODE_ENV !== 'production';
+// 备案地址
+export const MIIT_BEIAN = 'http://www.miitbeian.gov.cn';
 
-//請求地址
+// 請求地址
 export const DEV_DOMAIN = 'http://localhost:7654/';
 export const DEV_DOMAIN_4324 = 'http://localhost:4324';
-export const MY_BLOG = dev ? DEV_DOMAIN_4324 : 'http://www.liuweibo.cn'
-export const ONLINE_DOMAIN = MY_BLOG + ':7654';
-export const ONLINE_GITBOOK = MY_BLOG + ':4321';
-export const LINK_ABOUT_ME = MY_BLOG + 'p/146';
+export const MY_BLOG = dev ? DEV_DOMAIN_4324 : 'http://www.liuweibo.cn';
+export const ONLINE_DOMAIN = `${MY_BLOG}:7654`;
+export const ONLINE_GITBOOK = `${MY_BLOG}:4321`;
+export const LINK_ABOUT_ME = `${MY_BLOG}p/146`;
 
 // 图片大于这个数会先压缩在上传到七牛云，单位M
 export const UPLOAD_MAX_SIZE = 1;
 
-//github地址
+// github地址
 export const GITHUB_ADDRESS = 'https://github.com/Weibozzz/next-blog';
-export const TOP_TIPS = '欢迎来到刘伟波个人网站，喜欢可以收藏哦!'
-//分页数
+export const TOP_TIPS = '欢迎来到刘伟波个人网站，喜欢可以收藏哦!';
+// 分页数
 export const pageNum = 10;
-export const TITLE = 'title'
-export const ARTICLE = 'article'
-export const ALL = 'all'
+export const TITLE = 'title';
+export const ARTICLE = 'article';
+export const ALL = 'all';
 
-//导航路由
-export const INDEX = '/'
-export const INDEX_TXT = '网站首页'
-export const BLOG = '/blog'
-export const BLOG_TXT = '文章列表'
-export const ADMIN = '/admin'
-export const ADMIN_TXT = '后台管理'
-export const LIFE = '/life'
-export const LIFE_TXT = '生活记录'
-export const ABOUT = '/about'
-export const ABOUT_TXT = '关于我'
-export const POST_ARTICLE = '/postArticle'
-export const POST_ARTICLE_TXT = '发布文章'
-export const DOCS_TXT = '文档中心'
+// 导航路由
+export const INDEX = '/';
+export const INDEX_TXT = '网站首页';
+export const BLOG = '/blog';
+export const BLOG_TXT = '文章列表';
+export const ADMIN = '/admin';
+export const ADMIN_TXT = '后台管理';
+export const LIFE = '/life';
+export const LIFE_TXT = '生活记录';
+export const ABOUT = '/about';
+export const ABOUT_TXT = '关于我';
+export const MY_COLLECT = '我的收藏';
+export const POST_ARTICLE = '/postArticle';
+export const POST_ARTICLE_TXT = '发布文章';
+export const DOCS_TXT = '文档中心';
 export const MENU_RULE = {
-  '/':[BLOG_TXT],
-  [BLOG]:[BLOG_TXT],
-  '我的收藏':[BLOG_TXT],
-  [LIFE]:[LIFE_TXT],
-  [ABOUT]:[ABOUT_TXT],
-  [POST_ARTICLE]:[POST_ARTICLE_TXT],
-  [ADMIN]:[ADMIN_TXT],
-}
+  '/': [BLOG_TXT],
+  [BLOG]: [BLOG_TXT],
+  [MY_COLLECT]: [BLOG_TXT],
+  [LIFE]: [LIFE_TXT],
+  [ABOUT]: [ABOUT_TXT],
+  [POST_ARTICLE]: [POST_ARTICLE_TXT],
+  [ADMIN]: [ADMIN_TXT],
+};
 
-//seo
-export const COMMON_TITLE = '刘伟波-天天向上'
-export const INDEX_TITLE = '刘伟波的个人网站'
-export const INDEX_ENGLISH = 'Liu WeiBo\'s Personal Website'
-export const KEYWORDS = '刘伟波, 个人网站,个人博客,  web前端'
-export const Description = '刘伟波的个人网站，刘伟波的技术作品，刘伟波的生活成长'
+// seo
+export const COMMON_TITLE = '刘伟波-天天向上';
+export const INDEX_TITLE = '刘伟波的个人网站';
+export const INDEX_ENGLISH = 'Liu WeiBo\'s Personal Website';
+export const KEYWORDS = '刘伟波, 个人网站,个人博客,  web前端';
+export const Description = '刘伟波的个人网站，刘伟波的技术作品，刘伟波的生活成长';
 
-export const githubApi = 'https://api.github.com/repos/Weibozzz/next-blog'
+export const githubApi = 'https://api.github.com/repos/Weibozzz/next-blog';
 
-//首页背景
+// 首页背景
 export const BG_INDEX = [
   {
     key: '西安钟楼',
@@ -85,12 +86,12 @@ export const BG_INDEX = [
     key: '韩城美食',
     value: 'http://pbw4yrlys.bkt.clouddn.com/image/index/hanchegnmeishi.jpg'
   },
-]
-//首页切换时间
+];
+// 首页切换时间
 export const defaultTimer = 10000;
-//关于我
-export const commentPlaceHolder = '欢迎提出您在使用过程中遇到的问题或宝贵建议（400字以内），感谢您对博主的支持。(必填)'
-//文章分类图片icon
+// 关于我
+export const commentPlaceHolder = '欢迎提出您在使用过程中遇到的问题或宝贵建议（400字以内），感谢您对博主的支持。(必填)';
+// 文章分类图片icon
 export const ARTICLE_TYPE_ICON = {
   vue: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531898804960&di=bb204eb57425de2ad3ea2cb6d1358df2&imgtype=0&src=http%3A%2F%2Fimage.evget.com%2Fimages%2Farticle%2F2016%2FJavascriptky-3.png',
   js: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531899278471&di=cf1e2753bbc588c0bc464c78a4d212fd&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F4610b912c8fcc3ced0c353279a45d688d43f20a6.jpg',
@@ -105,8 +106,8 @@ export const ARTICLE_TYPE_ICON = {
   interesting: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531899490315&di=cde9b22f2ac8bda254f6838419cfe61c&imgtype=0&src=http%3A%2F%2Fs9.rr.itc.cn%2Fr%2FwapChange%2F20171_14_1%2Fa2t5fm9607718748992.jpg',
   fight: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531899419656&di=9fd12f388d86e990014516f101ab28c7&imgtype=0&src=http%3A%2F%2Fm.360buyimg.com%2Fn12%2Fjfs%2Ft253%2F89%2F336734149%2F67826%2Fbc5eeb58%2F53e9ced2N8472b3d1.jpg%2521q70.jpg',
   others: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531899523703&di=1b6438eb70ce2ae0a8e1df64774c4bce&imgtype=0&src=http%3A%2F%2Fwww.cidianwang.com%2Ffile%2F2017412%2F201741285824464.jpg'
-}
-//生活部分图片
+};
+// 生活部分图片
 export const LIFE_IMAGE = [
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531900063149&di=53e2bb1c3edc9d5a9646b9a97cc2ff94&imgtype=0&src=http%3A%2F%2Fuploads.oh100.com%2Fallimg%2F1706%2F25-1F605093625.jpg',
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531900063148&di=527129ef93dc3d55a68b603bb98e16a9&imgtype=0&src=http%3A%2F%2Fuploads.oh100.com%2Fallimg%2F1707%2F96-1FF1151Q0.jpg',
@@ -131,31 +132,31 @@ export const LIFE_IMAGE = [
   'http://pic22.nipic.com/20120725/8333799_081850001333_2.jpg'
 
 ];
-//发布文章分类
+// 发布文章分类
 export const POST_ARTICLE_TYPE = [
-  {key: "h5", value: " html"},
-  {key: "css", value: " css"},
-  {key: "js", value: " javascript"},
-  {key: "vue", value: " vue"},
-  {key: "react", value: " react"},
-  {key: "angular", value: " angular"},
-  {key: "node", value: " node"},
-  {key: "php", value: " php"},
-  {key: "java", value: " java"},
-  {key: "mysql", value: " mysql"},
-  {key: "server", value: " 服务器之类"},
-  {key: "interesting", value: " 生活喜好"},
-  {key: "fight", value: " 激励向上"},
-  {key: "markdown", value: " markdown"},
-  {key: "设计模式", value: " 设计模式"},
-  {key: "阅读书籍", value: " 阅读书籍"},
-  {key: "算法", value: " 算法"},
-  {key: "工具", value: " 工具"},
-  {key: "正则", value: " 正则"},
-  {key: "技巧", value: " 技巧"},
-  {key: "others", value: " 其他"},
+  { key: "h5", value: " html" },
+  { key: "css", value: " css" },
+  { key: "js", value: " javascript" },
+  { key: "vue", value: " vue" },
+  { key: "react", value: " react" },
+  { key: "angular", value: " angular" },
+  { key: "node", value: " node" },
+  { key: "php", value: " php" },
+  { key: "java", value: " java" },
+  { key: "mysql", value: " mysql" },
+  { key: "server", value: " 服务器之类" },
+  { key: "interesting", value: " 生活喜好" },
+  { key: "fight", value: " 激励向上" },
+  { key: "markdown", value: " markdown" },
+  { key: "设计模式", value: " 设计模式" },
+  { key: "阅读书籍", value: " 阅读书籍" },
+  { key: "算法", value: " 算法" },
+  { key: "工具", value: " 工具" },
+  { key: "正则", value: " 正则" },
+  { key: "技巧", value: " 技巧" },
+  { key: "others", value: " 其他" },
 ];
-//评论icon
+// 评论icon
 export const COMMENT_IMAGES = [
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532749734&di=fbfe0c2328cc8115b40f23945818cc58&imgtype=jpg&er=1&src=http%3A%2F%2Fen.pimg.jp%2F012%2F462%2F665%2F1%2F12462665.jpg',
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532155572971&di=b2ae74aa22311f807cc768c088ab71c6&imgtype=0&src=http%3A%2F%2Fis2.mzstatic.com%2Fimage%2Fthumb%2FPurple69%2Fv4%2Fb1%2Fb1%2F2c%2Fb1b12c2a-3a8f-420d-d988-b09c2455188e%2Fmzl.gzrdswmf.png%2F0x0ss-85.jpg',
@@ -163,7 +164,7 @@ export const COMMENT_IMAGES = [
 ];
 
 
-//色系
+// 色系
 export const COLORS_ARR = [
   '#FF5F57',
   '#FFBD2E',
@@ -175,18 +176,18 @@ export const COLORS_ARR = [
   '#0098c8',
   '#ba2d2a',
   '#de3803',
-]
+];
 
-//发布文章版权
-export const POST_ARTICLE_COPY =(id)=>{
-  return  `
+// 发布文章版权
+export const POST_ARTICLE_COPY = (id) => {
+  return `
          <br>
 作者：刘伟波
 
-链接：[${MY_BLOG}/p/${id+1}](${MY_BLOG}/p/${id+1})
+链接：[${MY_BLOG}/p/${id + 1}](${MY_BLOG}/p/${id + 1})
 
 来源：[刘伟波博客](http://www.liuweibo.cn)
 
 本文原创版权属于刘伟波 ，转载请注明出处，谢谢合作
       `;
-}
+};

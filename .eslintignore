@@ -1,0 +1,17 @@
+lwbBlogBuild/
+static/
+node_modules/
+lib/
+until/
+components/Edit
+components/EditArticle
+components/FormComment
+components/Gallery
+components/Header
+components/ListTitle
+components/MyLayout
+components/PrevNextPage
+pages/_error
+pages/admin/table-data
+pages/blog
+pages/index

@@ -1,75 +1,74 @@
-import App, {Container} from 'next/app'
-import React from 'react'
-import {withRouter} from 'next/router'
-import withReduxStore from '../lib/with-redux-store'
-import {Provider} from 'react-redux'
+import App, { Container } from 'next/app';
+import React from 'react';
+import Router, { withRouter } from 'next/router';
+import { Provider } from 'react-redux';
+import NProgress from 'nprogress';
+import withReduxStore from '../lib/with-redux-store';
 import Header from '../components/Header';
-import Footer from '../components/Footer'
-import 'babel-polyfill'
-import '../asserts/styles.less'
-import './index.less'
-import './markdown.less'
-import Router from 'next/router'
-import NProgress from 'nprogress'
+import Footer from '../components/Footer';
+import 'babel-polyfill';
+import '../asserts/styles.less';
+import './index.less';
+import './markdown.less';
 
 
 class MyApp extends App {
   constructor() {
-    super()
+    super();
     this.state = {
       userAgent: {
         userAgent: 'pc'
       }
-    }
+    };
   }
 
   componentDidMount() {
     const ua = navigator.userAgent;
     let userAgent;
     if (ua.indexOf("Android") > 0 || ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0) {
-      //移动端
-      userAgent = 'mobile'
+      // 移动端
+      userAgent = 'mobile';
     } else {
-      userAgent = 'pc'
+      userAgent = 'pc';
     }
     this.setState({
       userAgent: {
         userAgent
       }
-    })
+    });
   }
 
   render() {
-    Router.onRouteChangeStart = (url) => {
-      NProgress.start()
-    }
-    Router.onRouteChangeComplete = () => NProgress.done()
-    Router.onRouteChangeError = () => NProgress.done()
-    const {Component, pageProps, reduxStore, router: {pathname}} = this.props;
-    const {userAgent} = this.state;
-    let myPageProps = {...pageProps, ...userAgent};
+    Router.onRouteChangeStart = () => {
+      NProgress.start();
+    };
+    Router.onRouteChangeComplete = () => NProgress.done();
+    Router.onRouteChangeError = () => NProgress.done();
+    const {
+      Component, pageProps, reduxStore, router: { pathname }
+    } = this.props;
+    const { userAgent } = this.state;
+    const myPageProps = { ...pageProps, ...userAgent };
     return (
       <Container>
         <Provider store={reduxStore}>
           <div className="container">
             {
               pathname === '/' || pathname === '/gallery'
-                ?
-                ''
+                ? ''
                 : <Header {...userAgent} />
             }
-            <Component {...myPageProps}  />
+            <Component {...myPageProps} />
             {
               pathname === '/' || pathname === '/gallery'
-                ?
-                ''
-                :
-                <Footer/>
+                ? ''
+                : <Footer />
             }
           </div>
         </Provider>
 
-        <style jsx global>{`
+        <style jsx global>
+          {`
 
 .fl{
     float: left;
@@ -103,10 +102,11 @@ li{
 
 
 
-        `}</style>
+        `}
+        </style>
       </Container>
-    )
+    );
   }
 }
 
-export default withReduxStore(withRouter(MyApp))
+export default withReduxStore(withRouter(MyApp));

@@ -1,23 +1,24 @@
-export const getMyCommenData=(COMMENT_MOCK_DATA_ORIGIN)=> {
-  let mapping = {answerId: []}
-  let grande_one = COMMENT_MOCK_DATA_ORIGIN.filter(v => {
-    let {answerId = ''} = v;
+export const getMyCommenData = (COMMENT_MOCK_DATA_ORIGIN) => {
+  const mapping = { answerId: [] };
+  const grande_one = COMMENT_MOCK_DATA_ORIGIN.filter(v => {
+    const { answerId = '' } = v;
     if (answerId) {
-      mapping[answerId] = []
+      mapping[answerId] = [];
     }
-    return answerId === '' || answerId==null||answerId===0;
-  })
+    return answerId === '' || answerId == null || answerId === 0;
+  });
   COMMENT_MOCK_DATA_ORIGIN.forEach(v => {
-    let {answerId = ''} = v;
+    const { answerId = '' } = v;
     if (answerId in mapping) {
-      mapping[answerId].push(v)
+      mapping[answerId].push(v);
     }
-  })
+  });
+  /* eslint no-param-reassign: "error" */
   return grande_one.map(v => {
-    let {id} = v;
+    const { id } = v;
     if (id in mapping) {
-      v.answerArr = mapping[id]
+      v.answerArr = mapping[id];
     }
     return v;
   });
-}
+};

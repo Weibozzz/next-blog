@@ -1,19 +1,18 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import {Row, Col,Input} from 'antd';
+import { Row, Col } from 'antd';
 
-import marked from 'marked'
+import marked from 'marked';
 import hljs from 'highlight.js';
 
-import {getHtml, OldTime} from '../../until';
-import {markdownConfig} from "../../config/markdown";
+import { OldTime } from '../../until';
+import { markdownConfig } from "../../config/markdown";
 // import './index.less';
 
-const { TextArea } = Input;
 
-const {options,config} = markdownConfig
-hljs.configure(config)
+const { options, config } = markdownConfig;
+hljs.configure(config);
 marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
   ...options
@@ -21,137 +20,159 @@ marked.setOptions({
 
 class Edit extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       previewContent: '',
       aceBoxH: null,
       originContent: '',
-      inputValue:'',
-    }
+    };
 
-    this.cacheValue()
-    this.containerScroll = this.containerScroll.bind(this)
-    this.onContentChange = this.onContentChange.bind(this)
+    this.cacheValue();
+    this.containerScroll = this.containerScroll.bind(this);
+    this.onContentChange = this.onContentChange.bind(this);
   }
 
   componentWillMount() {
-    const {editCont = '', createTime = ''} = this.props;
+    const { editCont = '' } = this.props;
     let decodeOrigin;
     try {
-      decodeOrigin = decodeURIComponent(editCont)
+      decodeOrigin = decodeURIComponent(editCont);
     } catch (err) {
-      decodeOrigin = editCont
+      decodeOrigin = editCont;
     }
-    let markedContent = marked(decodeOrigin);
+    const markedContent = marked(decodeOrigin);
     this.setState({
       previewContent: markedContent,
       originContent: decodeOrigin,
-    })
+    });
   }
 
   componentDidMount() {
     this.setState({
-      aceBoxH: document.documentElement.clientHeight - document.querySelector('.editor-main-a').offsetHeight + 'px'
-    })
-  }
-  cacheValue() {
-    this.currentTabIndex = 1
-    this.hasContentChanged = false
-    this.scale = 1
-  }
-
-  setCurrentIndex(index) {
-    this.currentTabIndex = index
-  }
-
-  containerScroll(e) {
-    this.hasContentChanged && this.setScrollValue()
-    if (this.currentTabIndex === 1) {
-      this.previewContainer.scrollTop = this.editContainer.scrollTop * this.scale
-    } else {
-      this.editContainer.scrollTop = this.previewContainer.scrollTop / this.scale
-    }
+      aceBoxH: `${document.documentElement.clientHeight - document.querySelector('.editor-main-a').offsetHeight}px`
+    });
   }
 
   onContentChange(e) {
-    let innerText = e.target.innerText
-    let markCont = marked(innerText)
-    const {handleChangeMarkEdit} = this.props;
-    handleChangeMarkEdit(innerText)
+    const { innerText } = e.target;
+    const markCont = marked(innerText);
+    const { handleChangeMarkEdit } = this.props;
+    handleChangeMarkEdit(innerText);
     this.setState({
       previewContent: markCont
-    })
-    !this.hasContentChanged && (this.hasContentChanged = true)
+    });
+    !this.hasContentChanged && (this.hasContentChanged = true);
   }
 
   onOldArticleContentChange(e) {
-    const {handleChangeMarkEdit} = this.props;
-    handleChangeMarkEdit(e.target.innerHTML)
+    const { handleChangeMarkEdit } = this.props;
+    handleChangeMarkEdit(e.target.innerHTML);
   }
+
 
   setScrollValue() {
     // 设置值，方便 scrollBy 操作
-    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight) / (this.editWrap.offsetHeight - this.editContainer.offsetHeight)
-    this.hasContentChanged = false
+    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight) / (this.editWrap.offsetHeight - this.editContainer.offsetHeight);
+    this.hasContentChanged = false;
   }
-  onPaste(e){
 
+  setCurrentIndex(index) {
+    this.currentTabIndex = index;
+  }
+
+  cacheValue() {
+    this.currentTabIndex = 1;
+    this.hasContentChanged = false;
+    this.scale = 1;
+  }
+
+
+  containerScroll() {
+    this.hasContentChanged && this.setScrollValue();
+    if (this.currentTabIndex === 1) {
+      this.previewContainer.scrollTop = this.editContainer.scrollTop * this.scale;
+    } else {
+      this.editContainer.scrollTop = this.previewContainer.scrollTop / this.scale;
+    }
   }
 
   render() {
-
-    let {aceBoxH, previewContent, originContent} = this.state;
-    const {createTime = '',id=''} = this.props;
+    const { aceBoxH, previewContent, originContent } = this.state;
+    const { createTime = '', id = '' } = this.props;
 
     return (
       <div>
 
-        <div className="editor-main-a" style={{height: aceBoxH}}
-             key='main'>
+        <div
+          className="editor-main-a"
+          style={{ height: aceBoxH }}
+          key="main"
+        >
           <Row>
             {
-              createTime > OldTime || createTime === '' || id===1?
-                <div>
-                  <Col span={12}>
-                    <div style={{height: aceBoxH}}>
-                      <div className="  content-edit" onMouseOver={this.setCurrentIndex.bind(this, 1)}
-                           onScroll={this.containerScroll} ref={node => this.editContainer = node}>
-                        <div contentEditable="plaintext-only"
-                             className="common-wrapper " onInput={this.onContentChange}
-                             onPaste={this.onPaste}
-                             ref={node => this.editWrap = node}>
-                          {originContent}
+              createTime > OldTime || createTime === '' || id === 1
+                ? (
+                  <div>
+                    <Col span={12}>
+                      <div style={{ height: aceBoxH }}>
+                        <div
+                          className="  content-edit"
+                          onMouseOver={this.setCurrentIndex.bind(this, 1)}
+                          onScroll={this.containerScroll}
+                          ref={node => this.editContainer = node}
+                        >
+                          <div
+                            contentEditable="plaintext-only"
+                            className="common-wrapper "
+                            onInput={this.onContentChange}
+                            onPaste={this.onPaste}
+                            ref={node => this.editWrap = node}
+                          >
+                            {originContent}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Col>
-                  <Col span={12}>
-                    <div>
-                      <div className="markdown-style  content-edit"
-                           ref={node => this.previewContainer = node}
-                           onMouseOver={this.setCurrentIndex.bind(this, 2)} onScroll={this.containerScroll}>
-                        <div className=" common-wrapper" ref={node => this.previewWrap = node}
-                             dangerouslySetInnerHTML={{__html: previewContent}}></div>
+                    </Col>
+                    <Col span={12}>
+                      <div
+                        className="markdown-style  content-edit"
+                        ref={node => {
+                          this.previewContainer = node;
+                        }}
+                        onMouseOver={this.setCurrentIndex.bind(this, 2)}
+                        onScroll={this.containerScroll}
+                      >
+                        <div
+                          className=" common-wrapper"
+                          ref={node => {
+                            this.previewWrap = node;
+                          }}
+                          dangerouslySetInnerHTML={{ __html: previewContent }}
+                        />
                       </div>
-                    </div>
-                  </Col>
-                </div>
-                :
-                <div>
-                  <Col span={24}>
-                  <div className="  content-edit">
-                    <div className=" common-wrapper"
-                         contentEditable="plaintext-only"
-                         onInput={this.onOldArticleContentChange.bind(this)}
-                         dangerouslySetInnerHTML={{__html: originContent}}></div>
+                    </Col>
                   </div>
-                </Col>
-                </div>
+                )
+                : (
+                  <div>
+                    <Col span={24}>
+                      <div className="  content-edit">
+                        <div
+                          className=" common-wrapper"
+                          contentEditable="plaintext-only"
+                          onInput={this.onOldArticleContentChange.bind(this)}
+                          dangerouslySetInnerHTML={{ __html: originContent }}
+                        />
+                      </div>
+                    </Col>
+                  </div>
+                )
             }
           </Row>
 
         </div>
-        <style jsx>{`
+        <style jsx>
+          {`
         .content-edit{
           max-height:600px;
           height:600px;
@@ -165,12 +186,12 @@ class Edit extends Component {
   min-height: 100%;
   outline: none;
 }
-        `}</style>
+        `}
+        </style>
       </div>
 
     );
   }
-
 }
 
 export default connect()(Edit);

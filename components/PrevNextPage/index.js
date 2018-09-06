@@ -1,20 +1,23 @@
 import Link from 'next/link';
-import {regUrl} from "../../until";
+import { regUrl } from "../../until";
 
-const PrevNextPage = ({dataSource = {}}) => {
-  const {url = '', lastIdData = [], nextIdData = []} = dataSource;
-  return <div>
-    {
-      url && regUrl.test(url) &&
+const PrevNextPage = ({ dataSource = {} }) => {
+  const { url = '', lastIdData = [], nextIdData = [] } = dataSource;
+  return (
+    <div>
+      {
+      url && regUrl.test(url)
+      && (
       <Link href={url}>
         <a>
           参考url：
           {url}
         </a>
       </Link>
+      )
     }
-    {
-      lastIdData.map(v =>
+      {
+      lastIdData.map(v => (
         <div key={v.id}>
           <Link as={`/p/${v.id}`} href={`/p?id=${v.id}`}>
             <a>
@@ -23,10 +26,10 @@ const PrevNextPage = ({dataSource = {}}) => {
             </a>
           </Link>
         </div>
-      )
+      ))
     }
-    {
-      nextIdData.map(v =>
+      {
+      nextIdData.map(v => (
         <div key={v.id}>
           <Link as={`/p/${v.id}`} href={`/p?id=${v.id}`}>
             <a>
@@ -35,8 +38,9 @@ const PrevNextPage = ({dataSource = {}}) => {
             </a>
           </Link>
         </div>
-      )
+      ))
     }
-  </div>;
-}
-export default PrevNextPage
+    </div>
+  );
+};
+export default PrevNextPage;

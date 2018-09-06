@@ -1,32 +1,17 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 // import Link from 'next/link';
-import Router from 'next/router'
-import 'whatwg-fetch'
-import {withRouter} from 'next/router'
+import 'whatwg-fetch';
+import Router, { withRouter } from 'next/router';
 import {
-  Layout,
-  Menu,
-  Breadcrumb,
-  Row,
-  Col,
-  List,
-  Avatar,
-  Icon,
-  Pagination,
   Alert,
-  Input,
   Button,
-  Radio,
-  Tooltip
-} from 'antd'
-import {GITHUB_ADDRESS, TOP_TIPS} from '../../config/constantsData';
+} from 'antd';
+import { GITHUB_ADDRESS, TOP_TIPS, githubApi } from '../../config/constantsData';
 // import {getDetailUrl} from "../../config";
-import {githubApi} from '../../config/constantsData';
 
-let routerUrl;
-Router.onRouteChangeStart = (url) => {
-  routerUrl = url;
-}
+Router.onRouteChangeStart = () => {
+
+};
 const ButtonGroup = Button.Group;
 
 class TopTips extends Component {
@@ -34,15 +19,17 @@ class TopTips extends Component {
     super(props);
     this.state = {
       stargazers_count: 0
-    }
+    };
   }
+
   async componentWillMount() {
-    const blog = await fetch(githubApi)
-    const {stargazers_count=0} = await blog.json();
-    this.setState({stargazers_count})
+    const blog = await fetch(githubApi);
+    const { stargazers_count = 0 } = await blog.json();
+    this.setState({ stargazers_count });
   }
+
   render() {
-    const {stargazers_count} = this.state;
+    const { stargazers_count } = this.state;
     return (
       <div>
         <Alert
@@ -50,7 +37,7 @@ class TopTips extends Component {
           type="success"
           closable
           iconType="smile"
-          banner={true}
+          banner
         />
         <div>
           <ButtonGroup href={GITHUB_ADDRESS}>
@@ -59,7 +46,8 @@ class TopTips extends Component {
           </ButtonGroup>
 
         </div>
-        <style>{`
+        <style>
+          {`
           .github-style {
   background-color: #eff3f6;
   background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
@@ -71,7 +59,7 @@ class TopTips extends Component {
 }
 
         `
-        }
+          }
 
         </style>
       </div>
@@ -80,4 +68,4 @@ class TopTips extends Component {
 }
 
 // https://api.github.com/repos/Weibozzz/next-blog   stargazers_count
-export default withRouter(TopTips)
+export default withRouter(TopTips);

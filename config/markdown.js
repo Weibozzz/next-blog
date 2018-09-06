@@ -1,17 +1,17 @@
 export const markdownConfig = {
-  options:{
+  options: {
     gfm: true,
     tables: true,
     breaks: true,
     pedantic: false,
     smartLists: true,
-    xhtml:false,
+    xhtml: false,
     smartypants: false,
     sanitize: false,
   },
-  config:{
+  config: {
     tabReplace: '  ',
     classPrefix: 'hljs-',
     languages: ['CSS', 'HTML, XML', 'JavaScript', 'PHP', 'Python', 'Stylus', 'TypeScript', 'Markdown']
   }
-}
+};

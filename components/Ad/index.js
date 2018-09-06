@@ -1,47 +1,35 @@
-import React,{Component} from 'react';
-import {connect} from 'react-redux';
-import { List, Avatar, Icon ,Divider,Row,Col} from 'antd';
-import {COLORS_ARR} from '../../config/constantsData';
-import {getRandomMarginTop,getRandomMarginLeft,getRandomTxt} from '../../config/constantTag';
+import React, { Component } from 'react';
+import Link from 'next/link';
+import { COLORS_ARR } from '../../config/constantsData';
+import { getRandomMarginTop, getRandomMarginLeft, getRandomTxt } from '../../config/constantTag';
 
 class Ad extends Component {
-  constructor(props) {
-    super(props);
-    this.state={
-      dataSource:[]
-    }
+  shouldComponentUpdate({ dataSource }) {
+    const { dataSource: hasUrlComment } = this.props;
+    return dataSource.length !== hasUrlComment.length;
   }
-  componentWillMount (){
-    const {dataSource} = this.props;
-    this.setState({
-      dataSource
-    })
-  }
-  componentWillReceiveProps (){
-    const {dataSource} = this.props;
-    this.setState({
-      dataSource
-    })
-  }
-  shouldComponentUpdate ({dataSource}){
-    const {dataSource:hasUrlComment} = this.props;
-    return dataSource.length!==hasUrlComment.length;
-  }
-  render(){
-    const {dataSource:hasUrlComment} = this.props;
+
+  render() {
+    const { dataSource: hasUrlComment } = this.props;
     return (
       <div className="ad-wrapper ">
         <div className="content">
           {
-            hasUrlComment.map((v,index)=>{
-              let ran = Math.random()*COLORS_ARR.length | 0;
-              let color = COLORS_ARR[ran];
+            hasUrlComment.map((v) => {
+              const ran = Math.random() * COLORS_ARR.length | 0;
+              const color = COLORS_ARR[ran];
               return (
-                <a key={index} className="link-friends-a"
-                   style={{marginLeft:getRandomMarginLeft(),marginTop:getRandomMarginTop()}}
-                   href={v.website} target="_blank" title={v.user}>
-                  <span style={{backgroundColor:color}}>{getRandomTxt(v.user)}</span>
-                </a>
+                <Link key={v.user} href={v.website}>
+                  <a
+                    className="link-friends-a"
+                    style={{ marginLeft: getRandomMarginLeft(), marginTop: getRandomMarginTop() }}
+                    target="_blank"
+                    title={v.user}
+                  >
+                    <span style={{ backgroundColor: color }}>{getRandomTxt(v.user)}</span>
+                  </a>
+                </Link>
+
               );
             })
           }
@@ -54,4 +42,4 @@ class Ad extends Component {
   }
 }
 
-export default Ad
+export default Ad;
