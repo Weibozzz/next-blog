@@ -123,7 +123,6 @@ class Detail extends Component {
     let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = []} = this.props;
     let {articleID, articleLike, isShowEditIcon, topWidth} = this.state;
     let {content = '', createTime = '', title = '', url = '', id, type = '', like = 0} = blogData[0] || {};
-    console.log(type)
     const isShowReadingStatement = /阅读书籍/g.test(type);
     const resultLike = Math.max(articleLike, like)
 
