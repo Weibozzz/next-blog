@@ -20,21 +20,19 @@ import Comments from '../../components/Comments';
 import MyLayout from '../../components/MyLayout';
 //其他
 import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl} from '../../config';
-import {COMMON_TITLE, MY_BLOG} from '../../config/constantsData';
+import {COMMON_TITLE, MY_BLOG, POST_READING_STATEMENT} from '../../config/constantsData';
 import {markdownConfig} from '../../config/markdown';
-import {getRandomMarginLeft, getRandomMarginTop, getRandomTxt, POPUP_TIPS} from '../../config/constantTag';
-import {getHtml, OldTime,throttle} from '../../until';
+import {getHtml, OldTime, throttle} from '../../until';
 import './index.less'
 import './pop-tips.less'
-import {addZan, getHotArticleList,getHotRecommendList} from "../../store/actions";
-
+import {addZan, getHotArticleList, getHotRecommendList} from "../../store/actions";
 
 
 //定义
 const {Content} = Layout;
 
 let timer;
-const {options,config} = markdownConfig
+const {options, config} = markdownConfig
 hljs.configure(config)
 marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
@@ -49,16 +47,16 @@ class Detail extends Component {
       articleLike: 0,
       fn: null,
       isShowEditIcon: false,
-      topWidth:0
+      topWidth: 0
     }
   }
 
   componentWillMount() {
-    const {blogData = [],dispatch} = this.props;
+    const {blogData = [], dispatch} = this.props;
     let {type = ''} = blogData[0] || {};
-    type=type.split(',')[0]
+    type = type.split(',')[0]
     const queryTotalString = {
-      type: 'hot|'+type
+      type: 'hot|' + type
     };
     getHotRecommendList(dispatch, getBlogUrl(queryTotalString))
     let {id: articleID} = blogData[0] || {};
@@ -72,7 +70,7 @@ class Detail extends Component {
     window.onscroll = throttle(() => {
       this.getRateWidth()
     })
-    window.onresize =throttle(() => {
+    window.onresize = throttle(() => {
       this.getRateWidth()
     })
     const {password} = sessionStorage;
@@ -122,10 +120,11 @@ class Detail extends Component {
 
   render() {
 //接口
-    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc',hotRecommendData=[]} = this.props;
-    let {articleID, articleLike, isShowEditIcon,topWidth} = this.state;
+    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = []} = this.props;
+    let {articleID, articleLike, isShowEditIcon, topWidth} = this.state;
     let {content = '', createTime = '', title = '', url = '', id, type = '', like = 0} = blogData[0] || {};
-
+    console.log(type)
+    const isShowReadingStatement = /阅读书籍/g.test(type);
     const resultLike = Math.max(articleLike, like)
 
     commentsData = commentsData.length > getCommentsData.length ? commentsData : getCommentsData
@@ -134,16 +133,17 @@ class Detail extends Component {
     const bool = createTime > OldTime || articleID === 1;
     let decode_html;
     try {
-       decode_html = decodeURIComponent(content)
+      decode_html = decodeURIComponent(content)
     } catch (err) {
-       decode_html = content
+      decode_html = content
     }
     const myBlog = 'http://www.liuweibo.cn/'
     const myOldGithub = 'https://15691808595.github.io'
     const myNewGithub = 'https://Weibozzz.github.io'
     const regExp = /(http:\/\/www\.liuweibo\.cn\/(jianli|img|liuweibo_FrontEnd_CV\.doc))|(https:\/\/15691808595\.github\.io)/gim;
+    const markdedHtml = `${isShowReadingStatement ? POST_READING_STATEMENT() : ''}${getHtml(decode_html, createTime)}`;
     let _html_content = bool ?
-      marked(getHtml(decode_html, createTime))
+      marked(markdedHtml)
       :
       type === 'interesting' || type === 'fight' && id >= 146 && id <= 178
         ?
@@ -168,7 +168,7 @@ class Detail extends Component {
         <Head>
           <title>{title}{COMMON_TITLE}</title>
         </Head>
-        <div id="read-nprogress" style={{width:topWidth}}></div>
+        <div id="read-nprogress" style={{width: topWidth}}></div>
         <MyLayout>
 
           <Col
@@ -251,18 +251,19 @@ class Detail extends Component {
                 <h3>你可能感兴趣的文章</h3>
                 <ul className='recommend-post-ul'>
                   {
-                    hotRecommendData.map(v=>(
+                    hotRecommendData.map(v => (
                       <li key={v.id}>
                         <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
                           <Tooltip placement="top" title={v.title}>
-                            <a >{v.title}</a>
+                            <a>{v.title}</a>
                           </Tooltip>
                         </Link>
                         {
-                          v.type.split(',').map((v,index)=>(<span style={{marginLeft:index===0?10:0}} key={v} className="tag">{v} </span>))
+                          v.type.split(',').map((v, index) => (
+                            <span style={{marginLeft: index === 0 ? 10 : 0}} key={v} className="tag">{v} </span>))
                         }
 
-                        <span  style={{color:'#666'}}><Icon type="eye" /> {v.visitor}</span>
+                        <span style={{color: '#666'}}><Icon type="eye"/> {v.visitor}</span>
                       </li>
                     ))
                   }
@@ -332,8 +333,8 @@ Detail.getInitialProps = async function (context) {
   return {blogData, commentsData, lastIdData, nextIdData}
 }
 const mapStateToProps = state => {
-  const {getCommentsData,hotRecommendData} = state
-  return {getCommentsData,hotRecommendData};
+  const {getCommentsData, hotRecommendData} = state
+  return {getCommentsData, hotRecommendData};
 }
 const WrappedRegistrationForm = Form.create()(Detail);
 export default connect(mapStateToProps)(WrappedRegistrationForm);

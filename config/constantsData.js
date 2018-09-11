@@ -190,3 +190,13 @@ export const POST_ARTICLE_COPY =(id)=>{
 本文原创版权属于刘伟波 ，转载请注明出处，谢谢合作
       `;
 }
+// 发布阅读书籍声明
+export const POST_READING_STATEMENT = ()=>{
+  return `
+  > 关于阅读书籍部分，是个人在本书籍中收集的精华部分和实战部分，为了后续再次阅读节省时间
+  和方便在工作中的应用，后续会分享本书籍的电子版pdf在线下载。
+  
+  <br>
+  
+  `;
+}
