@@ -1,6 +1,8 @@
 import App, {Container} from 'next/app'
 import React from 'react'
 import {withRouter} from 'next/router'
+import fetchIntercept from 'fetch-intercept';
+import {Spin} from 'antd';
 import withReduxStore from '../lib/with-redux-store'
 import {Provider} from 'react-redux'
 import Header from '../components/Header';
@@ -12,6 +14,11 @@ import './markdown.less'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 
+const STATUS = {
+  OK: 'fulfilled',
+  LOADING: 'pending'
+}
+const {OK, LOADING} = STATUS;
 
 class MyApp extends App {
   constructor() {
@@ -19,7 +26,8 @@ class MyApp extends App {
     this.state = {
       userAgent: {
         userAgent: 'pc'
-      }
+      },
+      status: LOADING
     }
   }
 
@@ -32,6 +40,40 @@ class MyApp extends App {
     } else {
       userAgent = 'pc'
     }
+    const _this = this;
+    fetchIntercept.register({
+      request: function (url, config) {
+        // Modify the url or config here
+        // console.log('Modify the url or config here')
+        _this.setState({
+          status: LOADING
+        })
+        return [url, config];
+      },
+
+      requestError: function (error) {
+        // Called when an error occurred during another 'request' interceptor call
+        status = OK
+        // console.log('Called when an error occurred during another \'request\' interceptor call')
+        return Promise.reject(error);
+      },
+
+      response: function (response) {
+        // Modify the response object
+        _this.setState({
+          status: OK
+        })
+        // console.log('Modify the response object')
+        return response;
+      },
+
+      responseError: function (error) {
+        // Handle an fetch error
+        // console.log('Handle an fetch error')
+        return Promise.reject(error);
+      }
+    });
+
     this.setState({
       userAgent: {
         userAgent
@@ -46,7 +88,7 @@ class MyApp extends App {
     Router.onRouteChangeComplete = () => NProgress.done()
     Router.onRouteChangeError = () => NProgress.done()
     const {Component, pageProps, reduxStore, router: {pathname}} = this.props;
-    const {userAgent} = this.state;
+    const {userAgent, status} = this.state;
     let myPageProps = {...pageProps, ...userAgent};
     return (
       <Container>
@@ -57,6 +99,12 @@ class MyApp extends App {
                 ?
                 ''
                 : <Header {...userAgent} />
+            }
+            {
+              status===OK?
+                ''
+                :
+                <Spin tip="Loading..." />
             }
             <Component {...myPageProps}  />
             {
