@@ -21,7 +21,7 @@ import {
 } from 'antd'
 import {GITHUB_ADDRESS, TOP_TIPS} from '../../config/constantsData';
 // import {getDetailUrl} from "../../config";
-import {githubApi} from '../../config/constantsData';
+import {githubApiStar} from '../../config/githubApi';
 
 let routerUrl;
 Router.onRouteChangeStart = (url) => {
@@ -37,7 +37,7 @@ class TopTips extends Component {
     }
   }
   async componentWillMount() {
-    const blog = await fetch(githubApi)
+    const blog = await fetch(githubApiStar)
     const {stargazers_count=0} = await blog.json();
     this.setState({stargazers_count})
   }

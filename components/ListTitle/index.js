@@ -7,8 +7,6 @@ import {connect} from 'react-redux'
 import Link from 'next/link';
 
 import {formatTime, getRandomArr} from '../../until';
-import {ARTICLE_TYPE_ICON, LIFE_IMAGE} from '../../config/constantsData';
-import * as ROUTER from "../../config/constantsData";
 import {qiniuyun_cdn_all_type, qiniuyun_cdn_icon} from '../../config/qiniuyun_cdn';
 import './index.less'
 

@@ -9,6 +9,7 @@ import {
 import { regUrl, real_ip} from "../../until";
 import {postComments, postUserComments, setAnswerId, setCommentIndex} from "../../store/actions";
 import {postCommentUrl, postUserCommentUrl} from "../../config";
+import {COMMENT_TIPS,COMMENT_LIMIT} from "../../config/constantsData";
 
 const FormItem = Form.Item;
 const {TextArea} = Input;
@@ -76,8 +77,8 @@ class FormComment extends Component {
           message.warning('用户名或者评论内容过少')
           return;
         }
-        if(comment.length>500){
-          message.warning('评论内容不能超过500字符')
+        if(comment.length>COMMENT_LIMIT.value){
+          message.warning(COMMENT_LIMIT.key)
           return;
         }
 
@@ -123,7 +124,7 @@ class FormComment extends Component {
   }
   render (){
     const {dataSource = {}} = this.props;
-    const { commentPlaceHolder = '来吐槽', commentBtnMsg = '提交评论'} = dataSource;
+    const { commentPlaceHolder = COMMENT_TIPS, commentBtnMsg = '提交评论'} = dataSource;
     const {autoCompleteResult} = this.state;
     const websiteOptions = autoCompleteResult.map(website => (
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>

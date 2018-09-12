@@ -10,6 +10,7 @@ import {getSearchList, getSearchTotal, postAdminPassword, collectArticleList} fr
 import MyHead from '../../components/MyHead';
 import {MENU_RULE, pageNum} from "../../config/constantsData";
 import './index.less'
+import {VERSIONS_TXT} from "../../config/constantsData";
 
 //toptis不需要seo
 const DynasicTopTipsNoSsr = dynamic(import('../../components/TopTips'), {
@@ -48,6 +49,11 @@ const routes = [
     txt: '我的收藏',
     isSuperAdmin: false,
     isMyCollcet: true
+  },
+  {
+    href: ROUTER.VERSIONS,
+    txt: VERSIONS_TXT,
+    isSuperAdmin: false,
   },
   {
     href: ROUTER.ADMIN,

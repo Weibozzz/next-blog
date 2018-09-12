@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
   Input, Tooltip, Cascader, Select, Checkbox, Button,
-  AutoComplete, List, Avatar, Icon, Divider, message
+  AutoComplete, List, Avatar, Icon, Divider, message, Alert, Tag
 } from 'antd';
 
-import {COMMENT_IMAGES} from "../../config/constantsData";
-import {default_comment} from "../../config/constantTag";
+import {COMMENT_IMAGES, COMMENT_TIPS} from "../../config/constantsData";
+import {default_comment, DEFAULT_TAG_ARR} from "../../config/constantTag";
 import MyCard from '../MyCard';
 import FormComment from '../FormComment';
 import {mockCommentsData} from './mockData';
@@ -37,9 +37,17 @@ class Comments extends Component {
   render() {
     const {dataSource = {}, commentIndex = -1} = this.props;
     let {commentsData = [], commentTitle = '发表评论', commentRow = 8} = dataSource;
-    commentsData = [...default_comment,...getMyCommenData(commentsData)]
+    commentsData = [...default_comment, ...getMyCommenData(commentsData)];
+    const sf = DEFAULT_TAG_ARR.find(v => v.user === 'sf');
+    const {user, website} = sf;
+    const tipsRender = <span>
+      {COMMENT_TIPS} <Tag color="purple">
+      <a href={website} title={user}>{user}</a>
+    </Tag>
+    </span>;
     return (
       <div className="comment-wrapper" id="comment">
+        <Alert message={tipsRender} type="info" showIcon/>
         <h2>{commentTitle}：</h2>
         <Row>
           <Col

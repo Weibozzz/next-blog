@@ -35,6 +35,8 @@ export const ABOUT = '/about'
 export const ABOUT_TXT = '关于我'
 export const POST_ARTICLE = '/postArticle'
 export const POST_ARTICLE_TXT = '发布文章'
+export const VERSIONS = '/versions'
+export const VERSIONS_TXT = '更新日志'
 export const DOCS_TXT = '文档中心'
 export const MENU_RULE = {
   '/':[BLOG_TXT],
@@ -44,6 +46,7 @@ export const MENU_RULE = {
   [ABOUT]:[ABOUT_TXT],
   [POST_ARTICLE]:[POST_ARTICLE_TXT],
   [ADMIN]:[ADMIN_TXT],
+  [VERSIONS]:[VERSIONS_TXT],
 }
 
 //seo
@@ -52,8 +55,6 @@ export const INDEX_TITLE = '刘伟波的个人网站'
 export const INDEX_ENGLISH = 'Liu WeiBo\'s Personal Website'
 export const KEYWORDS = '刘伟波, 个人网站,个人博客,  web前端'
 export const Description = '刘伟波的个人网站，刘伟波的技术作品，刘伟波的生活成长'
-
-export const githubApi = 'https://api.github.com/repos/Weibozzz/next-blog'
 
 //首页背景
 export const BG_INDEX = [
@@ -200,3 +201,9 @@ export const POST_READING_STATEMENT = ()=>{
   
   `;
 }
+
+export const COMMENT_LIMIT = {
+  key:'评论内容不能超过500字符',
+  value:500
+};
+export const COMMENT_TIPS = `评论支持markdown，${COMMENT_LIMIT.key},如果内容过多建议去sf平台`;
