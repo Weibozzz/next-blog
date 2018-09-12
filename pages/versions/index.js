@@ -10,8 +10,8 @@ import {
 import MyLayout from '../../components/MyLayout';
 import './index.less'
 import {VERSIONS_TXT, COMMON_TITLE} from "../../config/constantsData";
-import {obj, users} from './mockData';
-import {githubApiCommits, ALL_COMMITS} from "../../config/githubApi";
+// import {obj, users} from './mockData';
+import {githubApiCommits, ALL_COMMITS,githubApiUser} from "../../config/githubApi";
 
 const {Content} = Layout;
 
@@ -28,7 +28,9 @@ class Versions extends Component {
 
   async componentWillMount() {
     const blog = await fetch(githubApiCommits)
+    const userData = await fetch(githubApiUser)
     const data = await blog.json();
+    const users = await userData.json();
     const versions = data.map(v => {
       const {html_url, commit, sha, author: outAuthor = {}} = v;
       const {avatar_url = '', login = '', html_url: github_html_url} = outAuthor || {};
@@ -43,6 +45,7 @@ class Versions extends Component {
   }
 
   getHoverTips() {
+    const {users} = this.state;
     const {bio, company, location, name, login, avatar_url} = users;
     return <div style={{width: 350}} className="clearfix">
       <div className="fl">
