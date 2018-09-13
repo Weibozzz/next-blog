@@ -90,6 +90,7 @@ class MyApp extends App {
     const {Component, pageProps, reduxStore, router: {pathname}} = this.props;
     const {userAgent, status} = this.state;
     let myPageProps = {...pageProps, ...userAgent};
+    // console.log(pathname,status)
     return (
       <Container>
         <Provider store={reduxStore}>
@@ -100,11 +101,12 @@ class MyApp extends App {
                 ''
                 : <Header {...userAgent} />
             }
+
             {
-              status===OK?
+              status === OK ?
                 ''
                 :
-                <Spin tip="Loading..." />
+                <Spin tip="Loading..."/>
             }
             <Component {...myPageProps}  />
             {

@@ -38,7 +38,7 @@ class Edit extends Component {
     const {editCont = '', createTime = ''} = this.props;
     let decodeOrigin;
     try {
-      decodeOrigin = decodeURIComponent(editCont)
+      decodeOrigin = getHtml(decodeURIComponent(editCont))
     } catch (err) {
       decodeOrigin = editCont
     }

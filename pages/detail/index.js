@@ -55,7 +55,6 @@ class Detail extends Component {
     const {blogData = [], dispatch} = this.props;
     let {type = ''} = blogData[0] || {};
     type = type.split(',').join('.')
-    console.log(type)
     const queryTotalString = {
       type: 'hot|' + type
     };
