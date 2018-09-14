@@ -3,45 +3,19 @@ import {connect} from 'react-redux';
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
   Input, Tooltip, Cascader, Select, Checkbox, Button,
-  AutoComplete, List, Avatar, Icon, Divider, message
+  AutoComplete, List, Avatar, Icon, Divider, message,Tag,Alert
 } from 'antd';
 
 import { regUrl, real_ip} from "../../until";
 import {postComments, postUserComments, setAnswerId, setCommentIndex} from "../../store/actions";
 import {postCommentUrl, postUserCommentUrl} from "../../config";
-import {COMMENT_TIPS,COMMENT_LIMIT} from "../../config/constantsData";
+import {COMMENT_TIPS,COMMENT_LIMIT,commentPlaceHolder} from "../../config/constantsData";
+import {DEFAULT_TAG_ARR} from "../../config/constantTag";
+import {tailFormItemLayout,tailCommentsTip,formItemLayout} from './constants';
 
 const FormItem = Form.Item;
 const {TextArea} = Input;
 const AutoCompleteOption = AutoComplete.Option;
-const formItemLayout = {
-  labelCol: {
-    xs: {span: 24},
-    sm: {span: 24},
-    lg: {span: 8},
-  },
-  wrapperCol: {
-    xs: {span: 24},
-    sm: {span: 24},
-    lg: {span: 16},
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 24,
-      offset: 0,
-    },
-    lg: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
 class FormComment extends Component {
   constructor(props) {
     super(props);
@@ -124,84 +98,100 @@ class FormComment extends Component {
   }
   render (){
     const {dataSource = {}} = this.props;
-    const { commentPlaceHolder = COMMENT_TIPS, commentBtnMsg = '提交评论'} = dataSource;
+    const { commentBtnMsg = '提交评论'} = dataSource;
     const {autoCompleteResult} = this.state;
     const websiteOptions = autoCompleteResult.map(website => (
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
     ));
     const {getFieldDecorator} = this.props.form;
-    return <Form onSubmit={this.handleSubmit}>
-      <FormItem
-        {...formItemLayout}
-        label={(
-          <span>
+    const sf = DEFAULT_TAG_ARR.find(v => v.user === 'sf');
+    const {user, website} = sf;
+    const tipsRender = <span>
+      {COMMENT_TIPS(
+        <Tag color="#017e66">
+          <a href={website} title={user}>{user}</a>
+        </Tag>
+      )}
+    </span>;
+    return <div>
+      <Row>
+        <Col {...tailCommentsTip}>
+          <Alert message={tipsRender} type="info" showIcon/>
+        </Col>
+      </Row>
+      <Form onSubmit={this.handleSubmit}>
+        <FormItem
+          {...formItemLayout}
+          label={(
+            <span>
               Nickname&nbsp;
-            <Tooltip title="What do you want others to call you?">
+              <Tooltip title="What do you want others to call you?">
                 <Icon type="question-circle-o"/>
               </Tooltip>
             </span>
-        )}
-      >
-        {getFieldDecorator('nickname', {
-          rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
-        })(
-          <Input
-            title="用户名"
-            placeholder="用户名"/>
-        )}
-      </FormItem>
-      <FormItem
-        {...formItemLayout}
-        label="E-mail"
-      >
-        {getFieldDecorator('email', {
-          rules: [{
-            type: 'email', message: 'The input is not valid E-mail!',
-          }, {
-            required: false, message: 'Please input your E-mail!',
-          }],
-        })(
-          <Input
-            title="不会被公开"
-            placeholder="不会被公开"/>
-        )}
-      </FormItem>
-      <FormItem
-        {...formItemLayout}
-        label="Website"
-      >
-        {getFieldDecorator('website', {
-          rules: [{required: false, message: 'Please input website!'}],
-        })(
-          <AutoComplete
-            dataSource={websiteOptions}
-            onChange={this.handleWebsiteChange}
-            placeholder='SEO推广 示例："http://xxx.com"'
-          >
+          )}
+        >
+          {getFieldDecorator('nickname', {
+            rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
+          })(
             <Input
-              title='SEO推广 示例："http://xxx.com"'/>
-          </AutoComplete>
-        )}
-      </FormItem>
-      <FormItem
-        {...formItemLayout}
-        label="comment"
-      >
-        {getFieldDecorator('comment', {
-          rules: [{
-            required: true, message: 'Please input your comment!',
-          }],
-        })(
-          <TextArea
-            rows={6}
-            title={commentPlaceHolder}
-            placeholder={commentPlaceHolder}/>
-        )}
-      </FormItem>
-      <FormItem {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">{commentBtnMsg}</Button>
-      </FormItem>
-    </Form>
+              title="用户名"
+              placeholder="用户名"/>
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="E-mail"
+        >
+          {getFieldDecorator('email', {
+            rules: [{
+              type: 'email', message: 'The input is not valid E-mail!',
+            }, {
+              required: false, message: 'Please input your E-mail!',
+            }],
+          })(
+            <Input
+              title="不会被公开"
+              placeholder="不会被公开"/>
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Website"
+        >
+          {getFieldDecorator('website', {
+            rules: [{required: false, message: 'Please input website!'}],
+          })(
+            <AutoComplete
+              dataSource={websiteOptions}
+              onChange={this.handleWebsiteChange}
+              placeholder='SEO推广 示例："http://xxx.com"'
+            >
+              <Input
+                title='SEO推广 示例："http://xxx.com"'/>
+            </AutoComplete>
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="comment"
+        >
+          {getFieldDecorator('comment', {
+            rules: [{
+              required: true, message: 'Please input your comment!',
+            }],
+          })(
+            <TextArea
+              rows={6}
+              title={commentPlaceHolder}
+              placeholder={commentPlaceHolder}/>
+          )}
+        </FormItem>
+        <FormItem {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit">{commentBtnMsg}</Button>
+        </FormItem>
+      </Form>
+    </div>
 
   }
 }

@@ -365,7 +365,7 @@ marked.setOptions({
 10. 登陆后支持收藏文章和修改评论
 7. 顶部加载滚动条首次没loading
 8. 增加koa子模块
-9. 评论支持markdown，评论内容过多建议去sf平台
+9. 填写markdown代码高亮，类似于掘金
 
 
 ### 待学习修改
