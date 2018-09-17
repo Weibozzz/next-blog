@@ -61,7 +61,7 @@ class FormComment extends Component {
         let queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};
         const isExist = commentsDataOrigin.findIndex(v => {
           const {user, name, answerId} = v;
-          return ((user || name) === nickname) && ((user || name) !== '刘伟波') && answerId;
+          return ((user || name) === nickname) && ((user || name) !== '刘伟波') && !answerId;
         }) !== -1
         if (isExist) {
           message.warning('用户名已存在')
