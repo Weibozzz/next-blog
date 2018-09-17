@@ -5,7 +5,7 @@ import 'whatwg-fetch'
 import {
   Layout, Menu, Breadcrumb, Row, Col,
   List, Avatar, Icon, Pagination, Alert,
-  Input, Button, Radio, Tooltip, Divider, Card, Timeline, Popover
+  Input, Button, Radio, Tooltip, Divider, Card, Timeline, Popover, Spin
 } from 'antd'
 import MyLayout from '../../components/MyLayout';
 import './index.less'
@@ -76,6 +76,11 @@ class Versions extends Component {
             <div style={{margin: 30}}>
               <h2>本网站更新日志</h2>
             </div>
+            {
+              Array.isArray(versions) && !versions.length && <div style={{position:'absolute',left:'50%',top:'20%',transform:'translateX(-50%)',zIndex:10}}>
+                <Spin tip="Loading..."></Spin>
+              </div>
+            }
             <Timeline mode="alternate" style={{width: '80%', margin: '30px auto'}}>
               {
                 Array.isArray(versions) ? versions.map((v, index) => {
