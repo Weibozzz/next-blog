@@ -3,23 +3,24 @@ import {connect} from 'react-redux';
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
   Input, Tooltip, Cascader, Select, Checkbox, Button,
-  AutoComplete, List, Avatar, Icon, Divider, message,Tag,Alert
+  AutoComplete, List, Avatar, Icon, Divider, message, Tag, Alert
 } from 'antd';
 
-import { regUrl, real_ip} from "../../until";
+import {regUrl, real_ip} from "../../until";
 import {postComments, postUserComments, setAnswerId, setCommentIndex} from "../../store/actions";
 import {postCommentUrl, postUserCommentUrl} from "../../config";
-import {COMMENT_TIPS,COMMENT_LIMIT,commentPlaceHolder} from "../../config/constantsData";
+import {COMMENT_TIPS, COMMENT_LIMIT, commentPlaceHolder} from "../../config/constantsData";
 import {DEFAULT_TAG_ARR} from "../../config/constantTag";
-import {tailFormItemLayout,tailCommentsTip,formItemLayout} from './constants';
+import {tailFormItemLayout, tailCommentsTip, formItemLayout} from './constants';
 
 const FormItem = Form.Item;
 const {TextArea} = Input;
 const AutoCompleteOption = AutoComplete.Option;
+
 class FormComment extends Component {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       autoCompleteResult: [],
     }
   }
@@ -35,7 +36,7 @@ class FormComment extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    const {dispatch, dataSource = {},answerId} = this.props;
+    const {dispatch, dataSource = {}, answerId} = this.props;
     const {commentsData: commentsDataOrigin = [], articleID: id, isUserSubmit = false} = dataSource;
     if (!id && !isUserSubmit) {
       return;
@@ -51,7 +52,7 @@ class FormComment extends Component {
           message.warning('用户名或者评论内容过少')
           return;
         }
-        if(comment.length>COMMENT_LIMIT.value){
+        if (comment.length > COMMENT_LIMIT.value) {
           message.warning(COMMENT_LIMIT.key)
           return;
         }
@@ -59,8 +60,8 @@ class FormComment extends Component {
         const realIp = await real_ip()
         let queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};
         const isExist = commentsDataOrigin.findIndex(v => {
-          const {user,name} = v;
-          return ((user  || name) === nickname)&&((user  || name) !== '刘伟波');
+          const {user, name, answerId} = v;
+          return ((user || name) === nickname) && ((user || name) !== '刘伟波') && answerId;
         }) !== -1
         if (isExist) {
           message.warning('用户名已存在')
@@ -91,14 +92,15 @@ class FormComment extends Component {
             }
           })
 
-        setCommentIndex(dispatch,-1)
-        setAnswerId(dispatch,'')
+        setCommentIndex(dispatch, -1)
+        setAnswerId(dispatch, '')
       }
     });
   }
-  render (){
+
+  render() {
     const {dataSource = {}} = this.props;
-    const { commentBtnMsg = '提交评论'} = dataSource;
+    const {commentBtnMsg = '提交评论'} = dataSource;
     const {autoCompleteResult} = this.state;
     const websiteOptions = autoCompleteResult.map(website => (
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
@@ -195,6 +197,7 @@ class FormComment extends Component {
 
   }
 }
+
 const mapStateToProps = state => {
   const {answerId} = state;
   return {answerId};
