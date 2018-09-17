@@ -1,3 +1,4 @@
+import React from 'react';
 const dev = process.env.NODE_ENV !== 'production'
 //备案地址
 export const MIIT_BEIAN = 'http://www.miitbeian.gov.cn'
@@ -89,8 +90,6 @@ export const BG_INDEX = [
 ]
 //首页切换时间
 export const defaultTimer = 10000;
-//关于我
-export const commentPlaceHolder = '欢迎提出您在使用过程中遇到的问题或宝贵建议（400字以内），感谢您对博主的支持。(必填)'
 //文章分类图片icon
 export const ARTICLE_TYPE_ICON = {
   vue: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531898804960&di=bb204eb57425de2ad3ea2cb6d1358df2&imgtype=0&src=http%3A%2F%2Fimage.evget.com%2Fimages%2Farticle%2F2016%2FJavascriptky-3.png',
@@ -206,4 +205,10 @@ export const COMMENT_LIMIT = {
   key:'评论内容不能超过500字符',
   value:500
 };
-export const COMMENT_TIPS = `评论支持markdown，${COMMENT_LIMIT.key},如果内容过多建议去sf平台`;
+//关于我
+export const commentPlaceHolder = `欢迎提出您在使用过程中遇到的问题或宝贵建议（${COMMENT_LIMIT.key}字以内），感谢您对博主的支持。(必填)`
+export const COMMENT_TIPS = (param='sf')=>{
+  return<span>
+    评论支持markdown，{COMMENT_LIMIT.key},如果内容过多或者要及时回复,建议去 {param} 平台,一般一天之内就会回复。
+  </span>
+};

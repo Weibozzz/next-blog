@@ -9,7 +9,6 @@ import Router from 'next/router'
 import 'whatwg-fetch'
 import Link from 'next/link';
 import Head from 'next/head'
-
 import {
   getSearchList,
   getHotArticleList,
@@ -310,9 +309,11 @@ class Blog extends Component {
                   </Row>
                 </div>
               </div>
+
             </Col>
           </Row>
         </MyLayout>
+
       </div>
     )
   }

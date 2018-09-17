@@ -5,7 +5,6 @@ import {
 } from 'antd'
 import {connect} from 'react-redux'
 import Link from 'next/link';
-
 import {formatTime, getRandomArr} from '../../until';
 import {qiniuyun_cdn_all_type, qiniuyun_cdn_icon} from '../../config/qiniuyun_cdn';
 import './index.less'
@@ -126,7 +125,7 @@ class ListTitle extends Component {
               extra={isIcon ?
                 <img className="icon-img" width={40} alt={srcImg} src={qiniu_srcImg}/>
                 :
-                <img className="life-img" width={272} alt={srcImg} src={ResultLifeUrl}/>}
+                <img className="life-img" width={272} alt={srcImg} src={ResultLifeUrl} />}
             >
               <List.Item.Meta
                 avatar={<Avatar src={item.avatar}/>}

@@ -53,8 +53,8 @@ class TopTips extends Component {
           banner={true}
         />
         <div>
-          <ButtonGroup href={GITHUB_ADDRESS}>
-            <Button className="github-style bm-no-border " icon="github">Github</Button>
+          <ButtonGroup >
+            <Button href={GITHUB_ADDRESS} className="github-style bm-no-border " icon="github">Github</Button>
             <Tooltip placement="right" title={`Star`}>
               <Button className="bm-no-border">{stargazers_count}</Button>
             </Tooltip>
