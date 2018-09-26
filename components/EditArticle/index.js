@@ -53,7 +53,6 @@ class EditArticle extends Component {
       timer: null,
       inter: null,
       markdownUploadLink: [],
-      isAutoSubmit: true,
       radioValue: 1,
 
       previewVisible: false,
@@ -132,7 +131,7 @@ class EditArticle extends Component {
   //编辑器内容
   handleChangeMarkEdit(txt) {
     let time = 15;
-    let {inter,timer, isAutoSubmit} = this.state;
+    let {inter,timer} = this.state;
     if (inter) {
       clearInterval(inter)
       this.setState({
@@ -161,9 +160,7 @@ class EditArticle extends Component {
       })
     }
     timer = setTimeout(() => {
-      if (isAutoSubmit) {
-        this.onSubmit()
-      }
+      this.onSubmit()
       this.setState({
         saveStatus: '已提交'
       })
@@ -199,7 +196,6 @@ class EditArticle extends Component {
       this.setState({
         inter: null,
         timer:null,
-        isAutoSubmit: false,
         saveStatus: '已提交'
       })
       clearInterval(inter);

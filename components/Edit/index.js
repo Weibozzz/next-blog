@@ -74,7 +74,10 @@ class Edit extends Component {
   }
 
   onContentChange(e) {
-    let innerText = e.target.innerText
+    let innerText = e.target.innerText;
+    console.log(innerText)
+    innerText=innerText.replace(/script>/img,'script\\>')
+    console.log(innerText)
     let markCont = marked(innerText)
     const {handleChangeMarkEdit} = this.props;
     handleChangeMarkEdit(innerText)
