@@ -22,11 +22,16 @@ class Versions extends Component {
     super(props);
     this.state = {
       versions: [],
-      users: {}
+      users: {},
+      isMobile: false
     }
   }
 
   async componentWillMount() {
+    const {availWidth} = window.screen;
+    availWidth<768&&this.setState({
+      isMobile:true
+    })
     const blog = await fetch(githubApiCommits)
     const userData = await fetch(githubApiUser)
     const data = await blog.json();
@@ -65,7 +70,7 @@ class Versions extends Component {
 
   render() {
 
-    const {versions} = this.state;
+    const {versions,isMobile} = this.state;
     return (
       <div>
         <Head>
@@ -77,11 +82,12 @@ class Versions extends Component {
               <h2>本网站更新日志</h2>
             </div>
             {
-              Array.isArray(versions) && !versions.length && <div style={{position:'absolute',left:'50%',top:'20%',transform:'translateX(-50%)',zIndex:10}}>
+              Array.isArray(versions) && !versions.length &&
+              <div style={{position: 'absolute', left: '50%', top: '20%', transform: 'translateX(-50%)', zIndex: 10}}>
                 <Spin tip="Loading..."></Spin>
               </div>
             }
-            <Timeline mode="alternate" style={{width: '80%', margin: '30px auto'}}>
+            <Timeline mode={isMobile?'left':'alternate'} style={{width: '80%', margin: '30px auto'}}>
               {
                 Array.isArray(versions) ? versions.map((v, index) => {
                     const {html_url, message, date, sha, avatar_url} = v;
