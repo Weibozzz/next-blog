@@ -202,7 +202,7 @@ class Detail extends Component {
                xs={{span: 24}}
                lg={{span: 22}}>
 
-            <ArticleTitle commentsData={commentsData} detailArticle={blogData[0]}/>
+            <ArticleTitle commentsData={commentsData} detailArticle={blogData[0]} htmlStr={_html_content}/>
             <div style={{background: '#fff', padding: '0 24px 24px 24px'}}>
               <Row>
                 <Col

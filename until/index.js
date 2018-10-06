@@ -57,19 +57,14 @@ export const getArticleInfo = detailArr => {
 }
 export const OldTime = 1531094400;  // 2018-07-09 00:00:00 星期一
 export const getHtml = (str, newTime) => {
-  if (OldTime > newTime) { //这是曾经的文章
-    return str ? str
-      : ''
-  } else {
-    return str ? str.replace(/@quot;|@apos;/g, function (str) {
-        if (str === '@quot;') {
-          return '"'
-        } else if (str === "@apos;") {
-          return "'"
-        }
-      })
-      : ''
-  }
+  return str ? str.replace(/@quot;|@apos;/g, function (str) {
+      if (str === '@quot;') {
+        return '"'
+      } else if (str === "@apos;") {
+        return "'"
+      }
+    })
+    : '';
 }
 
 export function toQueryStr(obj){

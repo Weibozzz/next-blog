@@ -9,7 +9,8 @@ import './index.less'
 
 
 const ArticleTitle = (...args)=>{
-  const {detailArticle={},commentsData=[]} = args[0];
+  const {detailArticle={},commentsData=[],htmlStr=''} = args[0];
+  const READING_TIME = htmlStr.length/20677*29 | 0;
   let hasUrlComment = commentsData.filter(v=>regUrl.test(v.website)).slice(0,10)
   if(hasUrlComment.length<10){
     hasUrlComment=[...hasUrlComment,...DEFAULT_TAG_ARR].slice(0,10)
@@ -34,6 +35,7 @@ const ArticleTitle = (...args)=>{
             {
               type.split(',').map(v=>(<span key={v} className="tag">{v}</span>))
             }
+            <span className="read-time">读完大概需要{READING_TIME}分钟</span>
 
           </p>
           <ul className="clearfix detail-info" >
