@@ -15,7 +15,7 @@ import {
   getSearchTotal,
   getSearchPageList,
   postSaveIp,
-  getIpList, getViewList, getCreateTimeList, collectArticleList
+  getViewList, getCreateTimeList, collectArticleList
 } from '../../store/actions'
 import ListTitle from '../../components/ListTitle';
 import {getBlogUrl, getIpUrl, getTotalUrl, getViewUrl, postSaveIpUrl, getCreateTimeUrl} from '../../config';
