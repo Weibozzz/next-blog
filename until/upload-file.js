@@ -2,7 +2,7 @@
 /**
  * 将图片转化为base64
  */
-export const imgBase64=(file, callback)=> {
+export const imgBase64 = (file, callback) => {
   // 看支持不支持FileReader
   if (!file || !window.FileReader) return;
   // 创建一个 Image 对象
@@ -44,34 +44,36 @@ export const imgBase64=(file, callback)=> {
     // 将图片将转成 base64 格式
     reader.readAsDataURL(file);
   }
-}
+};
 /**
  * 把Base64转换成file文件
  */
-export const convertBase64UrlToFile=(dataurl, filename) =>{
+export const convertBase64UrlToFile = (dataurl, filename) => {
   let arr = dataurl.split(','),
     mime = arr[0].match(/:(.*?);/)[1],
-    bstr = atob(arr[1]), n = bstr.length,
+    bstr = atob(arr[1]),
+    n = bstr.length,
     u8arr = new Uint8Array(n);
   while (n--) {
     u8arr[n] = bstr.charCodeAt(n);
   }
-  return new File([u8arr], filename, {type: mime});
-}
+  return new File([u8arr], filename, { type: mime });
+};
 
 /**
  * 检查并压缩图片大小
  */
-export const checkAndHandleCompression=(file,maxSize=1)=>{
+export const checkAndHandleCompression = (file, maxSize = 1) => {
   return new Promise((resolve, reject) => {
 
     imgBase64(file, (image, canvas) => {
       maxSize = maxSize * 1024; // 1M (单位KB)
       let fileSize = file.size / 1024; // 、图片大小 (单位KB)
 
-      let uploadSrc, uploadFile;
+      let uploadSrc,
+        uploadFile;
       // 如果图片大小大于maxSize，进行压缩
-      console.log({fileSize , maxSize})
+      console.log({ fileSize, maxSize });
       if (fileSize > maxSize) {
         uploadSrc = canvas.toDataURL(file.type, maxSize / fileSize); // 转换成DataURL
         uploadFile = convertBase64UrlToFile(uploadSrc, file.name); // 转成file文件
@@ -81,15 +83,15 @@ export const checkAndHandleCompression=(file,maxSize=1)=>{
       }
 
       let compressedSize = uploadFile.size / 1024;// 压缩后图片大小 (单位KB)
-      console.log('压缩后图片大小kb',compressedSize)
+      console.log('压缩后图片大小kb', compressedSize);
       // 判断图片大小是否小于maxSize，如果大于则继续压缩至小于为止
       if (compressedSize.toFixed(2) > maxSize) {
         checkAndHandleCompression(uploadFile);
       } else {
-        let fileOptions = {uploadSrc, uploadFile};
+        let fileOptions = { uploadSrc, uploadFile };
         resolve(fileOptions);
       }
     });
 
   });
-}
+};
