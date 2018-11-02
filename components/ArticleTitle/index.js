@@ -10,7 +10,7 @@ import './index.less'
 
 const ArticleTitle = (...args)=>{
   const {detailArticle={},commentsData=[],htmlStr=''} = args[0];
-  const READING_TIME = htmlStr.length/20677*29 | 0;
+  const READING_TIME = Math.ceil(htmlStr.length/20677*29);
   let hasUrlComment = commentsData.filter(v=>regUrl.test(v.website)).slice(0,10)
   if(hasUrlComment.length<10){
     hasUrlComment=[...hasUrlComment,...DEFAULT_TAG_ARR].slice(0,10)
@@ -42,8 +42,8 @@ const ArticleTitle = (...args)=>{
             <li className="fl">发布时间：{formatTime(createTime)}</li>
             <li className="fl"><Icon type="user" /> {user}</li>
             <li className="fl"><Icon type="eye" /> {visitor}</li>
-            <li className="fl"><Icon type="edit" /> {formatTime(lastModify)}</li>
-            <li className="fl">修改次数：{modifyCount}</li>
+            <li className="fl"> 更新于<Icon type="edit" />： {formatTime(lastModify)}</li>
+            {/*<li className="fl">修改次数：{modifyCount}</li>*/}
           </ul>
           <Divider/>
         </Col>
