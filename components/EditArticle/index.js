@@ -80,12 +80,17 @@ class EditArticle extends Component {
       urlVal: url,
       editCont: getHtml(content, createTime),
       isEdit: articleID,
-      saveStatus: ''
+      saveStatus: '',
+      queryId:''
     })
   }
 
   componentDidMount() {
-
+    const { query = {} } = Router;
+    const { id = '' } = query;
+    this.setState({
+      queryId:id
+    })
   }
 
   componentWillUnmount() {
@@ -378,7 +383,8 @@ class EditArticle extends Component {
       saveStatus,
       bucket,
       loadPercent,
-      markdownUploadLink
+      markdownUploadLink,
+      queryId
     } = this.state;
     const resultSelectVal = selectVal ? selectVal.split(',') : []
     const {dataSource = {}} = this.props;
@@ -393,6 +399,11 @@ class EditArticle extends Component {
     );
     return (
       <div>
+        <p>
+          <Link href={`/p/${queryId}`}>
+            <a>查看当前文章</a>
+          </Link>
+        </p>
         <Row>
           <Col span={24}>
             <InputGroup compact>
