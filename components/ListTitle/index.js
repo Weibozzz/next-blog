@@ -128,7 +128,6 @@ class ListTitle extends Component {
                 <img className="life-img" width={272} alt={srcImg} src={ResultLifeUrl} />}
             >
               <List.Item.Meta
-                avatar={<Avatar src={item.avatar}/>}
                 title={
                   <Link as={`/p/${item.id}`} href={`/detail?id=${item.id}`}>
                     <a className="article-title">
