@@ -182,7 +182,7 @@ export const POST_ARTICLE_COPY =(id)=>{
   return  `
 
 
-<br>
+--
 作者：刘伟波
 
 链接：[${MY_BLOG}/p/${id+1}](${MY_BLOG}/p/${id+1})
