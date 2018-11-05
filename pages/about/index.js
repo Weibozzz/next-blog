@@ -17,22 +17,14 @@ import {POPUP_TIPS} from '../../config/constantTag';
 import {fnTextPopup} from '../../until';
 import MyLayout from '../../components/MyLayout';
 import './index.less'
+import { markdownConfig } from '../../config/markdown';
 
 const {Content} = Layout;
-hljs.configure({
-  tabReplace: '  ',
-  classPrefix: 'hljs-',
-  languages: ['CSS', 'HTML, XML', 'JavaScript', 'PHP', 'Python', 'Stylus', 'TypeScript', 'Markdown']
-})
+const { options, config } = markdownConfig;
+hljs.configure(config);
 marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: true,
-  smartLists: true,
-  smartypants: false
+  ...options
 });
 class About extends Component {
   constructor(props) {

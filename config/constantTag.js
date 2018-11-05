@@ -29,6 +29,10 @@ export const DEFAULT_TAG_ARR = [
     user: 'sf'
   },
   {
+    website: 'https://segmentfault.com/n/1330000016909563',
+    user: 'segmentfault'
+  },
+  {
     website: 'https://github.com/Weibozzz',
     user: 'github'
   },
