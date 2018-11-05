@@ -198,7 +198,7 @@ class Blog extends Component {
       createTimeListData = [], isCollectArticle = false, viewListData
     } = this.props;
     //昨日今日浏览记录
-    const { curView, yesView } = getView(viewListData);
+    const { curView, yesView,his } = getView(viewListData);
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
     const yearMonthArr = createTimeListData.map(v => getYearAndMounth(v.createTime));
     const resultYMArr = cancelRepeat(yearMonthArr);
@@ -316,7 +316,7 @@ class Blog extends Component {
                 <div>
                   <h3>历史浏览</h3>
                   <div className="view-date">
-                    昨日访问量：{yesView} 今日访问量：{curView}
+                    昨日访问量：{yesView} 今日访问量：{curView} 历史访问量：{his}
                   </div>
                 </div>
               </div>
