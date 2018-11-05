@@ -54,7 +54,7 @@ class Detail extends Component {
 
   componentWillMount() {
     const { blogData = [], dispatch } = this.props;
-    let { type = '' } = blogData[0] || {};
+    let { type = '' } = blogData[0] || '';
     type = type.split(',')
       .join('.');
     const queryTotalString = {
@@ -68,8 +68,13 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    // 置图片宽高 最大宽或者高 为300px
-    untilMaxWidthOrHeight();
+    const life = ['interesting', 'fight'];
+    const { blogData = [] } = this.props;
+    let { type = '' } = blogData[0] || '';
+    if(life.indexOf(type)===-1){
+      // 设置非生活图片图片宽高 最大宽或者高 为300px
+      untilMaxWidthOrHeight();
+    }
     window.onscroll = throttle(() => {
       this.getRateWidth();
     });
