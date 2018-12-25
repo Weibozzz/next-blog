@@ -1,7 +1,7 @@
 {
-  "name": "next-demo",
+  "name": "next-blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "staticCdnMapping",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",

@@ -22,7 +22,7 @@ import MyLayout from '../../components/MyLayout';
 import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl} from '../../config';
 import {COMMON_TITLE, MY_BLOG, POST_READING_STATEMENT} from '../../config/constantsData';
 import {markdownConfig} from '../../config/markdown';
-import {getHtml, OldTime, throttle} from '../../until';
+import {getHtml, OldTime, throttle,NewCdnTime,changeCdnUrl} from '../../until';
 import './index.less'
 import './pop-tips.less'
 import {addZan, getHotArticleList, getHotRecommendList} from "../../store/actions";
@@ -118,18 +118,7 @@ class Detail extends Component {
     }, 500)
   }
 
-  render() {
-//接口
-    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = []} = this.props;
-    let {articleID, articleLike, isShowEditIcon, topWidth} = this.state;
-    let {content = '', createTime = '', title = '', url = '', id, type = '', like = 0} = blogData[0] || {};
-    const isShowReadingStatement = /阅读书籍/g.test(type);
-    const resultLike = Math.max(articleLike, like)
-
-    commentsData = commentsData.length > getCommentsData.length ? commentsData : getCommentsData
-      .sort((a, b) => b.createTime - a.createTime)
-
-    const bool = createTime > OldTime || articleID === 1;
+  getHtmlRender(createTime,articleID,content,isShowReadingStatement,bool) {
     let decode_html;
     try {
       decode_html = decodeURIComponent(content)
@@ -161,6 +150,26 @@ class Detail extends Component {
             })
           , createTime)
         : getHtml(decode_html, createTime)
+    return {
+      code:_html_content,
+      decode_html
+    };
+  }
+
+  render() {
+//接口
+    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = []} = this.props;
+    let {articleID, articleLike, isShowEditIcon, topWidth} = this.state;
+    let {content = '', createTime = '', title = '', url = '', id, type = '', like = 0} = blogData[0] || {};
+    const isShowReadingStatement = /阅读书籍/g.test(type);
+    const resultLike = Math.max(articleLike, like)
+    const bool = createTime > OldTime || articleID === 1;
+
+    commentsData = commentsData.length > getCommentsData.length ? commentsData : getCommentsData
+      .sort((a, b) => b.createTime - a.createTime)
+
+    let {code,decode_html} = this.getHtmlRender(createTime,articleID,content,isShowReadingStatement,bool)
+    let _html_content= changeCdnUrl(createTime,code);
 
     return (
       <div className="detail">

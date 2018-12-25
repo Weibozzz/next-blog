@@ -56,6 +56,16 @@ export const getArticleInfo = detailArr => {
   return rest
 }
 export const OldTime = 1531094400;  // 2018-07-09 00:00:00 星期一
+export const NewCdnTime = 1545723881;  // 2018-12-25 15:44:41 星期二 切換了cdn域名
+/**
+ * 七牛云cdn测试域名到期，切换新的域名
+ */
+export const changeCdnUrl = (createTime,code)=> {
+  let newCont = code.replace(/(pbw4yrlys\.bkt\.clouddn\.com)/gim,'images.static.liuweibo.cn')
+    .replace(/(pd96wjt4m\.bkt\.clouddn\.com)/gim,'images.liuweibo.cn')
+  // return createTime > NewCdnTime ? code : newCont;
+  return newCont;
+};
 export const getHtml = (str, newTime) => {
   return str ? str.replace(/@quot;|@apos;/g, function (str) {
       if (str === '@quot;') {

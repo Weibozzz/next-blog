@@ -58,34 +58,36 @@ export const KEYWORDS = '刘伟波, 个人网站,个人博客,  web前端'
 export const Description = '刘伟波的个人网站，刘伟波的技术作品，刘伟波的生活成长'
 
 //首页背景
+// http://images.static.liuweibo.cn
+// http://pbw4yrlys.bkt.clouddn.com
 export const BG_INDEX = [
   {
     key: '西安钟楼',
-    value: 'http://pbw4yrlys.bkt.clouddn.com/image/index/zhoulou.jpg'
+    value: 'http://images.static.liuweibo.cn/image/index/zhoulou.jpg'
   },
   {
     key: '上海东方明珠',
-    value: 'http://pbw4yrlys.bkt.clouddn.com/image/index/dongfangmingzhu.jpg'
+    value: 'http://images.static.liuweibo.cn/image/index/dongfangmingzhu.jpg'
   },
   {
     key: '华山',
-    value: 'http://pbw4yrlys.bkt.clouddn.com/image/index/huashan.jpg'
+    value: 'http://images.static.liuweibo.cn/image/index/huashan.jpg'
   },
   {
     key: '明德楼',
-    value: 'http://pbw4yrlys.bkt.clouddn.com/image/index/mindelou.jpg'
+    value: 'http://images.static.liuweibo.cn/image/index/mindelou.jpg'
   },
   {
     key: '韩城古城',
-    value: 'http://pbw4yrlys.bkt.clouddn.com/image/index/hanchegngucheng.jpg'
+    value: 'http://images.static.liuweibo.cn/image/index/hanchegngucheng.jpg'
   },
   {
     key: '韩城司马迁',
-    value: 'http://pbw4yrlys.bkt.clouddn.com/image/index/simaqina.jpg'
+    value: 'http://images.static.liuweibo.cn/image/index/simaqina.jpg'
   },
   {
     key: '韩城美食',
-    value: 'http://pbw4yrlys.bkt.clouddn.com/image/index/hanchegnmeishi.jpg'
+    value: 'http://images.static.liuweibo.cn/image/index/hanchegnmeishi.jpg'
   },
 ]
 //首页切换时间
