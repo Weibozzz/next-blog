@@ -106,7 +106,7 @@ class FormComment extends Component {
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
     ));
     const {getFieldDecorator} = this.props.form;
-    const sf = DEFAULT_TAG_ARR.find(v => v.user === 'sf');
+    const sf = DEFAULT_TAG_ARR.find(v => v.user === 'segmentfault');
     const {user, website} = sf;
     const tipsRender = <span>
       {COMMENT_TIPS(

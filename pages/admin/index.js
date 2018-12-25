@@ -30,6 +30,7 @@ import {ALL, pageNum, TITLE, ADMIN_TXT, COMMON_TITLE} from "../../config/constan
 import MyLayout from '../../components/MyLayout';
 import {REQ_ACTION} from './req-action';
 import {TABLE_DATA} from './table-data';
+import {getView} from '../../until/getiView';
 
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
@@ -139,7 +140,7 @@ class Admin extends Component {
       getCommentsUserData: commentsUserData = [], getUserCommentsData = [],
       getCommentsData = [], ipListData = []} = this.props;
     //昨日今日浏览记录
-    const {curView,yesView} = TABLE_DATA.getView(viewListData)
+    const {curView,yesView} = getView(viewListData)
     //浏览记录
     const {ipColumns,ipData} = TABLE_DATA.ipData(ipListData)
     //文章

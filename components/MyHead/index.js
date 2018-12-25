@@ -14,7 +14,6 @@ const MyHead = ()=>(
     <meta name="Keywords" content={ROUTER.KEYWORDS}/>
     <meta name="Description" content={ROUTER.Description}/>
     <meta name="author" content="刘伟波,liuweibo"/>
-    <link rel='stylesheet' href='/_next/static/style.css'/>
     <link rel='stylesheet' href='/static/css/iconfont/iconfont.css'/>
     <link rel='stylesheet' type='text/css' href='/static/css/nprogress.css' />
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />

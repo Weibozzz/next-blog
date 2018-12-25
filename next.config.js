@@ -5,7 +5,8 @@ module.exports =   withLess(
   {
     lessLoaderOptions: {
       javascriptEnabled: true,
-      cssModules: true,
+      importLoaders: 1,
+      localIdentName: "[local]___[hash:base64:5]",
 
     },
     distDir: 'lwbBlogBuild'

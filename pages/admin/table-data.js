@@ -45,14 +45,5 @@ export const TABLE_DATA = {
       (v, i) => Object.assign({}, v, {key: i}, {createTime: formatTime(v.createTime)})
     )
     return {columnsAdminComments,dataAdminCommentsData};
-  },
-  getView({date}){
-    if(date){
-      const viewListData = JSON.parse(date)
-      let {t_view:curView} = viewListData[0];
-      let {t_view:yesView} = viewListData[1];
-      return {curView,yesView};
-    }
-    return {};
   }
 }

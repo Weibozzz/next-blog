@@ -184,7 +184,7 @@ export const POST_ARTICLE_COPY =(id)=>{
   return  `
 
 
-         <br>
+--
 作者：刘伟波
 
 链接：[${MY_BLOG}/p/${id+1}](${MY_BLOG}/p/${id+1})
@@ -200,7 +200,7 @@ export const POST_READING_STATEMENT = ()=>{
   > 关于阅读书籍部分，是个人在本书籍中收集的精华部分和实战部分，为了后续再次阅读节省时间
   和方便在工作中的应用，后续会分享本书籍的电子版pdf在线下载。不过我还是建议读着去阅读原著。
   
-  <br>
+  --
   
   `;
 }
