@@ -1,40 +1,40 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux'
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
   Input, Tooltip, Cascader, Select, Checkbox, Button,
   AutoComplete, List, Avatar, Icon, Divider
 } from 'antd';
-import 'whatwg-fetch';
+import 'whatwg-fetch'
 import Head from 'next/head';
 import Link from 'next/link';
-import Router from 'next/router';
-import marked from 'marked';
+import Router from 'next/router'
+import marked from 'marked'
 import hljs from 'highlight.js';
 import MarkNav from 'markdown-navbar';
-import { untilMaxWidthOrHeight } from './util';
 import './markdown-navbar.less';
 //组件
 import ArticleTitle from '../../components/ArticleTitle';
+import { untilMaxWidthOrHeight } from './util';
 import PrevNextPage from '../../components/PrevNextPage';
 import Comments from '../../components/Comments';
 import MyLayout from '../../components/MyLayout';
 //其他
-import { getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl } from '../../config';
-import { COMMON_TITLE, MY_BLOG, POST_READING_STATEMENT } from '../../config/constantsData';
-import { markdownConfig } from '../../config/markdown';
-import { getHtml, OldTime, throttle ,NewCdnTime,changeCdnUrl} from '../../until';
-import './index.less';
-import './pop-tips.less';
-import { addZan, getHotArticleList, getHotRecommendList } from '../../store/actions';
+import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl} from '../../config';
+import {COMMON_TITLE, MY_BLOG, POST_READING_STATEMENT} from '../../config/constantsData';
+import {markdownConfig} from '../../config/markdown';
+import {getHtml, OldTime, throttle,NewCdnTime,changeCdnUrl} from '../../until';
+import './index.less'
+import './pop-tips.less'
+import {addZan, getHotArticleList, getHotRecommendList} from "../../store/actions";
 
 
 //定义
-const { Content } = Layout;
+const {Content} = Layout;
 
 let timer;
-const { options, config } = markdownConfig;
-hljs.configure(config);
+const {options, config} = markdownConfig
+hljs.configure(config)
 marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
   ...options
@@ -49,22 +49,21 @@ class Detail extends Component {
       fn: null,
       isShowEditIcon: false,
       topWidth: 0
-    };
+    }
   }
 
   componentWillMount() {
-    const { blogData = [], dispatch } = this.props;
-    let { type = '' } = blogData[0] || '';
-    type = type.split(',')
-      .join('.');
+    const {blogData = [], dispatch} = this.props;
+    let {type = ''} = blogData[0] || {};
+    type = type.split(',').join('.')
     const queryTotalString = {
       type: 'hot|' + type
     };
-    getHotRecommendList(dispatch, getBlogUrl(queryTotalString));
-    let { id: articleID } = blogData[0] || {};
+    getHotRecommendList(dispatch, getBlogUrl(queryTotalString))
+    let {id: articleID} = blogData[0] || {};
     this.setState({
       articleID
-    });
+    })
   }
 
   componentDidMount() {
@@ -89,10 +88,9 @@ class Detail extends Component {
     });
   }
 
-
   componentWillUnmount() {
-    window.onscroll = null;
-    window.onresize = null;
+    window.onscroll = null
+    window.onresize = null
   }
 
   getRateWidth() {
@@ -127,18 +125,7 @@ class Detail extends Component {
     }, 500)
   }
 
-  render() {
-//接口
-    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = []} = this.props;
-    let {articleID, articleLike, isShowEditIcon, topWidth} = this.state;
-    let {content = '', createTime = '', title = '', url = '', id, type = '', like = 0} = blogData[0] || {};
-    const isShowReadingStatement = /阅读书籍/g.test(type);
-    const resultLike = Math.max(articleLike, like)
-
-    commentsData = commentsData.length > getCommentsData.length ? commentsData : getCommentsData
-      .sort((a, b) => b.createTime - a.createTime)
-
-    const bool = createTime > OldTime || articleID === 1;
+  getHtmlRender(type,createTime,articleID,content,isShowReadingStatement,bool) {
     let decode_html;
     try {
       decode_html = decodeURIComponent(content)
@@ -170,6 +157,26 @@ class Detail extends Component {
             })
           , createTime)
         : getHtml(decode_html, createTime)
+    return {
+      code:_html_content,
+      decode_html
+    };
+  }
+
+  render() {
+    //接口
+    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = []} = this.props;
+    let {articleID, articleLike, isShowEditIcon, topWidth} = this.state;
+    let {content = '', createTime = '', title = '', url = '', id, type = '', like = 0} = blogData[0] || {};
+    const isShowReadingStatement = /阅读书籍/g.test(type);
+    const resultLike = Math.max(articleLike, like)
+    const bool = createTime > OldTime || articleID === 1;
+
+    commentsData = commentsData.length > getCommentsData.length ? commentsData : getCommentsData
+      .sort((a, b) => b.createTime - a.createTime)
+
+    let {code,decode_html} = this.getHtmlRender(type,createTime,articleID,content,isShowReadingStatement,bool)
+    let _html_content= changeCdnUrl(createTime,code);
 
     return (
       <div className="detail">
