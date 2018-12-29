@@ -1,4 +1,4 @@
 export const bucket_domin = {
-  article:'http://pd96wjt4m.bkt.clouddn.com/',
-  static:'http://pbw4yrlys.bkt.clouddn.com/'
+  article:'http://images.liuweibo.cn/',
+  static:'http://images.static.liuweibo.cn'
 }
