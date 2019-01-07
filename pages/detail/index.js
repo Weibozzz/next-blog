@@ -86,6 +86,7 @@ class Detail extends Component {
     this.setState({
       isShowEditIcon: password ? id : ''
     });
+    this.setImgErrorDefaultImage();
   }
 
   componentWillUnmount() {
@@ -93,6 +94,21 @@ class Detail extends Component {
     window.onresize = null
   }
 
+  /**
+   * 设置图片找不见加载错误的默认图片
+   */
+  setImgErrorDefaultImage(){
+    const imgs = document.getElementsByTagName('img');
+    const defaultImages = ['http://images.static.liuweibo.cn/image/scenery/IMG_20160331_101350.jpg',
+      'http://images.static.liuweibo.cn/image/scenery/IMG_20180527_152232.jpg',
+      'http://images.static.liuweibo.cn/image/scenery/IMG_20151104_193902.jpg'
+    ]
+    for (let i = 0; i < imgs.length; i++) {
+      imgs[i].onerror=function (e) {
+        this.src=defaultImages[Math.random()*defaultImages.length | 0];
+      }
+    }
+  }
   getRateWidth() {
     const {scrollHeight} = document.body;
     const {innerHeight, innerWidth} = window;

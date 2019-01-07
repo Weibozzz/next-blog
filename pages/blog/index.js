@@ -75,9 +75,13 @@ class Blog extends Component {
     });
     const { dispatch } = this.props;
     const realIp = await real_ip();
-    let queryParamsObj = { real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname'] };
-    //存取用户ip
-    postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj);
+    try {
+      let queryParamsObj = { real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname'] };
+      //存取用户ip
+      postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj);
+    } catch (error) {
+      console.warn(error)
+    }
   }
 
   onSearch(type, val) {
@@ -340,9 +344,9 @@ Blog.getInitialProps = async function (context) {
   let queryTotalString = { type: ALL };
   const pageBlog = await fetch(getBlogUrl(queryStringObj));
   const totalPage = await fetch(getTotalUrl(queryTotalString));
-  const pageBlogData = await pageBlog.json();
+  let pageBlogData = await pageBlog.json();
   const totalPageData = await totalPage.json();
-
+  pageBlogData = pageBlogData.filter(v => v.type !== 'interesting' && v.type !== 'fight')
 
   return { pageBlogData, totalPageData };
 };
