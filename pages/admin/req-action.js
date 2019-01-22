@@ -56,6 +56,13 @@ export const REQ_ACTION = {
   handleDelArticle(_this,id) {
     const {dispatch} = _this.props;
     const {defaultConfirmObj} = _this.state;
+    const confirmObj = {
+      title: 'Are you sure delete this article?',
+      content: 'Some descriptions',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+    }
     const {password} = sessionStorage;
     const queryStringObj = {
       type: 'del',
@@ -63,6 +70,7 @@ export const REQ_ACTION = {
       token: password
     };
     confirm({
+      ...confirmObj,
       ...defaultConfirmObj,
       onOk() {
         getAdminBlogList(dispatch, getAdminBlogUrl(queryStringObj)).then(res => {

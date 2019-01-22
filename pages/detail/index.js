@@ -1,48 +1,49 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
   Input, Tooltip, Cascader, Select, Checkbox, Button,
   AutoComplete, List, Avatar, Icon, Divider
-} from 'antd';
+} from 'antd'
 import 'whatwg-fetch'
-import Head from 'next/head';
-import Link from 'next/link';
+import Head from 'next/head'
+import Link from 'next/link'
 import Router from 'next/router'
 import marked from 'marked'
-import hljs from 'highlight.js';
-import MarkNav from 'markdown-navbar';
-import './markdown-navbar.less';
+import hljs from 'highlight.js'
+import MarkNav from 'markdown-navbar'
+import './markdown-navbar.less'
 //组件
-import ArticleTitle from '../../components/ArticleTitle';
-import { untilMaxWidthOrHeight } from './util';
-import PrevNextPage from '../../components/PrevNextPage';
-import Comments from '../../components/Comments';
-import MyLayout from '../../components/MyLayout';
+import ArticleTitle from '../../components/ArticleTitle'
+import { untilMaxWidthOrHeight } from './util'
+import PrevNextPage from '../../components/PrevNextPage'
+import Comments from '../../components/Comments'
+import MyLayout from '../../components/MyLayout'
 //其他
-import {getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl} from '../../config';
-import {COMMON_TITLE, MY_BLOG, POST_READING_STATEMENT} from '../../config/constantsData';
-import {markdownConfig} from '../../config/markdown';
-import {getHtml, OldTime, throttle,NewCdnTime,changeCdnUrl} from '../../until';
+import { getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl } from '../../config'
+import { COMMON_TITLE, MY_BLOG, POST_READING_STATEMENT } from '../../config/constantsData'
+import { markdownConfig } from '../../config/markdown'
+import { getHtml, OldTime, throttle, NewCdnTime, changeCdnUrl } from '../../until'
 import './index.less'
 import './pop-tips.less'
-import {addZan, getHotArticleList, getHotRecommendList} from "../../store/actions";
+import { addZan, getHotArticleList, getHotRecommendList } from '../../store/actions'
+import { REQ_ACTION } from '../admin/req-action'
 
 
 //定义
-const {Content} = Layout;
+const { Content } = Layout
 
-let timer;
-const {options, config} = markdownConfig
+let timer
+const { options, config } = markdownConfig
 hljs.configure(config)
 marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
   ...options
-});
+})
 
 class Detail extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       articleID: '',
       articleLike: 0,
@@ -52,44 +53,45 @@ class Detail extends Component {
     }
   }
 
-  componentWillMount() {
-    const {blogData = [], dispatch} = this.props;
-    let {type = ''} = blogData[0] || {};
-    type = type.split(',').join('.')
+  componentWillMount () {
+    const { blogData = [], dispatch } = this.props
+    let { type = '' } = blogData[0] || {}
+    type = type.split(',')
+      .join('.')
     const queryTotalString = {
       type: 'hot|' + type
-    };
+    }
     getHotRecommendList(dispatch, getBlogUrl(queryTotalString))
-    let {id: articleID} = blogData[0] || {};
+    let { id: articleID } = blogData[0] || {}
     this.setState({
       articleID
     })
   }
 
-  componentDidMount() {
-    const life = ['interesting', 'fight'];
-    const { blogData = [] } = this.props;
-    let { type = '' } = blogData[0] || '';
-    if(life.indexOf(type)!==-1){
+  componentDidMount () {
+    const life = ['interesting', 'fight']
+    const { blogData = [] } = this.props
+    let { type = '' } = blogData[0] || ''
+    if (life.indexOf(type) !== -1) {
       // 设置非生活图片图片宽高 最大宽或者高 为300px
-      untilMaxWidthOrHeight();
+      untilMaxWidthOrHeight()
     }
     window.onscroll = throttle(() => {
-      this.getRateWidth();
-    });
+      this.getRateWidth()
+    })
     window.onresize = throttle(() => {
-      this.getRateWidth();
-    });
-    const { password } = sessionStorage;
-    const { query = {} } = Router;
-    const { id = '' } = query;
+      this.getRateWidth()
+    })
+    const { password } = sessionStorage
+    const { query = {} } = Router
+    const { id = '' } = query
     this.setState({
       isShowEditIcon: password ? id : ''
-    });
-    this.setImgErrorDefaultImage();
+    })
+    this.setImgErrorDefaultImage()
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     window.onscroll = null
     window.onresize = null
   }
@@ -97,33 +99,34 @@ class Detail extends Component {
   /**
    * 设置图片找不见加载错误的默认图片
    */
-  setImgErrorDefaultImage(){
-    const imgs = document.getElementsByTagName('img');
+  setImgErrorDefaultImage () {
+    const imgs = document.getElementsByTagName('img')
     const defaultImages = ['http://images.static.liuweibo.cn/image/scenery/IMG_20160331_101350.jpg',
       'http://images.static.liuweibo.cn/image/scenery/IMG_20180527_152232.jpg',
       'http://images.static.liuweibo.cn/image/scenery/IMG_20151104_193902.jpg'
     ]
     for (let i = 0; i < imgs.length; i++) {
-      imgs[i].onerror=function (e) {
-        this.src=defaultImages[Math.random()*defaultImages.length | 0];
+      imgs[i].onerror = function (e) {
+        this.src = defaultImages[Math.random() * defaultImages.length | 0]
       }
     }
   }
-  getRateWidth() {
-    const {scrollHeight} = document.body;
-    const {innerHeight, innerWidth} = window;
-    const {scrollY} = window;
+
+  getRateWidth () {
+    const { scrollHeight } = document.body
+    const { innerHeight, innerWidth } = window
+    const { scrollY } = window
     //这里的rate会大于1，原因是toptips组件ssr为false,导致高度有错误
-    let rate = Math.min(scrollY / (scrollHeight - innerHeight), 1);
-    const topWidth = rate * innerWidth;
+    let rate = Math.min(scrollY / (scrollHeight - innerHeight), 1)
+    const topWidth = rate * innerWidth
     this.setState({
       topWidth
     })
   }
 
-  onAddZan() {
-    const {articleID} = this.state;
-    const {dispatch} = this.props;
+  onAddZan () {
+    const { articleID } = this.state
+    const { dispatch } = this.props
     const queryStringObj = {
       id: articleID
     }
@@ -131,18 +134,19 @@ class Detail extends Component {
       clearTimeout(timer)
     }
     timer = setTimeout(() => {
-      addZan(dispatch, addZanUrl(queryStringObj)).then(res => {
-        const {addZanData = []} = res;
-        const {like = 0} = addZanData[0]
-        this.setState({
-          articleLike: like
+      addZan(dispatch, addZanUrl(queryStringObj))
+        .then(res => {
+          const { addZanData = [] } = res
+          const { like = 0 } = addZanData[0]
+          this.setState({
+            articleLike: like
+          })
         })
-      })
     }, 500)
   }
 
-  getHtmlRender(type,createTime,articleID,content,isShowReadingStatement,bool) {
-    let decode_html;
+  getHtmlRender (type, createTime, articleID, content, isShowReadingStatement, bool) {
+    let decode_html
     try {
       decode_html = decodeURIComponent(content)
     } catch (err) {
@@ -151,8 +155,8 @@ class Detail extends Component {
     const myBlog = 'http://www.liuweibo.cn/'
     const myOldGithub = 'https://15691808595.github.io'
     const myNewGithub = 'https://Weibozzz.github.io'
-    const regExp = /(http:\/\/www\.liuweibo\.cn\/(jianli|img|liuweibo_FrontEnd_CV\.doc))|(https:\/\/15691808595\.github\.io)/gim;
-    const markdedHtml = `${isShowReadingStatement ? POST_READING_STATEMENT() : ''}${getHtml(decode_html, createTime)}`;
+    const regExp = /(http:\/\/www\.liuweibo\.cn\/(jianli|img|liuweibo_FrontEnd_CV\.doc))|(https:\/\/15691808595\.github\.io)/gim
+    const markdedHtml = `${isShowReadingStatement ? POST_READING_STATEMENT() : ''}${getHtml(decode_html, createTime)}`
     let _html_content = bool ?
       marked(markdedHtml)
       :
@@ -174,73 +178,90 @@ class Detail extends Component {
           , createTime)
         : getHtml(decode_html, createTime)
     return {
-      code:_html_content,
+      code: _html_content,
       decode_html
-    };
+    }
   }
 
-  render() {
+  render () {
     //接口
-    let {blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = []} = this.props;
-    let {articleID, articleLike, isShowEditIcon, topWidth} = this.state;
-    let {content = '', createTime = '', title = '', url = '', id, type = '', like = 0} = blogData[0] || {};
-    const isShowReadingStatement = /阅读书籍/g.test(type);
+    let { blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = [] } = this.props
+    let { articleID, articleLike, isShowEditIcon, topWidth } = this.state
+    let { content = '', createTime = '', title = '', url = '', id, type = '', like = 0 } = blogData[0] || {}
+    const isShowReadingStatement = /阅读书籍/g.test(type)
     const resultLike = Math.max(articleLike, like)
-    const bool = createTime > OldTime || articleID === 1;
+    const bool = createTime > OldTime || articleID === 1
 
     commentsData = commentsData.length > getCommentsData.length ? commentsData : getCommentsData
       .sort((a, b) => b.createTime - a.createTime)
 
-    let {code,decode_html} = this.getHtmlRender(type,createTime,articleID,content,isShowReadingStatement,bool)
-    let _html_content= changeCdnUrl(createTime,code);
+    let { code, decode_html } = this.getHtmlRender(type, createTime, articleID, content, isShowReadingStatement, bool)
+    let _html_content = changeCdnUrl(createTime, code)
 
     return (
       <div className="detail">
         <Head>
           <title>{title}{COMMON_TITLE}</title>
         </Head>
-        <div id="read-nprogress" style={{width: topWidth}}></div>
+        <div id="read-nprogress" style={{ width: topWidth }}></div>
         <MyLayout>
 
           <Col
             className='left-icon-wrapper'
-            sm={{span: 0}}
-            xs={{span: 0}}
-            lg={{span: 2}}>
+            sm={{ span: 0 }}
+            xs={{ span: 0 }}
+            lg={{ span: 2 }}>
             <div className="remark-num">{resultLike}</div>
             <Tooltip placement="right" title={`赞一个吧！`}>
               <Button onClick={this.onAddZan.bind(this)} className='my-button-icon'>
-                <Icon type="like"/>
+                <Icon type="like" />
               </Button>
             </Tooltip>
-
-            <Icon className='icon' type="weibo"/>
-            <Icon className='icon' type="twitter"/>
-            <Icon className='icon' type="wechat"/>
+            <Tooltip placement="right" title={`暂未开通`}>
+              <Icon className='icon' type="weibo" />
+            </Tooltip>
+            <Tooltip placement="right" title={`暂未开通`}>
+              <Icon className='icon' type="twitter" />
+            </Tooltip>
+            <Tooltip placement="right" title={`暂未开通`}>
+              <Icon className='icon' type="wechat" />
+            </Tooltip>
 
             {
               isShowEditIcon ?
                 <a href={`/adminDetail/${isShowEditIcon}`}>
-                  <Icon className='icon' type="edit"/>
-                </a> : ''
+                  <Tooltip placement="right" title={`修改文章`}>
+                    <Icon className='icon' type="edit" />
+                  </Tooltip>
+                </a>
+                : ''
+            }
+            {
+              isShowEditIcon ?
+                <a href={`javascript:;`} onClick={REQ_ACTION.handleDelArticle.bind(this, this, isShowEditIcon)}>
+                  <Tooltip placement="right" title={`删除文章`}>
+                    <Icon className='icon' type="delete" />
+                  </Tooltip>
+                </a>
+                : ''
             }
             <a href="#comment">
               <Tooltip placement="right" title={`来评论吧`}>
-                <Icon className='icon' type="message"/>
+                <Icon className='icon' type="message" />
               </Tooltip>
             </a>
           </Col>
-          <Col sm={{span: 24}}
-               xs={{span: 24}}
-               lg={{span: 22}}>
+          <Col sm={{ span: 24 }}
+               xs={{ span: 24 }}
+               lg={{ span: 22 }}>
 
-            <ArticleTitle commentsData={commentsData} detailArticle={blogData[0]} htmlStr={_html_content}/>
-            <div style={{background: '#fff', padding: '0 24px 24px 24px'}}>
+            <ArticleTitle commentsData={commentsData} detailArticle={blogData[0]} htmlStr={_html_content} />
+            <div style={{ background: '#fff', padding: '0 24px 24px 24px' }}>
               <Row>
                 <Col
-                  sm={{span: 24}}
-                  xs={{span: 24}}
-                  lg={{span: bool ? 15 : 24}}>
+                  sm={{ span: 24 }}
+                  xs={{ span: 24 }}
+                  lg={{ span: bool ? 15 : 24 }}>
 
                   <div
                     className={bool ? 'new-detail markdown-style' : 'old-detail'}
@@ -253,9 +274,9 @@ class Detail extends Component {
                 {
                   bool ? <Col
                     className="sticky-nav"
-                    sm={{span: 0}}
-                    xs={{span: 0}}
-                    lg={{span: 8}}>
+                    sm={{ span: 0 }}
+                    xs={{ span: 0 }}
+                    lg={{ span: 8 }}>
                     <MarkNav
                       className="article-menu"
                       source={decode_html}
@@ -265,7 +286,7 @@ class Detail extends Component {
                 }
 
               </Row>
-              <PrevNextPage dataSource={{url, lastIdData, nextIdData}}></PrevNextPage>
+              <PrevNextPage dataSource={{ url, lastIdData, nextIdData }}></PrevNextPage>
               <Row className='zan-wrapper'>
                 <Col span={4} offset={10}>
                   <Tooltip placement="bottom" title={`赞一个吧！`}>
@@ -277,7 +298,7 @@ class Detail extends Component {
                   </Tooltip>
                 </Col>
               </Row>
-              <Divider/>
+              <Divider />
               <div className='recommend-post'>
                 <h3>你可能感兴趣的文章</h3>
                 <ul className='recommend-post-ul'>
@@ -290,17 +311,18 @@ class Detail extends Component {
                           </Tooltip>
                         </Link>
                         {
-                          v.type.split(',').map((v, index) => (
-                            <span style={{marginLeft: index === 0 ? 10 : 0}} key={v} className="tag">{v} </span>))
+                          v.type.split(',')
+                            .map((v, index) => (
+                              <span style={{ marginLeft: index === 0 ? 10 : 0 }} key={v} className="tag">{v} </span>))
                         }
 
-                        <span style={{color: '#666'}}><Icon type="eye"/> {v.visitor}</span>
+                        <span style={{ color: '#666' }}><Icon type="eye" /> {v.visitor}</span>
                       </li>
                     ))
                   }
                 </ul>
               </div>
-              <Comments dataSource={{commentsData, articleID}}></Comments>
+              <Comments dataSource={{ commentsData, articleID }}></Comments>
             </div>
           </Col>
 
@@ -334,13 +356,13 @@ class Detail extends Component {
 
 `}</style>
       </div>
-    );
+    )
   }
 }
 
 Detail.getInitialProps = async function (context) {
-  const {id} = context.query
-  let queryStrObj = {id};
+  const { id } = context.query
+  let queryStrObj = { id }
   const blog = await fetch(getDetailUrl(queryStrObj))
   const comments = await fetch(getCommentsUrl(queryStrObj))
   const lastId = await fetch(getLastIdUrl(queryStrObj))
@@ -348,7 +370,8 @@ Detail.getInitialProps = async function (context) {
 
   const blogData = await blog.json()
   const commentsData = await comments.json()
-  let lastIdData, nextIdData
+  let lastIdData,
+    nextIdData
   try {
     lastIdData = await lastId.json()
   } catch (e) {
@@ -361,11 +384,11 @@ Detail.getInitialProps = async function (context) {
   }
 
 
-  return {blogData, commentsData, lastIdData, nextIdData}
+  return { blogData, commentsData, lastIdData, nextIdData }
 }
 const mapStateToProps = state => {
-  const {getCommentsData, hotRecommendData} = state
-  return {getCommentsData, hotRecommendData};
+  const { getCommentsData, hotRecommendData } = state
+  return { getCommentsData, hotRecommendData }
 }
-const WrappedRegistrationForm = Form.create()(Detail);
-export default connect(mapStateToProps)(WrappedRegistrationForm);
+const WrappedRegistrationForm = Form.create()(Detail)
+export default connect(mapStateToProps)(WrappedRegistrationForm)
