@@ -37,6 +37,7 @@ class FormComment extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {dispatch, dataSource = {}, answerId} = this.props;
+    const { password } = sessionStorage;
     const {commentsData: commentsDataOrigin = [], articleID: id, isUserSubmit = false} = dataSource;
     if (!id && !isUserSubmit) {
       return;
@@ -58,7 +59,11 @@ class FormComment extends Component {
         }
 
         const realIp = await real_ip()
-        let queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};
+        let queryParamsObj = {};
+        try {
+          queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};
+        } catch (err) {
+        }
         const isExist = commentsDataOrigin.findIndex(v => {
           const {user, name} = v;
           return ((user || name) === nickname) && ((user || name) !== '刘伟波');
@@ -74,6 +79,7 @@ class FormComment extends Component {
           nickname: nickname.trim(),
           website: website.trim(),
           name: nickname.trim(),
+          token: password,
           answerId,
           ...queryParamsObj
         }
@@ -83,12 +89,16 @@ class FormComment extends Component {
             const {getUserCommentsData} = res;
             if (getUserCommentsData.length) {
               message.success(`留言发表成功，感谢支持！`);
+            }else {
+              message.warning('您可能没权限');
             }
           })
           :
           postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
-            if (res) {
+            if ((res.getCommentsData.length)) {
               message.success(`评论发表成功，感谢支持！`);
+            }else {
+              message.warning('您可能没权限');
             }
           })
 
