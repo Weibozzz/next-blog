@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   Layout, Menu, Breadcrumb, Row, Col,
   List, Avatar, Icon, Pagination, Alert,
-  Input, Button, Radio, Tooltip, Spin, Select
-} from 'antd';
-import Router from 'next/router';
-import 'whatwg-fetch';
-import Link from 'next/link';
-import Head from 'next/head';
+  Input, Button, Radio, Tooltip, Spin, Select, Tabs
+} from 'antd'
+import Router from 'next/router'
+import 'whatwg-fetch'
+import Link from 'next/link'
+import Head from 'next/head'
 import {
   getSearchList,
   getHotArticleList,
@@ -17,9 +17,9 @@ import {
   getSearchPageList,
   postSaveIp,
   getViewList, getCreateTimeList, collectArticleList
-} from '../../store/actions';
-import ListTitle from '../../components/ListTitle';
-import { getBlogUrl, getIpUrl, getTotalUrl, getViewUrl, postSaveIpUrl, getCreateTimeUrl } from '../../config';
+} from '../../store/actions'
+import ListTitle from '../../components/ListTitle'
+import { getBlogUrl, getIpUrl, getTotalUrl, getViewUrl, postSaveIpUrl, getCreateTimeUrl } from '../../config'
 import {
   pageNum,
   TITLE,
@@ -29,21 +29,21 @@ import {
   INDEX_TITLE,
   BLOG_TXT,
   POST_ARTICLE_TYPE
-} from '../../config/constantsData';
-import MyLayout from '../../components/MyLayout';
+} from '../../config/constantsData'
+import MyLayout from '../../components/MyLayout'
 import { real_ip, getYearAndMounth, cancelRepeat, formatTime } from '../../until'
-import { getType, getTimeIndex, isHighLightAll, tagHighLight } from './searchType';
-import './index.less';
-import { getView } from '../../until/getiView';
+import { getType, getTimeIndex, isHighLightAll, tagHighLight } from './searchType'
+import './index.less'
+import { getView } from '../../until/getiView'
 
-const Option = Select.Option;
-const { Content } = Layout;
-const Search = Input.Search;
-
+const Option = Select.Option
+const { Content } = Layout
+const Search = Input.Search
+const TabPane = Tabs.TabPane
 
 class Blog extends Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = {
       currentPage: 1,
       keyWard: '',
@@ -53,174 +53,174 @@ class Blog extends Component {
       all: '全部文章',
       highLightAll: true,
       tagHighLight: false
-    };
+    }
   }
 
-  componentWillMount() {
-    const { dispatch } = this.props;
+  componentWillMount () {
+    const { dispatch } = this.props
     const queryTotalString = {
       type: 'hot'
-    };
-    getHotArticleList(dispatch, getBlogUrl(queryTotalString));
-    getModifyArticleList(dispatch, getBlogUrl({type: 'modifyCount'}));
-    getViewList(dispatch, getViewUrl());
-    getCreateTimeList(dispatch, getCreateTimeUrl());
+    }
+    getHotArticleList(dispatch, getBlogUrl(queryTotalString))
+    getModifyArticleList(dispatch, getBlogUrl({ type: 'modifyCount' }))
+    getViewList(dispatch, getViewUrl())
+    getCreateTimeList(dispatch, getCreateTimeUrl())
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
 
-    const { router = {} } = Router;
-    const { query = {} } = router;
-    const { id = '1' } = query;
+    const { router = {} } = Router
+    const { query = {} } = router
+    const { id = '1' } = query
     this.setState({
       currentPage: Number(id)
-    });
-    const { dispatch } = this.props;
-    const realIp = await real_ip();
+    })
+    const { dispatch } = this.props
+    const realIp = await real_ip()
     try {
-      let queryParamsObj = { real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname'] };
+      let queryParamsObj = { real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname'] }
       //存取用户ip
-      postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj);
+      postSaveIp(dispatch, postSaveIpUrl(), queryParamsObj)
     } catch (error) {
       console.warn(error)
     }
   }
 
-  onSearch(type, val) {
-    const { searchType } = this.state;
-    const resultType = getType(type, searchType);
-    const resultIndex = getTimeIndex(type);
+  onSearch (type, val) {
+    const { searchType } = this.state
+    const resultType = getType(type, searchType)
+    const resultIndex = getTimeIndex(type)
     if (resultIndex === -1) {
       this.setState({
-        timeActiveIndex: -1,
-      });
+        timeActiveIndex: -1
+      })
     }
-    const { dispatch } = this.props;
+    const { dispatch } = this.props
     this.setState({
       keyWard: val,
       highLightAll: isHighLightAll(resultType),
       isNotWd: true,
       tagHighLight: tagHighLight(resultType)
-    });
+    })
     let queryStringObj = {
       type: resultType,
       num: 1,
       pageNum,
       wd: val
-    };
+    }
     let queryTotalString = {
       type: resultType,
       wd: val
-    };
-    getSearchList(dispatch, getBlogUrl(queryStringObj));
-    getSearchTotal(dispatch, getTotalUrl(queryTotalString));
-    collectArticleList(dispatch, false);
+    }
+    getSearchList(dispatch, getBlogUrl(queryStringObj))
+    getSearchTotal(dispatch, getTotalUrl(queryTotalString))
+    collectArticleList(dispatch, false)
   }
 
-  onChange(page, pageSize) {
-    const { dispatch } = this.props;
-    const { keyWard: wd, isNotWd, searchType } = this.state;
+  onChange (page, pageSize) {
+    const { dispatch } = this.props
+    const { keyWard: wd, isNotWd, searchType } = this.state
     this.setState({
       currentPage: page
-    });
+    })
 
-    let { searchTotalData = [] } = this.props;
+    let { searchTotalData = [] } = this.props
     if (searchTotalData.length) {
       let queryStringObj = {
         type: searchType,
         num: page,
         pageNum,
         wd
-      };
-      getSearchPageList(dispatch, getBlogUrl(queryStringObj));
+      }
+      getSearchPageList(dispatch, getBlogUrl(queryStringObj))
     }
     if (wd !== '' || isNotWd) {
-      return;
+      return
     }
-    Router.push(`/blog/${page}`);
+    Router.push(`/blog/${page}`)
 
   }
 
-  onClickPageChange(e) {
-    e.preventDefault();
+  onClickPageChange (e) {
+    e.preventDefault()
   }
 
-  itemRender(current, type, originalElement) {
+  itemRender (current, type, originalElement) {
     if (type === 'prev') {
-      return <a>Previous</a>;
+      return <a>Previous</a>
     } else if (type === 'next') {
-      return <a>Next</a>;
+      return <a>Next</a>
     }
     // return originalElement;
     return (
       <Link as={`/blog/${current}`} href={`/blog?id=${current}`}>
         <a onClick={this.onClickPageChange.bind(this)}>{current}</a>
       </Link>
-    );
+    )
   }
 
-  onSearchTypeHandleChange(value) {
+  onSearchTypeHandleChange (value) {
     this.setState({
-      searchType: value,
-    });
+      searchType: value
+    })
   }
 
-  onArticleTime(title, timeIndex) {
-    const reg = /(\d{4})年(\d{2})月/;
+  onArticleTime (title, timeIndex) {
+    const reg = /(\d{4})年(\d{2})月/
     this.setState({
       timeActiveIndex: timeIndex
-    });
+    })
     let yyyy,
-      mm;
+      mm
     if (!reg.test(title)) {
-      yyyy = 2017;
-      mm = 1;
+      yyyy = 2017
+      mm = 1
     } else {
-      const arr = title.match(reg);
-      yyyy = +arr[1] || 2017;
-      mm = +arr[2] || 1;
+      const arr = title.match(reg)
+      yyyy = +arr[1] || 2017
+      mm = +arr[2] || 1
     }
-    const t1 = new Date(yyyy + '-' + mm + '-01 00:00:00').getTime() / 1000;
-    mm == 12 && (yyyy += 1, mm = 0);
-    const t2 = new Date(yyyy + '-' + (mm + 1) + '-01 00:00:00').getTime() / 1000;
-    this.onSearch(`timeRange|${t1}.${t2}`, '');
+    const t1 = new Date(yyyy + '-' + mm + '-01 00:00:00').getTime() / 1000
+    mm == 12 && (yyyy += 1, mm = 0)
+    const t2 = new Date(yyyy + '-' + (mm + 1) + '-01 00:00:00').getTime() / 1000
+    this.onSearch(`timeRange|${t1}.${t2}`, '')
   }
 
-  getTagKey(item) {
-    const { key, value } = item;
+  getTagKey (item) {
+    const { key, value } = item
     if (key === 'interesting' || key === 'fight' || key === 'others') {
-      return value;
+      return value
     }
-    return key;
+    return key
   }
 
-  render() {
+  render () {
     let total,
-      listData;
-    let { currentPage, tagHighLight, searchType, timeActiveIndex, all, highLightAll, keywords } = this.state;
+      listData
+    let { currentPage, tagHighLight, searchType, timeActiveIndex, all, highLightAll, keywords } = this.state
     let {
       pageBlogData = [], totalPageData = [], searchData = [],
-      searchTotalData = [], userAgent = 'pc', hotArticleData = [],modifyArticleData = [],
+      searchTotalData = [], userAgent = 'pc', hotArticleData = [], modifyArticleData = [],
       createTimeListData = [], isCollectArticle = false, viewListData
-    } = this.props;
+    } = this.props
     //昨日今日浏览记录
-    const { curView, yesView,his } = getView(viewListData);
+    const { curView, yesView, his } = getView(viewListData)
     //如果用户进行搜索，就用搜索的数据，这里为了用户体验，并没有服务端渲染
-    const yearMonthArr = createTimeListData.map(v => getYearAndMounth(v.createTime));
-    const resultYMArr = cancelRepeat(yearMonthArr);
+    const yearMonthArr = createTimeListData.map(v => getYearAndMounth(v.createTime))
+    const resultYMArr = cancelRepeat(yearMonthArr)
     if (searchData.length) {
-      pageBlogData = searchData;
+      pageBlogData = searchData
     }
-    listData = pageBlogData;
+    listData = pageBlogData
     if (searchType === ARTICLE) {
-      listData = searchData;
+      listData = searchData
     }
     if (searchTotalData.length) {
-      ({ total } = searchTotalData[0] || {});
+      ({ total } = searchTotalData[0] || {})
     } else {
-      ({ total } = totalPageData[0] || {});
+      ({ total } = totalPageData[0] || {})
     }
-    const iconArr = ['mysql', 'react', 'vue', 'angular', 'node'];
+    const iconArr = ['mysql', 'react', 'vue', 'angular', 'node']
 
     const selectBefore = (
       <Select defaultValue="title模糊搜索"
@@ -229,7 +229,7 @@ class Blog extends Component {
         <Option value={TITLE}>title模糊搜索</Option>
         <Option value={ARTICLE}>article模糊搜索</Option>
       </Select>
-    );
+    )
     return (
       <div className="Blog">
         <Head>
@@ -269,55 +269,59 @@ class Blog extends Component {
                           <Tooltip placement="right" title={this.getTagKey(v)}>
                             {this.getTagKey(v)}
                           </Tooltip>
-                        </li>;
+                        </li>
                       })
                     }
                   </ul>
                 </div>
-                <div>
-                  <p className='title'>最近更新</p>
-                  <List
-                    size="small"
-                    bordered
-                    dataSource={modifyArticleData}
-                    renderItem={(v, index) => (<List.Item>
-                      <Col span={20}>
-                        <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
-                          <Tooltip placement="top" title={v.title}>
-                            <a style={{ marginLeft: 4 }}> {v.title}</a>
-                          </Tooltip>
-                        </Link>
-                      </Col>
-                      <Col span={4} className='fr'>
-                        <Tooltip placement="right" title={`更新于 ${formatTime(v.lastModify)}`}>
-                          <span className='fr' style={{ color: '#666' }}><Icon type="edit" /> {formatTime(v.lastModify,'mm-dd')}</span>
-                        </Tooltip>
-                      </Col>
-                    </List.Item>)}
-                  />
-                </div>
-                <div>
-                  <p className='title'>排行榜</p>
-                  <List
-                    size="small"
-                    bordered
-                    dataSource={hotArticleData}
-                    renderItem={(v, index) => (<List.Item>
-                      <Col span={20}>
-                        <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
-                          <Tooltip placement="top" title={v.title}>
-                            <a style={{ marginLeft: 4 }}> {v.title}</a>
-                          </Tooltip>
-                        </Link>
-                      </Col>
-                      <Col span={4} className='fr'>
-                        <Tooltip placement="right" title={`阅读量 ${v.visitor}`}>
-                          <span className='fr' style={{ color: '#666' }}><Icon type="eye" /> {v.visitor}</span>
-                        </Tooltip>
-                      </Col>
-                    </List.Item>)}
-                  />
-                </div>
+                <Tabs defaultActiveKey="1">
+                  <TabPane tab="最近更新" key="1">
+                    <div>
+                      <List
+                        size="small"
+                        bordered
+                        dataSource={modifyArticleData}
+                        renderItem={(v, index) => (<List.Item>
+                          <Col span={20}>
+                            <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
+                              <Tooltip placement="top" title={v.title}>
+                                <a style={{ marginLeft: 4 }}> {v.title}</a>
+                              </Tooltip>
+                            </Link>
+                          </Col>
+                          <Col span={4} className='fr'>
+                            <Tooltip placement="right" title={`更新于 ${formatTime(v.lastModify)}`}>
+                              <span className='fr' style={{ color: '#666' }}><Icon type="edit" /> {formatTime(v.lastModify, 'mm-dd')}</span>
+                            </Tooltip>
+                          </Col>
+                        </List.Item>)}
+                      />
+                    </div>
+                  </TabPane>
+                  <TabPane tab="排行榜" key="2">
+                    <div>
+                      <List
+                        size="small"
+                        bordered
+                        dataSource={hotArticleData}
+                        renderItem={(v, index) => (<List.Item>
+                          <Col span={20}>
+                            <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
+                              <Tooltip placement="top" title={v.title}>
+                                <a style={{ marginLeft: 4 }}> {v.title}</a>
+                              </Tooltip>
+                            </Link>
+                          </Col>
+                          <Col span={4} className='fr'>
+                            <Tooltip placement="right" title={`阅读量 ${v.visitor}`}>
+                              <span className='fr' style={{ color: '#666' }}><Icon type="eye" /> {v.visitor}</span>
+                            </Tooltip>
+                          </Col>
+                        </List.Item>)}
+                      />
+                    </div>
+                  </TabPane>
+                </Tabs>
                 <div>
                   <h3>文章存档</h3>
                   <Row>
@@ -354,30 +358,30 @@ class Blog extends Component {
         </MyLayout>
 
       </div>
-    );
+    )
   }
 }
 
 Blog.getInitialProps = async function (context) {
-  const { id = 1 } = context.query;
+  const { id = 1 } = context.query
   let queryStringObj = {
     type: ALL,
     num: id,
     pageNum
-  };
-  let queryTotalString = { type: ALL };
-  const pageBlog = await fetch(getBlogUrl(queryStringObj));
-  const totalPage = await fetch(getTotalUrl(queryTotalString));
-  let pageBlogData = await pageBlog.json();
-  const totalPageData = await totalPage.json();
+  }
+  let queryTotalString = { type: ALL }
+  const pageBlog = await fetch(getBlogUrl(queryStringObj))
+  const totalPage = await fetch(getTotalUrl(queryTotalString))
+  let pageBlogData = await pageBlog.json()
+  const totalPageData = await totalPage.json()
   pageBlogData = pageBlogData.filter(v => v.type !== 'interesting' && v.type !== 'fight')
 
-  return { pageBlogData, totalPageData };
-};
+  return { pageBlogData, totalPageData }
+}
 //这里根据需要传入redux
 const mapStateToProps = state => {
-  const { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData, modifyArticleData } = state;
+  const { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData, modifyArticleData } = state
   console.log(state)
-  return { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData, modifyArticleData };
-};
-export default connect(mapStateToProps)(Blog);
+  return { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData, modifyArticleData }
+}
+export default connect(mapStateToProps)(Blog)
