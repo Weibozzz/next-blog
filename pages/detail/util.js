@@ -14,3 +14,41 @@ export function untilMaxWidthOrHeight(len = 300) {
     }
   }
 }
+
+/**
+ * 点击复制代码到剪贴板
+ */
+export function clickCopyCode () {
+  let btn = document.createElement('button');
+  btn.className = 'copy-code'
+  btn.title = '点击复制代码'
+  btn.innerText = ''
+  let preList = document.getElementsByTagName('pre')
+  for (let i=0;i<preList.length;i++){
+    let codeDom = preList[i];
+    codeDom.appendChild(btn.cloneNode(true))
+    codeDom.addEventListener('click',f1,false)
+  }
+}
+
+function f1 (e) {
+  if(e.target.className === 'copy-code'){
+    let emailLink = e.target.parentNode.firstElementChild; // 文字
+    let range = document.createRange();
+    range.selectNode(emailLink);
+    window.getSelection().addRange(range);
+
+    try {
+      // Now that we've selected the anchor text, execute the copy command
+      let successful = document.execCommand('copy');
+      let msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Copy email command was ' + msg);
+    } catch(err) {
+      console.log('Oops, unable to copy');
+    }
+
+    // Remove the selections - NOTE: Should use
+    // removeRange(range) when it is supported
+    window.getSelection().removeAllRanges();
+  }
+}

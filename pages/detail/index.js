@@ -15,7 +15,7 @@ import MarkNav from 'markdown-navbar'
 import './markdown-navbar.less'
 //组件
 import ArticleTitle from '../../components/ArticleTitle'
-import { untilMaxWidthOrHeight } from './util'
+import { untilMaxWidthOrHeight, clickCopyCode } from './util'
 import PrevNextPage from '../../components/PrevNextPage'
 import Comments from '../../components/Comments'
 import MyLayout from '../../components/MyLayout'
@@ -89,6 +89,7 @@ class Detail extends Component {
       isShowEditIcon: password ? id : ''
     })
     this.setImgErrorDefaultImage()
+    clickCopyCode()
   }
 
   componentWillUnmount () {
