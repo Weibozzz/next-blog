@@ -1,3 +1,4 @@
+import { message } from 'antd';
 /**
  * 设置图片宽高 最大宽或者高 为300px
  * @param len
@@ -42,9 +43,9 @@ function f1 (e) {
       // Now that we've selected the anchor text, execute the copy command
       let successful = document.execCommand('copy');
       let msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copy email command was ' + msg);
+      message.success('Copy code ' + msg)
     } catch(err) {
-      console.log('Oops, unable to copy');
+      message.error('Oops, unable to copy')
     }
 
     // Remove the selections - NOTE: Should use
