@@ -25,6 +25,13 @@ export const getHotArticleList = async (dispatch, url) => {
   return dispatch({type: actionTypes.HOT_ARTICLE_DATA, hotArticleData: jsonData})
 
 }
+export const getModifyArticleList = async (dispatch, url) => {
+  //获得最近修改文章
+  const res = await fetch(url)
+  const jsonData = await res.json()
+  return dispatch({type: actionTypes.MODIFY_ARTICLE_DATA, modifyArticleData: jsonData})
+
+}
 export const getHotRecommendList = async (dispatch, url) => {
   //获得不同type热门文章
   const res = await fetch(url)

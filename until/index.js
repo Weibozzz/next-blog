@@ -25,12 +25,13 @@ export const updateHtml = str => {
 export const spaceAdd = str => str && str.replace(/\+/g, '&nbsp;')
 export const getPathName = props => props.location && props.location.pathname && props.location.pathname.substring(1);
 export const NbspToSpace = str => str && str.replace(/&nbsp;/g, '　')
-export const formatTime = time => {
+export const formatTime = (time,type) => {
   let zh = ["日", "一", "二", "三", "四", "五", "六"];
   let date = new Date(time * 1000);
   let oneWeekTime = 7 * 24 * 60 * 60 * 1000;
+  let result = type === 'mm-dd' ? format.asString('MM-dd', date) :format.asString('yyyy-MM-dd hh:mm', date) + ' 星期' + zh[date.getDay()]
   return Date.now() - date>=oneWeekTime ?
-    format.asString('yyyy-MM-dd hh:mm', date) + ' 星期' + zh[date.getDay()]
+    result
     :
     timeago().format(date)
 }

@@ -12,6 +12,7 @@ import Head from 'next/head';
 import {
   getSearchList,
   getHotArticleList,
+  getModifyArticleList,
   getSearchTotal,
   getSearchPageList,
   postSaveIp,
@@ -30,7 +31,7 @@ import {
   POST_ARTICLE_TYPE
 } from '../../config/constantsData';
 import MyLayout from '../../components/MyLayout';
-import { real_ip, getYearAndMounth, cancelRepeat } from '../../until';
+import { real_ip, getYearAndMounth, cancelRepeat, formatTime } from '../../until'
 import { getType, getTimeIndex, isHighLightAll, tagHighLight } from './searchType';
 import './index.less';
 import { getView } from '../../until/getiView';
@@ -61,6 +62,7 @@ class Blog extends Component {
       type: 'hot'
     };
     getHotArticleList(dispatch, getBlogUrl(queryTotalString));
+    getModifyArticleList(dispatch, getBlogUrl({type: 'modifyCount'}));
     getViewList(dispatch, getViewUrl());
     getCreateTimeList(dispatch, getCreateTimeUrl());
   }
@@ -198,7 +200,7 @@ class Blog extends Component {
     let { currentPage, tagHighLight, searchType, timeActiveIndex, all, highLightAll, keywords } = this.state;
     let {
       pageBlogData = [], totalPageData = [], searchData = [],
-      searchTotalData = [], userAgent = 'pc', hotArticleData = [],
+      searchTotalData = [], userAgent = 'pc', hotArticleData = [],modifyArticleData = [],
       createTimeListData = [], isCollectArticle = false, viewListData
     } = this.props;
     //昨日今日浏览记录
@@ -271,6 +273,28 @@ class Blog extends Component {
                       })
                     }
                   </ul>
+                </div>
+                <div>
+                  <p className='title'>最近更新</p>
+                  <List
+                    size="small"
+                    bordered
+                    dataSource={modifyArticleData}
+                    renderItem={(v, index) => (<List.Item>
+                      <Col span={20}>
+                        <Link as={`/p/${v.id}`} href={`/detail?id=${v.id}`}>
+                          <Tooltip placement="top" title={v.title}>
+                            <a style={{ marginLeft: 4 }}> {v.title}</a>
+                          </Tooltip>
+                        </Link>
+                      </Col>
+                      <Col span={4} className='fr'>
+                        <Tooltip placement="right" title={`更新于 ${formatTime(v.lastModify)}`}>
+                          <span className='fr' style={{ color: '#666' }}><Icon type="edit" /> {formatTime(v.lastModify,'mm-dd')}</span>
+                        </Tooltip>
+                      </Col>
+                    </List.Item>)}
+                  />
                 </div>
                 <div>
                   <p className='title'>排行榜</p>
@@ -352,7 +376,8 @@ Blog.getInitialProps = async function (context) {
 };
 //这里根据需要传入redux
 const mapStateToProps = state => {
-  const { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData } = state;
-  return { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData };
+  const { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData, modifyArticleData } = state;
+  console.log(state)
+  return { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData, modifyArticleData };
 };
 export default connect(mapStateToProps)(Blog);

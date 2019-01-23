@@ -15,6 +15,11 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         hotArticleData: action.hotArticleData
       })
+    case actionTypes.MODIFY_ARTICLE_DATA:
+      //获得修改文章
+      return Object.assign({}, state, {
+        modifyArticleData: action.modifyArticleData
+      })
     case actionTypes.HOT_RECOMMEND_DATA:
       //获得不同type热门文章
       return Object.assign({}, state, {
