@@ -50,7 +50,7 @@
     border-radius: 12px;
     transition: all .3s;
     cursor:pointer;
-    img{
+    .img{
       position: absolute;
       top: -16.6px;
       left: 50%;
@@ -59,6 +59,28 @@
       border-radius: 50%;
       transform: translateX(-50%);
       transition: all .3s;
+      overflow: hidden;
+      img{
+        position: absolute;
+        left: 0;
+        width: 96px;
+        animation: top-move 16s ease-in infinite alternate;
+        transition: all .3s;
+      }
+      &:before{
+        position: absolute;
+        top: -125px;
+        left: 44px;
+        content: '';
+        display: block;
+        width: 2px;
+        height: 184px;
+        background-color: #fff;
+        transform: rotate(-45deg);
+        z-index: 10;
+        box-shadow: 2px 0px 3px rgba(255,255,255,0.8), -2px 0px 3px rgba(255,255,255,0.8);
+        animation: light-show 5s ease infinite;
+      }
     }
     .info{
       .title{
@@ -95,10 +117,14 @@
     &:hover{
       background: rgba(0,0,0,0);
       transition: all .3s;
-      img{
+      .img{
         width:60px;
         height:60px;
         transition: all .3s;
+        img{
+          width:60px;
+          transition: all .3s;
+        }
       }
       .info{
        opacity:0;
@@ -160,5 +186,24 @@
     h2{
       text-indent: 5em;
     }
+  }
+}
+@keyframes top-move {
+  0%{
+    top: 0;
+  }
+  100%{
+    top: -25px;
+  }
+}
+@keyframes light-show {
+  0%{
+    top: -125px;
+  }
+  30%{
+    top: 125px;
+  }
+  100%{
+    top: 1250px;
   }
 }

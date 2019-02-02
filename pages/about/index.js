@@ -65,7 +65,9 @@ class About extends Component {
           <Content >
             <div className={userAgent==='pc'?'about':'about is-mobile'} >
               <div className="cv-wrapper">
-                <img  src="http://images.static.liuweibo.cn/image/my/IMG_20160408_224056.jpg"/>
+                <div className="img">
+                  <img  src="http://images.static.liuweibo.cn/image/my/IMG_20160408_224056.jpg"/>
+                </div>
                 <div className="info">
                   <div className="title">刘伟波</div>
                   <div className="remark">Web前端工程师</div>
