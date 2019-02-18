@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import QueueAnim from 'rc-queue-anim';
 import Head from 'next/head';
 import moment from 'moment';
 import 'whatwg-fetch'
@@ -71,6 +72,8 @@ class Versions extends Component {
   render() {
 
     const {versions,isMobile} = this.state;
+    const mode = isMobile?'left':'alternate';
+    console.log('mode',mode)
     return (
       <div>
         <Head>
@@ -87,7 +90,11 @@ class Versions extends Component {
                 <Spin tip="Loading..."></Spin>
               </div>
             }
-            <Timeline mode={isMobile?'left':'alternate'} style={{width: '80%', margin: '30px auto'}}>
+            <QueueAnim
+            component={Timeline}
+            style={{width: '80%', margin: '30px auto'}}
+            componentProps={{mode}}
+            >
               {
                 Array.isArray(versions) ? versions.map((v, index) => {
                     const {html_url, message, date, sha, avatar_url} = v;
@@ -118,8 +125,7 @@ class Versions extends Component {
                   :
                   <div>{versions.message}</div>
               }
-
-            </Timeline>
+            </QueueAnim>
 
             <div style={{margin: '10px', textAlign: 'center'}}>
               <a href={ALL_COMMITS}>
