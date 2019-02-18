@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import QueueAnim from 'rc-queue-anim';
 import {Button, Switch,Row,Col} from 'antd';
 import Link from 'next/link';
 import MyHead from '../../components/MyHead';
@@ -73,21 +74,23 @@ class Index extends React.Component {
                 </p>
               </div>
               <ul className="mid">
-                <li>
-                  <Link href={ROUTER.BLOG}>
-                    <a>&raquo; 技术文章 (Blog)</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href={ROUTER.LIFE}>
-                    <a>&raquo; 生活感想 (Life)</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href={ROUTER.ONLINE_GITBOOK}>
-                    <a>&raquo; 文档中心 (Weibozzz)</a>
-                  </Link>
-                </li>
+                <QueueAnim>
+                  <li key='1'>
+                    <Link href={ROUTER.BLOG}>
+                      <a>&raquo; 技术文章 (Blog)</a>
+                    </Link>
+                  </li>
+                  <li key='2'>
+                    <Link href={ROUTER.LIFE}>
+                      <a>&raquo; 生活感想 (Life)</a>
+                    </Link>
+                  </li>
+                  <li key='3'>
+                    <Link href={ROUTER.ONLINE_GITBOOK}>
+                      <a>&raquo; 文档中心 (Weibozzz)</a>
+                    </Link>
+                  </li>
+                </QueueAnim>
               </ul>
               <div className="footer">
                 <Link href={ROUTER.ABOUT}>
