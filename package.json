@@ -45,6 +45,7 @@
     "qiniu": "^7.2.1",
     "qiniu-js": "^2.4.0",
     "qs": "^6.5.2",
+    "rc-queue-anim": "^1.6.11",
     "react": "^16.4.1",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.4.1",

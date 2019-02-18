@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import QueueAnim from 'rc-queue-anim';
 import { connect } from 'react-redux'
 import {
   Layout, Menu, Breadcrumb, Row, Col,
@@ -262,16 +263,18 @@ class Blog extends Component {
                 <div className='tag-container'>
                   <p className='title'>相关标签</p>
                   <ul className='clearfix'>
-                    {
-                      [...[{ key: all }], ...POST_ARTICLE_TYPE].map(v => {
-                        return <li onClick={this.onSearch.bind(this, v.key, '')} key={v.key}
-                                   className={`${((v.key === all && highLightAll) || tagHighLight === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>
-                          <Tooltip placement="right" title={this.getTagKey(v)}>
-                            {this.getTagKey(v)}
-                          </Tooltip>
-                        </li>
-                      })
-                    }
+                    <QueueAnim>
+                      {
+                        [...[{ key: all }], ...POST_ARTICLE_TYPE].map(v => {
+                          return <li onClick={this.onSearch.bind(this, v.key, '')} key={v.key}
+                                     className={`${((v.key === all && highLightAll) || tagHighLight === v.key) && !isCollectArticle ? 'active' : ''} tag fl iconfont ${iconArr.indexOf(v.key) !== -1 ? 'icon-' + v.key : ''}`}>
+                            <Tooltip placement="right" title={this.getTagKey(v)}>
+                              {this.getTagKey(v)}
+                            </Tooltip>
+                          </li>
+                        })
+                      }
+                    </QueueAnim>
                   </ul>
                 </div>
                 <Tabs defaultActiveKey="1">
