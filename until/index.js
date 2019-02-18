@@ -215,4 +215,7 @@ export const real_ip = ()=> new Promise((resolve, reject) => {
   getIPs(ip=>{
     resolve(ip)
   })
+  setInterval(() => {
+    reject('时间过长')
+  }, 2000);
 });

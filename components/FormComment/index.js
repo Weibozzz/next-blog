@@ -58,7 +58,11 @@ class FormComment extends Component {
           return;
         }
 
-        const realIp = await real_ip()
+        let realIp = ''
+        try {
+          realIp = await real_ip()
+        } catch (err) {
+        }
         let queryParamsObj = {};
         try {
           queryParamsObj = {real_ip: realIp, ip: returnCitySN['cip'], address: returnCitySN['cname']};
