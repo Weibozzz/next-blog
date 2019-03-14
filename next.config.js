@@ -9,6 +9,6 @@ module.exports =   withLess(
       localIdentName: "[local]___[hash:base64:5]",
 
     },
-    distDir: 'lwbBlogBuild'
+    distDir: 'build'
   }
 )
