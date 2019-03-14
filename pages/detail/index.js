@@ -5,6 +5,7 @@ import {
   Input, Tooltip, Cascader, Select, Checkbox, Button,
   AutoComplete, List, Avatar, Icon, Divider
 } from 'antd'
+import Viewer from 'viewerjs'
 import 'whatwg-fetch'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -26,13 +27,11 @@ import { markdownConfig } from '../../config/markdown'
 import { getHtml, OldTime, throttle, NewCdnTime, changeCdnUrl } from '../../until'
 import './index.less'
 import './pop-tips.less'
+import  './viewer.min.less'
 import { addZan, getHotArticleList, getHotRecommendList } from '../../store/actions'
 import { REQ_ACTION } from '../admin/req-action'
-
-
 //定义
 const { Content } = Layout
-
 let timer
 const { options, config } = markdownConfig
 hljs.configure(config)
@@ -40,7 +39,6 @@ marked.setOptions({
   highlight: (code) => hljs.highlightAuto(code).value,
   ...options
 })
-
 class Detail extends Component {
   constructor (props) {
     super(props)
@@ -52,7 +50,6 @@ class Detail extends Component {
       topWidth: 0
     }
   }
-
   componentWillMount () {
     const { blogData = [], dispatch } = this.props
     let { type = '' } = blogData[0] || {}
@@ -67,7 +64,6 @@ class Detail extends Component {
       articleID
     })
   }
-
   componentDidMount () {
     const life = ['interesting', 'fight']
     const { blogData = [] } = this.props
@@ -90,13 +86,15 @@ class Detail extends Component {
     })
     this.setImgErrorDefaultImage()
     clickCopyCode()
+    new Viewer(document.getElementById('detail-article'), {
+      toolbar: false,
+      navbar: false
+    });
   }
-
   componentWillUnmount () {
     window.onscroll = null
     window.onresize = null
   }
-
   /**
    * 设置图片找不见加载错误的默认图片
    */
@@ -112,7 +110,6 @@ class Detail extends Component {
       }
     }
   }
-
   getRateWidth () {
     const { scrollHeight } = document.body
     const { innerHeight, innerWidth } = window
@@ -124,7 +121,6 @@ class Detail extends Component {
       topWidth
     })
   }
-
   onAddZan () {
     const { articleID } = this.state
     const { dispatch } = this.props
@@ -145,7 +141,6 @@ class Detail extends Component {
         })
     }, 500)
   }
-
   getHtmlRender (type, createTime, articleID, content, isShowReadingStatement, bool) {
     let decode_html
     try {
@@ -183,7 +178,6 @@ class Detail extends Component {
       decode_html
     }
   }
-
   render () {
     //接口
     let { blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = [] } = this.props
@@ -192,13 +186,10 @@ class Detail extends Component {
     const isShowReadingStatement = /阅读书籍/g.test(type)
     const resultLike = Math.max(articleLike, like)
     const bool = createTime > OldTime || articleID === 1
-
     commentsData = commentsData.length > getCommentsData.length ? commentsData : getCommentsData
       .sort((a, b) => b.createTime - a.createTime)
-
     let { code, decode_html } = this.getHtmlRender(type, createTime, articleID, content, isShowReadingStatement, bool)
     let _html_content = changeCdnUrl(createTime, code)
-
     return (
       <div className="detail">
         <Head>
@@ -265,6 +256,7 @@ class Detail extends Component {
                   lg={{ span: bool ? 15 : 24 }}>
 
                   <div
+                    id="detail-article"
                     className={bool ? 'new-detail markdown-style' : 'old-detail'}
                     dangerouslySetInnerHTML={{
                       __html: _html_content
@@ -360,7 +352,6 @@ class Detail extends Component {
     )
   }
 }
-
 Detail.getInitialProps = async function (context) {
   const { id } = context.query
   let queryStrObj = { id }
@@ -368,7 +359,6 @@ Detail.getInitialProps = async function (context) {
   const comments = await fetch(getCommentsUrl(queryStrObj))
   const lastId = await fetch(getLastIdUrl(queryStrObj))
   const nextId = await fetch(getNextIdUrl(queryStrObj))
-
   const blogData = await blog.json()
   const commentsData = await comments.json()
   let lastIdData,
@@ -383,8 +373,6 @@ Detail.getInitialProps = async function (context) {
   } catch (e) {
     nextIdData = []
   }
-
-
   return { blogData, commentsData, lastIdData, nextIdData }
 }
 const mapStateToProps = state => {
