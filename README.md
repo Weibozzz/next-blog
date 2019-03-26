@@ -339,7 +339,7 @@ marked.setOptions({
 
 ## 学累了，来个图放松下
 
-![http://pd96wjt4m.bkt.clouddn.com/image/common/2a35e89324d3ad64d52683ad1343732e_1535531349000_84470_1535531469641.jpg](http://pd96wjt4m.bkt.clouddn.com/image/common/2a35e89324d3ad64d52683ad1343732e_1535531349000_84470_1535531469641.jpg)
+![http://images.liuweibo.cn/image/common/2a35e89324d3ad64d52683ad1343732e_1535531349000_84470_1535531469641.jpg](http://images.liuweibo.cn/image/common/2a35e89324d3ad64d52683ad1343732e_1535531349000_84470_1535531469641.jpg))
 
 
 
