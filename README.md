@@ -5,6 +5,7 @@
 [https://github.com/Weibozzz/next-blog](https://github.com/Weibozzz/next-blog)
 线上地址： [http://www.liuweibo.cn](http://www.liuweibo.cn)
 本项目使用next.js经验分享：[http://www.liuweibo.cn/p/206](http://www.liuweibo.cn/p/206)
+另外还有一个仓库，建立自己的前端知识体系：[https://github.com/Weibozzz/Weibozzz.github.io](https://github.com/Weibozzz/Weibozzz.github.io)
 
 ## 软件架构
 软件架构说明
