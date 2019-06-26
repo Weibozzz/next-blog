@@ -47,7 +47,7 @@ class MyCard extends Component {
   render() {
     const {dataSource = {}, children = {},commentIndex=-1} = this.props;
     const {index, v, i} = dataSource
-    const markHtml = marked(getHtml(v.msg,v.createTime))
+    const markHtml = v.id === -1 ? v.msg : marked(getHtml(v.msg, v.createTime))
     return <Card
       className="css-move-top"
       bodyStyle={{background: "#f8f8f8"}}
