@@ -25,7 +25,7 @@ export const GITHUB_DOCS_ADDRESS_URL_STRING = `<a href=${GITHUB_DOCS_ADDRESS.url
 export const GITHUB_DOCS_ADDRESS_URL = <a href={GITHUB_DOCS_ADDRESS.url} target="_blank">
   {GITHUB_DOCS_ADDRESS.des}</a>
 export const TOP_TIPS = <span>欢迎来到刘伟波个人网站，最新仓库体验地址
-{GITHUB_DOCS_ADDRESS_URL}
+【{GITHUB_DOCS_ADDRESS_URL}】
 喜欢可以收藏哦!</span>
 //分页数
 export const pageNum = 10;
