@@ -73,7 +73,7 @@ class About extends Component {
                   <div className="remark">Web前端工程师</div>
                 </div>
                 <div className="content">
-                  多年来一直从事web前端开发，熟悉h5,vue,react，现就职与蚂蚁金服无线端技术，
+                  多年来一直从事web前端开发，熟悉h5,vue,react，曾就职与蚂蚁金服无线端技术，
                   任web高级开发工程师一职,一直致力与Web技术的研究
                 </div>
               </div>
