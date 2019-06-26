@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import { List, Avatar, Icon ,Divider,Row,Col} from 'antd';
 import {formatTime,regUrl} from '../../until';
-import {COLORS_ARR} from '../../config/constantsData';
+import {POST_ARTICLE_TYPE_MAPPING} from '../../config/constantsData';
 import {DEFAULT_TAG_ARR,getRandomMarginTop,getRandomMarginLeft,getRandomTxt} from '../../config/constantTag';
 import Ad from '../Ad';
 import './index.less'
@@ -33,7 +33,7 @@ const ArticleTitle = (...args)=>{
                 <span className="origin-article">原</span>:''
             }
             {
-              type.split(',').map(v=>(<span key={v} className="tag">{v}</span>))
+              type.split(',').map(v=>(<span key={v} className="tag">{POST_ARTICLE_TYPE_MAPPING[v] || v}</span>))
             }
             <span className="read-time">读完大概需要{READING_TIME}分钟</span>
 

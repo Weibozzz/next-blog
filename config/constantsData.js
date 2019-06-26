@@ -165,8 +165,13 @@ export const POST_ARTICLE_TYPE = [
   {key: "工具", value: " 工具"},
   {key: "正则", value: " 正则"},
   {key: "技巧", value: " 技巧"},
+  {key: "shell", value: " shell"},
   {key: "others", value: " 其他"},
 ];
+export const POST_ARTICLE_TYPE_MAPPING = POST_ARTICLE_TYPE.reduce((total,{key,value})=>{
+  total[key]=value
+  return total
+},{})
 //评论icon
 export const COMMENT_IMAGES = [
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532749734&di=fbfe0c2328cc8115b40f23945818cc58&imgtype=jpg&er=1&src=http%3A%2F%2Fen.pimg.jp%2F012%2F462%2F665%2F1%2F12462665.jpg',

@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import Link from 'next/link';
 import {formatTime, getRandomArr} from '../../until';
 import {qiniuyun_cdn_all_type, qiniuyun_cdn_icon} from '../../config/qiniuyun_cdn';
+import {POST_ARTICLE_TYPE_MAPPING} from '../../config/constantsData'
 import './index.less'
 
 const lifeImages = qiniuyun_cdn_all_type.lifeImages;
@@ -147,7 +148,7 @@ class ListTitle extends Component {
                       }
                       {
                         type.split(',').map((v, index) => (
-                          <span style={{marginLeft: index === 0 ? 10 : 0}} key={v} className="tag">{v}</span>))
+                          <span style={{marginLeft: index === 0 ? 10 : 0}} key={v} className="tag">{POST_ARTICLE_TYPE_MAPPING[v] || v}</span>))
                       }
 
 
