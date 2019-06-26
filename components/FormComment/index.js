@@ -8,6 +8,7 @@ import {
 
 import Loading from '../loading'
 import {regUrl, real_ip} from "../../until";
+import {getCookie, setCookie} from "../../until/cookie";
 import {postComments, postUserComments, setAnswerId, setCommentIndex} from "../../store/actions";
 import {postCommentUrl, postUserCommentUrl} from "../../config";
 import {COMMENT_TIPS, COMMENT_LIMIT, commentPlaceHolder} from "../../config/constantsData";
@@ -23,6 +24,9 @@ class FormComment extends Component {
     super(props);
     this.state = {
       isLoading: false,
+      nickname: '',
+      email: '',
+      website: '',
       autoCompleteResult: [],
     }
   }
@@ -35,6 +39,23 @@ class FormComment extends Component {
       autoCompleteResult = ['.com', '.cn', '.org', '.net'].map(domain => `${value}${domain}`);
     }
     this.setState({autoCompleteResult});
+  }
+  // 存储 cookie
+  handleSetCookie(nickname,email,website){
+    setCookie('nickname', nickname, 180)
+    setCookie('email', email, 180)
+    setCookie('website', website, 180)
+  }
+  // 获取 cookie
+  handleGetCookie(){
+    return {
+      nickname:getCookie('nickname') || '',
+      email: getCookie('email') || '',
+      website: getCookie('website') || ''
+    };
+  }
+  componentDidMount(){
+    this.setState(this.handleGetCookie())
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -97,6 +118,7 @@ class FormComment extends Component {
           postUserComments(dispatch, postUserCommentUrl(), queryStringComment).then(res => {
             const {getUserCommentsData} = res;
             if (getUserCommentsData.length) {
+              this.handleSetCookie(nickname,email,website)
               message.success(`留言发表成功，感谢支持！`);
             }else {
               message.warning('您可能没权限');
@@ -108,6 +130,7 @@ class FormComment extends Component {
           :
           postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
             if ((res.getCommentsData.length)) {
+              this.handleSetCookie(nickname,email,website)
               message.success(`评论发表成功，感谢支持！`);
             }else {
               message.warning('您可能没权限');
@@ -126,6 +149,7 @@ class FormComment extends Component {
   render() {
     const {dataSource = {}} = this.props;
     const {commentBtnMsg = '提交评论'} = dataSource;
+    const {nickname,email,website: commentWebsite} = this.state
     const {autoCompleteResult, isLoading} = this.state;
     const websiteOptions = autoCompleteResult.map(website => (
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
@@ -162,7 +186,12 @@ class FormComment extends Component {
           )}
         >
           {getFieldDecorator('nickname', {
-            rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
+            initialValue: nickname,
+            rules: [{
+              required: true,
+              message: 'Please input your nickname!',
+              whitespace: true
+            }],
           })(
             <Input
               title="用户名"
@@ -174,6 +203,7 @@ class FormComment extends Component {
           label="E-mail"
         >
           {getFieldDecorator('email', {
+            initialValue: email,
             rules: [{
               type: 'email', message: 'The input is not valid E-mail!',
             }, {
@@ -190,6 +220,7 @@ class FormComment extends Component {
           label="Website"
         >
           {getFieldDecorator('website', {
+            initialValue: commentWebsite,
             rules: [{required: false, message: 'Please input website!'}],
           })(
             <AutoComplete
