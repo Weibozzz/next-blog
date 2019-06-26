@@ -374,6 +374,13 @@ class EditArticle extends Component {
     });
   };
 
+  // 博客查看文章之前先提交代码
+  seeDetailPage = () => {
+    const { queryId } = this.state
+    this.onSubmit()
+    Router.push(`/p/${queryId}`)
+  }
+
   render() {
     const {
       editCont = '',
@@ -402,9 +409,7 @@ class EditArticle extends Component {
       <div>
         {
           queryId && <p>
-            <Link href={`/p/${queryId}`}>
-              <a>查看当前文章</a>
-            </Link>
+            <a onClick={this.seeDetailPage}>查看当前文章</a>
           </p>
         }
         <Row>
