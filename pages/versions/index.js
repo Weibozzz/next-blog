@@ -8,6 +8,7 @@ import {
   List, Avatar, Icon, Pagination, Alert,
   Input, Button, Radio, Tooltip, Divider, Card, Timeline, Popover, Spin
 } from 'antd'
+import Loading from '../../components/loading'
 import MyLayout from '../../components/MyLayout';
 import './index.less'
 import {VERSIONS_TXT, COMMON_TITLE} from "../../config/constantsData";
@@ -86,9 +87,7 @@ class Versions extends Component {
             </div>
             {
               Array.isArray(versions) && !versions.length &&
-              <div style={{position: 'absolute', left: '50%', top: '20%', transform: 'translateX(-50%)', zIndex: 10}}>
-                <Spin tip="Loading..."></Spin>
-              </div>
+              <Loading></Loading>
             }
             <QueueAnim
             component={Timeline}

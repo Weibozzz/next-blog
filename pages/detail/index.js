@@ -20,6 +20,7 @@ import { untilMaxWidthOrHeight, clickCopyCode } from './util'
 import PrevNextPage from '../../components/PrevNextPage'
 import Comments from '../../components/Comments'
 import MyLayout from '../../components/MyLayout'
+import Loading from '../../components/loading'
 //其他
 import { getDetailUrl, getCommentsUrl, getLastIdUrl, getNextIdUrl, getBlogUrl, addZanUrl } from '../../config'
 import { COMMON_TITLE, MY_BLOG, POST_READING_STATEMENT } from '../../config/constantsData'
@@ -43,6 +44,7 @@ class Detail extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      isLoading: false,
       articleID: '',
       articleLike: 0,
       fn: null,
@@ -129,13 +131,16 @@ class Detail extends Component {
     }
     if (timer) {
       clearTimeout(timer)
-    }
+    }this.setState({
+      isLoading: true
+    })
     timer = setTimeout(() => {
       addZan(dispatch, addZanUrl(queryStringObj))
         .then(res => {
           const { addZanData = [] } = res
           const { like = 0 } = addZanData[0]
           this.setState({
+            isLoading: false,
             articleLike: like
           })
         })
@@ -181,7 +186,7 @@ class Detail extends Component {
   render () {
     //接口
     let { blogData = [], commentsData = [], getCommentsData = [], lastIdData = [], nextIdData = [], userAgent = 'pc', hotRecommendData = [] } = this.props
-    let { articleID, articleLike, isShowEditIcon, topWidth } = this.state
+    let { articleID, articleLike, isShowEditIcon, topWidth, isLoading } = this.state
     let { content = '', createTime = '', title = '', url = '', id, type = '', like = 0 } = blogData[0] || {}
     const isShowReadingStatement = /阅读书籍/g.test(type)
     const resultLike = Math.max(articleLike, like)
@@ -196,6 +201,9 @@ class Detail extends Component {
           <title>{title}{COMMON_TITLE}</title>
         </Head>
         <div id="read-nprogress" style={{ width: topWidth }}></div>
+        {
+          isLoading &&  <Loading></Loading>
+        }
         <MyLayout>
 
           <Col

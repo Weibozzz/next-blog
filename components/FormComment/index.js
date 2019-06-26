@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {
   Layout, Menu, Breadcrumb, Row, Col, BackTop, Card, Form,
-  Input, Tooltip, Cascader, Select, Checkbox, Button,
+  Input, Tooltip, Cascader, Select, Checkbox, Button, Spin,
   AutoComplete, List, Avatar, Icon, Divider, message, Tag, Alert
 } from 'antd';
 
+import Loading from '../loading'
 import {regUrl, real_ip} from "../../until";
 import {postComments, postUserComments, setAnswerId, setCommentIndex} from "../../store/actions";
 import {postCommentUrl, postUserCommentUrl} from "../../config";
@@ -21,6 +22,7 @@ class FormComment extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       autoCompleteResult: [],
     }
   }
@@ -58,6 +60,9 @@ class FormComment extends Component {
           return;
         }
 
+        this.setState({
+          isLoading: true
+        })
         let realIp = ''
         try {
           realIp = await real_ip()
@@ -96,6 +101,9 @@ class FormComment extends Component {
             }else {
               message.warning('您可能没权限');
             }
+            this.setState({
+              isLoading: false
+            })
           })
           :
           postComments(dispatch, postCommentUrl(), queryStringComment).then(res => {
@@ -104,6 +112,9 @@ class FormComment extends Component {
             }else {
               message.warning('您可能没权限');
             }
+            this.setState({
+              isLoading: false
+            })
           })
 
         setCommentIndex(dispatch, -1)
@@ -115,7 +126,7 @@ class FormComment extends Component {
   render() {
     const {dataSource = {}} = this.props;
     const {commentBtnMsg = '提交评论'} = dataSource;
-    const {autoCompleteResult} = this.state;
+    const {autoCompleteResult, isLoading} = this.state;
     const websiteOptions = autoCompleteResult.map(website => (
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
     ));
@@ -130,6 +141,9 @@ class FormComment extends Component {
       )}
     </span>;
     return <div>
+      {
+        isLoading &&  <Loading></Loading>
+      }
       <Row>
         <Col {...tailCommentsTip}>
           <Alert message={tipsRender} type="info" showIcon/>
