@@ -54,11 +54,11 @@ npm start
 ## 网站截图
 
 1. 详情页
-![http://pd96wjt4m.bkt.clouddn.com/image/common/detail_1536836727000_459470_1536836749510.png](http://pd96wjt4m.bkt.clouddn.com/image/common/detail_1536836727000_459470_1536836749510.png)
+![http://images.liuweibo.cn/image/common/detail_1536836727000_459470_1536836749510.png](http://images.liuweibo.cn/image/common/detail_1536836727000_459470_1536836749510.png)
 2. 列表页
-![http://pd96wjt4m.bkt.clouddn.com/image/common/list_1536836639000_822188_1536836780676.png](http://pd96wjt4m.bkt.clouddn.com/image/common/list_1536836639000_822188_1536836780676.png)
+![http://images.liuweibo.cn/image/common/list_1536836639000_822188_1536836780676.png](http://images.liuweibo.cn/image/common/list_1536836639000_822188_1536836780676.png)
 3. 编辑页面和发布文章，上传图片到七牛云
-![http://pd96wjt4m.bkt.clouddn.com/image/common/edit_1536836607000_802376_1536836825962.png](http://pd96wjt4m.bkt.clouddn.com/image/common/edit_1536836607000_802376_1536836825962.png)
+![http://images.liuweibo.cn/image/common/edit_1536836607000_802376_1536836825962.png](http://images.liuweibo.cn/image/common/edit_1536836607000_802376_1536836825962.png)
 
 
 ## 网站技术介绍
