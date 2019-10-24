@@ -20,6 +20,14 @@ export const GITHUB_DOCS_ADDRESS = {
   url: 'https://weibozzz.github.io',
   des: '前端知识体系'
 };
+// 直播地址
+export const LIVE_ADDRESS = {
+  url: 'http://live.bilibili.com/21660572',
+  des: '我的直播间'
+}
+export const LIVE_ADDRESS_URL = `<a href=${LIVE_ADDRESS.url} target="_blank">
+  ${LIVE_ADDRESS.des}</a>`
+
 export const GITHUB_DOCS_ADDRESS_URL_STRING = `<a href=${GITHUB_DOCS_ADDRESS.url} target="_blank">
   ${GITHUB_DOCS_ADDRESS.des}</a>`
 export const GITHUB_DOCS_ADDRESS_URL = <a href={GITHUB_DOCS_ADDRESS.url} target="_blank">
@@ -95,10 +103,10 @@ export const BG_INDEX = [
     key: '韩城司马迁',
     value: 'http://images.static.liuweibo.cn/image/index/simaqina.jpg'
   },
-  {
-    key: '韩城美食',
-    value: 'http://images.static.liuweibo.cn/image/index/hanchegnmeishi.jpg'
-  },
+  // {
+  //   key: '韩城美食',
+  //   value: 'http://images.static.liuweibo.cn/image/index/hanchegnmeishi.jpg'
+  // },
 ]
 //首页切换时间
 export const defaultTimer = 10000;
@@ -228,6 +236,6 @@ export const COMMENT_LIMIT = {
 export const commentPlaceHolder = `欢迎提出您在使用过程中遇到的问题或宝贵建议（${COMMENT_LIMIT.key}字以内），感谢您对博主的支持。(必填)`
 export const COMMENT_TIPS = (param='sf')=>{
   return<span>
-    评论支持markdown，{COMMENT_LIMIT.key},如果内容过多或者要及时回复,建议去 {param} 平台,一般一天之内就会回复。
+    评论支持markdown，{COMMENT_LIMIT.key},如果内容过多或者要及时回复,建议去 {param}
   </span>
 };
