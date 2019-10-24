@@ -7,6 +7,8 @@
 本项目使用next.js经验分享：[http://www.liuweibo.cn/p/206](http://www.liuweibo.cn/p/206)
 另外还有一个仓库，建立自己的前端知识体系：[https://github.com/Weibozzz/Weibozzz.github.io](https://github.com/Weibozzz/Weibozzz.github.io)
 
+另外也可以来我开的[直播间](http://live.bilibili.com/21660572)提问和互动哦～
+
 ## 软件架构
 软件架构说明
 `react.js next.js antd mysql node koa2 fetch `
