@@ -197,7 +197,7 @@ class FormComment extends Component {
             initialValue: nickname,
             rules: [{
               required: true,
-              message: 'Please input your nickname!',
+              max: 15,
               whitespace: true
             }],
           })(
@@ -219,8 +219,8 @@ class FormComment extends Component {
             }],
           })(
             <Input
-              title="不会被公开"
-              placeholder="不会被公开"/>
+              title="不会被公开，可第一时间接收通知"
+              placeholder="不会被公开，可第一时间接收通知"/>
           )}
         </FormItem>
         <FormItem
