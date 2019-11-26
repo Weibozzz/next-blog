@@ -29,7 +29,8 @@ import {
   COMMON_TITLE,
   INDEX_TITLE,
   BLOG_TXT,
-  POST_ARTICLE_TYPE
+  POST_ARTICLE_TYPE,
+  GITHUB_DOCS_ADDRESS_URL
 } from '../../config/constantsData'
 import MyLayout from '../../components/MyLayout'
 import { real_ip, getYearAndMounth, cancelRepeat, formatTime } from '../../until'
@@ -194,7 +195,15 @@ class Blog extends Component {
     }
     return key
   }
-
+  getDescription () {
+    return (
+      <span>
+        本站只是为了展示 React SSR 的效果而搭建的一个博客平台，
+        前端技术博客知识体系移步这里
+        【{GITHUB_DOCS_ADDRESS_URL}】
+      </span>
+    )
+  }
   render () {
     let total,
       listData
@@ -247,6 +256,12 @@ class Blog extends Component {
                         enterButton="Search"
                         size="large" addonBefore={selectBefore} />
                 <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
+                  <Alert
+                    message="技术文章提示"
+                    description={this.getDescription()}
+                    type="info"
+                    showIcon
+                  />
                   <ListTitle searchType={searchType} dataSource={{ listData }} />
                   {!isCollectArticle &&
                   <Pagination current={currentPage} total={total} itemRender={this.itemRender.bind(this)}
