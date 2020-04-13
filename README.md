@@ -342,6 +342,105 @@ marked.setOptions({
 });
 ```
 
+#### next.js 配置相关
+`next.config.js`文件配置
+```js
+module.exports = {
+  webpack (config, ...args) {
+    return config;
+  }
+}
+```
+- 增加 alias
+```
+config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, './'),
+    }
+
+```
+- 增加插件
+
+```
+config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': process.env.NODE_ENV
+      })
+    )
+```
+
+- 增加 rules
+```
+config.module.rules.push(
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: '@svgr/webpack',
+            options: {
+              babel: false,
+              icon: true
+            }
+          }
+        ]
+      }
+    )
+```
+
+- 支持css和less
+
+```
+config = withCSS()
+      .webpack(config, ...args)
+    config = withLess()
+      .webpack(config, ...args)
+```
+- less某些文件开启css module
+```
+const loaderUtils = require('loader-utils')
+const fs = require('fs')
+const path = require('path')
+const cssModuleRegex = /\.module\.less$/
+
+config = withLess(
+      // 开启 css module 自定义
+      {
+        cssModules: true,
+        cssLoaderOptions: {
+          importLoaders: 1,
+          minimize: !args[0].dev,
+          getLocalIdent: (loaderContext, _, localName, options) => {
+            const fileName = path.basename(loaderContext.resourcePath)
+            if (cssModuleRegex.test(fileName)) {
+              const content = fs.readFileSync(loaderContext.resourcePath)
+                .toString()
+              const name = fileName.replace(/\.[^/.]+$/, '')
+              const hash = args[0].dev ? `${name}___[hash:base64:5]` : '[hash:base64:5]'
+              const fileNameHash = loaderUtils.interpolateName(
+                loaderContext,
+                hash,
+                { content }
+              )
+              return fileNameHash
+            }
+            return localName
+          }
+        }
+      }
+    )
+```
+- 支持 bundleAnalyzer
+```
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+})
+
+    config = withBundleAnalyzer({})
+      .webpack(config, ...args)
+```
 ## 学累了，来个图放松下
 
 ![http://images.liuweibo.cn/image/common/2a35e89324d3ad64d52683ad1343732e_1535531349000_84470_1535531469641.jpg](http://images.liuweibo.cn/image/common/2a35e89324d3ad64d52683ad1343732e_1535531349000_84470_1535531469641.jpg))
