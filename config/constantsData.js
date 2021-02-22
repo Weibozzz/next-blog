@@ -72,11 +72,11 @@ export const MENU_RULE = {
 }
 
 //seo
-export const COMMON_TITLE = '刘伟波-天天向上'
+export const COMMON_TITLE = '刘伟波-伟波前端'
 export const INDEX_TITLE = '刘伟波的个人网站'
 export const INDEX_ENGLISH = 'Liu WeiBo\'s Personal Website'
-export const KEYWORDS = '刘伟波, 个人网站,个人博客,  web前端'
-export const Description = '刘伟波的个人网站，刘伟波的技术作品，刘伟波的生活成长'
+export const KEYWORDS = '伟波前端,刘伟波,个人网站,个人博客,web前端'
+export const Description = '刘伟波的个人网站，刘伟波的技术作品，刘伟波的生活成长,伟波前端'
 
 //首页背景
 // http://images.static.liuweibo.cn
@@ -102,10 +102,10 @@ export const BG_INDEX = [
     key: '韩城古城',
     value: 'http://images.static.liuweibo.cn/image/index/hanchegngucheng.jpg'
   },
-  {
-    key: '韩城司马迁',
-    value: 'http://images.static.liuweibo.cn/image/index/simaqina.jpg'
-  },
+  // {
+  //   key: '韩城司马迁',
+  //   value: 'http://images.static.liuweibo.cn/image/index/simaqina.jpg'
+  // },
   // {
   //   key: '韩城美食',
   //   value: 'http://images.static.liuweibo.cn/image/index/hanchegnmeishi.jpg'

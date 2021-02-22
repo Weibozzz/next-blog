@@ -241,7 +241,7 @@ styles.less
     <meta name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="renderer" content="webkit"/>
-    <meta httpEquiv="description" content="刘伟波-天天向上"/>
+    <meta httpEquiv="description" content="刘伟波-伟波前端"/>
     <meta name="author" content="刘伟波,liuweibo"/>
     <link rel='stylesheet' href='/_next/static/style.css'/>
     <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
