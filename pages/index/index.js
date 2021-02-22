@@ -67,7 +67,7 @@ class Index extends React.Component {
                   {ROUTER.INDEX_TITLE}
                 </h1>
                 <h2>
-                  2018年7月15日 - 刘伟波 刘伟波,16年西安文理学院毕业,目前上海担任支付宝城市服务等业务，热爱web前端,多年来一直从事web前端开发，熟悉h5,vue,react。
+                  2017年7月 - 刘伟波 刘伟波,16年西安文理学院毕业,曾担任支付宝城市服务等业务，热爱web前端,多年来一直从事web前端开发，熟练h5,vue,react，著作：伟波前端。
                 </h2>
                 <p>
                   {ROUTER.INDEX_ENGLISH}
