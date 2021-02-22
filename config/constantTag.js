@@ -1,4 +1,4 @@
-import {GITHUB_DOCS_ADDRESS_URL_STRING, LIVE_ADDRESS_URL} from './constantsData'
+import {GITHUB_DOCS_ADDRESS_URL_STRING, BILILI_ADDRESS_URL} from './constantsData'
 const STEP = 20;
 const MARGIN_TOPS = 2;
 const MARGIN_LEFTS = 5;
@@ -71,10 +71,8 @@ export const default_comment = [{
   "user": "刘伟波",
   "website": "http://www.liuweibo.cn",
   "msg": `<span>
-    关于技术问题或者有啥不懂的都可以留言，
-    我会定期回复答疑,
-    也可以来 ${LIVE_ADDRESS_URL} 提问，
-    推荐最新仓库${GITHUB_DOCS_ADDRESS_URL_STRING}，
+    关于技术问题或者有啥不懂的都可以来 ${BILILI_ADDRESS_URL} 提问，
+    推荐作者总结知识点${GITHUB_DOCS_ADDRESS_URL_STRING}，
     感謝支持！
   </span>`,
   "createTime": +new Date()/1000,

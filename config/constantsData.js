@@ -32,6 +32,8 @@ export const BILILI_ADDRESS = {
 }
 export const LIVE_ADDRESS_URL = `<a href=${LIVE_ADDRESS.url} target="_blank">
   ${LIVE_ADDRESS.des}</a>`
+export const BILILI_ADDRESS_URL = `<a href=${BILILI_ADDRESS.url} target="_blank">
+  ${BILILI_ADDRESS.des}</a>`
 
 export const GITHUB_DOCS_ADDRESS_URL_STRING = `<a href=${GITHUB_DOCS_ADDRESS.url} target="_blank">
   ${GITHUB_DOCS_ADDRESS.des}</a>`
