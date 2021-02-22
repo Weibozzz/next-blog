@@ -239,6 +239,6 @@ export const COMMENT_LIMIT = {
 export const commentPlaceHolder = `欢迎提出您在使用过程中遇到的问题或宝贵建议（${COMMENT_LIMIT.key}字以内），感谢您对博主的支持。(必填)`
 export const COMMENT_TIPS = (param='sf')=>{
   return<span>
-    评论支持markdown，{COMMENT_LIMIT.key},如果内容过多或者要及时回复,建议去 {param}
+    评论支持markdown，{COMMENT_LIMIT.key}
   </span>
 };

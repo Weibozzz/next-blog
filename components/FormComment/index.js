@@ -11,7 +11,7 @@ import {regUrl, real_ip} from "../../until";
 import {getCookie, setCookie} from "../../until/cookie";
 import {postComments, postUserComments, setAnswerId, setCommentIndex} from "../../store/actions";
 import {postCommentUrl, postUserCommentUrl} from "../../config";
-import {COMMENT_TIPS, COMMENT_LIMIT, commentPlaceHolder, LIVE_ADDRESS} from "../../config/constantsData";
+import {COMMENT_TIPS, COMMENT_LIMIT, commentPlaceHolder, BILILI_ADDRESS} from "../../config/constantsData";
 import {DEFAULT_TAG_ARR} from "../../config/constantTag";
 import {tailFormItemLayout, tailCommentsTip, formItemLayout} from './constants';
 
@@ -158,19 +158,7 @@ class FormComment extends Component {
     const sf = DEFAULT_TAG_ARR.find(v => v.user === 'segmentfault');
     const {user, website} = sf;
     const tipsRender = <span>
-      {COMMENT_TIPS(
-        <>
-          <Tag color="#017e66">
-            <a href={website} title={user}>{user}</a>
-          </Tag>
-          平台，
-          也可以来
-          <Tag color="#017e66">
-            <a href={LIVE_ADDRESS.url}>{LIVE_ADDRESS.des}</a>
-          </Tag>
-          来提问。
-        </>
-      )}
+      {COMMENT_TIPS()}
     </span>;
     return <div>
       {
