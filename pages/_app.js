@@ -5,6 +5,7 @@ import withReduxStore from '../lib/with-redux-store'
 import {Provider} from 'react-redux'
 import Header from '../components/Header';
 import Footer from '../components/Footer'
+import Guitar from '../components/Guitar'
 import 'babel-polyfill'
 import '../asserts/styles.less'
 import './index.less'
@@ -59,6 +60,7 @@ class MyApp extends App {
                 ''
                 : <Header {...userAgent} />
             }
+            <Guitar />
             <Component {...myPageProps}  />
             {
               pathname === '/' || pathname === '/gallery'

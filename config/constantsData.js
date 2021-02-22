@@ -25,6 +25,11 @@ export const LIVE_ADDRESS = {
   url: 'http://live.bilibili.com/21660572',
   des: '我的直播间'
 }
+// bilili 空间地址
+export const BILILI_ADDRESS = {
+  url: 'https://space.bilibili.com/456900797/channel/index',
+  des: '我的视频空间'
+}
 export const LIVE_ADDRESS_URL = `<a href=${LIVE_ADDRESS.url} target="_blank">
   ${LIVE_ADDRESS.des}</a>`
 
@@ -32,8 +37,7 @@ export const GITHUB_DOCS_ADDRESS_URL_STRING = `<a href=${GITHUB_DOCS_ADDRESS.url
   ${GITHUB_DOCS_ADDRESS.des}</a>`
 export const GITHUB_DOCS_ADDRESS_URL = <a href={GITHUB_DOCS_ADDRESS.url} target="_blank">
   {GITHUB_DOCS_ADDRESS.des}</a>
-export const TOP_TIPS = <span>欢迎来到刘伟波个人网站，
-喜欢可以收藏哦!</span>
+export const TOP_TIPS = <span>关注公众平台：'伟波前端'，将是一个美好的邂逅哦!</span>
 //分页数
 export const pageNum = 10;
 export const TITLE = 'title'

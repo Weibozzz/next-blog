@@ -7,7 +7,7 @@
 本项目使用next.js经验分享：[http://www.liuweibo.cn/p/206](http://www.liuweibo.cn/p/206)
 另外还有一个仓库，建立自己的前端知识体系：[https://github.com/Weibozzz/Weibozzz.github.io](https://github.com/Weibozzz/Weibozzz.github.io)
 
-另外也可以来我开的[直播间](http://live.bilibili.com/21660572)提问和互动哦～
+另外如果想查漏补缺一些知识点可以关注视频教学附带源码 [伟波前端从零基础教学](https://space.bilibili.com/456900797/channel/detail?cid=166108)
 
 ## 软件架构
 软件架构说明
@@ -482,6 +482,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 - github:[https://github.com/Weibozzz](https://github.com/Weibozzz)
 - 个人博客:[http://www.liuweibo.cn](http://www.liuweibo.cn)
 - segmentfault:[https://segmentfault.com/u/weibozzz](https://segmentfault.com/u/weibozzz)
+- 公众平台：伟波前端
+
+    ![伟波前端](https://cdn.nlark.com/yuque/0/2021/png/232624/1611566795964-a22487fd-6e08-462d-b3a4-85e3a3c0461e.png)
 
 ## 版权声明
 - 所有原创文章的著作权属于 Weibozzz。
