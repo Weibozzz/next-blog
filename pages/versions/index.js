@@ -34,10 +34,15 @@ class Versions extends Component {
     availWidth<768&&this.setState({
       isMobile:true
     })
-    const blog = await fetch(githubApiCommits)
-    const userData = await fetch(githubApiUser)
-    const data = await blog.json();
-    const users = await userData.json();
+    let data = [];
+    let users = [];
+    try {
+      const blog = await fetch(githubApiCommits)
+      const userData = await fetch(githubApiUser)
+      data = await blog.json();
+      users = await userData.json();
+    } catch (error) {
+    }
     const versions = Array.isArray(data) ? data.map(v => {
       const {html_url, commit, sha, author: outAuthor = {}} = v;
       const {avatar_url = '', login = '', html_url: github_html_url} = outAuthor || {};

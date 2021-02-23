@@ -33,14 +33,18 @@ class PostArticle extends Component {
 }
 //得到文章最大id
 PostArticle.getInitialProps = async function (context) {
-  let queryStringObj = {
-    type: ALL,
-    num: 1,
-    pageNum
-  }
-  const pageBlog = await fetch(getBlogUrl(queryStringObj))
-  const pageBlogData = await pageBlog.json()
+  try {
+    let queryStringObj = {
+      type: ALL,
+      num: 1,
+      pageNum
+    }
+    const pageBlog = await fetch(getBlogUrl(queryStringObj))
+    const pageBlogData = await pageBlog.json()
 
-  return {pageBlogData}
+    return {pageBlogData}
+  } catch (error) {
+    return {};
+  }
 }
 export default connect()(PostArticle)

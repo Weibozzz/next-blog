@@ -83,13 +83,17 @@ class AdminDetail extends Component {
   }
 }
 AdminDetail.getInitialProps = async function (context) {
-  const {id} = context.query
-  let queryStrObj = {id};
-  const adminBlogDetail = await fetch(getDetailUrl(queryStrObj))
-  const adminBlogDetailData = await adminBlogDetail.json()
+  try {
+    const {id} = context.query
+    let queryStrObj = {id};
+    const adminBlogDetail = await fetch(getDetailUrl(queryStrObj))
+    const adminBlogDetailData = await adminBlogDetail.json()
 
 
-  return {adminBlogDetailData}
+    return {adminBlogDetailData}
+  } catch (error) {
+    return {};
+  }
 }
 const WrappedRegistrationForm = Form.create()(AdminDetail);
 export default WrappedRegistrationForm;

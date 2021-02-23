@@ -387,19 +387,22 @@ Blog.getInitialProps = async function (context) {
     num: id,
     pageNum
   }
-  let queryTotalString = { type: ALL }
-  const pageBlog = await fetch(getBlogUrl(queryStringObj))
-  const totalPage = await fetch(getTotalUrl(queryTotalString))
-  let pageBlogData = await pageBlog.json()
-  const totalPageData = await totalPage.json()
-  pageBlogData = pageBlogData.filter(v => v.type !== 'interesting' && v.type !== 'fight')
+  try {
+    let queryTotalString = { type: ALL }
+    const pageBlog = await fetch(getBlogUrl(queryStringObj))
+    const totalPage = await fetch(getTotalUrl(queryTotalString))
+    let pageBlogData = await pageBlog.json()
+    const totalPageData = await totalPage.json()
+    pageBlogData = pageBlogData.filter(v => v.type !== 'interesting' && v.type !== 'fight')
 
-  return { pageBlogData, totalPageData }
+    return { pageBlogData, totalPageData }
+  } catch (error) {
+    return {};
+  }
 }
 //这里根据需要传入redux
 const mapStateToProps = state => {
   const { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData, modifyArticleData } = state
-  console.log(state)
   return { res, searchData, searchTotalData, hotArticleData, createTimeListData, isCollectArticle, viewListData, modifyArticleData }
 }
 export default connect(mapStateToProps)(Blog)

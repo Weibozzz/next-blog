@@ -89,16 +89,20 @@ class About extends Component {
   }
 }
 About.getInitialProps = async function (context) {
-  //评论
-  const comments = await fetch(getUserCommentUrl({hasToken:'no'}))
-  const commentsUserData = await comments.json()
-  //关于自己 id为1
-  let queryStrObj = {id:1};
-  const aboutMe = await fetch(getDetailUrl(queryStrObj))
-  const aboutMeData = await aboutMe.json()
+  try {
+    //评论
+    const comments = await fetch(getUserCommentUrl({hasToken:'no'}))
+    const commentsUserData = await comments.json()
+    //关于自己 id为1
+    let queryStrObj = {id:1};
+    const aboutMe = await fetch(getDetailUrl(queryStrObj))
+    const aboutMeData = await aboutMe.json()
 
 
-  return {commentsUserData,aboutMeData}
+    return {commentsUserData,aboutMeData}
+  } catch (error) {
+    return {};
+  }
 }
 const mapStateToProps = state => {
   const {getUserCommentsData} = state;

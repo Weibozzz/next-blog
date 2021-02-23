@@ -297,11 +297,15 @@ class Admin extends Component {
 }
 
 Admin.getInitialProps = async function () {
-  let queryTotalString = {type: ALL};
-  const totalPage = await fetch(getTotalUrl(queryTotalString))
-  const totalPageData = await totalPage.json()
+  try {
+    let queryTotalString = {type: ALL};
+    const totalPage = await fetch(getTotalUrl(queryTotalString))
+    const totalPageData = await totalPage.json()
 
-  return {totalPageData}
+    return {totalPageData}
+  } catch (error) {
+    return {};
+  }
 }
 const mapStateToProps = state => {
   const {adminBlogData, searchData, postAdminPasswordData, getUserCommentsData, getCommentsData, ipListData, getCommentsUserData,viewListData} = state

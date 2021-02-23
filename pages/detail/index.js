@@ -361,27 +361,31 @@ class Detail extends Component {
   }
 }
 Detail.getInitialProps = async function (context) {
-  const { id } = context.query
-  let queryStrObj = { id }
-  const blog = await fetch(getDetailUrl(queryStrObj))
-  const comments = await fetch(getCommentsUrl(queryStrObj))
-  const lastId = await fetch(getLastIdUrl(queryStrObj))
-  const nextId = await fetch(getNextIdUrl(queryStrObj))
-  const blogData = await blog.json()
-  const commentsData = await comments.json()
-  let lastIdData,
-    nextIdData
   try {
-    lastIdData = await lastId.json()
-  } catch (e) {
-    lastIdData = []
+    const { id } = context.query
+    let queryStrObj = { id }
+    const blog = await fetch(getDetailUrl(queryStrObj))
+    const comments = await fetch(getCommentsUrl(queryStrObj))
+    const lastId = await fetch(getLastIdUrl(queryStrObj))
+    const nextId = await fetch(getNextIdUrl(queryStrObj))
+    const blogData = await blog.json()
+    const commentsData = await comments.json()
+    let lastIdData,
+      nextIdData
+    try {
+      lastIdData = await lastId.json()
+    } catch (e) {
+      lastIdData = []
+    }
+    try {
+      nextIdData = await nextId.json()
+    } catch (e) {
+      nextIdData = []
+    }
+    return { blogData, commentsData, lastIdData, nextIdData }
+  } catch (error) {
+    return {};
   }
-  try {
-    nextIdData = await nextId.json()
-  } catch (e) {
-    nextIdData = []
-  }
-  return { blogData, commentsData, lastIdData, nextIdData }
 }
 const mapStateToProps = state => {
   const { getCommentsData, hotRecommendData } = state
