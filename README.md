@@ -484,7 +484,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 - segmentfault:[https://segmentfault.com/u/weibozzz](https://segmentfault.com/u/weibozzz)
 - 公众平台：伟波前端
 
-    ![伟波前端](https://cdn.nlark.com/yuque/0/2021/png/232624/1611566795964-a22487fd-6e08-462d-b3a4-85e3a3c0461e.png)
+    <img height="150" src="http://weibozzz.gitee.io/some-imgs/wx/qrcode_white.png" />
+
 
 ## 版权声明
 - 所有原创文章的著作权属于 Weibozzz。
