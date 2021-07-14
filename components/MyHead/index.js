@@ -16,8 +16,10 @@ const MyHead = ()=>(
     <meta name="author" content="刘伟波,liuweibo"/>
     <link rel='stylesheet' href='/static/css/iconfont/iconfont.css'/>
     <link rel='stylesheet' type='text/css' href='/static/css/nprogress.css' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" />
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
-      <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
     <title>{ROUTER.INDEX_TITLE} &raquo; {ROUTER.COMMON_TITLE}</title>
   </Head>
 )

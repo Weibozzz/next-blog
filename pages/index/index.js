@@ -85,11 +85,11 @@ class Index extends React.Component {
                       <a>&raquo; 生活感想 (Life)</a>
                     </Link>
                   </li>
-                  <li key='3'>
-                    <Link href={ROUTER.ONLINE_GITBOOK}>
-                      <a>&raquo; 文档中心 (Weibozzz)</a>
-                    </Link>
-                  </li>
+                  {/*<li key='3'>*/}
+                  {/*  <Link href={ROUTER.ONLINE_GITBOOK}>*/}
+                  {/*    <a>&raquo; 文档中心 (Weibozzz)</a>*/}
+                  {/*  </Link>*/}
+                  {/*</li>*/}
                 </QueueAnim>
               </ul>
               <div className="footer">
