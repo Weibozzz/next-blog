@@ -7,7 +7,6 @@
 本项目使用next.js经验分享：[http://www.liuweibo.cn/p/206](http://www.liuweibo.cn/p/206)
 另外还有一个仓库，建立自己的前端知识体系：[https://github.com/Weibozzz/Weibozzz.github.io](https://github.com/Weibozzz/Weibozzz.github.io)
 
-另外如果想查漏补缺一些知识点可以关注视频教学附带源码 [伟波前端从零基础教学](https://space.bilibili.com/456900797/channel/detail?cid=166108)
 
 ## 软件架构
 软件架构说明
